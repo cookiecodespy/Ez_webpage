@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cookiecodespy.github.io/Ez_webpage/sitemap.xml
