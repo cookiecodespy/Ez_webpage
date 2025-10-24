@@ -19,25 +19,29 @@ const Services = () => {
       icon: <Plane className="h-11 w-11" aria-hidden="true" />,
       title: 'Transporte Internacional',
       description: 'Coordinamos soluciones aéreas, marítimas y terrestres según tu operación para que cada carga llegue segura y puntualmente a su destino.',
-      color: 'from-blue-500 to-blue-600'
+      color: 'from-blue-500 to-blue-600',
+      overlay: 'from-blue-500/0 via-blue-500/5 to-blue-500/30'
     },
     {
       icon: <Warehouse className="h-11 w-11" aria-hidden="true" />,
       title: 'Almacenaje y Distribución',
       description: 'Centros de distribución con tecnología WMS, inventario en línea y redes estratégicas para optimizar cada eslabón de tu cadena.',
-      color: 'from-green-500 to-green-600'
+      color: 'from-green-500 to-green-600',
+      overlay: 'from-green-500/0 via-green-500/5 to-green-500/30'
     },
     {
       icon: <ScrollText className="h-11 w-11" aria-hidden="true" />,
       title: 'Agenciamiento de Aduanas',
       description: 'Equipo experto en normativa internacional que gestiona documentación, permisos y compliance para liberar tus cargas sin contratiempos.',
-      color: 'from-purple-500 to-purple-600'
+      color: 'from-purple-500 to-purple-600',
+      overlay: 'from-purple-500/0 via-purple-500/5 to-purple-500/30'
     },
     {
       icon: <Truck className="h-11 w-11" aria-hidden="true" />,
       title: 'Distribución de Última Milla',
       description: 'Red de transporte capilar con seguimiento en tiempo real para entregar a tus clientes finales de forma rápida y confiable.',
-      color: 'from-orange-500 to-orange-600'
+      color: 'from-orange-500 to-orange-600',
+      overlay: 'from-orange-500/0 via-orange-500/5 to-orange-500/30'
     }
   ];
 
@@ -77,7 +81,7 @@ const Services = () => {
               whileHover={prefersReducedMotion ? undefined : { y: -8 }}
             >
               <span
-                className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-[#E41B13]/0 via-[#E41B13]/0 to-[#E41B13]/30 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                className={`pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br ${service.overlay} opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
                 aria-hidden="true"
               />
               <div className={`h-1.5 bg-gradient-to-r ${service.color}`} />

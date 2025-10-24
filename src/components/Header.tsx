@@ -4,12 +4,12 @@ import { PrimaryButton } from './UIButtons';
 
 const NAV_ITEMS = [
 	{ id: 'home', label: 'Inicio' },
-	{ id: 'services', label: 'Servicios' },
 	{ id: 'por-que-elegirnos', label: 'Ventajas Competitivas' },
+	{ id: 'services', label: 'Servicios' },
 	{ id: 'industries', label: 'Industrias' },
-	{ id: 'testimonios', label: 'Testimonios' },
+	{ id: 'technology', label: 'Herramientas que usamos' },
 	{ id: 'about', label: 'Nosotros' },
-	{ id: 'contact', label: 'Contacto' }
+	{ id: 'testimonios', label: 'Testimonios' }
 ];
 
 const Header = () => {
@@ -69,7 +69,7 @@ const Header = () => {
 				>
 					<button
 						type="button"
-						className="flex items-center gap-3 py-2.5 focus:outline-none"
+						className="flex items-center gap-3 py-2 focus:outline-none"
 						onClick={() => scrollToSection('home')}
 						aria-label="Ir al inicio"
 					>
@@ -85,7 +85,7 @@ const Header = () => {
 						</div>
 					</button>
 
-					<nav className="hidden md:flex items-center gap-6 py-2.5">
+					<nav className="hidden md:flex items-center gap-4 py-2">
 						{NAV_ITEMS.map(item => {
 							const isActive = activeSection === item.id;
 							return (
@@ -94,7 +94,7 @@ const Header = () => {
 									type="button"
 									onClick={() => scrollToSection(item.id)}
 									aria-current={isActive ? 'page' : undefined}
-									className={`relative text-sm font-semibold tracking-tight text-slate-700 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-[#E41B13] after:transition-transform after:duration-300 hover:text-[#E41B13] hover:after:scale-x-100 ${
+									className={`relative whitespace-nowrap text-[13px] md:text-sm font-semibold tracking-tight text-slate-700 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-[#E41B13] after:transition-transform after:duration-300 hover:text-[#E41B13] hover:after:scale-x-100 ${
 										isActive ? 'text-[#E41B13] after:scale-x-100' : ''
 									}`}
 								>
@@ -102,8 +102,8 @@ const Header = () => {
 								</button>
 							);
 						})}
-						<PrimaryButton onClick={() => scrollToSection('contact')} className="px-5 py-2.5 text-sm">
-							Solicitar cotización
+						<PrimaryButton onClick={() => scrollToSection('contact')} className="px-4 py-2 text-[13px] md:text-sm">
+							Contáctenos
 						</PrimaryButton>
 					</nav>
 
@@ -138,7 +138,7 @@ const Header = () => {
 							);
 						})}
 						<PrimaryButton onClick={() => scrollToSection('contact')} className="w-full px-5 py-3">
-							Solicitar cotización
+							Contáctenos
 						</PrimaryButton>
 					</nav>
 				</div>

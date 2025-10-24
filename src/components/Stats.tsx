@@ -25,10 +25,10 @@ const Stats = () => {
   };
 
   const stats: Stat[] = [
-    { icon: <Award className="h-10 w-10 md:h-12 md:w-12" aria-hidden="true" />, value: 10, suffix: '+', label: 'Años de experiencia' },
-    { icon: <Users className="h-10 w-10 md:h-12 md:w-12" aria-hidden="true" />, value: 500, suffix: '+', label: 'Clientes satisfechos' },
-    { icon: <Package className="h-10 w-10 md:h-12 md:w-12" aria-hidden="true" />, value: 30, suffix: 'K+', label: 'Envíos entregados' },
-    { icon: <TrendingUp className="h-10 w-10 md:h-12 md:w-12" aria-hidden="true" />, value: 98, suffix: '%', label: 'Entregas puntuales' }
+    { icon: <Award className="h-8 w-8 md:h-10 md:w-10" aria-hidden="true" />, value: 10, suffix: '+', label: 'Años de experiencia' },
+    { icon: <Users className="h-8 w-8 md:h-10 md:w-10" aria-hidden="true" />, value: 500, suffix: '+', label: 'Clientes satisfechos' },
+    { icon: <Package className="h-8 w-8 md:h-10 md:w-10" aria-hidden="true" />, value: 30, suffix: 'K+', label: 'Envíos entregados' },
+    { icon: <TrendingUp className="h-8 w-8 md:h-10 md:w-10" aria-hidden="true" />, value: 98, suffix: '%', label: 'Entregas puntuales' }
   ];
 
   useEffect(() => {
@@ -112,27 +112,27 @@ const Stats = () => {
     <section
       id="por-que-elegirnos"
       ref={sectionRef}
-      className="py-16 md:py-20 bg-gradient-to-r from-[#E41B13] to-[#c41610]"
+  className="py-12 md:py-16 bg-gradient-to-r from-[#E41B13] to-[#c41610]"
       role="region"
       aria-labelledby="stats-heading"
     >
   <div className="max-w-7xl mx-auto px-6 md:px-8">
         <motion.div
-          className="text-center mb-10"
+          className="text-center mb-8"
           variants={headingVariants}
           initial={prefersReducedMotion ? undefined : 'hidden'}
           whileInView={prefersReducedMotion ? undefined : 'visible'}
           viewport={{ once: true, amount: 0.5 }}
         >
-          <h2 id="stats-heading" className="text-4xl md:text-5xl font-bold tracking-tight text-white">
+          <h2 id="stats-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-white">
             Ventajas Competitivas
           </h2>
           <div className="mx-auto mt-3 h-0.5 w-20 rounded-full bg-white" aria-hidden="true" />
-          <p className="mt-4 text-base md:text-lg text-white/85 max-w-3xl mx-auto leading-relaxed text-left md:text-center">
+          <p className="mt-3 text-sm md:text-base text-white/85 max-w-3xl mx-auto leading-relaxed text-left md:text-center">
             Indicadores clave que respaldan nuestra promesa de servicio confiable y eficiente en cada envío.
           </p>
         </motion.div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -144,7 +144,7 @@ const Stats = () => {
               <div className="flex justify-center mb-3 opacity-90">
                 {stat.icon}
               </div>
-              <div className="text-4xl md:text-5xl font-bold mb-2">
+              <div className="text-3xl md:text-4xl font-bold mb-1.5">
                 <AnimatedCounter
                   value={stat.value}
                   suffix={stat.suffix}
@@ -153,7 +153,7 @@ const Stats = () => {
                   prefersReducedMotion={prefersReducedMotion}
                 />
               </div>
-              <div className="text-sm md:text-base font-medium opacity-90">
+              <div className="text-xs md:text-sm font-medium opacity-90">
                 {stat.label}
               </div>
             </motion.div>
