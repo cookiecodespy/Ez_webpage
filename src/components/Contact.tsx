@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { motion, type Variants, useReducedMotion } from 'framer-motion';
-import { OutlineButton, SubmitButton } from './UIButtons';
+import { SubmitButton } from './UIButtons';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -243,43 +243,55 @@ const Contact = () => {
           </div>
 
           <div className="space-y-8">
-            <div className="rounded-2xl bg-gradient-to-br from-[#E41B13] to-[#c41610] p-8 text-white shadow-lg">
-              <h3 className="text-2xl font-bold mb-6">Datos de contacto</h3>
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#E41B13] via-[#d71711] to-[#b6120d] p-8 text-white shadow-2xl">
+              <div className="pointer-events-none absolute -top-16 -right-20 h-40 w-40 rounded-full bg-white/20 blur-3xl" aria-hidden="true" />
+              <div className="pointer-events-none absolute -bottom-24 -left-16 h-48 w-48 rounded-full bg-black/10 blur-3xl" aria-hidden="true" />
 
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <Mail className="h-10 w-10 md:h-12 md:w-12 flex-shrink-0" aria-hidden="true" />
-                  <div className="pt-1">
-                    <div className="font-semibold mb-1">Correo</div>
-                    <OutlineButton
-                      as="a"
+              <h3 className="relative text-2xl font-semibold tracking-tight">Datos de contacto</h3>
+              <p className="relative mt-2 text-sm text-white/80">
+                Nuestro equipo responde en menos de 24 horas hábiles. También puedes escribirnos directamente.
+              </p>
+
+              <div className="relative mt-8 space-y-6">
+                <div className="flex items-center gap-4 rounded-2xl bg-white/10 p-4 backdrop-blur-sm">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/15">
+                    <Mail className="h-6 w-6" aria-hidden="true" />
+                  </span>
+                  <div>
+                    <div className="text-xs font-semibold uppercase tracking-wide text-white/70">Correo</div>
+                    <a
                       href="mailto:tomas.sotz@blue-box.cl"
-                      className="mt-1 justify-start bg-white px-4 py-2 text-sm text-[#E41B13] hover:bg-white"
+                      className="mt-1 inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-[#E41B13] shadow-sm transition-transform duration-200 hover:-translate-y-0.5"
                     >
                       tomas.sotz@blue-box.cl
-                    </OutlineButton>
+                    </a>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <Phone className="h-10 w-10 md:h-12 md:w-12 flex-shrink-0" aria-hidden="true" />
-                  <div className="pt-1">
-                    <div className="font-semibold mb-1">Teléfono</div>
-                    <OutlineButton
-                      as="a"
+                <div className="flex items-center gap-4 rounded-2xl bg-white/10 p-4 backdrop-blur-sm">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/15">
+                    <Phone className="h-6 w-6" aria-hidden="true" />
+                  </span>
+                  <div>
+                    <div className="text-xs font-semibold uppercase tracking-wide text-white/70">Teléfono</div>
+                    <a
                       href="tel:+56934252106"
-                      className="mt-1 justify-start bg-white px-4 py-2 text-sm text-[#E41B13] hover:bg-white"
+                      className="mt-1 inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-[#E41B13] shadow-sm transition-transform duration-200 hover:-translate-y-0.5"
                     >
                       +56 9 3425 2106
-                    </OutlineButton>
+                    </a>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <MapPin className="h-10 w-10 md:h-12 md:w-12 flex-shrink-0" aria-hidden="true" />
-                  <div className="pt-1">
-                    <div className="font-semibold mb-1">Dirección</div>
-                    <div>Carr. Gral. San Martín 8250, 8700000 Quilicura, Región Metropolitana, Chile</div>
+                <div className="flex items-center gap-4 rounded-2xl bg-white/10 p-4 backdrop-blur-sm">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/15">
+                    <MapPin className="h-6 w-6" aria-hidden="true" />
+                  </span>
+                  <div>
+                    <div className="text-xs font-semibold uppercase tracking-wide text-white/70">Dirección</div>
+                    <p className="mt-1 text-sm leading-relaxed text-white">
+                      Carr. Gral. San Martín 8250, 8700000 Quilicura, Región Metropolitana, Chile
+                    </p>
                   </div>
                 </div>
               </div>

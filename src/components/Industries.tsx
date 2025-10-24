@@ -46,37 +46,6 @@ const Industries = () => {
     }
   ];
 
-  const partners: { name: string; logo: string }[] = [
-    {
-      name: 'Schneider Electric',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Schneider_Electric_logo.svg/512px-Schneider_Electric_logo.svg.png'
-    },
-    {
-      name: 'Ajinomoto',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Ajinomoto_logo.svg/512px-Ajinomoto_logo.svg.png'
-    },
-    {
-      name: 'Manitowoc',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Manitowoc_logo.svg/512px-Manitowoc_logo.svg.png'
-    },
-    {
-      name: 'DHL',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/DHL_Logo.svg/512px-DHL_Logo.svg.png'
-    },
-    {
-      name: 'FedEx',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/FedEx_Express.svg/512px-FedEx_Express.svg.png'
-    },
-    {
-      name: 'Maersk',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/APM-Maersk-Group-Logo.svg/512px-APM-Maersk-Group-Logo.svg.png'
-    },
-    {
-      name: 'Kühne + Nagel',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Kuehne%2BNagel_Logo.svg/512px-Kuehne%2BNagel_Logo.svg.png'
-    }
-  ];
-
   return (
     <section
       id="industries"
@@ -139,30 +108,6 @@ const Industries = () => {
           ))}
         </div>
 
-        <div className="mt-14 rounded-2xl border border-white/40 bg-white/70 px-6 py-8 shadow-lg backdrop-blur-md">
-          <h3 className="mb-8 text-center text-sm font-semibold uppercase tracking-[0.3em] text-gray-500">
-            Nuestros Socios Estratégicos
-          </h3>
-          <div className="grid grid-cols-2 items-center justify-center gap-8 md:grid-cols-4 lg:grid-cols-7">
-            {partners.map((partner, index) => (
-              <motion.div
-                key={partner.name}
-                className="group flex items-center justify-center"
-                initial={prefersReducedMotion ? undefined : { opacity: 0, y: 12 }}
-                whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.4, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <img
-                  src={partner.logo}
-                  alt={partner.name}
-                  loading="lazy"
-                  className="h-14 w-auto object-contain md:h-16 filter grayscale transition duration-300 ease-out group-hover:grayscale-0"
-                />
-              </motion.div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
