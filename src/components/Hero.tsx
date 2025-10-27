@@ -1,21 +1,79 @@
-import { ArrowRight, MapPin } from 'lucide-react';
+import { useEffect } from 'react';
+import { MapPin } from 'lucide-react';
+import { motion, useAnimation, useReducedMotion, type Easing } from 'framer-motion';
+import { OutlineButton, PrimaryButton } from './UIButtons';
 
 const Hero = () => {
+  const controls = useAnimation();
+  const prefersReducedMotion = useReducedMotion();
+
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      controls.set('visible');
+      return;
+    }
+    controls.start('visible');
+  }, [controls, prefersReducedMotion]);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const headerOffset = 88;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition >= 0 ? offsetPosition : 0,
+        behavior: 'smooth'
+      });
     }
   };
 
+  const easeOut: Easing = [0.16, 1, 0.3, 1];
+
+  const contentVariants = {
+    hidden: { opacity: 0, y: 32 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: easeOut,
+        when: 'beforeChildren' as const,
+        staggerChildren: 0.12
+      }
+    }
+  } as const;
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 24 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: easeOut
+      }
+    }
+  } as const;
+
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
+    <motion.section
+      id="home"
+      className="relative h-screen flex items-center justify-center overflow-hidden"
+      role="region"
+      aria-labelledby="hero-heading"
+      initial="hidden"
+      animate={controls}
+      variants={contentVariants}
+    >
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/85 to-gray-900/70 z-10" />
         <img
-          src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=2000"
-          alt="Logistics"
-          className="w-full h-full object-cover"
+          src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=2000&fm=webp"
+          alt="Logística"
+          className="w-full h-full object-cover object-center"
+          loading="eager"
         />
       </div>
 
@@ -33,47 +91,49 @@ const Hero = () => {
       </div>
 
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="animate-fadeIn">
-          <div className="flex items-center justify-center space-x-2 mb-6">
-            <MapPin className="h-5 w-5 text-[#E41B13]" />
-            <span className="text-white/90 text-sm font-medium tracking-wide uppercase">Santiago, Chile & Global</span>
-          </div>
+        <motion.div variants={itemVariants}>
+          <motion.div className="flex items-center justify-center space-x-2 mb-5" variants={itemVariants}>
+            <MapPin className="h-5 w-5 text-[#E41B13]" aria-hidden="true" />
+            <span className="text-white/90 text-sm font-medium tracking-wide uppercase">Santiago, Chile y operaciones globales</span>
+          </motion.div>
 
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            Global Logistics.
+          <motion.h1
+            id="hero-heading"
+            className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight"
+            variants={itemVariants}
+          >
+            Logística Global.
             <br />
-            <span className="text-[#E41B13]">Local Expertise.</span>
-          </h1>
+            <span className="text-[#E41B13]">Experiencia Local.</span>
+          </motion.h1>
 
-          <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto font-light">
-            We move your business forward — with precision, reliability, and speed.
-          </p>
+          <motion.p
+            className="text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto font-light text-left md:text-center"
+            variants={itemVariants}
+          >
+            Impulsamos tu cadena de suministro con precisión, confiabilidad y rapidez.
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="group bg-[#E41B13] text-white px-8 py-4 rounded-lg hover:bg-[#c41610] transition-all duration-300 font-medium text-lg flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-            >
-              <span>Get a Quote</span>
-              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button
-              onClick={() => scrollToSection('technology')}
-              className="group bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-lg hover:bg-white/20 transition-all duration-300 font-medium text-lg border-2 border-white/30 hover:border-white/50 flex items-center space-x-2"
-            >
-              <span>Track Shipment</span>
-              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-          </div>
-        </div>
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            variants={itemVariants}
+          >
+            <PrimaryButton className="px-7 py-3" onClick={() => scrollToSection('contact')}>
+              Solicitar cotización
+            </PrimaryButton>
+            <OutlineButton className="px-7 py-3" onClick={() => scrollToSection('services')}>
+              Ver servicios
+            </OutlineButton>
+          </motion.div>
+        </motion.div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+	<div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20" aria-hidden="true">
         <div className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2">
           <div className="w-1 h-3 bg-white/70 rounded-full" />
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

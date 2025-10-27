@@ -1,68 +1,105 @@
-import { Plane, Warehouse, FileText, Truck } from 'lucide-react';
+import { Plane, Warehouse, ScrollText, Truck } from 'lucide-react';
+import { motion, useReducedMotion, type Variants } from 'framer-motion';
+import { OutlineButton } from './UIButtons';
 
 const Services = () => {
+  const prefersReducedMotion = useReducedMotion();
+
+  const headingVariants: Variants = {
+    hidden: { opacity: 0, y: 16 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+    }
+  };
+
   const services = [
     {
-      icon: <Plane className="h-12 w-12" />,
-      title: 'Freight Forwarding',
-      description: 'Comprehensive air, sea, and land transport solutions tailored to your business needs. We ensure your cargo reaches its destination safely and on time.',
-      color: 'from-blue-500 to-blue-600'
+      icon: <Plane className="h-11 w-11" aria-hidden="true" />,
+      title: 'Transporte Internacional',
+      description: 'Coordinamos soluciones aéreas, marítimas y terrestres según tu operación para que cada carga llegue segura y puntualmente a su destino.',
+      color: 'from-blue-500 to-blue-600',
+      overlay: 'from-blue-500/0 via-blue-500/5 to-blue-500/30'
     },
     {
-      icon: <Warehouse className="h-12 w-12" />,
-      title: 'Warehousing & Distribution',
-      description: 'State-of-the-art warehousing facilities with advanced inventory management systems. Optimize your supply chain with our strategic distribution networks.',
-      color: 'from-green-500 to-green-600'
+      icon: <Warehouse className="h-11 w-11" aria-hidden="true" />,
+      title: 'Almacenaje y Distribución',
+      description: 'Centros de distribución con tecnología WMS, inventario en línea y redes estratégicas para optimizar cada eslabón de tu cadena.',
+      color: 'from-green-500 to-green-600',
+      overlay: 'from-green-500/0 via-green-500/5 to-green-500/30'
     },
     {
-      icon: <FileText className="h-12 w-12" />,
-      title: 'Customs Brokerage',
-      description: 'Expert customs clearance services to navigate complex international regulations. We handle all documentation and compliance requirements efficiently.',
-      color: 'from-purple-500 to-purple-600'
+      icon: <ScrollText className="h-11 w-11" aria-hidden="true" />,
+      title: 'Agenciamiento de Aduanas',
+      description: 'Equipo experto en normativa internacional que gestiona documentación, permisos y compliance para liberar tus cargas sin contratiempos.',
+      color: 'from-purple-500 to-purple-600',
+      overlay: 'from-purple-500/0 via-purple-500/5 to-purple-500/30'
     },
     {
-      icon: <Truck className="h-12 w-12" />,
-      title: 'Last-Mile Delivery',
-      description: 'Fast and reliable final-mile delivery solutions. Track your shipments in real-time and ensure customer satisfaction with our efficient delivery network.',
-      color: 'from-orange-500 to-orange-600'
+      icon: <Truck className="h-11 w-11" aria-hidden="true" />,
+      title: 'Distribución de Última Milla',
+      description: 'Red de transporte capilar con seguimiento en tiempo real para entregar a tus clientes finales de forma rápida y confiable.',
+      color: 'from-orange-500 to-orange-600',
+      overlay: 'from-orange-500/0 via-orange-500/5 to-orange-500/30'
     }
   ];
 
   return (
-    <section id="services" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Our Core Services
+    <section
+      id="services"
+      className="py-16 md:py-20 bg-gray-50"
+      role="region"
+      aria-labelledby="services-heading"
+    >
+      <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <motion.div
+          className="mb-12 text-center"
+          variants={headingVariants}
+          initial={prefersReducedMotion ? undefined : 'hidden'}
+          whileInView={prefersReducedMotion ? undefined : 'visible'}
+          viewport={{ once: true, amount: 0.5 }}
+        >
+          <h2 id="services-heading" className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
+            Servicios Logísticos Integrales
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            End-to-end logistics solutions designed to streamline your operations and drive business growth
+          <div className="mx-auto mt-2 h-0.5 w-20 rounded-full bg-[#E41B13]" aria-hidden="true" />
+          <p className="mt-6 max-w-3xl mx-auto text-base md:text-lg text-gray-600 leading-relaxed text-center">
+            Soluciones logísticas integrales diseñadas para optimizar tu operación y acelerar el crecimiento de tu negocio
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {services.map((service, index) => (
-            <div
-              key={index}
-              className="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+            <motion.div
+              key={service.title}
+              className="group relative flex h-full min-h-[260px] flex-col overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 ease-out"
+              initial={prefersReducedMotion ? undefined : { opacity: 0, y: 24 }}
+              whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
+              whileHover={prefersReducedMotion ? undefined : { y: -8 }}
             >
-              <div className={`h-2 bg-gradient-to-r ${service.color}`} />
-              <div className="p-8">
-                <div className={`inline-block p-4 rounded-lg bg-gradient-to-r ${service.color} text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
+              <span
+                className={`pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br ${service.overlay} opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
+                aria-hidden="true"
+              />
+              <div className={`h-1.5 bg-gradient-to-r ${service.color}`} />
+              <div className="relative flex h-full flex-col items-center justify-between gap-6 p-8 text-center">
+                <div className={`flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br ${service.color} text-white shadow-lg transition-transform duration-300 group-hover:scale-105`}>
                   {service.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                <h3 className="text-2xl md:text-3xl font-semibold text-gray-800">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed">
                   {service.description}
                 </p>
-                <button className="text-[#E41B13] font-semibold flex items-center group-hover:gap-2 transition-all">
-                  Learn More
-                  <span className="ml-1 group-hover:ml-0 transition-all">→</span>
-                </button>
+                <OutlineButton className="mt-auto px-6 py-2.5">
+                  Ver detalles
+                </OutlineButton>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

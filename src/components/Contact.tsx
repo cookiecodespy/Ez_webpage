@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { motion, type Variants, useReducedMotion } from 'framer-motion';
+import { SubmitButton } from './UIButtons';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -8,20 +10,41 @@ const Contact = () => {
     email: '',
     phone: '',
     service: '',
-    message: ''
+    message: '',
+    website: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const successMessageRef = useRef<HTMLParagraphElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+
+  const headingVariants: Variants = {
+    hidden: { opacity: 0, y: 16 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    if (formData.website) {
+      setIsSubmitting(false);
+      return;
+    }
+
     await new Promise(resolve => setTimeout(resolve, 1500));
 
     setIsSubmitting(false);
     setSubmitStatus('success');
+
+    setTimeout(() => {
+      successMessageRef.current?.focus();
+    }, 50);
 
     setTimeout(() => {
       setSubmitStatus('idle');
@@ -31,7 +54,8 @@ const Contact = () => {
         email: '',
         phone: '',
         service: '',
-        message: ''
+        message: '',
+        website: ''
       });
     }, 3000);
   };
@@ -44,24 +68,36 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Get in Touch
+    <section
+      id="contact"
+      className="py-16 md:py-20 bg-white"
+      role="region"
+      aria-labelledby="contact-heading"
+    >
+      <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <motion.div
+          className="mb-12 text-center"
+          variants={headingVariants}
+          initial={prefersReducedMotion ? undefined : 'hidden'}
+          whileInView={prefersReducedMotion ? undefined : 'visible'}
+          viewport={{ once: true, amount: 0.5 }}
+        >
+          <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
+            Conversemos sobre tu operación
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Request a quote or reach out to discuss your logistics needs
+          <div className="mx-auto mt-2 h-0.5 w-20 rounded-full bg-[#E41B13]" aria-hidden="true" />
+          <p className="mt-6 max-w-3xl mx-auto text-base md:text-lg text-gray-600 leading-relaxed text-center">
+            Solicita una propuesta o agenda una asesoría logística con nuestro equipo experto.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
           <div className="lg:col-span-2">
-            <form onSubmit={handleSubmit} className="bg-gray-50 rounded-2xl p-8 shadow-lg">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <form onSubmit={handleSubmit} className="rounded-2xl bg-gray-50 p-8 shadow-lg">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 mb-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Full Name *
+                  <label htmlFor="contact-name" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Nombre completo *
                   </label>
                   <input
                     type="text"
@@ -69,29 +105,34 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#E41B13] focus:ring-2 focus:ring-[#E41B13] focus:ring-opacity-20 outline-none transition-all"
-                    placeholder="John Doe"
+                    id="contact-name"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition-all focus:border-[#E41B13] focus:ring-2 focus:ring-[#E41B13]/20"
+                    placeholder="Nombre y apellido"
+                    minLength={3}
+                    maxLength={80}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Company
+                  <label htmlFor="contact-company" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Empresa
                   </label>
                   <input
                     type="text"
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#E41B13] focus:ring-2 focus:ring-[#E41B13] focus:ring-opacity-20 outline-none transition-all"
-                    placeholder="Your Company"
+                    id="contact-company"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition-all focus:border-[#E41B13] focus:ring-2 focus:ring-[#E41B13]/20"
+                    placeholder="Nombre de la empresa"
+                    maxLength={80}
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Email *
+                  <label htmlFor="contact-email" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Correo electrónico *
                   </label>
                   <input
                     type="email"
@@ -99,48 +140,55 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#E41B13] focus:ring-2 focus:ring-[#E41B13] focus:ring-opacity-20 outline-none transition-all"
-                    placeholder="john@example.com"
+                    id="contact-email"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition-all focus:border-[#E41B13] focus:ring-2 focus:ring-[#E41B13]/20"
+                    placeholder="correo@empresa.cl"
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                    title="Ingresa un correo válido (ej: nombre@empresa.cl)"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Phone
+                  <label htmlFor="contact-phone" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Teléfono
                   </label>
                   <input
                     type="tel"
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#E41B13] focus:ring-2 focus:ring-[#E41B13] focus:ring-opacity-20 outline-none transition-all"
-                    placeholder="+56 2 2345 6789"
+                    id="contact-phone"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition-all focus:border-[#E41B13] focus:ring-2 focus:ring-[#E41B13]/20"
+                    placeholder="+56 9 1234 5678"
+                    pattern="[+]?\d{6,15}"
+                    title="Ingresa un teléfono válido (ej: +56912345678)"
                   />
                 </div>
               </div>
 
               <div className="mb-6">
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Service Needed *
+                <label htmlFor="contact-service" className="block text-sm font-semibold text-gray-700 mb-2">
+                  Servicio requerido *
                 </label>
                 <select
                   name="service"
                   value={formData.service}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#E41B13] focus:ring-2 focus:ring-[#E41B13] focus:ring-opacity-20 outline-none transition-all"
+                  id="contact-service"
+                  className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition-all focus:border-[#E41B13] focus:ring-2 focus:ring-[#E41B13]/20"
                 >
-                  <option value="">Select a service</option>
-                  <option value="freight">Freight Forwarding</option>
-                  <option value="warehousing">Warehousing & Distribution</option>
-                  <option value="customs">Customs Brokerage</option>
-                  <option value="lastmile">Last-Mile Delivery</option>
-                  <option value="other">Other</option>
+                  <option value="">Selecciona un servicio</option>
+                  <option value="freight">Transporte internacional</option>
+                  <option value="warehousing">Almacenaje y distribución</option>
+                  <option value="customs">Agenciamiento de aduanas</option>
+                  <option value="lastmile">Distribución de última milla</option>
+                  <option value="other">Otro</option>
                 </select>
               </div>
 
               <div className="mb-6">
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Message *
+                <label htmlFor="contact-message" className="block text-sm font-semibold text-gray-700 mb-2">
+                  Cuéntanos qué necesitas *
                 </label>
                 <textarea
                   name="message"
@@ -148,74 +196,117 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#E41B13] focus:ring-2 focus:ring-[#E41B13] focus:ring-opacity-20 outline-none transition-all resize-none"
-                  placeholder="Tell us about your logistics needs..."
+                  id="contact-message"
+                  className="w-full resize-none rounded-lg border border-gray-300 px-4 py-3 outline-none transition-all focus:border-[#E41B13] focus:ring-2 focus:ring-[#E41B13]/20"
+                  placeholder="Comparte detalle de tu operación, origen/destino, volumen u otros datos relevantes..."
+                  minLength={20}
+                  maxLength={500}
                 />
               </div>
 
-              <button
+              <div className="hidden">
+                <label htmlFor="contact-website" className="sr-only">Sitio web</label>
+                <input
+                  type="text"
+                  id="contact-website"
+                  name="website"
+                  value={formData.website}
+                  onChange={handleChange}
+                  autoComplete="off"
+                  tabIndex={-1}
+                />
+              </div>
+
+              <SubmitButton
                 type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-[#E41B13] text-white px-8 py-4 rounded-lg hover:bg-[#c41610] transition-all font-semibold text-lg flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                isLoading={isSubmitting}
+                isSuccess={submitStatus === 'success'}
+                className="mt-2"
               >
-                {isSubmitting ? (
-                  <span>Sending...</span>
-                ) : submitStatus === 'success' ? (
-                  <span>Message Sent!</span>
-                ) : (
-                  <>
-                    <span>Send Message</span>
-                    <Send className="h-5 w-5" />
-                  </>
-                )}
-              </button>
+                <span className="inline-flex items-center gap-2">
+                  Enviar mensaje
+                  <Send className="h-5 w-5" aria-hidden="true" />
+                </span>
+              </SubmitButton>
+              {submitStatus === 'success' && (
+                <p
+                  ref={successMessageRef}
+                  className="mt-4 text-center text-green-600 font-semibold"
+                  role="status"
+                  aria-live="polite"
+                  tabIndex={-1}
+                >
+                  Gracias por escribirnos. Un especialista se pondrá en contacto contigo muy pronto.
+                </p>
+              )}
             </form>
           </div>
 
           <div className="space-y-8">
-            <div className="bg-gradient-to-br from-[#E41B13] to-[#c41610] text-white rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#E41B13] via-[#d71711] to-[#b6120d] p-8 text-white shadow-2xl">
+              <div className="pointer-events-none absolute -top-16 -right-20 h-40 w-40 rounded-full bg-white/20 blur-3xl" aria-hidden="true" />
+              <div className="pointer-events-none absolute -bottom-24 -left-16 h-48 w-48 rounded-full bg-black/10 blur-3xl" aria-hidden="true" />
 
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <Mail className="h-6 w-6 flex-shrink-0 mt-1" />
+              <h3 className="relative text-2xl font-semibold tracking-tight">Datos de contacto</h3>
+              <p className="relative mt-2 text-sm text-white/80">
+                Nuestro equipo responde en menos de 24 horas hábiles. También puedes escribirnos directamente.
+              </p>
+
+              <div className="relative mt-8 space-y-6">
+                <div className="flex items-center gap-4 rounded-2xl bg-white/10 p-4 backdrop-blur-sm">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/15">
+                    <Mail className="h-6 w-6" aria-hidden="true" />
+                  </span>
                   <div>
-                    <div className="font-semibold mb-1">Email</div>
-                    <a href="mailto:info@ezship.cl" className="hover:underline">
-                      info@ezship.cl
+                    <div className="text-xs font-semibold uppercase tracking-wide text-white/70">Correo</div>
+                    <a
+                      href="mailto:tomas.sotz@blue-box.cl"
+                      className="mt-1 inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-[#E41B13] shadow-sm transition-transform duration-200 hover:-translate-y-0.5"
+                    >
+                      tomas.sotz@blue-box.cl
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <Phone className="h-6 w-6 flex-shrink-0 mt-1" />
+                <div className="flex items-center gap-4 rounded-2xl bg-white/10 p-4 backdrop-blur-sm">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/15">
+                    <Phone className="h-6 w-6" aria-hidden="true" />
+                  </span>
                   <div>
-                    <div className="font-semibold mb-1">Phone</div>
-                    <a href="tel:+56223456789" className="hover:underline">
-                      +56 2 2345 6789
+                    <div className="text-xs font-semibold uppercase tracking-wide text-white/70">Teléfono</div>
+                    <a
+                      href="tel:+56934252106"
+                      className="mt-1 inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-[#E41B13] shadow-sm transition-transform duration-200 hover:-translate-y-0.5"
+                    >
+                      +56 9 3425 2106
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <MapPin className="h-6 w-6 flex-shrink-0 mt-1" />
+                <div className="flex items-center gap-4 rounded-2xl bg-white/10 p-4 backdrop-blur-sm">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/15">
+                    <MapPin className="h-6 w-6" aria-hidden="true" />
+                  </span>
                   <div>
-                    <div className="font-semibold mb-1">Address</div>
-                    <div>Santiago, Chile</div>
+                    <div className="text-xs font-semibold uppercase tracking-wide text-white/70">Dirección</div>
+                    <p className="mt-1 text-sm leading-relaxed text-white">
+                      Carr. Gral. San Martín 8250, 8700000 Quilicura, Región Metropolitana, Chile
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-gray-100 rounded-2xl overflow-hidden shadow-lg">
+            <div className="overflow-hidden rounded-2xl bg-gray-100 shadow-lg">
+              <h4 className="text-gray-700 font-semibold px-6 pt-6 pb-2">Ubicación principal: Bodega 17B</h4>
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106491.62602633968!2d-70.74888968438675!3d-33.44719484307213!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5410425af2f%3A0x8475d53c400f0931!2sSantiago%2C%20Chile!5e0!3m2!1sen!2sus!4v1647542644447!5m2!1sen!2sus"
+                src="https://www.google.com/maps?q=Bodega+17B,+Carr.+Gral.+San+Mart%C3%ADn+8250,+Quilicura,+Regi%C3%B3n+Metropolitana,+Chile&output=embed"
                 width="100%"
                 height="300"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
-                title="EZ Ship Logistics Location"
+                title="Bodega 17B"
               />
             </div>
           </div>

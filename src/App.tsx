@@ -18,18 +18,28 @@ function App() {
   }, []);
 
   return (
-    <div className={`min-h-screen transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
-      <Header />
-      <Hero />
-      <Stats />
-      <Services />
-      <Industries />
-      <Technology />
-      <About />
-      <Testimonials />
-      <Contact />
-      <Footer />
-    </div>
+    <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-[#E41B13] focus:shadow-lg"
+      >
+        Saltar al contenido principal
+      </a>
+      <div className={`min-h-screen font-inter transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+        <Header />
+        <main id="main-content">
+          <Hero />
+          <Stats />
+          <Services />
+          <Industries />
+          <Technology />
+          <About />
+          <Testimonials />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 }
 
