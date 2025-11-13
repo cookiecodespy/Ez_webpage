@@ -89,9 +89,17 @@ const Technology = () => {
               ))}
             </div>
 
-            <PrimaryButton className="mt-8 px-7 py-3">
-              Explorar nuestra plataforma
-            </PrimaryButton>
+            <div className="flex justify-center lg:justify-start">
+              <PrimaryButton 
+                as="a"
+                href="https://www.blue-box.cl/wms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 px-7 py-3"
+              >
+                Explora nuestro WMS
+              </PrimaryButton>
+            </div>
           </motion.div>
 
           <motion.div
