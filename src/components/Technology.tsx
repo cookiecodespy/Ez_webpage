@@ -88,27 +88,27 @@ const Technology = () => {
                 </motion.div>
               ))}
             </div>
-
-            <div className="flex justify-center lg:justify-start">
-              <PrimaryButton 
-                as="a"
-                href="https://www.blue-box.cl/wms"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-8 px-7 py-3"
-              >
-                Explora nuestro WMS
-              </PrimaryButton>
-            </div>
           </motion.div>
 
           <motion.div
-            className="relative mx-auto"
+            className="relative mx-auto space-y-6"
             initial={prefersReducedMotion ? undefined : { opacity: 0, scale: 0.95 }}
             whileInView={prefersReducedMotion ? undefined : { opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
+            <div className="flex justify-center">
+              <PrimaryButton 
+                as="a"
+                href="https://www.blue-box.cl/wms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-3.5"
+              >
+                Explora nuestro WMS
+              </PrimaryButton>
+            </div>
+
             <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl">
               <div className="flex items-center space-x-2 bg-gray-700 px-4 py-3">
                 <div className="flex space-x-2">
