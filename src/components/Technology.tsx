@@ -16,10 +16,10 @@ const Technology = () => {
   const platforms = [
     {
       icon: <Boxes className="h-10 w-10" aria-hidden="true" />,
-      title: 'WMS (VULCANO)',
+      title: 'WMS',
       description: 'Gestión de bodegas con precisión y trazabilidad en tiempo real.',
       href: 'https://www.blue-box.cl/wms/a_login.php',
-      ariaLabel: 'Ingresar a WMS VULCANO (se abre en nueva pestaña)'
+      ariaLabel: 'Ingresar a WMS (se abre en nueva pestaña)'
     },
     {
       icon: <Truck className="h-10 w-10" aria-hidden="true" />,
@@ -131,7 +131,7 @@ const Technology = () => {
                   <div className="h-3 w-3 rounded-full bg-yellow-500" />
                   <div className="h-3 w-3 rounded-full bg-green-500" />
                 </div>
-                <div className="flex-1 text-center text-sm font-medium text-gray-400">
+                <div className="flex-1 flex justify-center text-sm font-medium text-gray-400">
                   EZ Ship WMS Dashboard
                 </div>
               </div>
@@ -183,8 +183,8 @@ const Technology = () => {
             </div>
 
             <div className="relative space-y-4 p-6 rounded-2xl bg-white/60 border border-gray-100">
-              <div className="text-sm font-medium text-gray-500 uppercase tracking-wide">Plataformas</div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4">
+              <div className="text-sm font-medium text-gray-500 uppercase tracking-wide">Funcionalidades Clave</div>
+              <div className="grid grid-cols-1 gap-4">
                 {features.map((feature, index) => (
                   <div
                     key={feature.title}

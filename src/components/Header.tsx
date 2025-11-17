@@ -16,7 +16,7 @@ const Header = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [activeSection, setActiveSection] = useState('home');
-	const logoSrc = `${import.meta.env.BASE_URL}ezship-logo.jpg`;
+	const logoSrc = `${import.meta.env.BASE_URL}ezship-logo.png`;
 
 	useEffect(() => {
 		const sectionIds = NAV_ITEMS.map(item => item.id);

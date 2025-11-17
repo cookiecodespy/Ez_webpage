@@ -15,7 +15,7 @@ const Footer = () => {
     }
   };
 
-  const logoSrc = `${import.meta.env.BASE_URL}ezship-logo.jpg`;
+  const logoSrc = `${import.meta.env.BASE_URL}ezship-logo.png`;
 
   return (
     <footer className="bg-gray-900 text-white pt-16 pb-8">
