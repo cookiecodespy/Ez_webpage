@@ -64,29 +64,25 @@ const Header = () => {
 		<header className="fixed top-0 left-0 right-0 z-50 pt-4 pb-2 transition-all duration-300">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div
-					className={`flex items-center justify-between rounded-xl border border-white/40 backdrop-blur-xl bg-white/70 transition-all duration-300 px-4 sm:px-6 ${
+					className={`flex items-center justify-between rounded-xl border border-white/40 backdrop-blur-xl bg-white/70 transition-all duration-300 px-4 sm:px-6 gap-6 ${
 						isScrolled ? 'shadow-lg' : 'shadow-sm'
 					}`}
 				>
 					<button
 						type="button"
-						className="flex items-center gap-3 py-2 focus:outline-none"
+						className="flex items-center py-1.5 focus:outline-none flex-shrink-0"
 						onClick={() => scrollToSection('home')}
 						aria-label="Ir al inicio"
 					>
 						<img
 							src={logoSrc}
 							alt="EZ Ship Logistics"
-							className="h-12 w-auto rounded-md select-none transition-opacity hover:opacity-90"
+							className="h-[56px] w-auto rounded-md select-none transition-opacity hover:opacity-90"
 							loading="lazy"
 						/>
-						<div className="flex flex-col justify-center">
-							<span className="text-lg font-semibold leading-tight text-gray-900">EZ Ship Logistics</span>
-							<span className="text-[10px] text-gray-500 uppercase tracking-[0.35em]">Soluciones Globales</span>
-						</div>
 					</button>
 
-					<nav className="hidden md:flex items-center gap-4 py-2">
+					<nav className="hidden md:flex items-center gap-4 py-1.5">
 						{NAV_ITEMS.map(item => {
 							const isActive = activeSection === item.id;
 							return (
