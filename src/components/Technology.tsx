@@ -1,6 +1,5 @@
-import { MonitorSmartphone, Route, BarChart3, Workflow, MapPin } from 'lucide-react';
+import { Boxes, Truck, ClipboardList, MonitorSmartphone, Route, BarChart3, Workflow, MapPin } from 'lucide-react';
 import { motion, useReducedMotion, type Variants } from 'framer-motion';
-import { PrimaryButton } from './UIButtons';
 
 const Technology = () => {
   const prefersReducedMotion = useReducedMotion();
@@ -13,6 +12,30 @@ const Technology = () => {
       transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
     }
   };
+
+  const platforms = [
+    {
+      icon: <Boxes className="h-10 w-10" aria-hidden="true" />,
+      title: 'WMS (VULCANO)',
+      description: 'Gestión de bodegas con precisión y trazabilidad en tiempo real.',
+      href: 'https://www.blue-box.cl/wms/a_login.php',
+      ariaLabel: 'Ingresar a WMS VULCANO (se abre en nueva pestaña)'
+    },
+    {
+      icon: <Truck className="h-10 w-10" aria-hidden="true" />,
+      title: 'TMS',
+      description: 'Planifica rutas, costos y entregas con control de punta a punta.',
+      href: 'https://www.blue-box.cl/zlogistic/views/login/login.php',
+      ariaLabel: 'Ingresar a TMS (se abre en nueva pestaña)'
+    },
+    {
+      icon: <ClipboardList className="h-10 w-10" aria-hidden="true" />,
+      title: 'Proyectos',
+      description: 'Coordina y controla proyectos logísticos de inicio a fin.',
+      href: 'https://easylogisticz.cl/login/',
+      ariaLabel: 'Ingresar a Plataforma de Proyectos (se abre en nueva pestaña)'
+    }
+  ];
 
   const features = [
     {
@@ -57,35 +80,39 @@ const Technology = () => {
             </h2>
             <div className="mt-2 h-0.5 w-20 rounded-full bg-[#E41B13] lg:ml-0 mx-auto" aria-hidden="true" />
             <p className="mt-6 max-w-3xl text-base md:text-lg text-gray-600 leading-relaxed text-center lg:text-left">
-              Nuestro WMS de última generación garantiza precisión, visibilidad y eficiencia en cada etapa de tu cadena de suministro.
+              Accede a nuestras plataformas de gestión logística
             </p>
 
-            <div className="mt-8 grid grid-cols-1 gap-5">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={feature.title}
-                  className="group relative flex min-h-[220px] flex-col gap-4 rounded-2xl border border-gray-100 bg-white/80 p-6 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl"
+            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-5">
+              {platforms.map((platform, index) => (
+                <motion.a
+                  key={platform.title}
+                  href={platform.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={platform.ariaLabel}
+                  className="group relative flex flex-col gap-4 rounded-2xl border border-gray-100 bg-white/80 p-6 shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E41B13] focus-visible:ring-offset-2"
                   initial={prefersReducedMotion ? undefined : { opacity: 0, x: -20 }}
                   whileInView={prefersReducedMotion ? undefined : { opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.4 }}
                   transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: index * 0.08 }}
                 >
                   <span
-                    className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-[#E41B13]/0 via-[#E41B13]/10 to-[#E41B13]/30 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-[#E41B13]/0 via-[#E41B13]/10 to-[#E41B13]/25 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                     aria-hidden="true"
                   />
-                  <div className="relative flex h-14 w-14 items-center justify-center rounded-xl bg-gray-900 text-white shadow-lg">
-                    {feature.icon}
+                  <div className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-gray-900 text-white shadow">
+                    {platform.icon}
                   </div>
-                  <div className="relative space-y-2">
+                  <div className="relative space-y-1">
                     <h3 className="text-xl font-semibold text-gray-800">
-                      {feature.title}
+                      {platform.title}
                     </h3>
                     <p className="text-gray-600 leading-relaxed">
-                      {feature.description}
+                      {platform.description}
                     </p>
                   </div>
-                </motion.div>
+                </motion.a>
               ))}
             </div>
           </motion.div>
@@ -97,18 +124,6 @@ const Technology = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="flex justify-center">
-              <PrimaryButton 
-                as="a"
-                href="https://www.blue-box.cl/wms"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-3.5"
-              >
-                Explora nuestro WMS
-              </PrimaryButton>
-            </div>
-
             <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 shadow-2xl">
               <div className="flex items-center space-x-2 bg-gray-700 px-4 py-3">
                 <div className="flex space-x-2">
@@ -164,6 +179,30 @@ const Technology = () => {
                     <div className="text-xs text-gray-400">Countries</div>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            <div className="relative space-y-4 p-6 rounded-2xl bg-white/60 border border-gray-100">
+              <div className="text-sm font-medium text-gray-500 uppercase tracking-wide">Plataformas</div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4">
+                {features.map((feature, index) => (
+                  <div
+                    key={feature.title}
+                    className="flex items-start gap-3"
+                  >
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-900 text-white shadow-sm flex-shrink-0">
+                      {feature.icon}
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-semibold text-gray-800">
+                        {feature.title}
+                      </h4>
+                      <p className="text-xs text-gray-600 leading-relaxed">
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
