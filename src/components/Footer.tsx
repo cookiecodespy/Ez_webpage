@@ -160,9 +160,17 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-400 text-sm">
-              © 2025 EZ Ship Logistics. Todos los derechos reservados.
-            </p>
+            <div className="flex items-center gap-3">
+              <img
+                src={`${import.meta.env.BASE_URL}bluebox-logo.jpg`}
+                alt="Blue Box Limitada"
+                className="h-10 w-auto rounded"
+                loading="lazy"
+              />
+              <p className="text-gray-400 text-sm">
+                © 2025 Blue Box Limitada. Todos los derechos reservados.
+              </p>
+            </div>
             <div className="flex space-x-6 text-sm">
               <a
                 href="https://www.ezshiplogistics.cl/privacidad"
@@ -192,6 +200,13 @@ const Footer = () => {
                 Política de cookies
               </a>
             </div>
+          </div>
+          <div className="mt-6 text-center">
+            <p className="text-gray-500 text-sm">
+              Sitio desarrollado por <span className="text-gray-400">Tomás Sotz</span> · 
+              <a href="mailto:contacto@blue-box.cl" className="hover:text-gray-300 transition-colors ml-1">contacto@blue-box.cl</a> · 
+              <a href="tel:+56990166224" className="hover:text-gray-300 transition-colors ml-1">+56 9 9016 6224</a>
+            </p>
           </div>
         </div>
       </div>

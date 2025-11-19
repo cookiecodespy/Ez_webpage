@@ -94,7 +94,7 @@ const Hero = () => {
         <motion.div variants={itemVariants}>
           <motion.div className="flex items-center justify-center space-x-2 mb-5" variants={itemVariants}>
             <MapPin className="h-5 w-5 text-[#E41B13]" aria-hidden="true" />
-            <span className="text-white/90 text-sm font-medium tracking-wide uppercase">Santiago, Chile y operaciones globales</span>
+            <span className="text-white/90 text-sm font-medium tracking-wide uppercase">Santiago de Chile y Operaciones Globales</span>
           </motion.div>
 
           <motion.h1

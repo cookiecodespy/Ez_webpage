@@ -22,7 +22,7 @@ const Header = () => {
 		const sectionIds = NAV_ITEMS.map(item => item.id);
 
 		const handleScroll = () => {
-			setIsScrolled(window.scrollY > 32);
+			setIsScrolled(window.scrollY > 950);
 
 			let currentSection = sectionIds[0];
 
@@ -64,8 +64,10 @@ const Header = () => {
 		<header className="fixed top-0 left-0 right-0 z-50 pt-4 pb-2 transition-all duration-300">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div
-					className={`flex items-center justify-between rounded-xl border border-white/40 backdrop-blur-xl bg-white/70 transition-all duration-300 px-4 sm:px-6 gap-6 ${
-						isScrolled ? 'shadow-lg' : 'shadow-sm'
+					className={`flex items-center justify-between rounded-xl border transition-all duration-300 px-4 sm:px-6 gap-6 ${
+						isScrolled 
+							? 'border-gray-300 backdrop-blur-xl bg-gray-100 shadow-xl' 
+							: 'border-white/40 backdrop-blur-xl bg-white/70 shadow-sm'
 					}`}
 				>
 					<button
@@ -77,8 +79,9 @@ const Header = () => {
 						<img
 							src={logoSrc}
 							alt="EZ Ship Logistics"
-							className="h-[56px] w-auto rounded-md select-none transition-opacity hover:opacity-90"
+							className="h-[56px] w-auto rounded-md select-none transition-all hover:opacity-90 drop-shadow-lg"
 							loading="lazy"
+							style={{ filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3))' }}
 						/>
 					</button>
 
