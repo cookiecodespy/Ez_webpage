@@ -1,6 +1,5 @@
-import { Target, Eye, Award, ArrowRight } from 'lucide-react';
+import { Target, Eye, Award, Sparkles, Building2 } from 'lucide-react';
 import { motion, type Variants, useReducedMotion } from 'framer-motion';
-import { PrimaryButton } from './UIButtons';
 
 const About = () => {
   const prefersReducedMotion = useReducedMotion();
@@ -14,100 +13,160 @@ const About = () => {
   };
 
   const values = [
-    {
-  icon: <Target className="h-10 w-10 md:h-12 md:w-12" aria-hidden="true" />,
-      title: 'Confiabilidad',
-      description: 'Servicio constante y seguro para respaldar cada operación'
-    },
-    {
-  icon: <Eye className="h-10 w-10 md:h-12 md:w-12" aria-hidden="true" />,
-      title: 'Innovación',
-      description: 'Soluciones de vanguardia para una logística moderna'
-    },
-    {
-  icon: <Award className="h-10 w-10 md:h-12 md:w-12" aria-hidden="true" />,
-      title: 'Enfoque en el cliente',
-      description: 'Tu éxito es nuestra prioridad en cada proyecto'
-    }
+    { icon: <Target className="h-6 w-6" />, title: 'Confiabilidad', description: 'Servicio constante y seguro para respaldar cada operación' },
+    { icon: <Sparkles className="h-6 w-6" />, title: 'Innovación', description: 'Soluciones de vanguardia para una logística moderna' },
+    { icon: <Award className="h-6 w-6" />, title: 'Enfoque en el cliente', description: 'Tu éxito es nuestra prioridad en cada proyecto' }
   ];
 
   return (
-    <section
-      id="about"
-      className="py-16 md:py-20 bg-white"
-      role="region"
-      aria-labelledby="about-heading"
-    >
-      <div className="max-w-7xl mx-auto px-6 md:px-8">
-        <div className="flex flex-col-reverse items-center gap-12 md:flex-row md:items-center md:gap-10">
-          <div className="relative mx-auto w-full md:w-1/2">
-            <div className="aspect-w-16 aspect-h-12 rounded-2xl overflow-hidden shadow-2xl">
+    <section id="about" className="relative py-16 md:py-20 bg-gradient-to-b from-white via-gray-50/30 to-white overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#E41B13]/5 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-[#E41B13]/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-6 md:px-8">
+        {/* Header con badge */}
+        <motion.div
+          className="text-center mb-16"
+          variants={headingVariants}
+          initial={prefersReducedMotion ? undefined : 'hidden'}
+          whileInView={prefersReducedMotion ? undefined : 'visible'}
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E41B13]/10 border border-[#E41B13]/20 mb-6">
+            <Building2 className="h-4 w-4 text-[#E41B13]" />
+            <span className="text-sm font-semibold text-[#E41B13]">Sobre Nosotros</span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6">
+            Liderando la logística digital
+          </h2>
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Más de una década transformando cadenas de suministro en Latinoamérica
+          </p>
+        </motion.div>
+
+        {/* Intro text - Glass card */}
+        <div className="relative mb-16">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#E41B13]/5 to-transparent rounded-3xl blur-2xl" />
+          <div className="relative backdrop-blur-sm bg-white/70 border border-gray-200/50 rounded-3xl p-8 md:p-12 shadow-xl">
+            <div className="grid md:grid-cols-3 gap-6 text-center md:text-left">
+              <div>
+                <p className="text-base text-gray-700 leading-relaxed">
+                  Somos un operador logístico digital con más de 10 años de experiencia. Pertenecemos a un holding empresarial basado en Estados Unidos con oficinas en Perú y Chile.
+                </p>
+              </div>
+              <div>
+                <p className="text-base text-gray-700 leading-relaxed">
+                  Somos líderes en el manejo de carga internacional y aduanas en el Perú, con un equipo altamente calificado y especializado en diversas industrias.
+                </p>
+              </div>
+              <div>
+                <p className="text-base text-gray-700 leading-relaxed">
+                  Combinamos nuestra experiencia y tecnología logística para construir las mejores soluciones empresariales. Potenciamos cada uno de nuestros productos digitales con Cargowise.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Misión/Visión - Elevated cards con imagen */}
+        <div className="grid lg:grid-cols-2 gap-8 mb-16">
+          {/* Imagen con overlay y stats */}
+          <div className="relative group flex items-center">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13]/20 to-transparent rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500" />
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full">
               <img
                 src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&fm=webp"
-                alt="Equipo de EZ Ship Logistics"
-                loading="lazy"
-                className="w-full h-full object-cover object-center"
+                alt="EZ Ship Logistics"
+                className="w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-700"
               />
-            </div>
-            <div className="absolute -bottom-6 -right-6 bg-[#E41B13] text-white p-8 rounded-xl shadow-xl">
-              <div className="text-4xl font-bold mb-1">10+</div>
-              <div className="text-sm font-medium">Años de excelencia</div>
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent" />
+              
+              {/* Glass card overlay */}
+              <div className="absolute bottom-6 left-6 right-6 backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="text-4xl font-bold text-white mb-1">10+</div>
+                    <div className="text-sm text-white/80">Años de experiencia</div>
+                  </div>
+                  <div className="h-12 w-px bg-white/20" />
+                  <div>
+                    <div className="text-4xl font-bold text-white mb-1">500+</div>
+                    <div className="text-sm text-white/80">Clientes activos</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <motion.div
-            className="w-full md:w-1/2"
-            variants={headingVariants}
-            initial={prefersReducedMotion ? undefined : 'hidden'}
-            whileInView={prefersReducedMotion ? undefined : 'visible'}
-            viewport={{ once: true, amount: 0.5 }}
-          >
-            <div className="space-y-4 text-center md:text-left">
-              <h2 id="about-heading" className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
-                Sobre EZ Ship Logistics
-              </h2>
-              <div className="mx-auto mt-2 h-0.5 w-20 rounded-full bg-[#E41B13] md:mx-0" aria-hidden="true" />
-              <p className="max-w-3xl text-base md:text-lg text-gray-600 leading-relaxed mx-auto md:mx-0">
-                Nacimos en Santiago de Chile y llevamos más de una década diseñando soluciones logísticas eficientes y basadas en datos para toda Latinoamérica y mercados globales.
-              </p>
-              <p className="max-w-3xl text-base md:text-lg text-gray-600 leading-relaxed mx-auto md:mx-0">
-                Combinamos conocimiento local con cobertura internacional para entregar cadenas de suministro fluidas. Nuestra apuesta por la innovación y el servicio nos convierte en un aliado confiable para empresas de todos los tamaños.
-              </p>
-            </div>
-
-            <div className="mt-8 space-y-5">
-              <h3 className="text-center md:text-left text-2xl font-bold text-gray-900">
-                Nuestros valores
-              </h3>
-              <div className="grid grid-cols-1 gap-4">
-                {values.map((value) => (
-                  <div
-                    key={value.title}
-                    className="flex items-center gap-4 rounded-2xl border border-gray-100 bg-white/80 p-5 shadow-sm transition-colors duration-300 hover:-translate-y-1 hover:shadow-lg"
-                  >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] text-white shadow-md">
-                      {value.icon}
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-bold text-gray-900">
-                        {value.title}
-                      </h4>
-                      <p className="text-gray-600">
-                        {value.description}
-                      </p>
-                    </div>
+          {/* Misión y Visión stacked */}
+          <div className="flex flex-col gap-6">
+            {/* Misión - Feature card */}
+            <div className="group relative flex-1">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13] to-[#C41710] rounded-3xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
+              <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 p-3 rounded-2xl bg-gradient-to-br from-[#E41B13] to-[#C41710] shadow-lg">
+                    <Target className="h-7 w-7 text-white" />
                   </div>
-                ))}
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3">Misión</h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      Superar las expectativas de servicio de nuestros clientes, satisfaciendo las necesidades en toda la cadena de suministro a través de soluciones que se aplican a los diferentes requerimientos.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <PrimaryButton className="mt-10 px-7 py-3">
-              <span className="inline-flex items-center gap-2">
-                Conoce más de nosotros
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </span>
-            </PrimaryButton>
-          </motion.div>
+            {/* Visión - Feature card */}
+            <div className="group relative flex-1">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13] to-[#C41710] rounded-3xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
+              <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 p-3 rounded-2xl bg-gradient-to-br from-[#E41B13] to-[#C41710] shadow-lg">
+                    <Eye className="h-7 w-7 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3">Visión</h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      Lograr que el grupo EZ Ship Logistics cree un ambiente de amor y felicidad donde sus colaboradores puedan desarrollarse profesional y personalmente, extendiendo este ambiente a su entorno de manera sustentable y sostenible en el tiempo.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Valores - Modern grid */}
+        <div>
+          <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">Nuestros valores</h3>
+          <div className="grid md:grid-cols-3 gap-6">
+            {values.map((value, index) => (
+              <motion.div
+                key={value.title}
+                className="group relative"
+                initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
+                whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13]/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative h-full backdrop-blur-sm bg-white border border-gray-200 rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="p-2 rounded-xl bg-[#E41B13]/10 text-[#E41B13] group-hover:bg-[#E41B13] group-hover:text-white transition-colors">
+                      {value.icon}
+                    </div>
+                    <h4 className="text-lg font-bold text-gray-900">{value.title}</h4>
+                  </div>
+                  <p className="text-sm text-gray-600 leading-relaxed">{value.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

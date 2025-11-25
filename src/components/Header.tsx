@@ -4,12 +4,10 @@ import { PrimaryButton } from './UIButtons';
 
 const NAV_ITEMS = [
 	{ id: 'home', label: 'Inicio' },
-	{ id: 'por-que-elegirnos', label: 'Ventajas Competitivas' },
+	{ id: 'about', label: 'Nosotros' },
 	{ id: 'services', label: 'Servicios' },
 	{ id: 'industries', label: 'Industrias' },
-	{ id: 'technology', label: 'Herramientas que usamos' },
-	{ id: 'about', label: 'Nosotros' },
-	{ id: 'testimonios', label: 'Testimonios' }
+	{ id: 'technology', label: 'Tecnología' }
 ];
 
 const Header = () => {
@@ -48,7 +46,8 @@ const Header = () => {
 	const scrollToSection = (id: string) => {
 		const element = document.getElementById(id);
 		if (element) {
-			const headerOffset = 88;
+			// Offset más pequeño = título más cerca del header
+			const headerOffset = id === 'home' ? 88 : 50;
 			const elementPosition = element.getBoundingClientRect().top + window.scrollY;
 			const offsetPosition = elementPosition - headerOffset;
 
@@ -66,8 +65,8 @@ const Header = () => {
 				<div
 					className={`flex items-center justify-between rounded-xl border transition-all duration-300 px-4 sm:px-6 gap-6 ${
 						isScrolled 
-							? 'border-gray-300 backdrop-blur-xl bg-gray-100 shadow-xl' 
-							: 'border-white/40 backdrop-blur-xl bg-white/70 shadow-sm'
+							? 'border-gray-200/60 backdrop-blur-xl bg-white/98 shadow-xl' 
+							: 'border-white/30 backdrop-blur-xl bg-white/70 shadow-sm'
 					}`}
 				>
 					<button
@@ -79,9 +78,9 @@ const Header = () => {
 						<img
 							src={logoSrc}
 							alt="EZ Ship Logistics"
-							className="h-[56px] w-auto rounded-md select-none transition-all hover:opacity-90 drop-shadow-lg"
+							className="h-[56px] w-auto rounded-md select-none transition-all hover:opacity-90"
 							loading="lazy"
-							style={{ filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3))' }}
+							style={{ filter: 'drop-shadow(0 3px 10px rgba(0, 0, 0, 0.25)) drop-shadow(0 1px 4px rgba(0, 0, 0, 0.35)) drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15))' }}
 						/>
 					</button>
 

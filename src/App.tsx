@@ -30,10 +30,10 @@ function App() {
         <main id="main-content">
           <Hero />
           <Stats />
+          <About />
           <Services />
           <Industries />
           <Technology />
-          <About />
           <Testimonials />
           <Contact />
         </main>
