@@ -91,7 +91,7 @@ const Hero = () => {
       </div>
 
       {/* Layout asimétrico 60/40 - ROMPE PLANTILLA */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-32 pb-20 md:py-20">
         <div className="grid lg:grid-cols-[3fr_2fr] gap-12 items-center">
           
           {/* CONTENIDO 60% - Lado izquierdo */}
