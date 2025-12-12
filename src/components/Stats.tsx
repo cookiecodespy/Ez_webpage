@@ -7,6 +7,7 @@ interface Stat {
   value: number;
   suffix: string;
   label: string;
+  description: string;
 }
 
 const Stats = () => {
@@ -25,10 +26,34 @@ const Stats = () => {
   };
 
   const stats: Stat[] = [
-    { icon: <Award className="h-8 w-8 md:h-10 md:w-10" aria-hidden="true" />, value: 10, suffix: '+', label: 'Años de experiencia' },
-    { icon: <Users className="h-8 w-8 md:h-10 md:w-10" aria-hidden="true" />, value: 500, suffix: '+', label: 'Clientes satisfechos' },
-    { icon: <Package className="h-8 w-8 md:h-10 md:w-10" aria-hidden="true" />, value: 30, suffix: 'K+', label: 'Envíos entregados' },
-    { icon: <TrendingUp className="h-8 w-8 md:h-10 md:w-10" aria-hidden="true" />, value: 98, suffix: '%', label: 'Entregas puntuales' }
+    { 
+      icon: <Award className="h-8 w-8" aria-hidden="true" />, 
+      value: 10, 
+      suffix: '+', 
+      label: 'Años',
+      description: 'De experiencia en logística internacional'
+    },
+    { 
+      icon: <Users className="h-8 w-8" aria-hidden="true" />, 
+      value: 500, 
+      suffix: '+', 
+      label: 'Clientes',
+      description: 'Confían en nuestras operaciones'
+    },
+    { 
+      icon: <Package className="h-8 w-8" aria-hidden="true" />, 
+      value: 30, 
+      suffix: 'K+', 
+      label: 'Envíos',
+      description: 'Entregados exitosamente cada año'
+    },
+    { 
+      icon: <TrendingUp className="h-8 w-8" aria-hidden="true" />, 
+      value: 98, 
+      suffix: '%', 
+      label: 'Puntualidad',
+      description: 'En entregas comprometidas'
+    }
   ];
 
   useEffect(() => {
@@ -112,52 +137,105 @@ const Stats = () => {
     <section
       id="por-que-elegirnos"
       ref={sectionRef}
-  className="py-12 md:py-16 bg-gradient-to-r from-[#E41B13] to-[#c41610]"
+      className="relative py-20 md:py-28 bg-white overflow-hidden"
       role="region"
       aria-labelledby="stats-heading"
     >
-  <div className="max-w-7xl mx-auto px-6 md:px-8">
+      {/* Background decorativo sutil */}
+      <div className="absolute inset-0 opacity-[0.03]">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#E41B13] rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#E41B13] rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-6 md:px-8">
         <motion.div
-          className="text-center mb-8"
+          className="text-center mb-16"
           variants={headingVariants}
           initial={prefersReducedMotion ? undefined : 'hidden'}
           whileInView={prefersReducedMotion ? undefined : 'visible'}
           viewport={{ once: true, amount: 0.5 }}
         >
-          <h2 id="stats-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-white">
-            Ventajas Competitivas
+          <h2 id="stats-heading" className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-4">
+            Respaldados por resultados
           </h2>
-          <div className="mx-auto mt-3 h-0.5 w-20 rounded-full bg-white" aria-hidden="true" />
-          <p className="mt-3 text-sm md:text-base text-white/85 max-w-3xl mx-auto leading-relaxed text-left md:text-center">
-            Indicadores clave que respaldan nuestra promesa de servicio confiable y eficiente en cada envío.
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Números que demuestran nuestro compromiso con la excelencia logística
           </p>
         </motion.div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {stats.map((stat, index) => (
+
+        {/* Timeline horizontal - NUEVO LAYOUT único */}
+        <div className="relative">
+          {/* Línea horizontal conectora - Simula flujo logístico */}
+          <div className="hidden md:block absolute top-16 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#E41B13]/20 to-transparent" aria-hidden="true" />
+          
+          {/* Puntos de conexión animados */}
+          {stats.map((_, index) => (
             <motion.div
-              key={stat.label}
-              className="text-center text-white"
-              initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : undefined}
-              transition={{ duration: 0.6, ease: 'easeOut', delay: index * 0.1 }}
-            >
-              <div className="flex justify-center mb-3 opacity-90">
-                {stat.icon}
-              </div>
-              <div className="text-3xl md:text-4xl font-bold mb-1.5">
-                <AnimatedCounter
-                  value={stat.value}
-                  suffix={stat.suffix}
-                  index={index}
-                  isActive={isVisible}
-                  prefersReducedMotion={prefersReducedMotion}
-                />
-              </div>
-              <div className="text-xs md:text-sm font-medium opacity-90">
-                {stat.label}
-              </div>
-            </motion.div>
+              key={`dot-${index}`}
+              className="hidden md:block absolute top-16 w-3 h-3 bg-[#E41B13] rounded-full -translate-y-1/2"
+              style={{ left: `${(100 / (stats.length + 1)) * (index + 1)}%` }}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={isVisible ? { scale: 1, opacity: 1 } : undefined}
+              transition={{ delay: index * 0.2, duration: 0.4 }}
+            />
           ))}
+
+          {/* Grid de stats con efecto stagger */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                className="relative"
+                initial={prefersReducedMotion ? undefined : { opacity: 0, y: 40 }}
+                animate={isVisible ? { opacity: 1, y: 0 } : undefined}
+                transition={{ 
+                  duration: 0.6, 
+                  ease: [0.16, 1, 0.3, 1], 
+                  delay: index * 0.15 
+                }}
+              >
+                {/* Card con borde lateral rojo - FIRMA B implementada */}
+                <div className="group relative h-full bg-white border-l-4 border-[#E41B13] rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                  {/* Sombra direccional hacia el borde rojo */}
+                  <div className="absolute inset-0 rounded-xl shadow-[4px_0_20px_rgba(228,27,19,0.1)] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  
+                  {/* Contenido */}
+                  <div className="relative">
+                    {/* Icono con fondo gradiente */}
+                    <div className="inline-flex items-center justify-center w-16 h-16 mb-4 rounded-lg bg-gradient-to-br from-[#E41B13] to-[#C41710] text-white group-hover:scale-110 transition-transform duration-300">
+                      {stat.icon}
+                    </div>
+
+                    {/* Número animado */}
+                    <div className="text-5xl font-bold text-gray-900 mb-2">
+                      <AnimatedCounter
+                        value={stat.value}
+                        suffix={stat.suffix}
+                        index={index}
+                        isActive={isVisible}
+                        prefersReducedMotion={prefersReducedMotion}
+                      />
+                    </div>
+
+                    {/* Label destacado */}
+                    <div className="text-lg font-semibold text-[#E41B13] mb-2">
+                      {stat.label}
+                    </div>
+
+                    {/* Descripción */}
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      {stat.description}
+                    </p>
+                  </div>
+
+                  {/* Indicador de posición en timeline (mobile oculto) */}
+                  <div className="hidden md:block absolute -top-8 left-1/2 -translate-x-1/2 text-xs font-bold text-[#E41B13]/40">
+                    {String(index + 1).padStart(2, '0')}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
-import { MapPin } from 'lucide-react';
+import { MapPin, TrendingUp, Globe, Package } from 'lucide-react';
 import { motion, useAnimation, useReducedMotion, type Easing } from 'framer-motion';
 import { OutlineButton, PrimaryButton } from './UIButtons';
+import FlowConnector from './FlowConnector';
 
 const Hero = () => {
   const controls = useAnimation();
@@ -32,10 +33,10 @@ const Hero = () => {
   const easeOut: Easing = [0.16, 1, 0.3, 1];
 
   const contentVariants = {
-    hidden: { opacity: 0, y: 32 },
+    hidden: { opacity: 0, x: -32 },
     visible: {
       opacity: 1,
-      y: 0,
+      x: 0,
       transition: {
         duration: 0.8,
         ease: easeOut,
@@ -57,83 +58,166 @@ const Hero = () => {
     }
   } as const;
 
+  const imageVariants = {
+    hidden: { opacity: 0, x: 32 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 1,
+        ease: easeOut,
+        delay: 0.3
+      }
+    }
+  } as const;
+
   return (
-    <motion.section
+    <section
       id="home"
-      className="relative h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"
       role="region"
       aria-labelledby="hero-heading"
-      initial="hidden"
-      animate={controls}
-      variants={contentVariants}
     >
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/85 to-gray-900/70 z-10" />
-        <img
-          src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=2000&fm=webp"
-          alt="Logística"
-          className="w-full h-full object-cover object-center"
-          loading="eager"
-        />
+      {/* Background pattern sutil */}
+      <div className="absolute inset-0 opacity-5">
+        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid-pattern)" />
+        </svg>
       </div>
 
-      <div className="absolute inset-0 z-5">
-        <div className="absolute inset-0 opacity-10">
-          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="world-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-                <circle cx="50" cy="50" r="1" fill="white" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#world-pattern)" />
-          </svg>
-        </div>
-      </div>
-
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div variants={itemVariants}>
-          <motion.div className="flex items-center justify-center space-x-2 mb-5" variants={itemVariants}>
-            <MapPin className="h-5 w-5 text-[#E41B13]" aria-hidden="true" />
-            <span className="text-white/90 text-sm font-medium tracking-wide uppercase">Santiago de Chile y Operaciones Globales</span>
-          </motion.div>
-
-          <motion.h1
-            id="hero-heading"
-            className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight"
-            variants={itemVariants}
-          >
-            Logística Global.
-            <br />
-            <span className="text-[#E41B13]">Experiencia Local.</span>
-          </motion.h1>
-
-          <motion.p
-            className="text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto font-light text-left md:text-center"
-            variants={itemVariants}
-          >
-            Impulsamos tu cadena de suministro con precisión, confiabilidad y rapidez.
-          </motion.p>
-
+      {/* Layout asimétrico 60/40 - ROMPE PLANTILLA */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20">
+        <div className="grid lg:grid-cols-[3fr_2fr] gap-12 items-center">
+          
+          {/* CONTENIDO 60% - Lado izquierdo */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-            variants={itemVariants}
+            className="text-left"
+            initial="hidden"
+            animate={controls}
+            variants={contentVariants}
           >
-            <PrimaryButton className="px-7 py-3" onClick={() => scrollToSection('contact')}>
-              Solicitar cotización
-            </PrimaryButton>
-            <OutlineButton className="px-7 py-3" onClick={() => scrollToSection('services')}>
-              Ver servicios
-            </OutlineButton>
-          </motion.div>
-        </motion.div>
-      </div>
+            <motion.div className="flex items-center space-x-2 mb-6" variants={itemVariants}>
+              <MapPin className="h-5 w-5 text-[#E41B13]" aria-hidden="true" />
+              <span className="text-white/80 text-sm font-medium tracking-wide uppercase">Santiago de Chile • Operaciones Globales</span>
+            </motion.div>
 
-	<div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20" aria-hidden="true">
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-3 bg-white/70 rounded-full" />
+            <motion.h1
+              id="hero-heading"
+              className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
+              variants={itemVariants}
+            >
+              Logística Global.
+              <br />
+              <span className="text-[#E41B13]">Experiencia Local.</span>
+            </motion.h1>
+
+            <motion.p
+              className="text-xl text-white/80 mb-8 max-w-xl leading-relaxed"
+              variants={itemVariants}
+            >
+              Impulsamos tu cadena de suministro con precisión, confiabilidad y rapidez. Más de 10 años conectando negocios en Latinoamérica.
+            </motion.p>
+
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4"
+              variants={itemVariants}
+            >
+              <PrimaryButton className="px-8 py-4 text-lg" onClick={() => scrollToSection('contact')}>
+                Solicitar cotización
+              </PrimaryButton>
+              <OutlineButton className="px-8 py-4 text-lg" onClick={() => scrollToSection('services')}>
+                Ver servicios
+              </OutlineButton>
+            </motion.div>
+
+            {/* Stats inline - Mini preview */}
+            <motion.div 
+              className="flex flex-wrap gap-8 mt-12 pt-8 border-t border-white/10"
+              variants={itemVariants}
+            >
+              <div>
+                <div className="text-3xl font-bold text-white mb-1">10+</div>
+                <div className="text-sm text-white/60">Años de experiencia</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-white mb-1">500+</div>
+                <div className="text-sm text-white/60">Clientes activos</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-white mb-1">30K+</div>
+                <div className="text-sm text-white/60">Envíos anuales</div>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* VISUAL 40% - Lado derecho con recorte diagonal */}
+          <motion.div
+            className="relative hidden lg:block"
+            initial="hidden"
+            animate={controls}
+            variants={imageVariants}
+          >
+            {/* Contenedor con clip-path diagonal - IDENTIDAD ÚNICA */}
+            <div 
+              className="relative h-[600px] rounded-3xl overflow-hidden"
+              style={{
+                clipPath: 'polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%)'
+              }}
+            >
+              <img
+                src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=1200&fm=webp"
+                alt="Operaciones logísticas EZ Ship"
+                className="w-full h-full object-cover"
+                loading="eager"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#E41B13]/40 via-transparent to-transparent" />
+              
+              {/* Glass cards flotantes - Diferenciador visual */}
+              <div className="absolute bottom-8 left-8 right-8 space-y-3">
+                <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-xl p-4 flex items-center gap-3">
+                  <div className="p-2 bg-[#E41B13] rounded-lg">
+                    <TrendingUp className="h-5 w-5 text-white" />
+                  </div>
+                  <div>
+                    <div className="text-white font-bold">98% Entregas puntuales</div>
+                    <div className="text-white/70 text-sm">Índice de confiabilidad</div>
+                  </div>
+                </div>
+                <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-xl p-4 flex items-center gap-3">
+                  <div className="p-2 bg-[#E41B13] rounded-lg">
+                    <Globe className="h-5 w-5 text-white" />
+                  </div>
+                  <div>
+                    <div className="text-white font-bold">Cobertura global</div>
+                    <div className="text-white/70 text-sm">Chile, Perú, USA y más</div>
+                  </div>
+                </div>
+                <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-xl p-4 flex items-center gap-3">
+                  <div className="p-2 bg-[#E41B13] rounded-lg">
+                    <Package className="h-5 w-5 text-white" />
+                  </div>
+                  <div>
+                    <div className="text-white font-bold">Trazabilidad 24/7</div>
+                    <div className="text-white/70 text-sm">Tracking en tiempo real</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Borde rojo lateral - FIRMA B preview */}
+            <div className="absolute left-0 top-12 bottom-12 w-1 bg-gradient-to-b from-transparent via-[#E41B13] to-transparent" />
+          </motion.div>
         </div>
       </div>
-    </motion.section>
+
+      {/* Flow Connector - FIRMA A: transición al siguiente bloque */}
+      <FlowConnector direction="diagonal-right" className="bottom-0 h-32" />
+    </section>
   );
 };
 
