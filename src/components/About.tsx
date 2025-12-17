@@ -1,4 +1,4 @@
-import { Target, Eye, Award, Sparkles, Building2 } from 'lucide-react';
+import { Target, Eye, Award, Sparkles, Building2, Users, Heart, Shield } from 'lucide-react';
 import { motion, type Variants, useReducedMotion } from 'framer-motion';
 
 const About = () => {
@@ -13,9 +13,12 @@ const About = () => {
   };
 
   const values = [
-    { icon: <Target className="h-6 w-6" />, title: 'Confiabilidad', description: 'Servicio constante y seguro para respaldar cada operación' },
-    { icon: <Sparkles className="h-6 w-6" />, title: 'Innovación', description: 'Soluciones de vanguardia para una logística moderna' },
-    { icon: <Award className="h-6 w-6" />, title: 'Enfoque en el cliente', description: 'Tu éxito es nuestra prioridad en cada proyecto' }
+    { icon: <Shield className="h-6 w-6" />, title: 'Responsabilidad', description: 'Cada empleado actúa con dedicación según su función' },
+    { icon: <Users className="h-6 w-6" />, title: 'Trabajo en equipo', description: 'Colaboración profesional para lograr objetivos comunes' },
+    { icon: <Sparkles className="h-6 w-6" />, title: 'Innovación', description: 'Creación de servicios nuevos que satisfacen expectativas' },
+    { icon: <Heart className="h-6 w-6" />, title: 'Respeto y Empatía', description: 'Comprender necesidades y transmitir conceptos con claridad' },
+    { icon: <Award className="h-6 w-6" />, title: 'Proactividad', description: 'Anticiparse a posibles situaciones que afecten el cumplimiento' },
+    { icon: <Target className="h-6 w-6" />, title: 'Honestidad', description: 'Actuar con verdad, justicia, integridad y sinceridad' }
   ];
 
   return (
@@ -57,7 +60,7 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ delay: 0 }}
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13]/10 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13] to-[#C41710] rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" />
             <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 p-3 rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] shadow-lg group-hover:scale-110 transition-transform duration-300">
@@ -81,7 +84,7 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13]/10 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13] to-[#C41710] rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" />
             <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 p-3 rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] shadow-lg group-hover:scale-110 transition-transform duration-300">
@@ -105,7 +108,7 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13]/10 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13] to-[#C41710] rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" />
             <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 p-3 rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] shadow-lg group-hover:scale-110 transition-transform duration-300">
@@ -156,7 +159,7 @@ const About = () => {
           <div className="flex flex-col gap-6">
             {/* Misión - Feature card */}
             <div className="group relative flex-1">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13] to-[#C41710] rounded-3xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13] to-[#C41710] rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" />
               <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 p-3 rounded-2xl bg-gradient-to-br from-[#E41B13] to-[#C41710] shadow-lg">
@@ -174,7 +177,7 @@ const About = () => {
 
             {/* Visión - Feature card */}
             <div className="group relative flex-1">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13] to-[#C41710] rounded-3xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13] to-[#C41710] rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" />
               <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 p-3 rounded-2xl bg-gradient-to-br from-[#E41B13] to-[#C41710] shadow-lg">
@@ -195,7 +198,7 @@ const About = () => {
         {/* Valores - Modern grid */}
         <div>
           <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">Nuestros valores</h3>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
@@ -205,7 +208,7 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13]/10 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13] to-[#C41710] rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" />
                 <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="p-3 rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] shadow-lg text-white group-hover:scale-110 transition-transform duration-300">
