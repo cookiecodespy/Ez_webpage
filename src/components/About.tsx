@@ -47,28 +47,79 @@ const About = () => {
           </p>
         </motion.div>
 
-        {/* Intro text - Glass card */}
-        <div className="relative mb-16">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#E41B13]/5 to-transparent rounded-3xl blur-2xl" />
-          <div className="relative backdrop-blur-sm bg-white/70 border border-gray-200/50 rounded-3xl p-8 md:p-12 shadow-xl">
-            <div className="grid md:grid-cols-3 gap-6 text-center md:text-left">
-              <div>
-                <p className="text-base text-gray-700 leading-relaxed">
-                  Somos un operador logístico digital con más de 10 años de experiencia. Pertenecemos a un holding empresarial basado en Estados Unidos con oficinas en Perú y Chile.
-                </p>
-              </div>
-              <div>
-                <p className="text-base text-gray-700 leading-relaxed">
-                  Somos líderes en el manejo de carga internacional y aduanas en el Perú, con un equipo altamente calificado y especializado en diversas industrias.
-                </p>
-              </div>
-              <div>
-                <p className="text-base text-gray-700 leading-relaxed">
-                  Combinamos nuestra experiencia y tecnología logística para construir las mejores soluciones empresariales. Potenciamos cada uno de nuestros productos digitales con Cargowise.
-                </p>
+        {/* Intro cards con iconos */}
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
+          {/* Card 1 - Experiencia */}
+          <motion.div
+            className="group relative"
+            initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
+            whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0 }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13]/10 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 p-3 rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <Building2 className="h-6 w-6 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">Experiencia Global</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    Operador logístico digital con más de 10 años de experiencia. Holding empresarial basado en Estados Unidos con oficinas en Perú y Chile.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          </motion.div>
+
+          {/* Card 2 - Liderazgo */}
+          <motion.div
+            className="group relative"
+            initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
+            whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13]/10 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 p-3 rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <Award className="h-6 w-6 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">Liderazgo Regional</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    Líderes en el manejo de carga internacional y aduanas en el Perú, con un equipo altamente calificado y especializado en diversas industrias.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Card 3 - Tecnología */}
+          <motion.div
+            className="group relative"
+            initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
+            whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13]/10 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 p-3 rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <Sparkles className="h-6 w-6 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">Tecnología Avanzada</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    Combinamos experiencia y tecnología logística para construir las mejores soluciones. Potenciamos nuestros productos con Cargowise.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
 
         {/* Misión/Visión - Elevated cards con imagen */}
