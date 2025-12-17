@@ -128,7 +128,7 @@ const About = () => {
         </motion.div>
 
         {/* Intro cards con iconos */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
           {/* Card 1 - Experiencia */}
           <motion.div
             className="group relative"
