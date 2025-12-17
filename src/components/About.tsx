@@ -122,74 +122,55 @@ const About = () => {
           </motion.div>
         </div>
 
-        {/* Misión/Visión - Elevated cards con imagen */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-16">
-          {/* Imagen con overlay y stats */}
-          <div className="relative group flex items-center">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13]/20 to-transparent rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500" />
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full">
-              <img
-                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&fm=webp"
-                alt="EZ Ship Logistics"
-                className="w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent" />
-              
-              {/* Glass card overlay */}
-              <div className="absolute bottom-6 left-6 right-6 backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-4xl font-bold text-white mb-1">10+</div>
-                    <div className="text-sm text-white/80">Años de experiencia</div>
-                  </div>
-                  <div className="h-12 w-px bg-white/20" />
-                  <div>
-                    <div className="text-4xl font-bold text-white mb-1">500+</div>
-                    <div className="text-sm text-white/80">Clientes activos</div>
-                  </div>
+        {/* Misión/Visión - Cards unificadas */}
+        <div className="grid md:grid-cols-2 gap-6 mb-16">
+          {/* Misión */}
+          <motion.div
+            className="group relative"
+            initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
+            whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13]/10 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 p-3 rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <Target className="h-6 w-6 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">Misión</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    Superar las expectativas de servicio de nuestros clientes, satisfaciendo las necesidades en toda la cadena de suministro a través de soluciones que se aplican a los diferentes requerimientos.
+                  </p>
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Misión y Visión stacked */}
-          <div className="flex flex-col gap-6">
-            {/* Misión - Feature card */}
-            <div className="group relative flex-1">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13] to-[#C41710] rounded-3xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
-              <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 p-3 rounded-2xl bg-gradient-to-br from-[#E41B13] to-[#C41710] shadow-lg">
-                    <Target className="h-7 w-7 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">Misión</h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      Superar las expectativas de servicio de nuestros clientes, satisfaciendo las necesidades en toda la cadena de suministro a través de soluciones que se aplican a los diferentes requerimientos.
-                    </p>
-                  </div>
+          {/* Visión */}
+          <motion.div
+            className="group relative"
+            initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
+            whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13]/10 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 p-3 rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <Eye className="h-6 w-6 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">Visión</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    Lograr que el grupo EZ Ship Logistics cree un ambiente de amor y felicidad donde sus colaboradores puedan desarrollarse profesional y personalmente, extendiendo este ambiente a su entorno de manera sustentable y sostenible en el tiempo.
+                  </p>
                 </div>
               </div>
             </div>
-
-            {/* Visión - Feature card */}
-            <div className="group relative flex-1">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13] to-[#C41710] rounded-3xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
-              <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 p-3 rounded-2xl bg-gradient-to-br from-[#E41B13] to-[#C41710] shadow-lg">
-                    <Eye className="h-7 w-7 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">Visión</h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      Lograr que el grupo EZ Ship Logistics cree un ambiente de amor y felicidad donde sus colaboradores puedan desarrollarse profesional y personalmente, extendiendo este ambiente a su entorno de manera sustentable y sostenible en el tiempo.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Valores - Modern grid */}
@@ -205,10 +186,10 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13]/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="relative h-full backdrop-blur-sm bg-white border border-gray-200 rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13]/10 to-transparent rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="p-2 rounded-xl bg-[#E41B13]/10 text-[#E41B13] group-hover:bg-[#E41B13] group-hover:text-white transition-colors">
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] shadow-lg text-white group-hover:scale-110 transition-transform duration-300">
                       {value.icon}
                     </div>
                     <h4 className="text-lg font-bold text-gray-900">{value.title}</h4>
