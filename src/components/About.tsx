@@ -138,18 +138,20 @@ const About = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent" />
               
-              {/* Glass card overlay */}
+              {/* Glass card overlay con CTA */}
               <div className="absolute bottom-6 left-6 right-6 backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-4xl font-bold text-white mb-1">30K+</div>
-                    <div className="text-sm text-white/80">Envíos anuales</div>
-                  </div>
-                  <div className="h-12 w-px bg-white/20" />
-                  <div>
-                    <div className="text-4xl font-bold text-white mb-1">98%</div>
-                    <div className="text-sm text-white/80">Puntualidad</div>
-                  </div>
+                <div className="text-center">
+                  <h3 className="text-2xl font-bold text-white mb-2">Más de una década liderando</h3>
+                  <p className="text-white/80 text-sm mb-4">Transformando cadenas de suministro en Latinoamérica</p>
+                  <a 
+                    href="#nuestro-recorrido" 
+                    className="group/btn inline-flex items-center gap-2 px-6 py-3 bg-[#E41B13] hover:bg-[#C41710] text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#E41B13]/50"
+                  >
+                    <span>Descubre nuestra historia</span>
+                    <svg className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
                 </div>
               </div>
             </div>
