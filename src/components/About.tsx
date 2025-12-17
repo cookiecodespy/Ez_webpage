@@ -1,4 +1,4 @@
-import { Target, Eye, Award, Sparkles, Building2, Users, Heart, Shield, Globe } from 'lucide-react';
+import { Target, Eye, Award, Sparkles, Building2, Users, Heart, Shield } from 'lucide-react';
 import { motion, type Variants, useReducedMotion, useInView, animate, useMotionValue } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 
@@ -131,10 +131,15 @@ const About = () => {
           whileInView={prefersReducedMotion ? undefined : 'visible'}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E41B13]/10 border border-[#E41B13]/20 mb-6">
-            <Building2 className="h-4 w-4 text-[#E41B13]" />
-            <span className="text-sm font-semibold text-[#E41B13]">Sobre Nosotros</span>
-          </div>
+          <div motion.img
+                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&fm=webp"
+                alt="EZ Ship Logistics"
+                className="w-full h-[500px] object-cover"
+                initial={{ scale: 1.1 }}
+                whileInView={{ scale: 1 }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05 }}
           <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6">
             Liderando la logística digital
           </h2>
