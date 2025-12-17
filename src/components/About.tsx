@@ -46,12 +46,8 @@ const AnimatedStatsOverlay = () => {
           animate={isInView ? { opacity: 1, y: 0 } : undefined}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          <div className="relative">
-            <div className="text-4xl font-bold text-white mb-1">
-              <AnimatedNumber value={30} suffix="K+" />
-            </div>
-            {/* Glow effect */}
-            <div className="absolute inset-0 blur-xl bg-[#E41B13] opacity-0 animate-pulse" style={{ animationDuration: '3s' }} />
+          <div className="text-4xl font-bold text-white mb-1">
+            <AnimatedNumber value={30} suffix="K+" />
           </div>
           <div className="text-sm text-white/80">Envíos anuales</div>
         </motion.div>
@@ -64,12 +60,8 @@ const AnimatedStatsOverlay = () => {
           animate={isInView ? { opacity: 1, y: 0 } : undefined}
           transition={{ delay: 0.4, duration: 0.6 }}
         >
-          <div className="relative">
-            <div className="text-4xl font-bold text-white mb-1">
-              <AnimatedNumber value={98} suffix="%" />
-            </div>
-            {/* Glow effect */}
-            <div className="absolute inset-0 blur-xl bg-[#E41B13] opacity-0 animate-pulse" style={{ animationDuration: '3s', animationDelay: '0.2s' }} />
+          <div className="text-4xl font-bold text-white mb-1">
+            <AnimatedNumber value={98} suffix="%" />
           </div>
           <div className="text-sm text-white/80">Puntualidad</div>
         </motion.div>
@@ -82,11 +74,7 @@ const AnimatedStatsOverlay = () => {
           animate={isInView ? { opacity: 1, y: 0 } : undefined}
           transition={{ delay: 0.6, duration: 0.6 }}
         >
-          <div className="relative">
-            <div className="text-4xl font-bold text-white mb-1">24/7</div>
-            {/* Glow effect */}
-            <div className="absolute inset-0 blur-xl bg-[#E41B13] opacity-0 animate-pulse" style={{ animationDuration: '3s', animationDelay: '0.4s' }} />
-          </div>
+          <div className="text-4xl font-bold text-white mb-1">24/7</div>
           <div className="text-sm text-white/80">Tracking</div>
         </motion.div>
       </div>
@@ -156,8 +144,8 @@ const About = () => {
                   <Building2 className="h-6 w-6 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">Experiencia Global</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Experiencia Global</h3>
+                  <p className="text-base text-gray-600 leading-relaxed">
                     Operador logístico digital con más de 10 años de experiencia. Holding empresarial basado en Estados Unidos con oficinas en Perú y Chile.
                   </p>
                 </div>
@@ -180,8 +168,8 @@ const About = () => {
                   <Award className="h-6 w-6 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">Liderazgo Regional</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Liderazgo Regional</h3>
+                  <p className="text-base text-gray-600 leading-relaxed">
                     Líderes en el manejo de carga internacional y aduanas en el Perú, con un equipo altamente calificado y especializado en diversas industrias.
                   </p>
                 </div>
@@ -204,8 +192,8 @@ const About = () => {
                   <Sparkles className="h-6 w-6 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">Tecnología Avanzada</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Tecnología Avanzada</h3>
+                  <p className="text-base text-gray-600 leading-relaxed">
                     Combinamos experiencia y tecnología logística para construir las mejores soluciones. Potenciamos nuestros productos con Cargowise.
                   </p>
                 </div>
@@ -249,7 +237,7 @@ const About = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-2xl font-bold text-gray-900 mb-3">Misión</h3>
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-base text-gray-600 leading-relaxed">
                       Superar las expectativas de servicio de nuestros clientes, satisfaciendo las necesidades en toda la cadena de suministro a través de soluciones que se aplican a los diferentes requerimientos.
                     </p>
                   </div>
@@ -267,7 +255,7 @@ const About = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-2xl font-bold text-gray-900 mb-3">Visión</h3>
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-base text-gray-600 leading-relaxed">
                       Lograr que el grupo EZ Ship Logistics cree un ambiente de amor y felicidad donde sus colaboradores puedan desarrollarse profesional y personalmente, extendiendo este ambiente a su entorno de manera sustentable y sostenible en el tiempo.
                     </p>
                   </div>
@@ -298,7 +286,7 @@ const About = () => {
                     </div>
                     <h4 className="text-lg font-bold text-gray-900">{value.title}</h4>
                   </div>
-                  <p className="text-sm text-gray-600 leading-relaxed">{value.description}</p>
+                  <p className="text-base text-gray-600 leading-relaxed">{value.description}</p>
                 </div>
               </motion.div>
             ))}
