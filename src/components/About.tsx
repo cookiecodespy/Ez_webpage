@@ -127,71 +127,89 @@ const About = () => {
           </p>
         </motion.div>
 
-        {/* Intro cards con iconos */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        {/* Intro cards - Modern Bento Grid Layout */}
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
           {/* Card 1 - Experiencia */}
           <motion.div
-            className="group relative"
+            className="group relative overflow-hidden"
             initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
             whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0 }}
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13] to-[#C41710] rounded-2xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500" />
-            <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-              <div className="flex flex-col items-center text-center">
-                <div className="mb-5 p-4 rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] shadow-lg group-hover:scale-110 transition-transform duration-300">
+            {/* Animated gradient background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13]/10 via-transparent to-[#E41B13]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            {/* Glass card */}
+            <div className="relative h-full backdrop-blur-md bg-white/80 border border-gray-200/50 rounded-3xl p-8 shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:shadow-[#E41B13]/10 transition-all duration-500 hover:-translate-y-1">
+              {/* Icon with animated gradient */}
+              <div className="relative mb-6 inline-flex">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13] via-[#FF6B6B] to-[#E41B13] rounded-2xl blur-lg opacity-30 group-hover:opacity-50 group-hover:blur-xl transition-all duration-500" />
+                <div className="relative p-4 rounded-2xl bg-gradient-to-br from-[#E41B13] to-[#C41710] group-hover:scale-110 transition-transform duration-500">
                   <Building2 className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Experiencia Global</h3>
-                <p className="text-base text-gray-600 leading-relaxed">
-                  Operador logístico digital con más de 10 años de experiencia. Holding empresarial basado en Estados Unidos con oficinas en Perú y Chile.
-                </p>
               </div>
+              
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#E41B13] transition-colors duration-300">
+                Experiencia Global
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Operador logístico digital con más de 10 años de experiencia. Holding empresarial basado en Estados Unidos con oficinas en Perú y Chile.
+              </p>
             </div>
           </motion.div>
 
           {/* Card 2 - Liderazgo */}
           <motion.div
-            className="group relative"
+            className="group relative overflow-hidden"
             initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
             whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13] to-[#C41710] rounded-2xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500" />
-            <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-              <div className="flex flex-col items-center text-center">
-                <div className="mb-5 p-4 rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] shadow-lg group-hover:scale-110 transition-transform duration-300">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13]/10 via-transparent to-[#E41B13]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <div className="relative h-full backdrop-blur-md bg-white/80 border border-gray-200/50 rounded-3xl p-8 shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:shadow-[#E41B13]/10 transition-all duration-500 hover:-translate-y-1">
+              <div className="relative mb-6 inline-flex">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13] via-[#FF6B6B] to-[#E41B13] rounded-2xl blur-lg opacity-30 group-hover:opacity-50 group-hover:blur-xl transition-all duration-500" />
+                <div className="relative p-4 rounded-2xl bg-gradient-to-br from-[#E41B13] to-[#C41710] group-hover:scale-110 transition-transform duration-500">
                   <Award className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Liderazgo Regional</h3>
-                <p className="text-base text-gray-600 leading-relaxed">
-                  Líderes en el manejo de carga internacional y aduanas en el Perú, con un equipo altamente calificado y especializado en diversas industrias.
-                </p>
               </div>
+              
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#E41B13] transition-colors duration-300">
+                Liderazgo Regional
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Líderes en el manejo de carga internacional y aduanas en el Perú, con un equipo altamente calificado y especializado en diversas industrias.
+              </p>
             </div>
           </motion.div>
 
           {/* Card 3 - Tecnología */}
           <motion.div
-            className="group relative"
+            className="group relative overflow-hidden"
             initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
             whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13] to-[#C41710] rounded-2xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500" />
-            <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-              <div className="flex flex-col items-center text-center">
-                <div className="mb-5 p-4 rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] shadow-lg group-hover:scale-110 transition-transform duration-300">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13]/10 via-transparent to-[#E41B13]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <div className="relative h-full backdrop-blur-md bg-white/80 border border-gray-200/50 rounded-3xl p-8 shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:shadow-[#E41B13]/10 transition-all duration-500 hover:-translate-y-1">
+              <div className="relative mb-6 inline-flex">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13] via-[#FF6B6B] to-[#E41B13] rounded-2xl blur-lg opacity-30 group-hover:opacity-50 group-hover:blur-xl transition-all duration-500" />
+                <div className="relative p-4 rounded-2xl bg-gradient-to-br from-[#E41B13] to-[#C41710] group-hover:scale-110 transition-transform duration-500">
                   <Sparkles className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Tecnología Avanzada</h3>
-                <p className="text-base text-gray-600 leading-relaxed">
-                  Combinamos experiencia y tecnología logística para construir las mejores soluciones. Potenciamos nuestros productos con Cargowise.
-                </p>
               </div>
+              
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#E41B13] transition-colors duration-300">
+                Tecnología Avanzada
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Combinamos experiencia y tecnología logística para construir las mejores soluciones. Potenciamos nuestros productos con Cargowise.
+              </p>
             </div>
           </motion.div>
         </div>
