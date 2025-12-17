@@ -1,4 +1,4 @@
-import { Target, Eye, Award, Sparkles, Building2, Users, Heart, Shield } from 'lucide-react';
+import { Target, Eye, Award, Sparkles, Building2, Users, Heart, Shield, Globe } from 'lucide-react';
 import { motion, type Variants, useReducedMotion } from 'framer-motion';
 
 const About = () => {
@@ -138,20 +138,59 @@ const About = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent" />
               
-              {/* Glass card overlay con CTA */}
-              <div className="absolute bottom-6 left-6 right-6 backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-6">
-                <div className="text-center">
-                  <h3 className="text-2xl font-bold text-white mb-2">Más de una década liderando</h3>
-                  <p className="text-white/80 text-sm mb-4">Transformando cadenas de suministro en Latinoamérica</p>
-                  <a 
-                    href="#nuestro-recorrido" 
-                    className="group/btn inline-flex items-center gap-2 px-6 py-3 bg-[#E41B13] hover:bg-[#C41710] text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#E41B13]/50"
-                  >
-                    <span>Descubre nuestra historia</span>
-                    <svg className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </a>
+              {/* Glass card overlay con Timeline mini */}
+              <div className="absolute bottom-6 left-6 right-6 backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-5">
+                <div className="flex items-center justify-between gap-3">
+                  {/* 2013 */}
+                  <div className="flex-1 text-center group/year cursor-pointer">
+                    <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/20 mb-2 group-hover/year:bg-[#E41B13] transition-colors duration-300">
+                      <Building2 className="h-5 w-5 text-white" />
+                    </div>
+                    <div className="text-lg font-bold text-white">2013</div>
+                    <div className="text-xs text-white/70">Fundación</div>
+                  </div>
+                  
+                  {/* Arrow */}
+                  <svg className="w-6 h-6 text-white/50 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                  
+                  {/* 2015 */}
+                  <div className="flex-1 text-center group/year cursor-pointer">
+                    <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/20 mb-2 group-hover/year:bg-[#E41B13] transition-colors duration-300">
+                      <Globe className="h-5 w-5 text-white" />
+                    </div>
+                    <div className="text-lg font-bold text-white">2015</div>
+                    <div className="text-xs text-white/70">Chile</div>
+                  </div>
+                  
+                  {/* Arrow */}
+                  <svg className="w-6 h-6 text-white/50 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                  
+                  {/* 2019 */}
+                  <div className="flex-1 text-center group/year cursor-pointer">
+                    <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/20 mb-2 group-hover/year:bg-[#E41B13] transition-colors duration-300">
+                      <Award className="h-5 w-5 text-white" />
+                    </div>
+                    <div className="text-lg font-bold text-white">2019</div>
+                    <div className="text-xs text-white/70">IPCAI</div>
+                  </div>
+                  
+                  {/* Arrow */}
+                  <svg className="w-6 h-6 text-white/50 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                  
+                  {/* 2021 */}
+                  <div className="flex-1 text-center group/year cursor-pointer">
+                    <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/20 mb-2 group-hover/year:bg-[#E41B13] transition-colors duration-300">
+                      <Sparkles className="h-5 w-5 text-white" />
+                    </div>
+                    <div className="text-lg font-bold text-white">2021</div>
+                    <div className="text-xs text-white/70">Holdings</div>
+                  </div>
                 </div>
               </div>
             </div>
