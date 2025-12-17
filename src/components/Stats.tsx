@@ -195,17 +195,17 @@ const Stats = () => {
                 }}
               >
                 {/* Card con efectos modernos y glassmorphism sutil - VERSION COMPACTA */}
-                <div className="group relative h-full bg-gradient-to-br from-white to-gray-50/50 border-l-4 border-[#E41B13] rounded-xl p-5 shadow-[4px_0_20px_rgba(228,27,19,0.1)] hover:shadow-[6px_0_32px_rgba(228,27,19,0.2)] transition-all duration-500 hover:-translate-y-2 backdrop-blur-sm">
+                <div className="group relative h-full bg-gradient-to-br from-white to-gray-50/50 border-l-4 border-[#E41B13] rounded-xl p-5 shadow-[4px_0_20px_rgba(228,27,19,0.1)] hover:shadow-[8px_0_40px_rgba(228,27,19,0.25)] transition-all duration-500 hover:-translate-y-3 backdrop-blur-sm cursor-pointer">
                   {/* Efecto glassmorphism en hover */}
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/90 to-gray-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                   
-                  {/* Brillo animado en hover */}
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#E41B13] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-t-xl" />
+                  {/* Brillo animado en hover más prominente */}
+                  <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-[#E41B13] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-t-xl" />
                   
                   {/* Contenido */}
                   <div className="relative space-y-2">
                     {/* Icono compacto */}
-                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] text-white shadow-lg shadow-[#E41B13]/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] text-white shadow-lg shadow-[#E41B13]/30 group-hover:scale-125 group-hover:rotate-6 group-hover:shadow-2xl group-hover:shadow-[#E41B13]/50 transition-all duration-500">
                       <div className="group-hover:scale-110 transition-transform duration-300">
                         {stat.icon}
                       </div>
@@ -213,7 +213,7 @@ const Stats = () => {
 
                     {/* Número animado más compacto */}
                     <div className="relative">
-                      <div className="text-4xl md:text-5xl font-bold bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
+                      <div className="text-4xl md:text-5xl font-bold bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-500">
                         <AnimatedCounter
                           value={stat.value}
                           suffix={stat.suffix}
@@ -222,8 +222,8 @@ const Stats = () => {
                           prefersReducedMotion={prefersReducedMotion}
                         />
                       </div>
-                      {/* Glow effect sutil */}
-                      <div className="absolute inset-0 blur-xl bg-[#E41B13]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      {/* Glow effect más visible */}
+                      <div className="absolute inset-0 blur-2xl bg-[#E41B13]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
 
                     {/* Label con línea decorativa más pequeña */}
