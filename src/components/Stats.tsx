@@ -137,7 +137,7 @@ const Stats = () => {
     <section
       id="por-que-elegirnos"
       ref={sectionRef}
-      className="relative py-20 md:py-28 bg-white overflow-hidden"
+      className="relative py-12 md:py-16 bg-white overflow-hidden"
       role="region"
       aria-labelledby="stats-heading"
     >
@@ -149,16 +149,16 @@ const Stats = () => {
 
       <div className="relative max-w-7xl mx-auto px-6 md:px-8">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-10"
           variants={headingVariants}
           initial={prefersReducedMotion ? undefined : 'hidden'}
           whileInView={prefersReducedMotion ? undefined : 'visible'}
           viewport={{ once: true, amount: 0.5 }}
         >
-          <h2 id="stats-heading" className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-4">
+          <h2 id="stats-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 mb-3">
             Respaldados por resultados
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base text-gray-600 max-w-2xl mx-auto">
             Números que demuestran nuestro compromiso con la excelencia logística
           </p>
         </motion.div>
@@ -194,26 +194,26 @@ const Stats = () => {
                   delay: index * 0.15 
                 }}
               >
-                {/* Card con efectos modernos y glassmorphism sutil */}
-                <div className="group relative h-full bg-gradient-to-br from-white to-gray-50/50 border-l-4 border-[#E41B13] rounded-2xl p-8 shadow-[4px_0_20px_rgba(228,27,19,0.1)] hover:shadow-[6px_0_32px_rgba(228,27,19,0.2)] transition-all duration-500 hover:-translate-y-3 backdrop-blur-sm">
+                {/* Card con efectos modernos y glassmorphism sutil - VERSION COMPACTA */}
+                <div className="group relative h-full bg-gradient-to-br from-white to-gray-50/50 border-l-4 border-[#E41B13] rounded-xl p-5 shadow-[4px_0_20px_rgba(228,27,19,0.1)] hover:shadow-[6px_0_32px_rgba(228,27,19,0.2)] transition-all duration-500 hover:-translate-y-2 backdrop-blur-sm">
                   {/* Efecto glassmorphism en hover */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                   
                   {/* Brillo animado en hover */}
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#E41B13] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-t-2xl" />
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#E41B13] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-t-xl" />
                   
                   {/* Contenido */}
-                  <div className="relative space-y-4">
-                    {/* Icono con efecto pulsante */}
-                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-[#E41B13] to-[#C41710] text-white shadow-lg shadow-[#E41B13]/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                  <div className="relative space-y-2">
+                    {/* Icono compacto */}
+                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] text-white shadow-lg shadow-[#E41B13]/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
                       <div className="group-hover:scale-110 transition-transform duration-300">
                         {stat.icon}
                       </div>
                     </div>
 
-                    {/* Número animado con efecto brillante */}
+                    {/* Número animado más compacto */}
                     <div className="relative">
-                      <div className="text-6xl font-bold bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
+                      <div className="text-4xl md:text-5xl font-bold bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
                         <AnimatedCounter
                           value={stat.value}
                           suffix={stat.suffix}
@@ -226,16 +226,16 @@ const Stats = () => {
                       <div className="absolute inset-0 blur-xl bg-[#E41B13]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
 
-                    {/* Label con línea decorativa */}
+                    {/* Label con línea decorativa más pequeña */}
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-0.5 bg-gradient-to-r from-[#E41B13] to-transparent" />
-                      <div className="text-xl font-bold text-[#E41B13]">
+                      <div className="w-6 h-0.5 bg-gradient-to-r from-[#E41B13] to-transparent" />
+                      <div className="text-lg font-bold text-[#E41B13]">
                         {stat.label}
                       </div>
                     </div>
 
-                    {/* Descripción con mejor tipografía */}
-                    <p className="text-base text-gray-700 leading-relaxed font-medium">
+                    {/* Descripción compacta */}
+                    <p className="text-sm text-gray-700 leading-snug">
                       {stat.description}
                     </p>
                   </div>
