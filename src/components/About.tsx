@@ -138,13 +138,13 @@ const About = () => {
             transition={{ delay: 0 }}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13] to-[#C41710] rounded-2xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500" />
-            <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-              <div className="flex items-start gap-4">
+            <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+              <div className="flex items-start gap-5">
                 <div className="flex-shrink-0 p-3 rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <Building2 className="h-6 w-6 text-white" />
+                  <Building2 className="h-7 w-7 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Experiencia Global</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">Experiencia Global</h3>
                   <p className="text-base text-gray-600 leading-relaxed">
                     Operador logístico digital con más de 10 años de experiencia. Holding empresarial basado en Estados Unidos con oficinas en Perú y Chile.
                   </p>
@@ -162,13 +162,13 @@ const About = () => {
             transition={{ delay: 0.1 }}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13] to-[#C41710] rounded-2xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500" />
-            <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-              <div className="flex items-start gap-4">
+            <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+              <div className="flex items-start gap-5">
                 <div className="flex-shrink-0 p-3 rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <Award className="h-6 w-6 text-white" />
+                  <Award className="h-7 w-7 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Liderazgo Regional</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">Liderazgo Regional</h3>
                   <p className="text-base text-gray-600 leading-relaxed">
                     Líderes en el manejo de carga internacional y aduanas en el Perú, con un equipo altamente calificado y especializado en diversas industrias.
                   </p>
@@ -186,13 +186,13 @@ const About = () => {
             transition={{ delay: 0.2 }}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13] to-[#C41710] rounded-2xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500" />
-            <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-              <div className="flex items-start gap-4">
+            <div className="relative h-full backdrop-blur-sm bg-white border-2 border-gray-100 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+              <div className="flex items-start gap-5">
                 <div className="flex-shrink-0 p-3 rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <Sparkles className="h-6 w-6 text-white" />
+                  <Sparkles className="h-7 w-7 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Tecnología Avanzada</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">Tecnología Avanzada</h3>
                   <p className="text-base text-gray-600 leading-relaxed">
                     Combinamos experiencia y tecnología logística para construir las mejores soluciones. Potenciamos nuestros productos con Cargowise.
                   </p>
