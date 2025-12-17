@@ -154,6 +154,84 @@ const About = () => {
           </div>
         </motion.div>
 
+        {/* ISO 9001:2015 - Intro texto */}
+        <motion.div 
+          className="max-w-4xl mx-auto text-center mb-16"
+          initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
+          whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E41B13]/10 border border-[#E41B13]/20 mb-6">
+            <Award className="h-5 w-5 text-[#E41B13]" />
+            <span className="text-sm font-semibold text-[#E41B13]">ISO 9001:2015 Certificado</span>
+          </div>
+          <h3 className="text-3xl font-bold text-gray-900 mb-4">Compromiso con la Calidad</h3>
+          <p className="text-lg text-gray-600 leading-relaxed">
+            En EZ Logistics garantizamos la <strong>calidad y mejora continua</strong> de todos nuestros servicios a través de nuestro <strong>Sistema de Gestión de Calidad bajo la norma ISO 9001:2015</strong>. Nuestro compromiso es asegurar operaciones eficientes, confiables y en mejora constante, alineados con las mejores prácticas de la industria.
+          </p>
+        </motion.div>
+
+        {/* Áreas clave - 3 cards modernos */}
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <motion.div
+            className="group relative"
+            initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
+            whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0 }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13]/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative h-full bg-white border border-gray-200 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <Sparkles className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Importaciones & Exportaciones</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Integrando control documental, auditorías internas y evaluación de desempeño continuo.
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="group relative"
+            initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
+            whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13]/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative h-full bg-white border border-gray-200 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <Award className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Centro de Almacenaje y Distribución</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Nuestra meta es ofrecer servicios logísticos confiables, seguros y en mejora constante.
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="group relative"
+            initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
+            whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13]/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative h-full bg-white border border-gray-200 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <Heart className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Sustentabilidad</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Transformando cada envío en una oportunidad para construir un futuro más verde y eficiente.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+
         {/* Misión y Visión - 2 columnas */}
         <div className="grid lg:grid-cols-2 gap-8 mb-16">
           {/* Misión - Feature card */}
