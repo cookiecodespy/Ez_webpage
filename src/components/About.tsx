@@ -1,5 +1,98 @@
 import { Target, Eye, Award, Sparkles, Building2, Users, Heart, Shield, Globe } from 'lucide-react';
-import { motion, type Variants, useReducedMotion } from 'framer-motion';
+import { motion, type Variants, useReducedMotion, useInView, animate, useMotionValue } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+
+// Componente de stats animados
+const AnimatedStatsOverlay = () => {
+  const statsRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(statsRef, { once: true, amount: 0.3 });
+  
+  const AnimatedNumber = ({ value, suffix }: { value: number; suffix: string }) => {
+    const motionValue = useMotionValue(0);
+    const [displayValue, setDisplayValue] = useState(0);
+
+    useEffect(() => {
+      if (isInView) {
+        const controls = animate(motionValue, value, {
+          duration: 2,
+          ease: 'easeOut',
+        });
+        
+        const unsubscribe = motionValue.on('change', (latest) => {
+          setDisplayValue(Math.round(latest));
+        });
+
+        return () => {
+          controls.stop();
+          unsubscribe();
+        };
+      }
+    }, [isInView, value, motionValue]);
+
+    return (
+      <>
+        {displayValue}
+        {suffix}
+      </>
+    );
+  };
+
+  return (
+    <div ref={statsRef} className="absolute bottom-6 left-6 right-6 backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-6">
+      <div className="flex items-center justify-around">
+        <motion.div 
+          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : undefined}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
+          <div className="relative">
+            <div className="text-4xl font-bold text-white mb-1">
+              <AnimatedNumber value={30} suffix="K+" />
+            </div>
+            {/* Glow effect */}
+            <div className="absolute inset-0 blur-xl bg-[#E41B13] opacity-0 animate-pulse" style={{ animationDuration: '3s' }} />
+          </div>
+          <div className="text-sm text-white/80">Envíos anuales</div>
+        </motion.div>
+        
+        <div className="h-12 w-px bg-white/20" />
+        
+        <motion.div 
+          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : undefined}
+          transition={{ delay: 0.4, duration: 0.6 }}
+        >
+          <div className="relative">
+            <div className="text-4xl font-bold text-white mb-1">
+              <AnimatedNumber value={98} suffix="%" />
+            </div>
+            {/* Glow effect */}
+            <div className="absolute inset-0 blur-xl bg-[#E41B13] opacity-0 animate-pulse" style={{ animationDuration: '3s', animationDelay: '0.2s' }} />
+          </div>
+          <div className="text-sm text-white/80">Puntualidad</div>
+        </motion.div>
+        
+        <div className="h-12 w-px bg-white/20" />
+        
+        <motion.div 
+          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : undefined}
+          transition={{ delay: 0.6, duration: 0.6 }}
+        >
+          <div className="relative">
+            <div className="text-4xl font-bold text-white mb-1">24/7</div>
+            {/* Glow effect */}
+            <div className="absolute inset-0 blur-xl bg-[#E41B13] opacity-0 animate-pulse" style={{ animationDuration: '3s', animationDelay: '0.4s' }} />
+          </div>
+          <div className="text-sm text-white/80">Tracking</div>
+        </motion.div>
+      </div>
+    </div>
+  );
+};
 
 const About = () => {
   const prefersReducedMotion = useReducedMotion();
@@ -138,61 +231,8 @@ const About = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent" />
               
-              {/* Glass card overlay con Timeline mini */}
-              <div className="absolute bottom-6 left-6 right-6 backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-5">
-                <div className="flex items-center justify-between gap-3">
-                  {/* 2013 */}
-                  <div className="flex-1 text-center group/year cursor-pointer">
-                    <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/20 mb-2 group-hover/year:bg-[#E41B13] transition-colors duration-300">
-                      <Building2 className="h-5 w-5 text-white" />
-                    </div>
-                    <div className="text-lg font-bold text-white">2013</div>
-                    <div className="text-xs text-white/70">Fundación</div>
-                  </div>
-                  
-                  {/* Arrow */}
-                  <svg className="w-6 h-6 text-white/50 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                  
-                  {/* 2015 */}
-                  <div className="flex-1 text-center group/year cursor-pointer">
-                    <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/20 mb-2 group-hover/year:bg-[#E41B13] transition-colors duration-300">
-                      <Globe className="h-5 w-5 text-white" />
-                    </div>
-                    <div className="text-lg font-bold text-white">2015</div>
-                    <div className="text-xs text-white/70">Chile</div>
-                  </div>
-                  
-                  {/* Arrow */}
-                  <svg className="w-6 h-6 text-white/50 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                  
-                  {/* 2019 */}
-                  <div className="flex-1 text-center group/year cursor-pointer">
-                    <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/20 mb-2 group-hover/year:bg-[#E41B13] transition-colors duration-300">
-                      <Award className="h-5 w-5 text-white" />
-                    </div>
-                    <div className="text-lg font-bold text-white">2019</div>
-                    <div className="text-xs text-white/70">IPCAI</div>
-                  </div>
-                  
-                  {/* Arrow */}
-                  <svg className="w-6 h-6 text-white/50 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                  
-                  {/* 2021 */}
-                  <div className="flex-1 text-center group/year cursor-pointer">
-                    <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/20 mb-2 group-hover/year:bg-[#E41B13] transition-colors duration-300">
-                      <Sparkles className="h-5 w-5 text-white" />
-                    </div>
-                    <div className="text-lg font-bold text-white">2021</div>
-                    <div className="text-xs text-white/70">Holdings</div>
-                  </div>
-                </div>
-              </div>
+              {/* Glass card overlay con Stats animados */}
+              <AnimatedStatsOverlay />
             </div>
           </div>
 
