@@ -194,43 +194,50 @@ const Stats = () => {
                   delay: index * 0.15 
                 }}
               >
-                {/* Card con borde lateral rojo - FIRMA B implementada */}
-                <div className="group relative h-full bg-white border-l-4 border-[#E41B13] rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                  {/* Sombra direccional hacia el borde rojo */}
-                  <div className="absolute inset-0 rounded-xl shadow-[4px_0_20px_rgba(228,27,19,0.1)] opacity-0 group-hover:opacity-100 transition-opacity" />
+                {/* Card con efectos modernos y glassmorphism sutil */}
+                <div className="group relative h-full bg-gradient-to-br from-white to-gray-50/50 border-l-4 border-[#E41B13] rounded-2xl p-8 shadow-[4px_0_20px_rgba(228,27,19,0.1)] hover:shadow-[6px_0_32px_rgba(228,27,19,0.2)] transition-all duration-500 hover:-translate-y-3 backdrop-blur-sm">
+                  {/* Efecto glassmorphism en hover */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  
+                  {/* Brillo animado en hover */}
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#E41B13] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-t-2xl" />
                   
                   {/* Contenido */}
-                  <div className="relative">
-                    {/* Icono con fondo gradiente */}
-                    <div className="inline-flex items-center justify-center w-16 h-16 mb-4 rounded-lg bg-gradient-to-br from-[#E41B13] to-[#C41710] text-white group-hover:scale-110 transition-transform duration-300">
-                      {stat.icon}
+                  <div className="relative space-y-4">
+                    {/* Icono con efecto pulsante */}
+                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-[#E41B13] to-[#C41710] text-white shadow-lg shadow-[#E41B13]/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                      <div className="group-hover:scale-110 transition-transform duration-300">
+                        {stat.icon}
+                      </div>
                     </div>
 
-                    {/* Número animado */}
-                    <div className="text-5xl font-bold text-gray-900 mb-2">
-                      <AnimatedCounter
-                        value={stat.value}
-                        suffix={stat.suffix}
-                        index={index}
-                        isActive={isVisible}
-                        prefersReducedMotion={prefersReducedMotion}
-                      />
+                    {/* Número animado con efecto brillante */}
+                    <div className="relative">
+                      <div className="text-6xl font-bold bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
+                        <AnimatedCounter
+                          value={stat.value}
+                          suffix={stat.suffix}
+                          index={index}
+                          isActive={isVisible}
+                          prefersReducedMotion={prefersReducedMotion}
+                        />
+                      </div>
+                      {/* Glow effect sutil */}
+                      <div className="absolute inset-0 blur-xl bg-[#E41B13]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
 
-                    {/* Label destacado */}
-                    <div className="text-lg font-semibold text-[#E41B13] mb-2">
-                      {stat.label}
+                    {/* Label con línea decorativa */}
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-0.5 bg-gradient-to-r from-[#E41B13] to-transparent" />
+                      <div className="text-xl font-bold text-[#E41B13]">
+                        {stat.label}
+                      </div>
                     </div>
 
-                    {/* Descripción */}
-                    <p className="text-sm text-gray-600 leading-relaxed">
+                    {/* Descripción con mejor tipografía */}
+                    <p className="text-base text-gray-700 leading-relaxed font-medium">
                       {stat.description}
                     </p>
-                  </div>
-
-                  {/* Indicador de posición en timeline (mobile oculto) */}
-                  <div className="hidden md:block absolute -top-8 left-1/2 -translate-x-1/2 text-xs font-bold text-[#E41B13]/40">
-                    {String(index + 1).padStart(2, '0')}
                   </div>
                 </div>
               </motion.div>
