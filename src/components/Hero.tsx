@@ -1,8 +1,39 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { MapPin, TrendingUp, Globe, Package } from 'lucide-react';
-import { motion, useAnimation, useReducedMotion, type Easing } from 'framer-motion';
+import { motion, useAnimation, useReducedMotion, useInView, type Easing } from 'framer-motion';
 import { OutlineButton, PrimaryButton } from './UIButtons';
 import FlowConnector from './FlowConnector';
+import { useRef } from 'react';
+
+// Componente para animar números
+const AnimatedNumber = ({ value, suffix = '' }: { value: number; suffix?: string }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (!isInView) return;
+    
+    const duration = 2000; // 2 segundos
+    const steps = 60;
+    const increment = value / steps;
+    let current = 0;
+
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= value) {
+        setCount(value);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(current));
+      }
+    }, duration / steps);
+
+    return () => clearInterval(timer);
+  }, [isInView, value]);
+
+  return <span ref={ref}>{count}{suffix}</span>;
+};
 
 const Hero = () => {
   const controls = useAnimation();
@@ -102,7 +133,7 @@ const Hero = () => {
             variants={contentVariants}
           >
             <motion.div className="flex items-center space-x-2 mb-6" variants={itemVariants}>
-              <MapPin className="h-5 w-5 text-[#E41B13]" aria-hidden="true" />
+              <MapPin className="h-6 w-6 text-[#E41B13]" aria-hidden="true" />
               <span className="text-white/80 text-sm font-medium tracking-wide uppercase">Santiago de Chile • Operaciones Globales</span>
             </motion.div>
 
@@ -135,21 +166,27 @@ const Hero = () => {
               </OutlineButton>
             </motion.div>
 
-            {/* Stats inline - Mini preview */}
+            {/* Stats inline - Mini preview con animated counters */}
             <motion.div 
               className="flex flex-wrap gap-8 mt-12 pt-8 border-t border-white/10"
               variants={itemVariants}
             >
               <div>
-                <div className="text-3xl font-bold text-white mb-1">10+</div>
+                <div className="text-3xl font-bold text-white mb-1">
+                  <AnimatedNumber value={10} suffix="+" />
+                </div>
                 <div className="text-sm text-white/60">Años de experiencia</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-white mb-1">500+</div>
+                <div className="text-3xl font-bold text-white mb-1">
+                  <AnimatedNumber value={500} suffix="+" />
+                </div>
                 <div className="text-sm text-white/60">Clientes activos</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-white mb-1">30K+</div>
+                <div className="text-3xl font-bold text-white mb-1">
+                  <AnimatedNumber value={30} suffix="K+" />
+                </div>
                 <div className="text-sm text-white/60">Envíos anuales</div>
               </div>
             </motion.div>
@@ -164,7 +201,7 @@ const Hero = () => {
           >
             {/* Contenedor con clip-path diagonal - IDENTIDAD ÚNICA */}
             <div 
-              className="relative h-[600px] rounded-3xl overflow-hidden"
+              className="relative h-[600px] rounded-3xl overflow-hidden group"
               style={{
                 clipPath: 'polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%)'
               }}
@@ -172,34 +209,34 @@ const Hero = () => {
               <img
                 src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=1200&fm=webp"
                 alt="Operaciones logísticas EZ Ship"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="eager"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#E41B13]/40 via-transparent to-transparent" />
               
               {/* Glass cards flotantes - Diferenciador visual */}
               <div className="absolute bottom-8 left-8 right-8 space-y-3">
-                <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-xl p-4 flex items-center gap-3">
-                  <div className="p-2 bg-[#E41B13] rounded-lg">
-                    <TrendingUp className="h-5 w-5 text-white" />
+                <div className="group backdrop-blur-xl bg-white/10 border border-white/20 rounded-xl p-4 flex items-center gap-3 transition-all duration-300 hover:-translate-y-1 hover:bg-white/15 hover:shadow-lg cursor-pointer">
+                  <div className="p-2 bg-[#E41B13] rounded-lg transition-transform duration-300 group-hover:scale-110">
+                    <TrendingUp className="h-6 w-6 text-white" />
                   </div>
                   <div>
                     <div className="text-white font-bold">98% Entregas puntuales</div>
                     <div className="text-white/70 text-sm">Índice de confiabilidad</div>
                   </div>
                 </div>
-                <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-xl p-4 flex items-center gap-3">
-                  <div className="p-2 bg-[#E41B13] rounded-lg">
-                    <Globe className="h-5 w-5 text-white" />
+                <div className="group backdrop-blur-xl bg-white/10 border border-white/20 rounded-xl p-4 flex items-center gap-3 transition-all duration-300 hover:-translate-y-1 hover:bg-white/15 hover:shadow-lg cursor-pointer">
+                  <div className="p-2 bg-[#E41B13] rounded-lg transition-transform duration-300 group-hover:scale-110">
+                    <Globe className="h-6 w-6 text-white" />
                   </div>
                   <div>
                     <div className="text-white font-bold">Cobertura global</div>
                     <div className="text-white/70 text-sm">Chile, Perú, USA y más</div>
                   </div>
                 </div>
-                <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-xl p-4 flex items-center gap-3">
-                  <div className="p-2 bg-[#E41B13] rounded-lg">
-                    <Package className="h-5 w-5 text-white" />
+                <div className="group backdrop-blur-xl bg-white/10 border border-white/20 rounded-xl p-4 flex items-center gap-3 transition-all duration-300 hover:-translate-y-1 hover:bg-white/15 hover:shadow-lg cursor-pointer">
+                  <div className="p-2 bg-[#E41B13] rounded-lg transition-transform duration-300 group-hover:scale-110">
+                    <Package className="h-6 w-6 text-white" />
                   </div>
                   <div>
                     <div className="text-white font-bold">Trazabilidad 24/7</div>
