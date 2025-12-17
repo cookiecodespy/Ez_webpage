@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { MapPin, TrendingUp, Globe, Package } from 'lucide-react';
+import { MapPin, CheckCircle, Network, Radio } from 'lucide-react';
 import { motion, useAnimation, useReducedMotion, useInView, type Easing } from 'framer-motion';
 import { OutlineButton, PrimaryButton } from './UIButtons';
 import FlowConnector from './FlowConnector';
@@ -217,8 +217,10 @@ const Hero = () => {
               {/* Glass cards flotantes - Diferenciador visual */}
               <div className="absolute bottom-8 left-8 right-8 space-y-3">
                 <div className="group backdrop-blur-xl bg-white/10 border border-white/20 rounded-xl p-4 flex items-center gap-3 transition-all duration-300 hover:-translate-y-1 hover:bg-white/15 hover:shadow-lg cursor-pointer">
-                  <div className="p-2 bg-[#E41B13] rounded-lg transition-transform duration-300 group-hover:scale-110">
-                    <TrendingUp className="h-6 w-6 text-white" />
+                  <div className="relative p-2 bg-[#E41B13] rounded-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+                    <CheckCircle className="h-6 w-6 text-white" strokeWidth={2.5} />
+                    {/* Pulse effect sutil */}
+                    <div className="absolute inset-0 rounded-lg bg-white/20 opacity-0 group-hover:opacity-100 group-hover:animate-ping" />
                   </div>
                   <div>
                     <div className="text-white font-bold">98% Entregas puntuales</div>
@@ -226,8 +228,12 @@ const Hero = () => {
                   </div>
                 </div>
                 <div className="group backdrop-blur-xl bg-white/10 border border-white/20 rounded-xl p-4 flex items-center gap-3 transition-all duration-300 hover:-translate-y-1 hover:bg-white/15 hover:shadow-lg cursor-pointer">
-                  <div className="p-2 bg-[#E41B13] rounded-lg transition-transform duration-300 group-hover:scale-110">
-                    <Globe className="h-6 w-6 text-white" />
+                  <div className="relative p-2 bg-[#E41B13] rounded-lg transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6">
+                    <Network className="h-6 w-6 text-white" strokeWidth={2.5} />
+                    {/* Conexiones expandidas */}
+                    <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <div className="absolute top-1/2 left-1/2 w-2 h-2 bg-white rounded-full animate-pulse" style={{ transform: 'translate(-50%, -50%)' }} />
+                    </div>
                   </div>
                   <div>
                     <div className="text-white font-bold">Cobertura global</div>
@@ -235,8 +241,13 @@ const Hero = () => {
                   </div>
                 </div>
                 <div className="group backdrop-blur-xl bg-white/10 border border-white/20 rounded-xl p-4 flex items-center gap-3 transition-all duration-300 hover:-translate-y-1 hover:bg-white/15 hover:shadow-lg cursor-pointer">
-                  <div className="p-2 bg-[#E41B13] rounded-lg transition-transform duration-300 group-hover:scale-110">
-                    <Package className="h-6 w-6 text-white" />
+                  <div className="relative p-2 bg-[#E41B13] rounded-lg transition-transform duration-300 group-hover:scale-110">
+                    <Radio className="h-6 w-6 text-white" strokeWidth={2.5} />
+                    {/* Ondas de señal */}
+                    <div className="absolute -inset-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <div className="absolute top-0 right-0 w-3 h-3 border-2 border-white/40 rounded-full animate-ping" />
+                      <div className="absolute top-0 right-0 w-3 h-3 border-2 border-white/60 rounded-full animate-ping" style={{ animationDelay: '0.15s' }} />
+                    </div>
                   </div>
                   <div>
                     <div className="text-white font-bold">Trazabilidad 24/7</div>
