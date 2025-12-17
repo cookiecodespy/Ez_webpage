@@ -131,15 +131,6 @@ const About = () => {
           whileInView={prefersReducedMotion ? undefined : 'visible'}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <div motion.img
-                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&fm=webp"
-                alt="EZ Ship Logistics"
-                className="w-full h-[500px] object-cover"
-                initial={{ scale: 1.1 }}
-                whileInView={{ scale: 1 }}
-                transition={{ duration: 0.8, ease: 'easeOut' }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
           <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6">
             Liderando la logística digital
           </h2>
@@ -229,10 +220,15 @@ const About = () => {
           <div className="relative group flex items-center">
             <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13]/20 to-transparent rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500" />
             <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full">
-              <img
+              <motion.img
                 src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&fm=webp"
                 alt="EZ Ship Logistics"
-                className="w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-[500px] object-cover"
+                initial={{ scale: 1.1 }}
+                whileInView={{ scale: 1 }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent" />
               
