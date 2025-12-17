@@ -1,9 +1,40 @@
 import { useEffect, useState } from 'react';
-import { MapPin, CheckCircle, Network, Radio } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { motion, useAnimation, useReducedMotion, useInView, type Easing } from 'framer-motion';
 import { OutlineButton, PrimaryButton } from './UIButtons';
 import FlowConnector from './FlowConnector';
 import { useRef } from 'react';
+
+// Iconos SVG custom premium
+const DeliveryIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+    <path d="M2 17l10 5 10-5"/>
+    <path d="M2 12l10 5 10-5"/>
+    <circle cx="12" cy="12" r="2" fill="currentColor"/>
+  </svg>
+);
+
+const GlobalNetworkIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10"/>
+    <path d="M2 12h20"/>
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+    <circle cx="12" cy="12" r="1" fill="currentColor"/>
+  </svg>
+);
+
+const TrackingIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 10H3"/>
+    <path d="M21 6H3"/>
+    <path d="M21 14H3"/>
+    <path d="M21 18H3"/>
+    <circle cx="18" cy="10" r="2" fill="currentColor"/>
+    <circle cx="6" cy="14" r="2" fill="currentColor"/>
+    <circle cx="12" cy="18" r="2" fill="currentColor"/>
+  </svg>
+);
 
 // Componente para animar números
 const AnimatedNumber = ({ value, suffix = '' }: { value: number; suffix?: string }) => {
@@ -217,10 +248,8 @@ const Hero = () => {
               {/* Glass cards flotantes - Diferenciador visual */}
               <div className="absolute bottom-8 left-8 right-8 space-y-3">
                 <div className="group backdrop-blur-xl bg-white/10 border border-white/20 rounded-xl p-4 flex items-center gap-3 transition-all duration-300 hover:-translate-y-1 hover:bg-white/15 hover:shadow-lg cursor-pointer">
-                  <div className="relative p-2 bg-[#E41B13] rounded-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-                    <CheckCircle className="h-6 w-6 text-white" strokeWidth={2.5} />
-                    {/* Pulse effect sutil */}
-                    <div className="absolute inset-0 rounded-lg bg-white/20 opacity-0 group-hover:opacity-100 group-hover:animate-ping" />
+                  <div className="p-2 bg-[#E41B13] rounded-lg transition-transform duration-300 group-hover:scale-110">
+                    <DeliveryIcon />
                   </div>
                   <div>
                     <div className="text-white font-bold">98% Entregas puntuales</div>
@@ -228,12 +257,8 @@ const Hero = () => {
                   </div>
                 </div>
                 <div className="group backdrop-blur-xl bg-white/10 border border-white/20 rounded-xl p-4 flex items-center gap-3 transition-all duration-300 hover:-translate-y-1 hover:bg-white/15 hover:shadow-lg cursor-pointer">
-                  <div className="relative p-2 bg-[#E41B13] rounded-lg transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6">
-                    <Network className="h-6 w-6 text-white" strokeWidth={2.5} />
-                    {/* Conexiones expandidas */}
-                    <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <div className="absolute top-1/2 left-1/2 w-2 h-2 bg-white rounded-full animate-pulse" style={{ transform: 'translate(-50%, -50%)' }} />
-                    </div>
+                  <div className="p-2 bg-[#E41B13] rounded-lg transition-transform duration-300 group-hover:scale-110">
+                    <GlobalNetworkIcon />
                   </div>
                   <div>
                     <div className="text-white font-bold">Cobertura global</div>
@@ -241,13 +266,8 @@ const Hero = () => {
                   </div>
                 </div>
                 <div className="group backdrop-blur-xl bg-white/10 border border-white/20 rounded-xl p-4 flex items-center gap-3 transition-all duration-300 hover:-translate-y-1 hover:bg-white/15 hover:shadow-lg cursor-pointer">
-                  <div className="relative p-2 bg-[#E41B13] rounded-lg transition-transform duration-300 group-hover:scale-110">
-                    <Radio className="h-6 w-6 text-white" strokeWidth={2.5} />
-                    {/* Ondas de señal */}
-                    <div className="absolute -inset-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <div className="absolute top-0 right-0 w-3 h-3 border-2 border-white/40 rounded-full animate-ping" />
-                      <div className="absolute top-0 right-0 w-3 h-3 border-2 border-white/60 rounded-full animate-ping" style={{ animationDelay: '0.15s' }} />
-                    </div>
+                  <div className="p-2 bg-[#E41B13] rounded-lg transition-transform duration-300 group-hover:scale-110">
+                    <TrackingIcon />
                   </div>
                   <div>
                     <div className="text-white font-bold">Trazabilidad 24/7</div>
