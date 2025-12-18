@@ -409,26 +409,34 @@ const About = () => {
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
-                className="relative rounded-3xl overflow-hidden bg-white/60 backdrop-blur-sm border border-gray-200/50 shadow-lg"
+                className="relative"
                 initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
                 whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.05 }}
               >
-                {/* Subtle gradient background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/80 via-gray-50/40 to-white/60" />
-                
-                {/* Content */}
-                <div className="relative p-8">
-                  <div className="flex items-start space-x-5">
-                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-[#E41B13] to-[#B91710] flex items-center justify-center text-white shadow-lg">
-                      {value.icon}
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h4>
-                      <p className="text-gray-600 leading-relaxed">
-                        {value.description}
-                      </p>
+                {/* Glassmorphism card */}
+                <div className="relative h-full rounded-3xl overflow-hidden bg-white/80 backdrop-blur-md border border-gray-200/60 shadow-xl">
+                  {/* Subtle gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-gray-50/30 to-gray-100/20" />
+                  
+                  {/* Content - Layout vertical centrado */}
+                  <div className="relative p-8 text-center">
+                    <div className="flex flex-col items-center gap-4">
+                      {/* Ícono centrado arriba */}
+                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center shadow-lg">
+                        <div className="text-white">
+                          {value.icon}
+                        </div>
+                      </div>
+                      
+                      {/* Texto centrado */}
+                      <div>
+                        <h4 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h4>
+                        <p className="text-gray-600 leading-relaxed">
+                          {value.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
