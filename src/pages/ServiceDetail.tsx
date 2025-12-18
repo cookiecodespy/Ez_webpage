@@ -21,7 +21,7 @@ const servicesData: Record<string, ServiceDetailData> = {
     id: 'transporte-internacional',
     title: 'Transporte Internacional',
     subtitle: 'Conectamos tu negocio con el mundo',
-    heroImage: 'https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?q=80&w=1600&fm=webp',
+    heroImage: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=1600&fm=webp',
     description: 'Ofrecemos soluciones integrales de transporte multimodal (aéreo, marítimo y terrestre) con cobertura global. Nuestro equipo especializado coordina cada detalle de tu operación internacional, desde la recolección hasta la entrega final, garantizando tiempos competitivos y seguridad en cada envío.',
     stats: [
       { value: '150+', label: 'Destinos Globales' },
@@ -87,16 +87,16 @@ const servicesData: Record<string, ServiceDetailData> = {
       'Integración API con tu sistema ERP/WMS'
     ],
     gallery: [
-      { image: 'https://images.unsplash.com/photo-1520452112805-c6692c840af0?q=80&w=800&fm=webp', caption: 'Avión de carga internacional' },
-      { image: 'https://images.unsplash.com/photo-1605745341112-85968b19335b?q=80&w=800&fm=webp', caption: 'Puerto marítimo con contenedores' },
-      { image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=800&fm=webp', caption: 'Camiones de carga internacional' }
+      { image: 'https://images.unsplash.com/photo-1473163928189-364b2c4e1e9b?q=80&w=800&fm=webp', caption: 'Avión de carga en aeropuerto' },
+      { image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=800&fm=webp', caption: 'Puerto marítimo con contenedores' },
+      { image: 'https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?q=80&w=800&fm=webp', caption: 'Transporte terrestre internacional' }
     ]
   },
   'almacenaje-distribucion': {
     id: 'almacenaje-distribucion',
     title: 'Almacenaje y Distribución',
     subtitle: 'Tu inventario, optimizado y seguro',
-    heroImage: 'https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=1600&fm=webp',
+    heroImage: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?q=80&w=1600&fm=webp',
     description: 'Centros de distribución de última generación equipados con tecnología WMS, inventario en línea y redes estratégicas. Optimizamos cada eslabón de tu cadena de suministro con procesos certificados y seguridad 24/7.',
     stats: [
       { value: '50K+', label: 'm² de Almacenaje' },
@@ -162,16 +162,16 @@ const servicesData: Record<string, ServiceDetailData> = {
       'Certificaciones ISO para manejo de productos sensibles'
     ],
     gallery: [
-      { image: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?q=80&w=800&fm=webp', caption: 'Centro de distribución moderno' },
-      { image: 'https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=800&fm=webp', caption: 'Sistema de racks automatizado' },
-      { image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&fm=webp', caption: 'Zona de picking y packing' }
+      { image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&fm=webp', caption: 'Centro de distribución con racks altos' },
+      { image: 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=800&fm=webp', caption: 'Sistema WMS y gestión de inventario' },
+      { image: 'https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?q=80&w=800&fm=webp', caption: 'Preparación y embalaje de pedidos' }
     ]
   },
   'agenciamiento-aduanas': {
     id: 'agenciamiento-aduanas',
     title: 'Agenciamiento de Aduanas',
     subtitle: 'Expertos en comercio exterior',
-    heroImage: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=1600&fm=webp',
+    heroImage: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1600&fm=webp',
     description: 'Equipo especializado en normativa internacional que gestiona toda la documentación, permisos y compliance necesarios para liberar tus cargas sin contratiempos. Agilizamos trámites aduaneros en importación y exportación.',
     stats: [
       { value: '5K+', label: 'Despachos Anuales' },
@@ -237,16 +237,16 @@ const servicesData: Record<string, ServiceDetailData> = {
       'Asesoría proactiva sobre cambios normativos'
     ],
     gallery: [
-      { image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=800&fm=webp', caption: 'Gestión documental aduanera' },
-      { image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&fm=webp', caption: 'Equipo de agentes certificados' },
-      { image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=800&fm=webp', caption: 'Consultoría especializada' }
+      { image: 'https://images.unsplash.com/photo-1554224311-beee4ead26ba?q=80&w=800&fm=webp', caption: 'Gestión documental y trámites' },
+      { image: 'https://images.unsplash.com/photo-1521791055366-0d553872125f?q=80&w=800&fm=webp', caption: 'Equipo especializado en comercio exterior' },
+      { image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&fm=webp', caption: 'Asesoría y consultoría aduanera' }
     ]
   },
   'ultima-milla': {
     id: 'ultima-milla',
     title: 'Distribución de Última Milla',
     subtitle: 'Conectando productos con clientes finales',
-    heroImage: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=1600&fm=webp',
+    heroImage: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?q=80&w=1600&fm=webp',
     description: 'Red de transporte capilar con seguimiento en tiempo real para entregar a tus clientes finales de forma rápida y confiable. Soluciones flexibles para e-commerce, retail y distribución urbana.',
     stats: [
       { value: '10K+', label: 'Entregas Mensuales' },
@@ -312,16 +312,16 @@ const servicesData: Record<string, ServiceDetailData> = {
       'Integración API plug-and-play con principales plataformas'
     ],
     gallery: [
-      { image: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=800&fm=webp', caption: 'Flota de última milla' },
-      { image: 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?q=80&w=800&fm=webp', caption: 'Entrega urbana rápida' },
-      { image: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?q=80&w=800&fm=webp', caption: 'Centro de despacho' }
+      { image: 'https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?q=80&w=800&fm=webp', caption: 'Repartidor realizando entrega' },
+      { image: 'https://images.unsplash.com/photo-1543651767-b49e8a21fc14?q=80&w=800&fm=webp', caption: 'Flota de vehículos de distribución' },
+      { image: 'https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?q=80&w=800&fm=webp', caption: 'Logística de última milla urbana' }
     ]
   },
   'project-cargo': {
     id: 'project-cargo',
     title: 'Project Cargo',
     subtitle: 'Logística para proyectos de gran escala',
-    heroImage: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=1600&fm=webp',
+    heroImage: 'https://images.unsplash.com/photo-1581094271901-8022df4466f9?q=80&w=1600&fm=webp',
     description: 'Cuando los proyectos a gran escala requieren mover cargas fuera de lo común, la logística convencional no es suficiente. El Project Cargo es un servicio especializado y de alta complejidad, diseñado para planificar, coordinar y ejecutar el transporte de mercancías sobredimensionadas, pesadas o de alto valor en entornos desafiantes.',
     stats: [
       { value: '200+', label: 'Proyectos Ejecutados' },
@@ -388,9 +388,9 @@ const servicesData: Record<string, ServiceDetailData> = {
       'Seguro especializado para cargas de alto valor'
     ],
     gallery: [
-      { image: 'https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?q=80&w=800&fm=webp', caption: 'Maquinaria industrial en tránsito' },
-      { image: 'https://images.unsplash.com/photo-1597423498219-04418210827d?q=80&w=800&fm=webp', caption: 'Grúa especializada para carga pesada' },
-      { image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800&fm=webp', caption: 'Transporte de equipos sobredimensionados' }
+      { image: 'https://images.unsplash.com/photo-1565008576549-57569a49371d?q=80&w=800&fm=webp', caption: 'Transporte de maquinaria industrial pesada' },
+      { image: 'https://images.unsplash.com/photo-1581094271901-8022df4466f9?q=80&w=1600&fm=webp', caption: 'Carga sobredimensionada en puerto' },
+      { image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=800&fm=webp', caption: 'Equipo especializado para proyectos' }
     ]
   }
 };
