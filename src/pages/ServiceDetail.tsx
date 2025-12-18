@@ -21,7 +21,7 @@ const servicesData: Record<string, ServiceDetailData> = {
     id: 'transporte-internacional',
     title: 'Transporte Internacional',
     subtitle: 'Conectamos tu negocio con el mundo',
-    heroImage: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1600&fm=webp',
+    heroImage: 'https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?q=80&w=1600&fm=webp',
     description: 'Ofrecemos soluciones integrales de transporte multimodal (aéreo, marítimo y terrestre) con cobertura global. Nuestro equipo especializado coordina cada detalle de tu operación internacional, desde la recolección hasta la entrega final, garantizando tiempos competitivos y seguridad en cada envío.',
     stats: [
       { value: '150+', label: 'Destinos Globales' },
@@ -87,9 +87,9 @@ const servicesData: Record<string, ServiceDetailData> = {
       'Integración API con tu sistema ERP/WMS'
     ],
     gallery: [
-      { image: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=800&fm=webp', caption: 'Carga aérea internacional' },
-      { image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=800&fm=webp', caption: 'Contenedores marítimos' },
-      { image: 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?q=80&w=800&fm=webp', caption: 'Flota terrestre especializada' }
+      { image: 'https://images.unsplash.com/photo-1520452112805-c6692c840af0?q=80&w=800&fm=webp', caption: 'Avión de carga internacional' },
+      { image: 'https://images.unsplash.com/photo-1605745341112-85968b19335b?q=80&w=800&fm=webp', caption: 'Puerto marítimo con contenedores' },
+      { image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=800&fm=webp', caption: 'Camiones de carga internacional' }
     ]
   },
   'almacenaje-distribucion': {

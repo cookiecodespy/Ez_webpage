@@ -82,8 +82,8 @@ const Services = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-          {services.slice(0, 3).map((service, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 max-w-4xl mx-auto">
+          {services.slice(0, 2).map((service, index) => (
             <motion.div
               key={service.title}
               className="group relative flex h-full min-h-[260px] flex-col overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 ease-out"
@@ -118,8 +118,8 @@ const Services = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {services.slice(3).map((service, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.slice(2).map((service, index) => (
             <motion.div
               key={service.title}
               className="group relative flex h-full min-h-[260px] flex-col overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 ease-out"
