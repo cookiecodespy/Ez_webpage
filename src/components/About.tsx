@@ -409,21 +409,27 @@ const About = () => {
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
-                className="group p-6 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300"
+                className="relative rounded-3xl overflow-hidden bg-white/60 backdrop-blur-sm border border-gray-200/50 shadow-lg"
                 initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
                 whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-[#E41B13] flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
-                    {value.icon}
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-lg font-bold text-gray-900 mb-2">{value.title}</h4>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      {value.description}
-                    </p>
+                {/* Subtle gradient background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/80 via-gray-50/40 to-white/60" />
+                
+                {/* Content */}
+                <div className="relative p-8">
+                  <div className="flex items-start space-x-5">
+                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-[#E41B13] to-[#B91710] flex items-center justify-center text-white shadow-lg">
+                      {value.icon}
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h4>
+                      <p className="text-gray-600 leading-relaxed">
+                        {value.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </motion.div>
