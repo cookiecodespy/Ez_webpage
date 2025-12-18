@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PrimaryButton } from './UIButtons';
@@ -15,13 +16,19 @@ const Header = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [activeSection, setActiveSection] = useState('home');
+	const navigate = useNavigate();
+	const location = useLocation();
 	const logoSrc = `${import.meta.env.BASE_URL}ezship-logo.png`;
+
+	const isHomePage = location.pathname === '/';
 
 	useEffect(() => {
 		const sectionIds = NAV_ITEMS.map(item => item.id);
 
 		const handleScroll = () => {
 			setIsScrolled(window.scrollY > 950);
+
+			if (!isHomePage) return;
 
 			let currentSection = sectionIds[0];
 
@@ -42,9 +49,14 @@ const Header = () => {
 
 		window.addEventListener('scroll', handleScroll, { passive: true });
 		return () => window.removeEventListener('scroll', handleScroll);
-	}, []);
+	}, [isHomePage]);
 
 	const scrollToSection = (id: string) => {
+		if (!isHomePage) {
+			navigate('/', { state: { scrollTo: id } });
+			return;
+		}
+
 		const element = document.getElementById(id);
 		if (element) {
 			// Offset más pequeño = título más cerca del header
@@ -59,6 +71,25 @@ const Header = () => {
 			setIsMobileMenuOpen(false);
 		}
 	};
+
+	// Handle scroll on return from service detail page
+	useEffect(() => {
+		if (isHomePage && location.state?.scrollTo) {
+			setTimeout(() => {
+				const id = location.state.scrollTo;
+				const element = document.getElementById(id);
+				if (element) {
+					const headerOffset = id === 'home' ? 88 : 50;
+					const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+					const offsetPosition = elementPosition - headerOffset;
+					window.scrollTo({
+						top: offsetPosition >= 0 ? offsetPosition : 0,
+						behavior: 'smooth'
+					});
+				}
+			}, 100);
+		}
+	}, [isHomePage, location.state]);
 
 	return (
 		<header className="fixed top-0 left-0 right-0 z-50 pt-4 pb-2 transition-all duration-300">

@@ -1,5 +1,6 @@
 import { Plane, Warehouse, ScrollText, Truck } from 'lucide-react';
 import { motion, useReducedMotion, type Variants } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { OutlineButton } from './UIButtons';
 
 const Services = () => {
@@ -20,28 +21,32 @@ const Services = () => {
       title: 'Transporte Internacional',
       description: 'Coordinamos soluciones aéreas, marítimas y terrestres según tu operación para que cada carga llegue segura y puntualmente a su destino.',
       color: 'from-blue-500 to-blue-600',
-      overlay: 'from-blue-500/0 via-blue-500/5 to-blue-500/30'
+      overlay: 'from-blue-500/0 via-blue-500/5 to-blue-500/30',
+      slug: 'transporte-internacional'
     },
     {
       icon: <Warehouse className="h-11 w-11" aria-hidden="true" />,
       title: 'Almacenaje y Distribución',
       description: 'Centros de distribución con tecnología WMS, inventario en línea y redes estratégicas para optimizar cada eslabón de tu cadena.',
       color: 'from-green-500 to-green-600',
-      overlay: 'from-green-500/0 via-green-500/5 to-green-500/30'
+      overlay: 'from-green-500/0 via-green-500/5 to-green-500/30',
+      slug: 'almacenaje-distribucion'
     },
     {
       icon: <ScrollText className="h-11 w-11" aria-hidden="true" />,
       title: 'Agenciamiento de Aduanas',
       description: 'Equipo experto en normativa internacional que gestiona documentación, permisos y compliance para liberar tus cargas sin contratiempos.',
       color: 'from-purple-500 to-purple-600',
-      overlay: 'from-purple-500/0 via-purple-500/5 to-purple-500/30'
+      overlay: 'from-purple-500/0 via-purple-500/5 to-purple-500/30',
+      slug: 'agenciamiento-aduanas'
     },
     {
       icon: <Truck className="h-11 w-11" aria-hidden="true" />,
       title: 'Distribución de Última Milla',
       description: 'Red de transporte capilar con seguimiento en tiempo real para entregar a tus clientes finales de forma rápida y confiable.',
       color: 'from-orange-500 to-orange-600',
-      overlay: 'from-orange-500/0 via-orange-500/5 to-orange-500/30'
+      overlay: 'from-orange-500/0 via-orange-500/5 to-orange-500/30',
+      slug: 'ultima-milla'
     }
   ];
 
@@ -95,9 +100,11 @@ const Services = () => {
                 <p className="text-gray-600 leading-relaxed">
                   {service.description}
                 </p>
-                <OutlineButton className="mt-auto px-6 py-2.5">
-                  Ver detalles
-                </OutlineButton>
+                <Link to={`/servicios/${service.slug}`} className="mt-auto">
+                  <OutlineButton className="px-6 py-2.5">
+                    Ver detalles
+                  </OutlineButton>
+                </Link>
               </div>
             </motion.div>
           ))}
