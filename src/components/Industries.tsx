@@ -96,7 +96,7 @@ const Industries = () => {
                   <div className="inline-flex items-center justify-center rounded-lg bg-[#E41B13] p-3 shadow-lg">
                     {industry.icon}
                   </div>
-                  <h3 className="mt-4 text-xl font-bold">
+                  <h3 className="mt-4 text-xl font-bold min-h-[3.5rem] flex items-center">
                     {industry.title}
                   </h3>
                   <p className="mt-2 text-sm text-white/90 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
