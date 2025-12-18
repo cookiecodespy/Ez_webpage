@@ -25,12 +25,12 @@ const Footer = () => {
             <div className="flex items-center space-x-3 mb-6">
               <img
                 src={logoSrc}
-                alt="EZ Ship Logistics"
+                alt="EZ Logistics"
                 className="h-10 w-auto rounded-md select-none"
                 loading="lazy"
               />
               <div className="flex flex-col">
-                <span className="text-xl font-bold">EZ Ship Logistics</span>
+                <span className="text-xl font-bold">EZ Logistics</span>
                 <span className="text-xs text-gray-400">Soluciones Globales</span>
               </div>
             </div>
@@ -54,7 +54,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-6">Sobre EZ Ship</h3>
+            <h3 className="text-lg font-bold mb-6">Sobre EZ Logistics</h3>
             <ul className="space-y-3">
               <li>
                 <button onClick={() => scrollToSection('about')} className="text-gray-300 hover:text-white/85 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E41B13]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 rounded-md px-1">
