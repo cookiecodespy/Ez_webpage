@@ -147,7 +147,7 @@ const About = () => {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 md:px-8">
-        {/* ISO Badge centrado arriba */}
+        {/* ISO Badge centrado arriba - tono suave */}
         <motion.div
           className="flex justify-center mb-12"
           initial={prefersReducedMotion ? undefined : { opacity: 0, y: -20 }}
@@ -155,10 +155,10 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-[#E41B13] to-[#B91710] text-white shadow-lg">
+          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white border-2 border-[#E41B13]/20 text-[#E41B13] shadow-lg">
             <Award className="h-5 w-5" />
             <span className="font-bold">Certificación ISO 9001:2015</span>
-            <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-sm">Gestión de Calidad</span>
+            <span className="px-3 py-1 rounded-full bg-[#E41B13]/10 text-sm">Gestión de Calidad</span>
           </div>
         </motion.div>
 
@@ -235,25 +235,18 @@ const About = () => {
               </div>
             </div>
 
-            {/* Sustentabilidad - Mesh gradient card */}
-            <div className="relative group rounded-3xl overflow-hidden">
-              {/* Mesh gradient background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-white to-teal-50" />
-              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-emerald-400/20 to-transparent rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-teal-400/20 to-transparent rounded-full blur-2xl" />
-              
-              <div className="relative p-8 backdrop-blur-sm">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <Heart className="h-7 w-7 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Sustentabilidad</h3>
-                    <p className="text-gray-700 leading-relaxed">
-                      Transformando cada envío en una oportunidad para construir un futuro más verde y eficiente.
-                    </p>
-                  </div>
-                </div>
+            {/* Información ISO 9001:2015 detallada */}
+            <div className="relative rounded-3xl overflow-hidden bg-white border border-gray-200/60 shadow-lg">
+              <div className="relative p-8">
+                <p className="text-gray-700 leading-relaxed">
+                  EZ Logistics se encuentra en proceso de certificación <span className="font-bold text-gray-900">ISO 9001:2015</span>, consolidando un modelo de gestión basado en estándares internacionales de calidad.
+                </p>
+                <p className="text-gray-700 leading-relaxed mt-4">
+                  Este sistema abarca nuestras áreas de <span className="font-semibold">Importaciones & Exportaciones</span>, <span className="font-semibold">Centro de Almacenaje y Distribución Nacional</span>, integrando control documental, auditorías internas y evaluación de desempeño continuo.
+                </p>
+                <p className="text-gray-600 text-sm mt-4 italic">
+                  "La calidad no es un objetivo, es parte de nuestra forma de trabajar."
+                </p>
               </div>
             </div>
           </motion.div>
