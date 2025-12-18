@@ -196,34 +196,48 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            {/* ISO Badge destacado */}
-            <div className="relative group flex-1 bg-gradient-to-br from-[#E41B13] to-[#C41710] rounded-3xl p-10 text-white overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500">
-              <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl -translate-y-20 translate-x-20" />
-              <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full blur-2xl translate-y-16 -translate-x-16" />
-              <div className="relative">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm mb-6 border border-white/30">
-                  <Award className="h-5 w-5" />
-                  <span className="text-sm font-bold uppercase tracking-wider">Certificado</span>
+            {/* ISO Badge - Gradient border card oscura */}
+            <div className="relative group flex-1 rounded-3xl overflow-hidden">
+              {/* Animated gradient border */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13] via-[#FF6B6B] to-[#E41B13] opacity-75 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-[2px] bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl" />
+              
+              {/* Content */}
+              <div className="relative p-10 text-white h-full">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-[#E41B13]/20 rounded-full blur-3xl" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#E41B13]/10 rounded-full blur-2xl" />
+                
+                <div className="relative">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md mb-6 border border-white/20">
+                    <Award className="h-5 w-5" />
+                    <span className="text-sm font-bold uppercase tracking-wider">Certificado</span>
+                  </div>
+                  <h3 className="text-4xl font-bold mb-4">ISO 9001:2015</h3>
+                  <p className="text-white/90 leading-relaxed text-lg">
+                    Sistema de Gestión de Calidad certificado, garantizando operaciones eficientes y mejora continua.
+                  </p>
                 </div>
-                <h3 className="text-4xl font-bold mb-4 group-hover:scale-105 transition-transform duration-300">ISO 9001:2015</h3>
-                <p className="text-white/95 leading-relaxed text-lg">
-                  Sistema de Gestión de Calidad certificado, garantizando operaciones eficientes y mejora continua en todos nuestros servicios.
-                </p>
               </div>
             </div>
 
-            {/* Sustentabilidad */}
-            <div className="relative group bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-100">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-50 rounded-full blur-2xl -translate-y-12 translate-x-12 opacity-50" />
-              <div className="relative flex items-start gap-4">
-                <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                  <Heart className="h-7 w-7 text-white" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Sustentabilidad</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    Transformando cada envío en una oportunidad para construir un futuro más verde y eficiente.
-                  </p>
+            {/* Sustentabilidad - Mesh gradient card */}
+            <div className="relative group rounded-3xl overflow-hidden">
+              {/* Mesh gradient background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-white to-teal-50" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-emerald-400/20 to-transparent rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-teal-400/20 to-transparent rounded-full blur-2xl" />
+              
+              <div className="relative p-8 backdrop-blur-sm">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <Heart className="h-7 w-7 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Sustentabilidad</h3>
+                    <p className="text-gray-700 leading-relaxed">
+                      Transformando cada envío en una oportunidad para construir un futuro más verde y eficiente.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
