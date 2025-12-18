@@ -260,7 +260,7 @@ const About = () => {
             transition={{ delay: 0 }}
           >
             {/* Glassmorphism card */}
-            <div className="relative h-full rounded-3xl overflow-hidden bg-white/80 backdrop-blur-md border border-gray-200/60 shadow-xl hover:shadow-[0_20px_60px_-15px_rgba(228,27,19,0.3)] transition-all duration-500">
+            <div className="relative h-full rounded-3xl overflow-hidden bg-white/80 backdrop-blur-md border border-gray-200/60 shadow-xl hover:shadow-2xl transition-all duration-500">
               {/* Subtle white gradient on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-gray-50/30 to-gray-100/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
@@ -294,7 +294,7 @@ const About = () => {
             transition={{ delay: 0.1 }}
           >
             {/* Glassmorphism card */}
-            <div className="relative h-full rounded-3xl overflow-hidden bg-white/80 backdrop-blur-md border border-gray-200/60 shadow-xl hover:shadow-[0_20px_60px_-15px_rgba(228,27,19,0.3)] transition-all duration-500">
+            <div className="relative h-full rounded-3xl overflow-hidden bg-white/80 backdrop-blur-md border border-gray-200/60 shadow-xl hover:shadow-2xl transition-all duration-500">
               {/* Subtle white gradient on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-gray-50/30 to-gray-100/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
@@ -339,7 +339,7 @@ const About = () => {
             transition={{ duration: 0.6 }}
           >
             {/* Glassmorphism card */}
-            <div className="relative h-full rounded-3xl overflow-hidden bg-white/80 backdrop-blur-md border border-gray-200/60 shadow-xl hover:shadow-[0_20px_60px_-15px_rgba(228,27,19,0.3)] transition-all duration-500">
+            <div className="relative h-full rounded-3xl overflow-hidden bg-white/80 backdrop-blur-md border border-gray-200/60 shadow-xl hover:shadow-2xl transition-all duration-500">
               {/* Subtle white gradient on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-gray-50/30 to-gray-100/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
@@ -372,7 +372,7 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             {/* Glassmorphism card */}
-            <div className="relative h-full rounded-3xl overflow-hidden bg-white/80 backdrop-blur-md border border-gray-200/60 shadow-xl hover:shadow-[0_20px_60px_-15px_rgba(228,27,19,0.3)] transition-all duration-500">
+            <div className="relative h-full rounded-3xl overflow-hidden bg-white/80 backdrop-blur-md border border-gray-200/60 shadow-xl hover:shadow-2xl transition-all duration-500">
               {/* Subtle white gradient on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-gray-50/30 to-gray-100/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
