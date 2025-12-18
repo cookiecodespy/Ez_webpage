@@ -29,10 +29,6 @@ const Footer = () => {
                 className="h-10 w-auto rounded-md select-none"
                 loading="lazy"
               />
-              <div className="flex flex-col">
-                <span className="text-xl font-bold">EZ Logistics</span>
-                <span className="text-xs text-gray-400">Soluciones Globales</span>
-              </div>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Tu partner confiable para gestionar logística integral y cadenas de suministro en Chile, Latinoamérica y el mundo.
@@ -200,6 +196,11 @@ const Footer = () => {
                 Política de cookies
               </a>
             </div>
+          </div>
+          <div className="mt-6 text-center">
+            <p className="text-gray-500 text-sm">
+              Sitio desarrollado por <span className="text-gray-400">Tomás Sotz</span>
+            </p>
           </div>
         </div>
       </div>
