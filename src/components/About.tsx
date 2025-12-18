@@ -332,44 +332,66 @@ const About = () => {
           <div className="grid lg:grid-cols-2 gap-8">
           {/* Misión */}
           <motion.div 
-            className="group relative bg-white rounded-3xl p-10 shadow-lg hover:shadow-2xl transition-all duration-500"
+            className="group relative"
             initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
             whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#E41B13] to-transparent rounded-t-3xl" />
-            <div className="flex items-start gap-5">
-              <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br from-[#E41B13] to-[#C41710] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <Target className="h-8 w-8 text-white" />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">Misión</h3>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  Superar las expectativas de servicio de nuestros clientes, satisfaciendo las necesidades en toda la cadena de suministro a través de soluciones que se aplican a los diferentes requerimientos.
-                </p>
+            {/* Glassmorphism card */}
+            <div className="relative h-full rounded-3xl overflow-hidden bg-white/80 backdrop-blur-md border border-gray-200/60 shadow-xl hover:shadow-2xl transition-all duration-500">
+              {/* Subtle white gradient on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-gray-50/30 to-gray-100/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              {/* Floating shadow */}
+              <div className="absolute inset-0 -z-10 bg-gray-900/10 blur-2xl rounded-3xl translate-y-2 group-hover:translate-y-4 transition-all duration-500 opacity-0 group-hover:opacity-100" />
+              
+              {/* Content */}
+              <div className="relative p-10">
+                <div className="flex items-start gap-5">
+                  <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                    <Target className="h-8 w-8 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-[#E41B13] transition-colors duration-300">Misión</h3>
+                    <p className="text-lg text-gray-600 leading-relaxed">
+                      Superar las expectativas de servicio de nuestros clientes, satisfaciendo las necesidades en toda la cadena de suministro a través de soluciones que se aplican a los diferentes requerimientos.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>
 
           {/* Visión */}
           <motion.div 
-            className="group relative bg-white rounded-3xl p-10 shadow-lg hover:shadow-2xl transition-all duration-500"
+            className="group relative"
             initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
             whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#E41B13] to-transparent rounded-t-3xl" />
-            <div className="flex items-start gap-5">
-              <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br from-[#E41B13] to-[#C41710] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <Eye className="h-8 w-8 text-white" />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">Visión</h3>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  Lograr que el grupo EZ Ship Logistics cree un ambiente de amor y felicidad donde sus colaboradores puedan desarrollarse profesional y personalmente, extendiendo este ambiente a su entorno de manera sustentable y sostenible en el tiempo.
-                </p>
+            {/* Glassmorphism card */}
+            <div className="relative h-full rounded-3xl overflow-hidden bg-white/80 backdrop-blur-md border border-gray-200/60 shadow-xl hover:shadow-2xl transition-all duration-500">
+              {/* Subtle white gradient on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-gray-50/30 to-gray-100/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              {/* Floating shadow */}
+              <div className="absolute inset-0 -z-10 bg-gray-900/10 blur-2xl rounded-3xl translate-y-2 group-hover:translate-y-4 transition-all duration-500 opacity-0 group-hover:opacity-100" />
+              
+              {/* Content */}
+              <div className="relative p-10">
+                <div className="flex items-start gap-5">
+                  <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                    <Eye className="h-8 w-8 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-[#E41B13] transition-colors duration-300">Visión</h3>
+                    <p className="text-lg text-gray-600 leading-relaxed">
+                      Lograr que el grupo EZ Ship Logistics cree un ambiente de amor y felicidad donde sus colaboradores puedan desarrollarse profesional y personalmente, extendiendo este ambiente a su entorno de manera sustentable y sostenible en el tiempo.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -383,54 +405,50 @@ const About = () => {
             <p className="text-gray-600 max-w-2xl mx-auto">Principios que definen nuestra cultura y forma de trabajar</p>
             <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-gradient-to-r from-[#E41B13] to-transparent" />
           </div>
-          <div className="grid lg:grid-cols-3 gap-6">
-            {values.map((value, index) => {
-              const isLarge = index === 0 || index === 3;
-              
-              return (
-                <motion.div
-                  key={value.title}
-                  className={`relative group ${isLarge ? 'lg:col-span-2' : 'lg:col-span-1'}`}
-                  initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
-                  whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
-                >
-                  {/* Floating shadow */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-200/30 to-gray-300/30 rounded-3xl blur-xl translate-y-2 group-hover:translate-y-4 transition-all duration-500 opacity-0 group-hover:opacity-100" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {values.map((value, index) => (
+              <motion.div
+                key={value.title}
+                className="relative group"
+                initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
+                whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+              >
+                {/* Floating shadow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-200/30 to-gray-300/30 rounded-3xl blur-xl translate-y-2 group-hover:translate-y-4 transition-all duration-500 opacity-0 group-hover:opacity-100" />
+                
+                {/* Gradient border container */}
+                <div className="relative rounded-3xl overflow-hidden h-full">
+                  {/* Animated gradient border */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${value.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                  <div className="absolute inset-[2px] bg-white rounded-3xl" />
                   
-                  {/* Gradient border container */}
-                  <div className="relative rounded-3xl overflow-hidden">
-                    {/* Animated gradient border */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${value.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                    <div className="absolute inset-[2px] bg-white rounded-3xl" />
-                    
-                    {/* Mesh gradient background */}
-                    <div className="absolute inset-[2px] rounded-3xl overflow-hidden">
-                      <div className={`absolute top-0 right-0 w-48 h-48 bg-gradient-to-br ${value.meshColor} to-transparent rounded-full blur-3xl opacity-50`} />
-                      <div className={`absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr ${value.meshColor} to-transparent rounded-full blur-2xl opacity-40`} />
-                    </div>
-                    
-                    {/* Content */}
-                    <div className={`relative ${isLarge ? 'p-10' : 'p-8'}`}>
-                      <div className="flex items-start gap-5">
-                        <div className={`flex-shrink-0 ${isLarge ? 'w-16 h-16' : 'w-14 h-14'} rounded-2xl bg-gradient-to-br ${value.gradient} flex items-center justify-center shadow-lg text-white group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500`}>
-                          {value.icon}
-                        </div>
-                        <div className="flex-1">
-                          <h4 className={`${isLarge ? 'text-2xl' : 'text-xl'} font-bold text-gray-900 mb-3 group-hover:bg-gradient-to-r group-hover:from-[#E41B13] group-hover:to-[#FF6B6B] group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300`}>
-                            {value.title}
-                          </h4>
-                          <p className="text-gray-600 leading-relaxed">
-                            {value.description}
-                          </p>
-                        </div>
+                  {/* Mesh gradient background */}
+                  <div className="absolute inset-[2px] rounded-3xl overflow-hidden">
+                    <div className={`absolute top-0 right-0 w-48 h-48 bg-gradient-to-br ${value.meshColor} to-transparent rounded-full blur-3xl opacity-50`} />
+                    <div className={`absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr ${value.meshColor} to-transparent rounded-full blur-2xl opacity-40`} />
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="relative p-8">
+                    <div className="flex flex-col gap-4">
+                      <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${value.gradient} flex items-center justify-center shadow-lg text-white group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500">
+                        {value.icon}
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:bg-gradient-to-r group-hover:from-[#E41B13] group-hover:to-[#FF6B6B] group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
+                          {value.title}
+                        </h4>
+                        <p className="text-gray-600 text-sm leading-relaxed">
+                          {value.description}
+                        </p>
                       </div>
                     </div>
                   </div>
-                </motion.div>
-              );
-            })}
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
