@@ -409,31 +409,43 @@ const About = () => {
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
-                className="relative"
+                className="group relative"
                 initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
                 whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
               >
+                {/* Decorative background elements */}
+                <div className="absolute inset-0 rounded-3xl overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#E41B13]/10 to-transparent rounded-full blur-2xl" />
+                  <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-gray-300/30 to-transparent rounded-full blur-xl" />
+                </div>
+
                 {/* Glassmorphism card */}
-                <div className="relative h-full rounded-3xl overflow-hidden bg-white/80 backdrop-blur-md border border-gray-200/60 shadow-xl">
+                <div className="relative h-full rounded-3xl overflow-hidden bg-white/90 backdrop-blur-md border border-gray-200/60 shadow-xl">
                   {/* Subtle gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-gray-50/30 to-gray-100/20" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-gray-50/20 to-white/40" />
+                  
+                  {/* Decorative line top */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-transparent via-[#E41B13]/30 to-transparent" />
                   
                   {/* Content - Layout vertical centrado */}
                   <div className="relative p-8 text-center">
                     <div className="flex flex-col items-center gap-4">
-                      {/* Ícono centrado arriba */}
-                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center shadow-lg">
-                        <div className="text-white">
-                          {value.icon}
+                      {/* Ícono centrado arriba con decoración */}
+                      <div className="relative">
+                        <div className="absolute inset-0 bg-[#E41B13]/10 blur-xl rounded-full" />
+                        <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center shadow-lg">
+                          <div className="text-white">
+                            {value.icon}
+                          </div>
                         </div>
                       </div>
                       
                       {/* Texto centrado */}
                       <div>
                         <h4 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h4>
-                        <p className="text-gray-600 leading-relaxed">
+                        <p className="text-gray-600 leading-relaxed text-sm">
                           {value.description}
                         </p>
                       </div>
