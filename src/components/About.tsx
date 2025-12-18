@@ -284,26 +284,28 @@ const About = () => {
           </motion.div>
         </div>
 
-        {/* Valores - Grid unificado */}
+        {/* Valores - Grid consistente con otras cards */}
         <div>
           <h3 className="text-3xl font-bold text-gray-900 text-center mb-12">Nuestros valores</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid lg:grid-cols-2 gap-6">
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
-                className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="group relative bg-white rounded-3xl p-10 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100"
                 initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
                 whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.05 }}
               >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#E41B13] to-[#C41710] flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                <div className="flex items-start gap-5">
+                  <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br from-[#E41B13] to-[#C41710] flex items-center justify-center shadow-lg text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                     {value.icon}
                   </div>
-                  <h4 className="text-xl font-bold text-gray-900">{value.title}</h4>
+                  <div className="flex-1">
+                    <h4 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#E41B13] transition-colors duration-300">{value.title}</h4>
+                    <p className="text-gray-600 leading-relaxed">{value.description}</p>
+                  </div>
                 </div>
-                <p className="text-gray-600 leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
           </div>
