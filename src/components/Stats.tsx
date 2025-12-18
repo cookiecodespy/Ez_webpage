@@ -77,122 +77,103 @@ const Stats = () => {
     <section
       id="nuestro-recorrido"
       ref={sectionRef}
-      className="relative py-12 md:py-16 bg-white overflow-hidden"
+      className="relative py-20 md:py-24 bg-gradient-to-b from-gray-50/50 via-white to-gray-50/30 overflow-hidden"
       role="region"
       aria-labelledby="timeline-heading"
     >
-      {/* Background decorativo sutil */}
-      <div className="absolute inset-0 opacity-[0.03]">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#E41B13] rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#E41B13] rounded-full blur-3xl" />
+      {/* Background decorativo moderno */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#E41B13]/5 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-[#E41B13]/5 rounded-full blur-3xl" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 md:px-8">
+        {/* Header moderno */}
         <motion.div
-          className="text-center mb-10"
+          className="text-center mb-16"
           variants={headingVariants}
           initial={prefersReducedMotion ? undefined : 'hidden'}
           whileInView={prefersReducedMotion ? undefined : 'visible'}
           viewport={{ once: true, amount: 0.5 }}
         >
-          <h2 id="timeline-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 mb-3">
+          <h2 id="timeline-heading" className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-4">
             Nuestro Recorrido
           </h2>
-          <p className="text-base text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Más de una década construyendo excelencia logística
           </p>
+          <div className="mx-auto mt-6 h-1 w-24 rounded-full bg-gradient-to-r from-transparent via-[#E41B13] to-transparent" />
         </motion.div>
 
-        {/* Timeline horizontal */}
-        <div className="relative">
-          {/* Línea horizontal conectora */}
-          <div className="hidden md:block absolute top-16 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#E41B13]/20 to-transparent" aria-hidden="true" />
-          
-          {/* Puntos de conexión animados */}
-          {milestones.map((_, index) => (
+        {/* Timeline moderno - Grid limpio */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {milestones.map((milestone, index) => (
             <motion.div
-              key={`dot-${index}`}
-              className="hidden md:block absolute top-16 w-3 h-3 bg-[#E41B13] rounded-full -translate-y-1/2"
-              style={{ left: `${(100 / (milestones.length + 1)) * (index + 1)}%` }}
-              initial={{ scale: 0, opacity: 0 }}
-              animate={isVisible ? { scale: 1, opacity: 1 } : undefined}
-              transition={{ delay: index * 0.2, duration: 0.4 }}
-            />
-          ))}
-
-          {/* Grid de timeline con efecto stagger */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6">
-            {milestones.map((milestone, index) => (
-              <motion.div
-                key={milestone.year}
-                className="relative"
-                initial={prefersReducedMotion ? undefined : { opacity: 0, y: 40 }}
-                animate={isVisible ? { opacity: 1, y: 0 } : undefined}
-                transition={{ 
-                  duration: 0.6, 
-                  ease: [0.16, 1, 0.3, 1], 
-                  delay: index * 0.15 
-                }}
-              >
-                {/* Card con efectos modernos */}
-                <div className="group relative h-full bg-gradient-to-br from-white to-gray-50/50 border-l-4 border-[#E41B13] rounded-xl p-5 shadow-[4px_0_20px_rgba(228,27,19,0.1)] hover:shadow-[8px_0_40px_rgba(228,27,19,0.25)] transition-all duration-500 hover:-translate-y-3 backdrop-blur-sm cursor-pointer">
-                  {/* Efecto glassmorphism en hover */}
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/90 to-gray-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                  
-                  {/* Brillo animado en hover */}
-                  <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-[#E41B13] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-t-xl" />
-                  
-                  {/* Contenido */}
-                  <div className="relative space-y-3">
-                    {/* Icono */}
-                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] text-white shadow-lg shadow-[#E41B13]/30 group-hover:scale-125 group-hover:rotate-6 group-hover:shadow-2xl group-hover:shadow-[#E41B13]/50 transition-all duration-500">
-                      <div className="group-hover:scale-110 transition-transform duration-300">
+              key={milestone.year}
+              className="relative group"
+              initial={prefersReducedMotion ? undefined : { opacity: 0, y: 30 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : undefined}
+              transition={{ 
+                duration: 0.5, 
+                ease: [0.16, 1, 0.3, 1], 
+                delay: index * 0.1 
+              }}
+            >
+              {/* Glassmorphism card premium */}
+              <div className="relative h-full rounded-3xl overflow-hidden bg-white/80 backdrop-blur-md border border-gray-200/60 shadow-xl">
+                {/* Gradient overlay sutil */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-gray-50/20 to-white/40" />
+                
+                {/* Línea decorativa top */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E41B13] to-transparent" />
+                
+                {/* Content */}
+                <div className="relative p-8 text-center">
+                  {/* Icono con resplandor */}
+                  <div className="flex justify-center mb-5">
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-[#E41B13]/20 blur-xl rounded-full" />
+                      <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center text-white shadow-lg">
                         {milestone.icon}
                       </div>
                     </div>
-
-                    {/* Año */}
-                    <div className="relative">
-                      <div className="text-4xl md:text-5xl font-bold bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-500">
-                        {milestone.year}
-                      </div>
-                      {/* Glow effect */}
-                      <div className="absolute inset-0 blur-2xl bg-[#E41B13]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    </div>
-
-                    {/* Título */}
-                    <div className="flex items-center gap-2">
-                      <div className="w-6 h-0.5 bg-gradient-to-r from-[#E41B13] to-transparent" />
-                      <div className="text-lg font-bold text-[#E41B13]">
-                        {milestone.title}
-                      </div>
-                    </div>
-
-                    {/* Descripción */}
-                    <p className="text-sm text-gray-700 leading-snug">
-                      {milestone.description}
-                    </p>
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
 
-          {/* Badge ISO 9001:2015 */}
-          <motion.div
-            className="mt-12 text-center"
-            initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : undefined}
-            transition={{ duration: 0.6, delay: 0.8 }}
-          >
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-[#E41B13]/10 to-[#E41B13]/5 border border-[#E41B13]/20">
-              <Award className="h-5 w-5 text-[#E41B13]" />
-              <span className="text-sm font-semibold text-gray-900">Certificación ISO 9001:2015</span>
-              <div className="h-4 w-px bg-[#E41B13]/30" />
-              <span className="text-xs text-gray-600">Gestión de Calidad</span>
-            </div>
-          </motion.div>
+                  {/* Año grande */}
+                  <div className="text-5xl font-bold text-gray-900 mb-4">
+                    {milestone.year}
+                  </div>
+
+                  {/* Título con línea */}
+                  <div className="mb-3">
+                    <div className="text-lg font-bold text-[#E41B13] leading-tight">
+                      {milestone.title}
+                    </div>
+                  </div>
+
+                  {/* Descripción */}
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    {milestone.description}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
+
+        {/* Badge ISO moderno */}
+        <motion.div
+          className="mt-16 text-center"
+          initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : undefined}
+          transition={{ duration: 0.6, delay: 0.6 }}
+        >
+          <div className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white border-2 border-[#E41B13]/20 text-[#E41B13] shadow-lg">
+            <Award className="h-6 w-6" />
+            <span className="font-bold text-base">Certificación ISO 9001:2015</span>
+            <span className="px-4 py-1 rounded-full bg-[#E41B13]/10 text-sm">Gestión de Calidad</span>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
