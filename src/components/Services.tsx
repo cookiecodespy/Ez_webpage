@@ -1,4 +1,4 @@
-import { Plane, Warehouse, ScrollText, Truck, Package } from 'lucide-react';
+import { Plane, Warehouse, ScrollText, Truck, Package, ShoppingCart } from 'lucide-react';
 import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { OutlineButton } from './UIButtons';
@@ -55,6 +55,14 @@ const Services = () => {
       color: 'from-red-500 to-red-600',
       overlay: 'from-red-500/0 via-red-500/5 to-red-500/30',
       slug: 'project-cargo'
+    },
+    {
+      icon: <ShoppingCart className="h-11 w-11" aria-hidden="true" />,
+      title: 'Fulfillment E-commerce',
+      description: 'Solución integral para tiendas online: almacenaje, preparación de pedidos, empaque y envío directo a tus clientes.',
+      color: 'from-teal-500 to-cyan-600',
+      overlay: 'from-teal-500/0 via-teal-500/5 to-teal-500/30',
+      slug: 'fulfillment-ecommerce'
     }
   ];
 
