@@ -161,19 +161,7 @@ const Stats = () => {
           ))}
         </div>
 
-        {/* Badge ISO moderno */}
-        <motion.div
-          className="mt-16 text-center"
-          initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : undefined}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
-          <div className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white border-2 border-[#E41B13]/20 text-[#E41B13] shadow-lg">
-            <Award className="h-6 w-6" />
-            <span className="font-bold text-base">Certificación ISO 9001:2015</span>
-            <span className="px-4 py-1 rounded-full bg-[#E41B13]/10 text-sm">Gestión de Calidad</span>
-          </div>
-        </motion.div>
+
       </div>
     </section>
   );
