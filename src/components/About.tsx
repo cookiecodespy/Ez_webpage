@@ -147,6 +147,21 @@ const About = () => {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 md:px-8">
+        {/* ISO Badge centrado arriba */}
+        <motion.div
+          className="flex justify-center mb-12"
+          initial={prefersReducedMotion ? undefined : { opacity: 0, y: -20 }}
+          whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-[#E41B13] to-[#B91710] text-white shadow-lg">
+            <Award className="h-5 w-5" />
+            <span className="font-bold">Certificación ISO 9001:2015</span>
+            <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-sm">Gestión de Calidad</span>
+          </div>
+        </motion.div>
+
         {/* Header con badge */}
         <motion.div
           className="text-center mb-12"
