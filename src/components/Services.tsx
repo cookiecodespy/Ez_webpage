@@ -1,4 +1,4 @@
-import { Plane, Warehouse, ScrollText, Truck, Package, ShoppingCart } from 'lucide-react';
+import { Plane, Warehouse, ScrollText, Truck, Package } from 'lucide-react';
 import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { OutlineButton } from './UIButtons';
@@ -55,14 +55,6 @@ const Services = () => {
       color: 'from-red-500 to-red-600',
       overlay: 'from-red-500/0 via-red-500/5 to-red-500/30',
       slug: 'project-cargo'
-    },
-    {
-      icon: <ShoppingCart className="h-11 w-11" aria-hidden="true" />,
-      title: 'Fulfillment E-commerce',
-      description: 'Solución integral para tiendas online: almacenaje, preparación de pedidos, empaque y envío directo a tus clientes.',
-      color: 'from-teal-500 to-cyan-600',
-      overlay: 'from-teal-500/0 via-teal-500/5 to-teal-500/30',
-      slug: 'fulfillment-ecommerce'
     }
   ];
 
@@ -90,8 +82,44 @@ const Services = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          {services.map((service, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+          {services.slice(0, 3).map((service, index) => (
+            <motion.div
+              key={service.title}
+              className="group relative flex h-full min-h-[260px] flex-col overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 ease-out"
+              initial={prefersReducedMotion ? undefined : { opacity: 0, y: 24 }}
+              whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
+              whileHover={prefersReducedMotion ? undefined : { y: -8 }}
+            >
+              <span
+                className={`pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br ${service.overlay} opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
+                aria-hidden="true"
+              />
+              <div className={`h-1.5 bg-gradient-to-r ${service.color}`} />
+              <div className="relative flex h-full flex-col items-center justify-between gap-6 p-8 text-center">
+                <div className={`flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br ${service.color} text-white shadow-lg transition-transform duration-300 group-hover:scale-105`}>
+                  {service.icon}
+                </div>
+                <h3 className="text-2xl md:text-3xl font-semibold text-gray-800">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {service.description}
+                </p>
+                <Link to={`/servicios/${service.slug}`} className="mt-auto">
+                  <OutlineButton className="px-6 py-2.5">
+                    Ver detalles
+                  </OutlineButton>
+                </Link>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {services.slice(3).map((service, index) => (
             <motion.div
               key={service.title}
               className="group relative flex h-full min-h-[260px] flex-col overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 ease-out"
