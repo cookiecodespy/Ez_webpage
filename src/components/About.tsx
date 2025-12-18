@@ -409,42 +409,21 @@ const About = () => {
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
-                className="relative group"
+                className="group p-6 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300"
                 initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
                 whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
+                transition={{ delay: index * 0.1 }}
               >
-                {/* Floating shadow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-200/30 to-gray-300/30 rounded-3xl blur-xl translate-y-2 group-hover:translate-y-4 transition-all duration-500 opacity-0 group-hover:opacity-100" />
-                
-                {/* Gradient border container */}
-                <div className="relative rounded-3xl overflow-hidden h-full">
-                  {/* Animated gradient border */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${value.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                  <div className="absolute inset-[2px] bg-white rounded-3xl" />
-                  
-                  {/* Mesh gradient background */}
-                  <div className="absolute inset-[2px] rounded-3xl overflow-hidden">
-                    <div className={`absolute top-0 right-0 w-48 h-48 bg-gradient-to-br ${value.meshColor} to-transparent rounded-full blur-3xl opacity-50`} />
-                    <div className={`absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr ${value.meshColor} to-transparent rounded-full blur-2xl opacity-40`} />
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-[#E41B13] flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                    {value.icon}
                   </div>
-                  
-                  {/* Content */}
-                  <div className="relative p-8">
-                    <div className="flex flex-col gap-4">
-                      <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${value.gradient} flex items-center justify-center shadow-lg text-white group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500">
-                        {value.icon}
-                      </div>
-                      <div>
-                        <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:bg-gradient-to-r group-hover:from-[#E41B13] group-hover:to-[#FF6B6B] group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
-                          {value.title}
-                        </h4>
-                        <p className="text-gray-600 text-sm leading-relaxed">
-                          {value.description}
-                        </p>
-                      </div>
-                    </div>
+                  <div className="flex-1">
+                    <h4 className="text-lg font-bold text-gray-900 mb-2">{value.title}</h4>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      {value.description}
+                    </p>
                   </div>
                 </div>
               </motion.div>
