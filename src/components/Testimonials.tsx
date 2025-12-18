@@ -6,7 +6,7 @@ const Testimonials = () => {
       name: 'Maria Rodriguez',
       position: 'Directora de Supply Chain',
       company: 'TechCorp Latinoamérica',
-      content: 'EZ Ship Logistics transformó nuestra operación. Su plataforma tecnológica y servicio confiable redujeron nuestros tiempos de entrega en un 30% y elevaron la satisfacción de los clientes.',
+      content: 'EZ Logistics transformó nuestra operación. Su plataforma tecnológica y servicio confiable redujeron nuestros tiempos de entrega en un 30% y elevaron la satisfacción de los clientes.',
       rating: 5,
   image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&fm=webp'
     },
@@ -14,7 +14,7 @@ const Testimonials = () => {
       name: 'Carlos Mendez',
       position: 'Gerente de Operaciones',
       company: 'GlobalTrade Solutions',
-      content: 'Trabajar con EZ Ship marcó un antes y un después. Su expertise en agenciamiento de aduanas y atención al detalle eliminó demoras y agilizó nuestros envíos internacionales.',
+      content: 'Trabajar con EZ Logistics marcó un antes y un después. Su expertise en agenciamiento de aduanas y atención al detalle eliminó demoras y agilizó nuestros envíos internacionales.',
       rating: 5,
   image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&fm=webp'
     },
