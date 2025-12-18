@@ -163,12 +163,12 @@ const Footer = () => {
             <div className="flex items-center gap-3">
               <img
                 src={`${import.meta.env.BASE_URL}bluebox-logo.jpg`}
-                alt="Blue Box Limitada"
+                alt="Servicios Integrales Blue-Box Ltda"
                 className="h-10 w-auto rounded"
                 loading="lazy"
               />
               <p className="text-gray-400 text-sm">
-                © 2025 Blue Box Limitada. Todos los derechos reservados.
+                © 2025 Servicios Integrales Blue-Box Ltda. Todos los derechos reservados.
               </p>
             </div>
             <div className="flex space-x-6 text-sm">
@@ -203,7 +203,7 @@ const Footer = () => {
           </div>
           <div className="mt-6 text-center">
             <p className="text-gray-500 text-sm">
-              Sitio desarrollado por <span className="text-gray-400">Blue-Box Servicios Digitales Ltda.</span> · 
+              Sitio desarrollado por <span className="text-gray-400">Servicios Integrales Blue-Box Ltda</span> · 
               <a href="mailto:contacto@blue-box.cl" className="hover:text-gray-300 transition-colors ml-1">contacto@blue-box.cl</a> · 
               <a href="tel:+56990166224" className="hover:text-gray-300 transition-colors ml-1">+56 9 9016 6224</a>
             </p>
