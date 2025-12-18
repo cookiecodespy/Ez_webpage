@@ -199,7 +199,9 @@ const Footer = () => {
           </div>
           <div className="mt-6 text-center">
             <p className="text-gray-500 text-sm">
-              Sitio desarrollado por <span className="text-gray-400">Tomás Sotz</span>
+              Sitio desarrollado por <span className="text-gray-400">Servicios Integrales Blue-Box Ltda</span> · 
+              <a href="mailto:contacto@blue-box.cl" className="hover:text-gray-300 transition-colors ml-1">contacto@blue-box.cl</a> · 
+              <a href="tel:+56990166224" className="hover:text-gray-300 transition-colors ml-1">+56 9 9016 6224</a>
             </p>
           </div>
         </div>
