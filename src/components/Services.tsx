@@ -1,4 +1,4 @@
-import { Plane, Warehouse, ScrollText, Truck } from 'lucide-react';
+import { Plane, Warehouse, ScrollText, Truck, Package } from 'lucide-react';
 import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { OutlineButton } from './UIButtons';
@@ -47,6 +47,14 @@ const Services = () => {
       color: 'from-orange-500 to-orange-600',
       overlay: 'from-orange-500/0 via-orange-500/5 to-orange-500/30',
       slug: 'ultima-milla'
+    },
+    {
+      icon: <Package className="h-11 w-11" aria-hidden="true" />,
+      title: 'Project Cargo',
+      description: 'Logística especializada para cargas complejas, sobredimensionadas y de alto valor en entornos desafiantes.',
+      color: 'from-red-500 to-red-600',
+      overlay: 'from-red-500/0 via-red-500/5 to-red-500/30',
+      slug: 'project-cargo'
     }
   ];
 

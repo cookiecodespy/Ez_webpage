@@ -316,6 +316,82 @@ const servicesData: Record<string, ServiceDetailData> = {
       { image: 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?q=80&w=800&fm=webp', caption: 'Entrega urbana rápida' },
       { image: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?q=80&w=800&fm=webp', caption: 'Centro de despacho' }
     ]
+  },
+  'project-cargo': {
+    id: 'project-cargo',
+    title: 'Project Cargo',
+    subtitle: 'Logística para proyectos de gran escala',
+    heroImage: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=1600&fm=webp',
+    description: 'Cuando los proyectos a gran escala requieren mover cargas fuera de lo común, la logística convencional no es suficiente. El Project Cargo es un servicio especializado y de alta complejidad, diseñado para planificar, coordinar y ejecutar el transporte de mercancías sobredimensionadas, pesadas o de alto valor en entornos desafiantes.',
+    stats: [
+      { value: '200+', label: 'Proyectos Ejecutados' },
+      { value: '500T', label: 'Carga Máxima' },
+      { value: '35+', label: 'Países Atendidos' },
+      { value: '99.2%', label: 'Éxito de Entrega' }
+    ],
+    features: [
+      {
+        icon: <Shield className="h-8 w-8" />,
+        title: 'Planificación Detallada',
+        description: 'Ingeniería logística y estudios de viabilidad para cada proyecto'
+      },
+      {
+        icon: <TrendingUp className="h-8 w-8" />,
+        title: 'Transporte Multimodal',
+        description: 'Coordinación de rutas especiales por tierra, mar y aire'
+      },
+      {
+        icon: <Package className="h-8 w-8" />,
+        title: 'Carga Pesada',
+        description: 'Manejo de mercancía sobredimensionada con equipos especializados'
+      },
+      {
+        icon: <Users className="h-8 w-8" />,
+        title: 'Gestión de Permisos',
+        description: 'Tramitación de autorizaciones especiales y cumplimiento normativo'
+      }
+    ],
+    process: [
+      {
+        step: 1,
+        title: 'Análisis y Planificación',
+        description: 'Evaluación técnica de la carga, rutas posibles y requisitos especiales'
+      },
+      {
+        step: 2,
+        title: 'Ingeniería Logística',
+        description: 'Diseño de solución personalizada con estudios de factibilidad y riesgo'
+      },
+      {
+        step: 3,
+        title: 'Obtención de Permisos',
+        description: 'Gestión de autorizaciones, escoltas y cumplimiento normativo'
+      },
+      {
+        step: 4,
+        title: 'Ejecución del Transporte',
+        description: 'Coordinación multimodal con equipos especializados y seguimiento 24/7'
+      },
+      {
+        step: 5,
+        title: 'Instalación y Entrega',
+        description: 'Descarga, posicionamiento y entrega final con documentación completa'
+      }
+    ],
+    benefits: [
+      'Reducción de riesgos con planificación exhaustiva y equipos especializados',
+      'Experiencia en manejo de cargas complejas, pesadas y sobredimensionadas',
+      'Soluciones personalizadas adaptadas a cada proyecto específico',
+      'Cumplimiento normativo garantizado en todas las jurisdicciones',
+      'Coordinación end-to-end desde origen hasta instalación final',
+      'Seguimiento en tiempo real con reportes detallados de avance',
+      'Seguro especializado para cargas de alto valor'
+    ],
+    gallery: [
+      { image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=800&fm=webp', caption: 'Carga industrial pesada' },
+      { image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&fm=webp', caption: 'Transporte especializado' },
+      { image: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=800&fm=webp', caption: 'Logística de proyectos' }
+    ]
   }
 };
 
