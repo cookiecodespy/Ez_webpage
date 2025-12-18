@@ -259,13 +259,13 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ delay: 0 }}
           >
+            {/* Floating red shadow - detrás de la tarjeta */}
+            <div className="absolute inset-0 bg-[#E41B13]/15 blur-2xl rounded-3xl translate-y-2 group-hover:translate-y-4 transition-all duration-500 opacity-0 group-hover:opacity-100" />
+            
             {/* Glassmorphism card */}
             <div className="relative h-full rounded-3xl overflow-hidden bg-white/80 backdrop-blur-md border border-gray-200/60 shadow-xl hover:shadow-2xl transition-all duration-500">
               {/* Subtle white gradient on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-gray-50/30 to-gray-100/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              {/* Floating red shadow */}
-              <div className="absolute inset-0 -z-10 bg-[#E41B13]/15 blur-2xl rounded-3xl translate-y-2 group-hover:translate-y-4 transition-all duration-500 opacity-0 group-hover:opacity-100" />
               
               {/* Content */}
               <div className="relative p-10">
@@ -293,13 +293,13 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
+            {/* Floating red shadow - detrás de la tarjeta */}
+            <div className="absolute inset-0 bg-[#E41B13]/15 blur-2xl rounded-3xl translate-y-2 group-hover:translate-y-4 transition-all duration-500 opacity-0 group-hover:opacity-100" />
+            
             {/* Glassmorphism card */}
             <div className="relative h-full rounded-3xl overflow-hidden bg-white/80 backdrop-blur-md border border-gray-200/60 shadow-xl hover:shadow-2xl transition-all duration-500">
               {/* Subtle white gradient on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-gray-50/30 to-gray-100/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              {/* Floating red shadow */}
-              <div className="absolute inset-0 -z-10 bg-[#E41B13]/15 blur-2xl rounded-3xl translate-y-2 group-hover:translate-y-4 transition-all duration-500 opacity-0 group-hover:opacity-100" />
               
               {/* Content */}
               <div className="relative p-10">
@@ -338,13 +338,13 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
+            {/* Floating red shadow - detrás de la tarjeta */}
+            <div className="absolute inset-0 bg-[#E41B13]/15 blur-2xl rounded-3xl translate-y-2 group-hover:translate-y-4 transition-all duration-500 opacity-0 group-hover:opacity-100" />
+            
             {/* Glassmorphism card */}
             <div className="relative h-full rounded-3xl overflow-hidden bg-white/80 backdrop-blur-md border border-gray-200/60 shadow-xl hover:shadow-2xl transition-all duration-500">
               {/* Subtle white gradient on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-gray-50/30 to-gray-100/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              {/* Floating red shadow */}
-              <div className="absolute inset-0 -z-10 bg-[#E41B13]/15 blur-2xl rounded-3xl translate-y-2 group-hover:translate-y-4 transition-all duration-500 opacity-0 group-hover:opacity-100" />
               
               {/* Content */}
               <div className="relative p-10">
@@ -371,13 +371,13 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
+            {/* Floating red shadow - detrás de la tarjeta */}
+            <div className="absolute inset-0 bg-[#E41B13]/15 blur-2xl rounded-3xl translate-y-2 group-hover:translate-y-4 transition-all duration-500 opacity-0 group-hover:opacity-100" />
+            
             {/* Glassmorphism card */}
             <div className="relative h-full rounded-3xl overflow-hidden bg-white/80 backdrop-blur-md border border-gray-200/60 shadow-xl hover:shadow-2xl transition-all duration-500">
               {/* Subtle white gradient on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-gray-50/30 to-gray-100/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              {/* Floating red shadow */}
-              <div className="absolute inset-0 -z-10 bg-[#E41B13]/15 blur-2xl rounded-3xl translate-y-2 group-hover:translate-y-4 transition-all duration-500 opacity-0 group-hover:opacity-100" />
               
               {/* Content */}
               <div className="relative p-10">
