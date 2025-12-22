@@ -235,14 +235,11 @@ const About = () => {
               </div>
             </div>
 
-            {/* Información ISO 9001:2015 detallada */}
+            {/* Información ISO 9001:2015 - Texto corto según informe Pascale */}
             <div className="relative rounded-3xl overflow-hidden bg-white border border-gray-200/60 shadow-lg">
               <div className="relative p-8">
                 <p className="text-gray-700 leading-relaxed">
-                  EZ Logistics se encuentra en proceso de certificación <span className="font-bold text-gray-900">ISO 9001:2015</span>, consolidando un modelo de gestión basado en estándares internacionales de calidad.
-                </p>
-                <p className="text-gray-700 leading-relaxed mt-4">
-                  Este sistema abarca nuestras áreas de <span className="font-semibold">Importaciones & Exportaciones</span>, <span className="font-semibold">Centro de Almacenaje y Distribución Nacional</span>, integrando control documental, auditorías internas y evaluación de desempeño continuo.
+                  En EZ Logistics garantizamos la calidad y mejora continua de todos nuestros servicios a través de la implementación del <span className="font-bold text-gray-900">Sistema de Gestión de Calidad</span> bajo la norma <span className="font-bold text-gray-900">ISO 9001:2015</span>. Nuestro compromiso es asegurar operaciones eficientes, trazables y orientadas a la satisfacción de nuestros clientes.
                 </p>
                 <p className="text-gray-600 text-sm mt-4 italic">
                   "La calidad no es un objetivo, es parte de nuestra forma de trabajar."
