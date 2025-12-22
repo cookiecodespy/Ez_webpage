@@ -22,17 +22,13 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div>
-            <div className="flex items-center space-x-3 mb-6">
+            <div className="mb-6">
               <img
                 src={logoSrc}
-                alt="EZ Ship Logistics"
+                alt="EZ Logistics"
                 className="h-10 w-auto rounded-md select-none"
                 loading="lazy"
               />
-              <div className="flex flex-col">
-                <span className="text-xl font-bold">EZ Ship Logistics</span>
-                <span className="text-xs text-gray-400">Soluciones Globales</span>
-              </div>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Tu partner confiable para gestionar logística integral y cadenas de suministro en Chile, Latinoamérica y el mundo.
@@ -168,7 +164,7 @@ const Footer = () => {
                 loading="lazy"
               />
               <p className="text-gray-400 text-sm">
-                © 2025 Blue Box Limitada. Todos los derechos reservados.
+                © 2025 Servicios Bluebox Ltda. Todos los derechos reservados.
               </p>
             </div>
             <div className="flex space-x-6 text-sm">
