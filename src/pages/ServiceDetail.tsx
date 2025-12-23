@@ -92,7 +92,7 @@ const servicesData: Record<string, ServiceDetailData> = {
       'Cobertura en más de 150 países con red de partners certificados'
     ],
     gallery: [
-      { image: 'https://images.unsplash.com/photo-1520452112805-c6692c840af0?q=80&w=800&fm=webp', caption: 'Transporte Aéreo - Envíos urgentes y alto valor' },
+      { image: 'https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?q=80&w=800&fm=webp', caption: 'Transporte Aéreo - Envíos urgentes y alto valor' },
       { image: 'https://images.unsplash.com/photo-1605745341112-85968b19335b?q=80&w=800&fm=webp', caption: 'Transporte Marítimo - FCL y LCL' },
       { image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=800&fm=webp', caption: 'Transporte Terrestre - Rutas regionales' }
     ]
@@ -696,9 +696,6 @@ const ServiceDetail = () => {
                           <p className="text-white font-semibold text-sm">{item.caption}</p>
                         </div>
                       </div>
-                      <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <Sparkles className="h-5 w-5 text-white" />
-                      </div>
                     </motion.div>
                   ))}
                 </div>
@@ -788,9 +785,9 @@ const ServiceDetail = () => {
 
             <div className="relative">
               {/* Vertical Timeline Line */}
-              <div className="absolute left-8 md:left-12 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#E41B13] via-blue-500 to-green-500" />
+              <div className="absolute left-8 md:left-10 top-8 md:top-10 bottom-8 md:bottom-10 w-1 bg-gradient-to-b from-[#E41B13] via-blue-500 to-green-500 rounded-full" />
 
-              <div className="space-y-12">
+              <div className="space-y-8 md:space-y-12">
                 {service.process.map((step, index) => (
                   <motion.div
                     key={index}
@@ -803,7 +800,7 @@ const ServiceDetail = () => {
                     {/* Step Number Circle */}
                     <div className="relative flex-shrink-0 z-10">
                       <motion.div 
-                        className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-[#E41B13] to-[#C41710] text-white flex items-center justify-center font-bold text-2xl shadow-2xl shadow-[#E41B13]/40"
+                        className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-[#E41B13] to-[#C41710] text-white flex items-center justify-center font-bold text-xl md:text-2xl shadow-2xl shadow-[#E41B13]/40"
                         whileHover={{ scale: 1.1, rotate: 5 }}
                       >
                         {step.step}
