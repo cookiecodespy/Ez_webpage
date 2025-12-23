@@ -1,8 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowLeft, CheckCircle2, Package, Clock, Shield, TrendingUp, Users, Globe, Sparkles, Zap, Target, Download } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Package, Clock, Shield, TrendingUp, Users, Globe, Sparkles, Zap, Target } from 'lucide-react';
 import { OutlineButton } from '../components/UIButtons';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface ServiceDetailData {
   id: string;
@@ -452,15 +452,7 @@ const servicesData: Record<string, ServiceDetailData> = {
 
 const ServiceDetail = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
-  const service = serviceId ? servicesData[serviceId] : servicesData['freight-forwarding'];
-  const [activeTab, setActiveTab] = useState<'overview' | 'features' | 'process' | 'benefits'>('overview');
-  const heroRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"]
-  });
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const service = serviceId ? servicesData[serviceId] : null;
 
   if (!service) {
     return (
@@ -475,488 +467,215 @@ const ServiceDetail = () => {
     );
   }
 
-  const tabs = [
-    { id: 'overview', label: 'Descripción General', icon: <Target className="h-4 w-4" /> },
-    { id: 'features', label: 'Características', icon: <Sparkles className="h-4 w-4" /> },
-    { id: 'process', label: 'Proceso', icon: <TrendingUp className="h-4 w-4" /> },
-    { id: 'benefits', label: 'Beneficios', icon: <Zap className="h-4 w-4" /> }
-  ] as const;
-
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero with Parallax */}
-      <section ref={heroRef} className="relative h-[70vh] md:h-[80vh] overflow-hidden">
-        {/* Animated Background Blobs */}
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div
-            className="absolute top-0 left-0 w-96 h-96 bg-[#E41B13]/20 rounded-full blur-3xl"
-            animate={{
-              x: [0, 100, 0],
-              y: [0, -50, 0],
-              scale: [1, 1.2, 1]
-            }}
-            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <motion.div
-            className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"
-            animate={{
-              x: [0, -100, 0],
-              y: [0, 50, 0],
-              scale: [1, 1.3, 1]
-            }}
-            transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </div>
-
-        {/* Hero Image with Parallax */}
-        <motion.div 
-          className="absolute inset-0" 
-          style={{ y }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900/95 via-gray-900/90 to-[#E41B13]/80" />
-          <img
-            src={service.heroImage}
-            alt={service.title}
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
-
-        {/* Hero Content */}
-        <motion.div 
-          className="relative h-full max-w-7xl mx-auto px-6 md:px-8 flex flex-col justify-center"
-          style={{ opacity }}
-        >
+      {/* Hero Section */}
+      <section className="relative h-[60vh] md:h-[70vh] overflow-hidden">
+        <img
+          src={service.heroImage}
+          alt={service.title}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/70 to-gray-900/50" />
+        
+        <div className="relative h-full max-w-7xl mx-auto px-6 md:px-8 flex flex-col justify-center">
           <Link 
             to="/"
             state={{ scrollTo: 'services' }}
-            className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors mb-8 group w-fit backdrop-blur-sm bg-white/10 px-4 py-2 rounded-full"
+            className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors mb-8 group w-fit"
           >
             <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
-            <span className="font-medium">Volver a servicios</span>
+            <span>Volver a servicios</span>
           </Link>
           
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.6 }}
           >
-            <motion.div 
-              className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full mb-6"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.4 }}
-            >
-              <Sparkles className="h-4 w-4 text-yellow-300" />
-              <span className="text-white/90 text-sm font-medium">Solución Profesional</span>
-            </motion.div>
-            
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
               {service.title}
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl leading-relaxed">
+            <p className="text-xl md:text-2xl text-white/90 max-w-2xl">
               {service.subtitle}
             </p>
-            
-            <div className="flex flex-wrap gap-4 mt-8">
-              <button 
-                onClick={() => {
-                  const contactSection = document.getElementById('contact-section');
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className="group relative px-8 py-4 bg-[#E41B13] text-white rounded-full font-bold overflow-hidden hover:shadow-2xl hover:shadow-[#E41B13]/50 transition-all duration-300"
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  Solicitar Cotización
-                  <Zap className="h-5 w-5 group-hover:rotate-12 transition-transform" />
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-[#E41B13] to-[#FF6B6B] opacity-0 group-hover:opacity-100 transition-opacity" />
-              </button>
-              
-              <button className="px-8 py-4 bg-white/20 backdrop-blur-md text-white rounded-full font-bold border-2 border-white/40 hover:bg-white hover:text-gray-900 transition-all duration-300 flex items-center gap-2">
-                <Download className="h-5 w-5" />
-                Descargar Brochure
-              </button>
-            </div>
           </motion.div>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div 
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2">
-            <div className="w-1 h-3 bg-white/70 rounded-full" />
-          </div>
-        </motion.div>
+        </div>
       </section>
 
-      {/* Floating Stats Cards */}
-      <section className="relative -mt-20 pb-16">
+      {/* Stats */}
+      <section className="bg-gray-50 py-12 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {service.stats.map((stat, index) => (
               <motion.div
                 key={index}
-                className="relative group"
-                initial={{ opacity: 0, y: 30 }}
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13] to-[#C41710] rounded-2xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity" />
-                <div className="relative bg-white/80 backdrop-blur-xl border border-gray-200/60 p-6 md:p-8 rounded-2xl shadow-xl">
-                  <div className="text-3xl md:text-5xl font-bold bg-gradient-to-br from-[#E41B13] to-[#C41710] bg-clip-text text-transparent mb-2">
-                    {stat.value}
-                  </div>
-                  <div className="text-xs md:text-sm text-gray-600 font-medium">{stat.label}</div>
+                <div className="text-4xl md:text-5xl font-bold text-[#E41B13] mb-2">
+                  {stat.value}
                 </div>
+                <div className="text-sm text-gray-600">{stat.label}</div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Interactive Tabs Navigation */}
-      <section className="sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-gray-200/60 shadow-sm">
+      {/* Description */}
+      <section className="py-16 md:py-20">
+        <div className="max-w-4xl mx-auto px-6 md:px-8">
+          <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+            {service.description}
+          </p>
+        </div>
+      </section>
+
+      {/* Features */}
+      <section className="py-16 md:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="flex gap-2 overflow-x-auto py-4 scrollbar-hide">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`
-                  flex items-center gap-2 px-6 py-3 rounded-full font-semibold whitespace-nowrap transition-all duration-300
-                  ${activeTab === tab.id 
-                    ? 'bg-gradient-to-r from-[#E41B13] to-[#C41710] text-white shadow-lg shadow-[#E41B13]/30' 
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                  }
-                `}
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">
+            Características Clave
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {service.features.map((feature, index) => (
+              <motion.div
+                key={index}
+                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
               >
-                {tab.icon}
-                <span>{tab.label}</span>
-              </button>
+                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#E41B13] to-[#C41710] text-white flex items-center justify-center mb-6">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {feature.description}
+                </p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Tab Content: Overview */}
-      {activeTab === 'overview' && (
-        <motion.section 
-          className="py-16 md:py-24"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="max-w-5xl mx-auto px-6 md:px-8">
-            <div className="relative">
-              {/* Decorative Element */}
-              <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-[#E41B13] to-transparent rounded-full" />
-              
+      {/* Process */}
+      <section className="py-16 md:py-20">
+        <div className="max-w-5xl mx-auto px-6 md:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">
+            Proceso de Trabajo
+          </h2>
+          <div className="space-y-8">
+            {service.process.map((step, index) => (
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
+                key={index}
+                className="flex gap-6 items-start"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
               >
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-                  ¿Qué es {service.title}?
-                </h2>
-                <div className="prose prose-lg max-w-none">
-                  <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
-                    {service.description}
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-[#E41B13] to-[#C41710] text-white flex items-center justify-center font-bold text-xl">
+                  {step.step}
+                </div>
+                <div className="flex-1 pt-1">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {step.description}
                   </p>
                 </div>
               </motion.div>
-
-              {/* Gallery Grid */}
-              {service.gallery.length > 0 && (
-                <div className="grid md:grid-cols-3 gap-6 mt-12">
-                  {service.gallery.map((item, index) => (
-                    <motion.div
-                      key={index}
-                      className="relative group overflow-hidden rounded-2xl aspect-video cursor-pointer"
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      <img
-                        src={item.image}
-                        alt={item.caption}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
-                        <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                          <p className="text-white font-semibold text-sm">{item.caption}</p>
-                        </div>
-                      </div>
-                      <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <Sparkles className="h-5 w-5 text-white" />
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-        </motion.section>
-      )}
-
-      {/* Tab Content: Features */}
-      {activeTab === 'features' && (
-        <motion.section 
-          className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-white"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="max-w-7xl mx-auto px-6 md:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
-                Características Destacadas
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Descubre todo lo que incluye nuestro servicio de {service.title.toLowerCase()}
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {service.features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  className="group relative"
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.15 }}
-                  whileHover={{ scale: 1.02 }}
-                >
-                  {/* Glow Effect */}
-                  <div className="absolute -inset-1 bg-gradient-to-r from-[#E41B13] to-blue-500 rounded-3xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
-                  
-                  {/* Card */}
-                  <div className="relative bg-white/80 backdrop-blur-xl border border-gray-200/60 p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300">
-                    <div className="flex items-start gap-6">
-                      <div className="flex-shrink-0">
-                        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#E41B13] to-[#C41710] text-white flex items-center justify-center transform group-hover:rotate-6 group-hover:scale-110 transition-all duration-300 shadow-lg">
-                          {feature.icon}
-                        </div>
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#E41B13] transition-colors">
-                          {feature.title}
-                        </h3>
-                        <p className="text-gray-600 leading-relaxed">
-                          {feature.description}
-                        </p>
-                      </div>
-                    </div>
-                    
-                    {/* Corner Decoration */}
-                    <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-[#E41B13]/10 to-transparent rounded-full blur-2xl" />
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-      )}
-
-      {/* Tab Content: Process */}
-      {activeTab === 'process' && (
-        <motion.section 
-          className="py-16 md:py-24"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="max-w-5xl mx-auto px-6 md:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
-                Nuestro Proceso de Trabajo
-              </h2>
-              <p className="text-xl text-gray-600">
-                Metodología probada paso a paso
-              </p>
-            </div>
-
-            <div className="relative">
-              {/* Vertical Timeline Line */}
-              <div className="absolute left-8 md:left-12 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#E41B13] via-blue-500 to-green-500" />
-
-              <div className="space-y-12">
-                {service.process.map((step, index) => (
-                  <motion.div
-                    key={index}
-                    className="relative flex gap-6 md:gap-8 items-start"
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.2 }}
-                  >
-                    {/* Step Number Circle */}
-                    <div className="relative flex-shrink-0 z-10">
-                      <motion.div 
-                        className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-[#E41B13] to-[#C41710] text-white flex items-center justify-center font-bold text-2xl shadow-2xl shadow-[#E41B13]/40"
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                      >
-                        {step.step}
-                      </motion.div>
-                      {/* Pulse Effect */}
-                      <div className="absolute inset-0 rounded-full bg-[#E41B13] animate-ping opacity-20" />
-                    </div>
-
-                    {/* Content Card */}
-                    <motion.div 
-                      className="flex-1 bg-white/80 backdrop-blur-xl border border-gray-200/60 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group"
-                      whileHover={{ x: 10 }}
-                    >
-                      <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#E41B13] transition-colors">
-                        {step.title}
-                      </h3>
-                      <p className="text-gray-600 leading-relaxed text-lg">
-                        {step.description}
-                      </p>
-                      
-                      {/* Progress Indicator */}
-                      <div className="mt-4 flex items-center gap-2 text-sm text-gray-500">
-                        <Clock className="h-4 w-4" />
-                        <span>Paso {step.step} de {service.process.length}</span>
-                      </div>
-                    </motion.div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </motion.section>
-      )}
-
-      {/* Tab Content: Benefits */}
-      {activeTab === 'benefits' && (
-        <motion.section 
-          className="py-16 md:py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-[#E41B13]/20"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="max-w-7xl mx-auto px-6 md:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-                Beneficios Clave para tu Negocio
-              </h2>
-              <p className="text-xl text-white/80">
-                Ventajas competitivas que impulsan tus resultados
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {service.benefits.map((benefit, index) => (
-                <motion.div
-                  key={index}
-                  className="group relative"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ y: -5 }}
-                >
-                  <div className="relative bg-white/10 backdrop-blur-xl border border-white/20 p-6 rounded-2xl hover:bg-white/20 transition-all duration-300">
-                    <div className="flex gap-4 items-start">
-                      <div className="flex-shrink-0">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#E41B13] to-yellow-500 flex items-center justify-center">
-                          <CheckCircle2 className="h-5 w-5 text-white" />
-                        </div>
-                      </div>
-                      <p className="text-white/90 leading-relaxed flex-1">
-                        {benefit}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-      )}
-
-      {/* CTA Section with Interactive Elements */}
-      <section id="contact-section" className="relative py-20 md:py-32 overflow-hidden">
-        {/* Animated Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13] via-[#C41710] to-[#E41B13]">
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+            ))}
           </div>
         </div>
+      </section>
 
-        <div className="relative max-w-5xl mx-auto px-6 md:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full mb-6">
-              <Sparkles className="h-4 w-4 text-yellow-300" />
-              <span className="text-white/90 text-sm font-medium">Comienza Hoy</span>
-            </div>
-            
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              ¿Listo para optimizar tu logística?
-            </h2>
-            <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto">
-              Contáctanos y descubre cómo {service.title} puede transformar tu operación
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link to="/" state={{ scrollTo: 'contact' }}>
-                <motion.button 
-                  className="group px-10 py-5 bg-white text-[#E41B13] rounded-full font-bold text-lg hover:shadow-2xl transition-all duration-300 flex items-center gap-3"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Solicitar Cotización Gratis
-                  <Zap className="h-5 w-5 group-hover:rotate-12 transition-transform" />
-                </motion.button>
-              </Link>
-              
-              <Link to="/" state={{ scrollTo: 'services' }}>
-                <motion.button 
-                  className="px-10 py-5 bg-transparent border-2 border-white text-white rounded-full font-bold text-lg hover:bg-white hover:text-[#E41B13] transition-all duration-300"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Explorar Otros Servicios
-                </motion.button>
-              </Link>
-            </div>
+      {/* Benefits */}
+      <section className="py-16 md:py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+        <div className="max-w-5xl mx-auto px-6 md:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            Beneficios para tu Negocio
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {service.benefits.map((benefit, index) => (
+              <motion.div
+                key={index}
+                className="flex gap-4 items-start"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <CheckCircle2 className="h-6 w-6 text-[#E41B13] flex-shrink-0 mt-1" />
+                <p className="text-white/90 leading-relaxed">{benefit}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            {/* Trust Indicators */}
-            <div className="flex flex-wrap justify-center gap-8 mt-16 pt-12 border-t border-white/20">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-1">15+</div>
-                <div className="text-white/70 text-sm">Años de Experiencia</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-1">10K+</div>
-                <div className="text-white/70 text-sm">Clientes Satisfechos</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-1">150+</div>
-                <div className="text-white/70 text-sm">Países Atendidos</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-1">24/7</div>
-                <div className="text-white/70 text-sm">Soporte Disponible</div>
-              </div>
-            </div>
-          </motion.div>
+      {/* Gallery */}
+      <section className="py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">
+            Galería
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {service.gallery.map((item, index) => (
+              <motion.div
+                key={index}
+                className="relative group overflow-hidden rounded-2xl aspect-video"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <img
+                  src={item.image}
+                  alt={item.caption}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <p className="text-white font-semibold">{item.caption}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 md:py-20 bg-[#E41B13]">
+        <div className="max-w-4xl mx-auto px-6 md:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            ¿Listo para optimizar tu logística?
+          </h2>
+          <p className="text-xl text-white/90 mb-8">
+            Contáctanos hoy y descubre cómo podemos impulsar tu operación
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/" state={{ scrollTo: 'contact' }}>
+              <button className="px-8 py-4 bg-white text-[#E41B13] rounded-full font-bold hover:bg-gray-100 transition-colors duration-300 shadow-xl">
+                Solicitar Cotización
+              </button>
+            </Link>
+            <Link to="/" state={{ scrollTo: 'services' }}>
+              <button className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-bold hover:bg-white hover:text-[#E41B13] transition-all duration-300">
+                Ver Otros Servicios
+              </button>
+            </Link>
+          </div>
         </div>
       </section>
     </div>
