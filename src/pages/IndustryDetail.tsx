@@ -736,45 +736,56 @@ const IndustryDetail = () => {
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-[#E41B13] via-[#FF6B6B] to-[#E41B13] rounded-2xl opacity-0 group-hover:opacity-100 blur transition-all duration-500 animate-gradient" />
                 
                 <div className="relative bg-white p-8 rounded-2xl border-2 border-gray-100 group-hover:border-transparent transition-all duration-300 overflow-hidden h-full">
-                  {/* Index Number */}
-                  <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 font-bold text-sm group-hover:bg-[#E41B13] group-hover:text-white transition-all duration-300">
-                    {String(index + 1).padStart(2, '0')}
-                  </div>
-
-                  {/* Icon with Pulse Rings */}
-                  <div className="relative mb-6 inline-block">
-                    <div className="absolute inset-0 bg-[#E41B13]/20 rounded-2xl blur-md group-hover:blur-lg transition-all" />
-                    <div className="absolute inset-0 bg-[#E41B13]/10 rounded-2xl animate-pulse-ring" />
+                  {/* Icon Container with Modern Design */}
+                  <div className="relative mb-6">
+                    {/* Animated Background Circle */}
                     <motion.div
-                      className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-[#E41B13] to-[#C41710] flex items-center justify-center text-white shadow-lg"
-                      whileHover={{ rotate: 360, scale: 1.1 }}
-                      transition={{ duration: 0.6 }}
+                      className="absolute -inset-2 rounded-3xl bg-gradient-to-br from-[#E41B13]/20 to-purple-500/20 blur-xl"
+                      animate={{
+                        scale: [1, 1.2, 1],
+                        rotate: [0, 180, 360]
+                      }}
+                      transition={{
+                        duration: 8,
+                        repeat: Infinity,
+                        ease: "linear"
+                      }}
+                    />
+                    
+                    {/* Icon with Gradient Background */}
+                    <motion.div 
+                      className="relative w-20 h-20 rounded-3xl bg-gradient-to-br from-[#E41B13] via-[#FF4444] to-[#C41710] flex items-center justify-center text-white shadow-2xl"
+                      whileHover={{ 
+                        rotate: [0, -10, 10, -10, 0],
+                        scale: 1.1 
+                      }}
+                      transition={{ duration: 0.5 }}
                     >
-                      {useCase.icon}
+                      <div className="transform scale-125">
+                        {useCase.icon}
+                      </div>
                     </motion.div>
+                    
+                    {/* Decorative Dots */}
+                    <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-green-400 animate-pulse" />
                   </div>
 
-                  {/* Content */}
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E41B13] transition-colors duration-300">
+                  {/* Content with Better Spacing */}
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#E41B13] transition-colors duration-300 leading-tight">
                     {useCase.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed mb-4">
+                  <p className="text-gray-600 leading-relaxed text-base">
                     {useCase.description}
                   </p>
 
-                  {/* Hover Link */}
-                  <motion.div
-                    className="flex items-center gap-2 text-[#E41B13] font-semibold text-sm"
-                    initial={{ opacity: 0, x: -10 }}
-                    whileHover={{ opacity: 1, x: 0 }}
-                  >
-                    <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      Saber más →
-                    </span>
-                  </motion.div>
-
-                  {/* Decorative Corner */}
-                  <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-br from-[#E41B13]/5 to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  {/* Bottom Accent Line */}
+                  <motion.div 
+                    className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[#E41B13] to-transparent rounded-full"
+                    initial={{ width: 0 }}
+                    whileInView={{ width: '60%' }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 + 0.3 }}
+                  />
                 </div>
               </motion.div>
             ))}
@@ -905,60 +916,55 @@ const IndustryDetail = () => {
               <motion.div
                 key={index}
                 className="group relative"
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: index * 0.08, duration: 0.5 }}
-                whileHover={{ scale: 1.02, y: -4 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.08, duration: 0.6 }}
               >
-                {/* Animated Border */}
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-gray-200 via-[#E41B13]/30 to-gray-200 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                {/* Glow Effect on Hover */}
+                <div className="absolute -inset-1 bg-gradient-to-br from-green-400/50 to-emerald-500/50 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500" />
                 
-                <div className="relative bg-white border-2 border-gray-100 p-6 rounded-xl shadow-sm group-hover:shadow-xl transition-all duration-300 overflow-hidden h-full">
-                  {/* Shine Effect */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-[#E41B13]/10 to-transparent opacity-0 group-hover:opacity-100"
-                    animate={{
-                      x: ['-100%', '200%'],
-                    }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      repeatDelay: 3,
-                      ease: "easeInOut"
-                    }}
-                  />
+                {/* Card */}
+                <motion.div
+                  className="relative h-full p-6 bg-white rounded-2xl border border-gray-200 hover:border-green-400/50 transition-all duration-300 overflow-hidden shadow-md hover:shadow-xl"
+                  whileHover={{ y: -8 }}
+                >
+                  {/* Gradient Background on Hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-50/0 via-emerald-50/0 to-teal-50/0 group-hover:from-green-50/50 group-hover:via-emerald-50/30 group-hover:to-teal-50/20 transition-all duration-500" />
 
-                  <div className="flex items-start gap-4 relative">
-                    {/* Index Number */}
-                    <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-[#E41B13]/10 to-[#E41B13]/5 flex items-center justify-center">
-                      <span className="text-[#E41B13] font-bold text-sm">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                    </div>
-
-                    {/* Icon with Pulse */}
+                  <div className="relative flex items-start gap-4">
+                    {/* Modern Check Icon */}
                     <motion.div
-                      className="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 flex items-center justify-center relative"
-                      animate={{
-                        scale: [1, 1.1, 1],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: index * 0.2
-                      }}
+                      className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center shadow-lg group-hover:shadow-2xl group-hover:shadow-green-500/50 transition-all duration-300"
+                      whileHover={{ rotate: [0, 10, -10, 0], scale: 1.1 }}
+                      transition={{ duration: 0.4 }}
                     >
-                      <div className="absolute inset-0 rounded-full bg-green-400/20 animate-pulse-ring" />
-                      <CheckCircle2 className="h-5 w-5 text-green-600 relative z-10" />
+                      <CheckCircle2 className="h-7 w-7 text-white" />
+                      
+                      {/* Glow Ring */}
+                      <motion.div
+                        className="absolute inset-0 rounded-2xl bg-green-400"
+                        animate={{
+                          scale: [1, 1.3, 1],
+                          opacity: [0.5, 0, 0.5]
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: index * 0.3
+                        }}
+                      />
                     </motion.div>
 
                     {/* Text */}
-                    <p className="text-gray-700 leading-relaxed font-medium flex-1 pt-1">
+                    <p className="flex-1 text-gray-700 leading-relaxed pt-3 group-hover:text-gray-900 transition-colors">
                       {benefit}
                     </p>
                   </div>
-                </div>
+
+                  {/* Decorative Element */}
+                  <div className="absolute bottom-0 right-0 w-16 h-16 bg-gradient-to-tl from-green-100/0 to-transparent group-hover:from-green-100/30 rounded-tl-full transition-all duration-500" />
+                </motion.div>
               </motion.div>
             ))}
           </div>
@@ -995,59 +1001,78 @@ const IndustryDetail = () => {
             {industry.gallery.map((item, index) => (
               <motion.div
                 key={index}
-                className="group relative overflow-hidden rounded-3xl aspect-video"
-                initial={{ opacity: 0, rotateY: -30, scale: 0.8 }}
-                whileInView={{ opacity: 1, rotateY: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-50px" }}
+                className="group relative"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ 
                   delay: index * 0.15, 
-                  duration: 0.8,
-                  type: "spring"
-                }}
-                whileHover={{ 
-                  scale: 1.05,
-                  transition: { duration: 0.3 }
+                  duration: 0.6,
+                  ease: [0.16, 1, 0.3, 1]
                 }}
               >
-                {/* Glow Border */}
-                <div className="absolute -inset-1 bg-gradient-to-br from-[#E41B13] to-[#FF6B6B] rounded-3xl opacity-0 group-hover:opacity-50 blur-xl transition-opacity duration-500" />
+                {/* Glow Effect */}
+                <div className="absolute -inset-1 bg-gradient-to-br from-[#E41B13] via-purple-500 to-blue-500 rounded-3xl opacity-0 group-hover:opacity-70 blur-2xl transition-all duration-500" />
                 
-                {/* Image Container */}
-                <div className="relative h-full overflow-hidden rounded-3xl border-4 border-white shadow-2xl">
-                  {/* Circular Number Badge */}
-                  <motion.div 
-                    className="absolute top-4 left-4 w-12 h-12 rounded-full bg-gradient-to-br from-[#E41B13] to-[#C41710] flex items-center justify-center text-white font-bold text-lg shadow-lg z-10"
-                    initial={{ scale: 0, rotate: -180 }}
-                    whileInView={{ scale: 1, rotate: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.15 + 0.3, type: "spring" }}
-                  >
-                    {index + 1}
-                  </motion.div>
-
+                {/* Card Container */}
+                <motion.div
+                  className="relative overflow-hidden rounded-3xl aspect-video shadow-2xl"
+                  whileHover={{ 
+                    y: -8,
+                    transition: { duration: 0.3 }
+                  }}
+                >
                   {/* Image with Zoom */}
                   <motion.img 
                     src={item.image} 
                     alt={item.caption}
                     className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.4 }}
+                    whileHover={{ scale: 1.15 }}
+                    transition={{ duration: 0.6 }}
                   />
                   
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/95 via-gray-900/50 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300">
-                    <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                      <p className="text-white font-bold text-lg mb-2">{item.caption}</p>
+                  {/* Modern Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-70 group-hover:opacity-95 transition-opacity duration-500">
+                    {/* Content */}
+                    <div className="absolute inset-0 flex flex-col justify-end p-6">
+                      {/* Caption with Animation */}
+                      <motion.p 
+                        className="text-white font-bold text-lg mb-3 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300"
+                        initial={{ opacity: 0.9 }}
+                        whileHover={{ opacity: 1 }}
+                      >
+                        {item.caption}
+                      </motion.p>
+                      
+                      {/* Animated Accent Bar */}
                       <motion.div 
-                        className="w-12 h-1 bg-[#E41B13] rounded-full"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: 48 }}
+                        className="h-1.5 bg-gradient-to-r from-[#E41B13] via-purple-500 to-blue-500 rounded-full"
+                        initial={{ width: 0, opacity: 0 }}
+                        whileInView={{ width: '100%', opacity: 1 }}
                         viewport={{ once: true }}
-                        transition={{ delay: index * 0.15 + 0.5 }}
+                        transition={{ delay: index * 0.15 + 0.4, duration: 0.8 }}
                       />
+                      
+                      {/* View Details Link */}
+                      <motion.div
+                        className="mt-3 flex items-center gap-2 text-white/80 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        initial={{ x: -10 }}
+                        whileHover={{ x: 0 }}
+                      >
+                        <span className="font-medium">Ver detalles</span>
+                        <motion.span
+                          animate={{ x: [0, 5, 0] }}
+                          transition={{ duration: 1.5, repeat: Infinity }}
+                        >
+                          →
+                        </motion.span>
+                      </motion.div>
                     </div>
+                    
+                    {/* Corner Accent */}
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[#E41B13]/30 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>
