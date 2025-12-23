@@ -771,13 +771,13 @@ const ServiceDetail = () => {
             </div>
 
             <div className="relative">
-              {/* Vertical Timeline Line - Perfectly centered and ends at last circle */}
+              {/* Vertical Timeline Line - Clean single color, perfectly aligned */}
               {service.process.length > 1 && (
                 <div 
-                  className="absolute left-[31px] md:left-[39px] w-1 bg-gradient-to-b from-[#E41B13] via-blue-500 to-green-500 rounded-full"
+                  className="absolute left-[31px] md:left-[39px] w-0.5 bg-gray-300"
                   style={{
-                    top: '32px', // Half of circle height (64px/2)
-                    height: `calc(100% - 64px - ${service.process.length > 1 ? '8rem' : '0px'})` // Subtract circle size and gap
+                    top: '32px',
+                    bottom: `calc(100% - ${(service.process.length - 1) * (8 * 4) + (service.process.length - 1) * (16 * 4) + 64}px)`
                   }}
                 />
               )}
@@ -794,52 +794,26 @@ const ServiceDetail = () => {
                   >
                     {/* Step Number Circle */}
                     <div className="relative flex-shrink-0 z-10">
-                      <motion.div 
-                        className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-[#E41B13] to-[#C41710] text-white flex items-center justify-center font-bold text-xl md:text-2xl shadow-2xl shadow-[#E41B13]/40"
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                      >
+                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-[#E41B13] to-[#C41710] text-white flex items-center justify-center font-bold text-xl md:text-2xl shadow-lg">
                         {step.step}
-                      </motion.div>
-                      {/* Pulse Effect */}
-                      <div className="absolute inset-0 rounded-full bg-[#E41B13] animate-ping opacity-20" />
+                      </div>
                     </div>
 
-                    {/* Content Card */}
-                    <motion.div 
-                      className="flex-1 bg-white/80 backdrop-blur-xl border border-gray-200/60 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl hover:border-[#E41B13]/30 transition-all duration-300 group relative overflow-hidden"
-                      whileHover={{ x: 10 }}
-                    >
-                      {/* Decorative gradient */}
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#E41B13]/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    {/* Content Card - Clean design without arrows */}
+                    <div className="flex-1 bg-white border border-gray-200 p-6 md:p-8 rounded-xl shadow-sm hover:shadow-md hover:border-gray-300 transition-all duration-300">
+                      <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">
+                        {step.title}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed text-base md:text-lg">
+                        {step.description}
+                      </p>
                       
-                      <div className="relative">
-                        <div className="flex items-start justify-between mb-3">
-                          <h3 className="text-2xl font-bold text-gray-900 group-hover:text-[#E41B13] transition-colors flex-1">
-                            {step.title}
-                          </h3>
-                          <div className="ml-4 flex-shrink-0">
-                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#E41B13]/20 to-[#E41B13]/10 flex items-center justify-center group-hover:from-[#E41B13] group-hover:to-[#C41710] transition-all duration-300">
-                              <ArrowRight className="h-5 w-5 text-[#E41B13] group-hover:text-white transition-colors" />
-                            </div>
-                          </div>
-                        </div>
-                        
-                        <p className="text-gray-600 leading-relaxed text-lg mb-4">
-                          {step.description}
-                        </p>
-                        
-                        {/* Progress Indicator */}
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2 text-sm text-gray-500">
-                            <Clock className="h-4 w-4" />
-                            <span>Paso {step.step} de {service.process.length}</span>
-                          </div>
-                          {index < service.process.length - 1 && (
-                            <ChevronRight className="h-5 w-5 text-gray-300 group-hover:text-[#E41B13] transition-colors" />
-                          )}
-                        </div>
+                      {/* Simple step indicator */}
+                      <div className="mt-4 flex items-center gap-2 text-sm text-gray-400">
+                        <Clock className="h-4 w-4" />
+                        <span>Paso {step.step} de {service.process.length}</span>
                       </div>
-                    </motion.div>
+                    </div>
                   </motion.div>
                 ))}
               </div>
