@@ -80,16 +80,14 @@ const servicesData: Record<string, ServiceDetailData> = {
       }
     ],
     benefits: [
-      'Reducción de costos logísticos hasta 30% mediante optimización de rutas y consolidación',
-      'Visibilidad completa end-to-end con plataforma de tracking 24/7',
-      'Cumplimiento normativo garantizado en exportación e importación',
+      'Optimización de costos mediante selección de rutas y modos de transporte',
+      'Visibilidad completa con plataforma de tracking en tiempo real',
+      'Cumplimiento normativo en exportación e importación',
       'Flexibilidad para cambiar de modalidad según urgencia o presupuesto',
-      'Gestión integral de seguros de carga internacional',
-      'Asesoría aduanera especializada en INCOTERMS y regulaciones',
-      'Consolidación LCL para optimizar costos en cargas pequeñas',
-      'Soporte multiidioma y account manager dedicado',
-      'Integración API con tu sistema ERP/WMS',
-      'Cobertura en más de 150 países con red de partners certificados'
+      'Gestión de seguros de carga internacional',
+      'Asesoría en INCOTERMS y regulaciones aduaneras',
+      'Consolidación LCL para cargas de menor volumen',
+      'Account manager dedicado para seguimiento personalizado'
     ],
     gallery: [
       { image: 'https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?q=80&w=800&fm=webp', caption: 'Transporte Aéreo - Envíos urgentes y alto valor' },
@@ -176,16 +174,14 @@ const servicesData: Record<string, ServiceDetailData> = {
       }
     ],
     benefits: [
-      'Reducción de costos fijos hasta 40% al eliminar necesidad de infraestructura propia',
-      'Escalabilidad flexible para manejar picos estacionales sin inversión en capacidad ociosa',
-      'Visibilidad 360° de inventario con dashboards personalizados y acceso web/móvil',
-      'Mejora de nivel de servicio con fulfillment especializado y tiempos de respuesta garantizados',
-      'Reducción de mermas, roturas y obsolescencia con controles de calidad rigurosos',
-      'Certificación ISO 9001:2015 para procesos estandarizados y mejora continua',
-      'Integración bidireccional con tu ERP/WMS mediante EDI, API REST o archivos planos',
-      'Reportería avanzada con KPIs logísticos: fill rate, perfect order, inventario promedio, rotación',
-      'Soporte para productos especiales: control de temperatura, productos peligrosos, alto valor',
-      'SLA contractuales con penalizaciones por incumplimiento y auditorías periódicas'
+      'Reducción de costos operativos al no requerir infraestructura propia',
+      'Escalabilidad flexible para picos estacionales',
+      'Visibilidad de inventario con dashboards en tiempo real',
+      'Fulfillment especializado con tiempos de respuesta competitivos',
+      'Controles de calidad para reducción de mermas y pérdidas',
+      'Procesos certificados ISO 9001:2015',
+      'Integración con sistemas ERP/WMS',
+      'Reportería de KPIs logísticos clave'
     ],
     gallery: [
       { image: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?q=80&w=800&fm=webp', caption: 'Centro de distribución moderno con WMS VULCANO' },
@@ -272,12 +268,12 @@ const servicesData: Record<string, ServiceDetailData> = {
       }
     ],
     benefits: [
-      'Evita multas y rechazos por documentación incorrecta',
-      'Acelera tiempos de liberación con experiencia técnica',
-      'Reduce costos con correcta clasificación arancelaria',
-      'Garantiza cumplimiento de regulaciones internacionales',
-      'Portal web para seguimiento de trámites en tiempo real',
-      'Asesoría proactiva sobre cambios normativos'
+      'Prevención de multas con documentación correcta',
+      'Agilización de tiempos de liberación',
+      'Optimización de costos con clasificación arancelaria adecuada',
+      'Cumplimiento de regulaciones internacionales',
+      'Seguimiento de trámites en tiempo real',
+      'Asesoría sobre normativas vigentes'
     ],
     gallery: [
       { image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=800&fm=webp', caption: 'Gestión documental aduanera' },
@@ -338,7 +334,7 @@ const servicesData: Record<string, ServiceDetailData> = {
       {
         step: 4,
         title: 'Tramitación de Permisos',
-        description: 'Obtención de autorizaciones gubernamentales, escoltas, cierres temporales y coordinación interinstitucional'
+        description: 'Obtención de autorizaciones gubernamentales y coordinación con autoridades competentes'
       },
       {
         step: 5,
@@ -352,21 +348,19 @@ const servicesData: Record<string, ServiceDetailData> = {
       }
     ],
     benefits: [
-      'Mitigación de riesgos con planificación exhaustiva y análisis de ingeniería previo',
-      'Experiencia comprobada en proyectos mineros, energéticos, industriales y aeroespaciales',
-      'Equipos especializados certificados: lowboys, modular trailers, SPMT, grúas de alto tonelaje',
-      'Cumplimiento normativo en todas las jurisdicciones con trámites gestionados end-to-end',
-      'Coordinación multimodal: transporte terrestre, marítimo de carga pesada, vuelos chárter',
-      'Seguros all-risk especializados para cargas de alto valor técnico',
-      'Visibilidad total con reportes fotográficos, GPS tracking y comunicación directa con PM dedicado',
-      'Soluciones customizadas para cada proyecto: no hay dos iguales',
-      'Red global de partners especializados en cargas Out of Gauge (OOG)',
-      'Soporte 24/7 durante toda la ejecución del proyecto con escalamiento inmediato'
+      'Planificación detallada con análisis de ingeniería previo',
+      'Experiencia en proyectos industriales y de gran escala',
+      'Equipos especializados certificados para cargas pesadas',
+      'Gestión de permisos y cumplimiento normativo',
+      'Coordinación multimodal terrestre y marítima',
+      'Seguros especializados para cargas de alto valor',
+      'Seguimiento con reportes y comunicación directa',
+      'Soluciones adaptadas a cada proyecto'
     ],
     gallery: [
-      { image: 'https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?q=80&w=800&fm=webp', caption: 'Maquinaria industrial de gran tonelaje' },
-      { image: 'https://images.unsplash.com/photo-1597423498219-04418210827d?q=80&w=800&fm=webp', caption: 'Equipos especializados de izaje heavy lift' },
-      { image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800&fm=webp', caption: 'Transporte OOG con escoltas y permisos especiales' }
+      { image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&fm=webp', caption: 'Grúas industriales y maquinaria de alto tonelaje' },
+      { image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&fm=webp', caption: 'Montacargas de alta capacidad para almacenaje' },
+      { image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=800&fm=webp', caption: 'Logística de maquinaria pesada y equipamiento industrial' }
     ]
   },
   'seguro-carga': {
@@ -431,16 +425,14 @@ const servicesData: Record<string, ServiceDetailData> = {
       }
     ],
     benefits: [
-      'Tranquilidad financiera: protección del 100% del valor de tu inversión en tránsito',
-      'Primas competitivas con descuentos por volumen y frecuencia de envíos',
-      'Cobertura flexible: pólizas anuales, por embarque, o declaraciones abiertas',
-      'Cumplimiento de requisitos bancarios para cartas de crédito (L/C)',
-      'Asesoría experta en términos INCOTERMS y transferencia de riesgo',
-      'Gestión integral de siniestros con abogados especializados en seguros marítimos',
-      'Acceso directo a inspectores de siniestros en principales puertos mundiales',
-      'Cobertura ampliada opcional: huelgas, guerra, demoras, lucro cesante',
-      'Certificados digitales emitidos en tiempo real para agilizar despachos aduaneros',
-      'Histórico de siniestralidad para análisis de riesgos y mejora continua de packaging'
+      'Protección del valor declarado de la carga',
+      'Primas competitivas según volumen',
+      'Cobertura flexible por embarque o anual',
+      'Cumplimiento de requisitos bancarios',
+      'Asesoría en INCOTERMS',
+      'Gestión de siniestros especializada',
+      'Certificados emitidos ágilmente',
+      'Opciones de cobertura ampliada'
     ],
     gallery: [
       { image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=800&fm=webp', caption: 'Protección financiera para tus envíos' },
@@ -785,7 +777,7 @@ const ServiceDetail = () => {
 
             <div className="relative">
               {/* Vertical Timeline Line */}
-              <div className="absolute left-8 md:left-10 top-8 md:top-10 bottom-8 md:bottom-10 w-1 bg-gradient-to-b from-[#E41B13] via-blue-500 to-green-500 rounded-full" />
+              <div className="absolute left-[31px] md:left-[39px] top-8 md:top-10 bottom-8 md:bottom-10 w-1 bg-gradient-to-b from-[#E41B13] via-blue-500 to-green-500 rounded-full" />
 
               <div className="space-y-8 md:space-y-12">
                 {service.process.map((step, index) => (
