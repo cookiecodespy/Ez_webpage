@@ -175,9 +175,6 @@ const Stats = () => {
               >
                 {/* Glassmorphism card premium con hover mejorado */}
                 <div className="relative h-full rounded-3xl overflow-hidden bg-white/80 backdrop-blur-md border border-gray-200/60 shadow-xl transition-all duration-500 ease-out group-hover:shadow-2xl group-hover:-translate-y-2 group-hover:border-[#E41B13]/30 group-hover:bg-white">
-                  {/* Gradient overlay sutil */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-gray-50/20 to-white/40 transition-opacity duration-500 group-hover:opacity-50" />
-                  
                   {/* Línea decorativa top */}
                   <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E41B13] to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
                   
@@ -186,7 +183,6 @@ const Stats = () => {
                     {/* Icono con resplandor mejorado */}
                     <div className="flex justify-center mb-5">
                       <div className="relative">
-                        <div className="absolute inset-0 bg-[#E41B13]/20 blur-xl rounded-full transition-all duration-500 group-hover:bg-[#E41B13]/40 group-hover:blur-2xl" />
                         <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center text-white shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:from-[#E41B13] group-hover:to-[#C41810]">
                           {milestone.icon}
                         </div>
