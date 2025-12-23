@@ -358,9 +358,9 @@ const servicesData: Record<string, ServiceDetailData> = {
       'Soluciones adaptadas a cada proyecto'
     ],
     gallery: [
-      { image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&fm=webp', caption: 'Grúas industriales y maquinaria de alto tonelaje' },
-      { image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&fm=webp', caption: 'Montacargas de alta capacidad para almacenaje' },
-      { image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=800&fm=webp', caption: 'Logística de maquinaria pesada y equipamiento industrial' }
+      { image: 'https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?q=80&w=800&fm=webp', caption: 'Maquinaria industrial de gran tonelaje' },
+      { image: 'https://images.unsplash.com/photo-1597423498219-04418210827d?q=80&w=800&fm=webp', caption: 'Equipos especializados de izaje heavy lift' },
+      { image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800&fm=webp', caption: 'Transporte OOG con escoltas y permisos especiales' }
     ]
   },
   'seguro-carga': {
