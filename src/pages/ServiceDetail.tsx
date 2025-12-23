@@ -360,7 +360,7 @@ const servicesData: Record<string, ServiceDetailData> = {
     gallery: [
       { image: 'https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?q=80&w=800&fm=webp', caption: 'Maquinaria industrial de gran tonelaje' },
       { image: 'https://images.unsplash.com/photo-1597423498219-04418210827d?q=80&w=800&fm=webp', caption: 'Equipos especializados de izaje heavy lift' },
-      { image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800&fm=webp', caption: 'Transporte OOG con escoltas y permisos especiales' }
+      { image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800&fm=webp', caption: 'Supervisión técnica e instalación en sitio' }
     ]
   },
   'seguro-carga': {
