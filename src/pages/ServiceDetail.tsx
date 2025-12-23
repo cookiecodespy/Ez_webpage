@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowLeft, CheckCircle2, Package, Clock, Shield, TrendingUp, Users, Globe, Sparkles, Zap, Target } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Package, Clock, Shield, TrendingUp, Users, Globe, Sparkles, Zap, Target, ArrowRight, ChevronRight } from 'lucide-react';
 import { OutlineButton } from '../components/UIButtons';
 import { useRef, useState } from 'react';
 
@@ -565,11 +565,6 @@ const ServiceDetail = () => {
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-[#E41B13] to-[#FF6B6B] opacity-0 group-hover:opacity-100 transition-opacity" />
               </button>
-              
-              <button className="px-8 py-4 bg-white/20 backdrop-blur-md text-white rounded-full font-bold border-2 border-white/40 hover:bg-white hover:text-gray-900 transition-all duration-300 flex items-center gap-2">
-                <Download className="h-5 w-5" />
-                Descargar Brochure
-              </button>
             </div>
           </motion.div>
         </motion.div>
@@ -811,20 +806,38 @@ const ServiceDetail = () => {
 
                     {/* Content Card */}
                     <motion.div 
-                      className="flex-1 bg-white/80 backdrop-blur-xl border border-gray-200/60 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group"
+                      className="flex-1 bg-white/80 backdrop-blur-xl border border-gray-200/60 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl hover:border-[#E41B13]/30 transition-all duration-300 group relative overflow-hidden"
                       whileHover={{ x: 10 }}
                     >
-                      <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#E41B13] transition-colors">
-                        {step.title}
-                      </h3>
-                      <p className="text-gray-600 leading-relaxed text-lg">
-                        {step.description}
-                      </p>
+                      {/* Decorative gradient */}
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#E41B13]/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       
-                      {/* Progress Indicator */}
-                      <div className="mt-4 flex items-center gap-2 text-sm text-gray-500">
-                        <Clock className="h-4 w-4" />
-                        <span>Paso {step.step} de {service.process.length}</span>
+                      <div className="relative">
+                        <div className="flex items-start justify-between mb-3">
+                          <h3 className="text-2xl font-bold text-gray-900 group-hover:text-[#E41B13] transition-colors flex-1">
+                            {step.title}
+                          </h3>
+                          <div className="ml-4 flex-shrink-0">
+                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#E41B13]/20 to-[#E41B13]/10 flex items-center justify-center group-hover:from-[#E41B13] group-hover:to-[#C41710] transition-all duration-300">
+                              <ArrowRight className="h-5 w-5 text-[#E41B13] group-hover:text-white transition-colors" />
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <p className="text-gray-600 leading-relaxed text-lg mb-4">
+                          {step.description}
+                        </p>
+                        
+                        {/* Progress Indicator */}
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2 text-sm text-gray-500">
+                            <Clock className="h-4 w-4" />
+                            <span>Paso {step.step} de {service.process.length}</span>
+                          </div>
+                          {index < service.process.length - 1 && (
+                            <ChevronRight className="h-5 w-5 text-gray-300 group-hover:text-[#E41B13] transition-colors" />
+                          )}
+                        </div>
                       </div>
                     </motion.div>
                   </motion.div>

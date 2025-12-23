@@ -136,8 +136,8 @@ const Footer = () => {
             <ul className="space-y-3 text-gray-300">
               <li>
                 <div className="font-semibold text-white mb-1">Correo</div>
-                <a href="mailto:tomas.sotz@blue-box.cl" className="hover:text-white/85 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E41B13]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 rounded-md px-1">
-                  tomas.sotz@blue-box.cl
+                <a href="mailto:msotz@ezlogistics.cl" className="hover:text-white/85 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E41B13]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 rounded-md px-1">
+                  msotz@ezlogistics.cl
                 </a>
               </li>
               <li>
