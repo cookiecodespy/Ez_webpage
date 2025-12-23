@@ -1,8 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowLeft, CheckCircle2, Package, Clock, Shield, TrendingUp, Users, Globe, Sparkles, Zap, Target, ArrowRight, ChevronRight } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Package, Clock, Shield, TrendingUp, Users, Globe, Sparkles, Zap, Target } from 'lucide-react';
 import { OutlineButton } from '../components/UIButtons';
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 interface ServiceDetailData {
   id: string;

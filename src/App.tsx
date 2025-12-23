@@ -11,6 +11,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Stats from './components/Stats';
 import ServiceDetail from './pages/ServiceDetail';
+import IndustryDetail from './pages/IndustryDetail';
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -63,6 +64,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/servicios/:serviceId" element={<ServiceDetail />} />
+            <Route path="/industrias/:industryId" element={<IndustryDetail />} />
           </Routes>
         </main>
         <Footer />

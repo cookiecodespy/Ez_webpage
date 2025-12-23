@@ -1,5 +1,6 @@
 import { ShoppingCart, Car, Cpu, UtensilsCrossed, Heart, Plane, Factory, Package } from 'lucide-react';
 import { motion, useReducedMotion, type Variants } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Industries = () => {
   const prefersReducedMotion = useReducedMotion();
@@ -98,9 +99,9 @@ const Industries = () => {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {industries.map((industry, index) => (
-            <motion.div
-              key={industry.title}
-              className="group relative h-72 cursor-pointer overflow-hidden rounded-2xl shadow-lg transition-all duration-300 ease-out"
+            <Link key={industry.title} to={`/industrias/${industry.slug}`}>
+              <motion.div
+                className="group relative h-72 cursor-pointer overflow-hidden rounded-2xl shadow-lg transition-all duration-300 ease-out"
               initial={prefersReducedMotion ? undefined : { opacity: 0, y: 24 }}
               whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
@@ -131,6 +132,7 @@ const Industries = () => {
                 </div>
               </div>
             </motion.div>
+            </Link>
           ))}
         </div>
 
