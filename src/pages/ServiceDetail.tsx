@@ -784,16 +784,16 @@ const ServiceDetail = () => {
 
               <div className="space-y-8 md:space-y-12">
                 {service.process.map((step, index) => (
-                  <React.Fragment key={index}>
-                    <motion.div
-                      className="relative flex gap-6 md:gap-8 items-center"
-                      initial={{ opacity: 0, x: -30 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.2 }}
-                    >
-                      {/* Step Number Circle */}
-                      <div className="relative flex-shrink-0 z-10">
+                  <motion.div
+                    key={index}
+                    className="relative flex gap-6 md:gap-8 items-center"
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.2 }}
+                  >
+                    {/* Step Number Circle */}
+                    <div className="relative flex-shrink-0 z-10">
                       <motion.div 
                         className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-[#E41B13] to-[#C41710] text-white flex items-center justify-center font-bold text-xl md:text-2xl shadow-2xl shadow-[#E41B13]/40"
                         whileHover={{ scale: 1.1, rotate: 5 }}
@@ -841,26 +841,6 @@ const ServiceDetail = () => {
                       </div>
                     </motion.div>
                   </motion.div>
-                    
-                    {/* Flecha visual entre tarjetas (excepto después de la última) */}
-                    {index < service.process.length - 1 && (
-                      <motion.div 
-                        className="flex justify-center my-6 md:my-8"
-                        initial={{ opacity: 0, y: -10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 }}
-                      >
-                        <div className="flex flex-col items-center gap-2">
-                          <div className="w-px h-8 bg-gradient-to-b from-[#E41B13] to-blue-400" />
-                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500/20 to-[#E41B13]/20 border-2 border-blue-400/30 flex items-center justify-center">
-                            <ChevronRight className="h-5 w-5 text-blue-500 rotate-90" />
-                          </div>
-                          <div className="w-px h-8 bg-gradient-to-b from-blue-400 to-green-400" />
-                        </div>
-                      </motion.div>
-                    )}
-                  </React.Fragment>
                 ))}
               </div>
             </div>

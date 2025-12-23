@@ -147,16 +147,28 @@ const Stats = () => {
         <div className="relative">
           {/* Línea conectora horizontal - visible solo en desktop */}
           <div className="hidden lg:block absolute top-[120px] left-[12.5%] right-[12.5%] h-0.5">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
-            {/* Flechas decorativas */}
-            <div className="absolute left-1/4 top-1/2 -translate-y-1/2 text-gray-400">
-              <ArrowRight className="h-4 w-4" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#E41B13]/20 via-gray-400 to-[#E41B13]/20" />
+            {/* Flechas profesionales */}
+            <div className="absolute left-1/4 top-1/2 -translate-y-1/2 -translate-x-1/2">
+              <div className="relative">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-100 to-white border-2 border-gray-300 flex items-center justify-center shadow-sm">
+                  <ArrowRight className="h-4 w-4 text-gray-600" />
+                </div>
+              </div>
             </div>
-            <div className="absolute left-2/4 top-1/2 -translate-y-1/2 text-gray-400">
-              <ArrowRight className="h-4 w-4" />
+            <div className="absolute left-2/4 top-1/2 -translate-y-1/2 -translate-x-1/2">
+              <div className="relative">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-100 to-white border-2 border-gray-300 flex items-center justify-center shadow-sm">
+                  <ArrowRight className="h-4 w-4 text-gray-600" />
+                </div>
+              </div>
             </div>
-            <div className="absolute left-3/4 top-1/2 -translate-y-1/2 text-gray-400">
-              <ArrowRight className="h-4 w-4" />
+            <div className="absolute left-3/4 top-1/2 -translate-y-1/2 -translate-x-1/2">
+              <div className="relative">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-100 to-white border-2 border-gray-300 flex items-center justify-center shadow-sm">
+                  <ArrowRight className="h-4 w-4 text-gray-600" />
+                </div>
+              </div>
             </div>
           </div>
 
