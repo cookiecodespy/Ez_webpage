@@ -771,13 +771,13 @@ const ServiceDetail = () => {
             </div>
 
             <div className="relative">
-              {/* Vertical Timeline Line - Clean single color, perfectly aligned */}
+              {/* Vertical Timeline Line - Properly calculated to reach all circles */}
               {service.process.length > 1 && (
                 <div 
-                  className="absolute left-[31px] md:left-[39px] w-0.5 bg-gray-300"
+                  className="absolute left-[31px] md:left-[39px] w-0.5 bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200"
                   style={{
                     top: '32px',
-                    bottom: `calc(100% - ${(service.process.length - 1) * (8 * 4) + (service.process.length - 1) * (16 * 4) + 64}px)`
+                    height: `calc(${(service.process.length - 1) * 8}rem + ${(service.process.length - 1) * 12}rem + 32px)`
                   }}
                 />
               )}
@@ -790,30 +790,66 @@ const ServiceDetail = () => {
                     initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.2 }}
+                    transition={{ delay: index * 0.15 }}
                   >
-                    {/* Step Number Circle */}
+                    {/* Step Number Circle with glow */}
                     <div className="relative flex-shrink-0 z-10">
-                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-[#E41B13] to-[#C41710] text-white flex items-center justify-center font-bold text-xl md:text-2xl shadow-lg">
+                      <div className="absolute inset-0 rounded-full bg-[#E41B13]/20 blur-md animate-pulse" />
+                      <motion.div 
+                        className="relative w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-[#E41B13] to-[#C41710] text-white flex items-center justify-center font-bold text-xl md:text-2xl shadow-xl shadow-[#E41B13]/30"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
                         {step.step}
-                      </div>
+                      </motion.div>
                     </div>
 
-                    {/* Content Card - Clean design without arrows */}
-                    <div className="flex-1 bg-white border border-gray-200 p-6 md:p-8 rounded-xl shadow-sm hover:shadow-md hover:border-gray-300 transition-all duration-300">
-                      <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">
-                        {step.title}
-                      </h3>
-                      <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                        {step.description}
-                      </p>
+                    {/* Content Card - Modern with depth */}
+                    <motion.div 
+                      className="flex-1 bg-white border border-gray-200 p-6 md:p-8 rounded-2xl shadow-md hover:shadow-xl hover:border-[#E41B13]/20 transition-all duration-300 group relative overflow-hidden"
+                      whileHover={{ y: -4 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      {/* Subtle gradient overlay on hover */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#E41B13]/0 to-[#E41B13]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       
-                      {/* Simple step indicator */}
-                      <div className="mt-4 flex items-center gap-2 text-sm text-gray-400">
-                        <Clock className="h-4 w-4" />
-                        <span>Paso {step.step} de {service.process.length}</span>
+                      <div className="relative">
+                        <div className="flex items-start gap-4 mb-3">
+                          <div className="flex-1">
+                            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#E41B13] transition-colors">
+                              {step.title}
+                            </h3>
+                            <p className="text-gray-600 leading-relaxed text-base md:text-lg">
+                              {step.description}
+                            </p>
+                          </div>
+                          {/* Step badge */}
+                          <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 flex items-center justify-center group-hover:border-[#E41B13]/30 transition-colors">
+                            <span className="text-2xl font-bold text-gray-300 group-hover:text-[#E41B13] transition-colors">
+                              {String(step.step).padStart(2, '0')}
+                            </span>
+                          </div>
+                        </div>
+                        
+                        {/* Progress bar */}
+                        <div className="mt-4 pt-4 border-t border-gray-100">
+                          <div className="flex items-center justify-between text-sm text-gray-500">
+                            <div className="flex items-center gap-2">
+                              <Clock className="h-4 w-4" />
+                              <span>Paso {step.step} de {service.process.length}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-24 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                                <div 
+                                  className="h-full bg-gradient-to-r from-[#E41B13] to-[#C41710] rounded-full transition-all duration-500"
+                                  style={{ width: `${(step.step / service.process.length) * 100}%` }}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    </motion.div>
                   </motion.div>
                 ))}
               </div>
