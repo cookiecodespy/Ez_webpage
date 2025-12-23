@@ -792,8 +792,8 @@ const ServiceDetail = () => {
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.2 }}
                     >
-                    {/* Step Number Circle */}
-                    <div className="relative flex-shrink-0 z-10">
+                      {/* Step Number Circle */}
+                      <div className="relative flex-shrink-0 z-10">
                       <motion.div 
                         className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-[#E41B13] to-[#C41710] text-white flex items-center justify-center font-bold text-xl md:text-2xl shadow-2xl shadow-[#E41B13]/40"
                         whileHover={{ scale: 1.1, rotate: 5 }}
@@ -840,6 +840,7 @@ const ServiceDetail = () => {
                         </div>
                       </div>
                     </motion.div>
+                  </motion.div>
                     
                     {/* Flecha visual entre tarjetas (excepto después de la última) */}
                     {index < service.process.length - 1 && (
