@@ -1,41 +1,69 @@
 # ESTRUCTURA WEB EZ LOGISTICS - INFORME PASCALE
 
-**Documento de referencia para implementación web**
+**Documento de referencia COMPLETO para implementación web**
+
+---
+
+## 0. INICIO
+
+[Hero Section - visual principal]
 
 ---
 
 ## 1. QUIÉNES SOMOS
 
 ### Introducción
-- 10+ años de experiencia
-- Holding empresarial con presencia en USA, Perú, Chile
-- Líderes en cargo internacional y aduanas Perú
-- Equipo altamente calificado
-- Combinación de experiencia + tecnología (CargoWise)
 
-### Misión
-[Pendiente extraer de screenshots]
+Somos un operador logístico digital con más de 10 años de experiencia. Pertenecemos a un holding empresarial basado en Estados Unidos con oficinas en Perú y Chile.
 
-### Visión
-[Pendiente extraer de screenshots]
+Líderes en el manejo de carga Internacional y aduanas en el Perú, con un equipo altamente calificado y especializado en diversas industrias.
+
+Combinamos nuestra experiencia y tecnología logística para construir las mejores soluciones empresariales.
+
+Potenciamos cada uno de nuestros productos digitales con **cargowise**.
+
+---
+
+### Misión / Visión
+
+**Misión:** Superar las expectativas de servicio de nuestros clientes, satisfaciendo las necesidades en toda la cadena de suministro, a través de soluciones que se aplican a los diferentes requerimientos.
+
+**Visión:** Lograr que el grupo EZ SHIP LOGISTICS cree un ambiente de amor y felicidad, donde sus colaboradores puedan desarrollarse tanto profesional como personalmente extendiendo este ambiente a todo su entorno, de una manera sustentable y sostenible en el tiempo.
+
+---
 
 ### Valores
-- Responsabilidad
-- Profesionalismo
-- Trabajo en equipo
-- Proactividad
-- Respeto y Empatía
-- Innovación
-- Honestidad
 
-### Historia / Timeline
-- **2013:** [Fundación - verificar texto exacto]
-- **2015:** [Expansión - verificar texto exacto]
-- **2019:** [Milestone - verificar texto exacto]
-- **2021:** [Último hito - verificar texto exacto]
+**Responsabilidad:** Representa nuestro valor más primordial, porque con la dedicación que cada empleado le pone de manera sustancial en cada uno de los procesos, logramos que la organización crezca y se reconozca. Hablamos de una responsabilidad tanto consigo mismos como con la comunidad, cliente y el entorno.
+
+**Profesionalismo y Trabajo en equipo:** Cada colaborador actúa desde el profesionalismo que caracteriza sus labores y de manera sustancial en cada uno de los procesos, buscando con el trabajo individual y colectivo la sinergia del equipo, para lograr los objetivos comunes.
+
+**Trabajo en equipo:** [Ya incluido arriba]
+
+**Proactividad:** La habilidad de anticiparse a posibles situaciones que puedan afectar el no cumplimiento de las expectativas de nuestros clientes.
+
+**Respeto y Empatía:** Se refiere a la capacidad de escuchar y comprender a los demás, comprendiendo y entendiendo sus necesidades y motivaciones, así como de expresar y transmitir conceptos e ideas en forma efectiva y respetuosa, tanto en términos verbales como escritos, con el objeto de optimizar el desempeño y las relaciones entre las personas, equipos y áreas.
+
+**Innovación:** Estamos abiertos a nuevas ideas y pensamientos que permitan reconocer y satisfacer las expectativas de los clientes, con la creación de servicios nuevos e introduciendo diversas soluciones tanto operativas como tecnológicas.
+
+**Honestidad:** Actuar con base en la verdad y en la justicia, dando a cada quién lo que le corresponde. Comportarse y expresarse con coherencia, integridad, transparencia y sinceridad.
+
+---
+
+### Historia de nuestra compañía
+
+**Timeline:**
+
+- **2013:** Fundación EZ Ship Logistics
+- **2015:** Apertura EZ Ship Logistics en Chile
+- **2019:** Miembros en Premier Cargo Alliance (PCA)
+- **2021:** Creación EZ United Logistics Holdings
+
+---
 
 ### Sustentabilidad
-[Pendiente extraer contenido específico de screenshots]
+
+En [Nombre de la Empresa], sabemos que el sector logístico es fundamental para la economía, pero también reconocemos nuestra responsabilidad de cuidar el medio ambiente. Por eso, hemos integrado la sustentabilidad en el corazón de nuestras operaciones, transformando cada envío en una oportunidad para construir un futuro más verde y eficiente.
 
 ---
 
@@ -63,7 +91,7 @@ Nuestra meta es ofrecer servicios logísticos confiables, seguros y en mejora co
 
 ### Freight Forwarding
 
-El servicio de freight forwarding incluye una amplia gama de actividades logísticas que van desde la planificación del envío hasta la entrega final. En lugar de solo transportar la mercancía, el agente de carga actúa como intermediario y gestor integral de la cadena de suministro internacional.
+El servicio de **freight forwarding** incluye una amplia gama de actividades logísticas que van desde la planificación del envío hasta la entrega final. En lugar de solo transportar la mercancía, el agente de carga actúa como intermediario y gestor integral de la cadena de suministro internacional.
 
 **Tipos:**
 - **Aéreo**
@@ -72,162 +100,157 @@ El servicio de freight forwarding incluye una amplia gama de actividades logíst
 - **Agencia de aduanas**
 - **Seguro de carga internacional**
 
+---
+
 ### Contract Logistics
 
-**Tipos de servicios:**
+Consiste en una solución completamente adaptada a sus necesidades, que integra desde el almacenamiento y la gestión de inventario hasta el transporte, la distribución y otros servicios de valor añadido.
+
+**Tipos:**
 - **Warehousing** (Almacenaje)
 - **Distribución**
 - **Control de inventario SKU**
 
+---
+
 ### Project Cargo
 
-Logística especializada para cargas complejas, sobredimensionadas y de alto valor en entornos desafiantes.
+Cuando los proyectos a gran escala requieren mover cargas fuera de lo común, la logística convencional no es suficiente. El **Project Cargo** es un servicio especializado y de alta complejidad, diseñado para planificar, coordinar y ejecutar el transporte de mercancías sobredimensionadas, pesadas o de alto valor en entornos desafiantes.
 
-### Otros servicios mencionados:
-- Última Milla
-- Fulfillment (verificar si se ofrece)
+En [Nombre de la Empresa], somos expertos en transformar la complejidad en una operación fluida. Nos encargamos de todos los aspectos del proyecto, desde la planificación detallada y el cumplimiento normativo hasta el transporte multimodal y el manejo de carga pesada, garantizando que su proyecto avance sin contratiempos.
+
+---
+
+### Otros servicios implementados:
+- ✅ **Transporte Internacional** (implementado con página detalle)
+- ✅ **Almacenaje y Distribución** (implementado con página detalle)
+- ✅ **Agenciamiento de Aduanas** (implementado con página detalle)
+- ✅ **Última Milla** (implementado con página detalle)
+- ✅ **Project Cargo** (implementado con página detalle)
 
 ---
 
 ## 3. INDUSTRIAS
 
-### Lista de industrias a implementar:
+### 1. Retail
 
-1. **Retail**
-   - [Descripción específica pendiente]
+Nuestro servicio de logística para el **retail** está diseñado para optimizar su cadena de suministro de principio a fin, garantizando que sus productos lleguen a la tienda o directamente al consumidor final, en el momento preciso y en perfectas condiciones.
 
-2. **Aerospace** ⚠️ FALTA IMPLEMENTAR
-   - "La industria aeroespacial exige una logística de máxima precisión y seguridad, donde cada componente es crítico..."
-   - [Contenido completo pendiente de extraer]
-
-3. **Alimentaria**
-   - [Descripción específica pendiente]
-
-4. **Industrial** ⚠️ FALTA IMPLEMENTAR
-   - [Contenido pendiente de extraer]
-
-5. **Automotriz**
-   - "Ofrecemos soluciones especializadas para gestionar la compleja cadena de suministro de piezas y componentes..."
-   - [Contenido completo pendiente de extraer]
-
-6. **Pharmaceutical / Salud**
-   - [Descripción específica pendiente]
-
-7. **Otras** ⚠️ FALTA IMPLEMENTAR
-   - Industrias generales no clasificadas
-
-### Layout sugerido:
-- Grid 4x2 (2 filas de 4 columnas)
-- Total: 8 industrias
+Desde la gestión de inventario y el almacenamiento especializado hasta la distribución eficiente y la logística inversa, nos ocupamos de cada detalle. Con tecnología avanzada y un equipo de expertos, le ayudamos a reducir costos, minimizar errores y, lo más importante, a construir la lealtad de sus clientes.
 
 ---
 
-## 4. TECNOLOGÍA
+### 2. Aerospace ⚠️ FALTA IMPLEMENTAR
+
+La industria aeroespacial exige una logística de máxima precisión y seguridad, donde cada componente es crítico. En [Nombre de la Empresa], ofrecemos soluciones logísticas especializadas para este sector, coordinando el transporte de piezas sensibles y de alto valor en un entorno global de estrictas regulaciones.
+
+Entendemos la importancia del tiempo de respuesta y la visibilidad total de la cadena de suministro. Desde la gestión de piezas de repuesto críticas (AOG) hasta la coordinación de componentes para el ensamblaje de aeronaves, nuestra experiencia garantiza que su cadena de valor esté siempre en el aire.
+
+---
+
+### 3. Alimentaria
+
+En [Nombre de la Empresa], la logística para la industria alimentaria es más que un servicio; es una promesa de calidad y seguridad. Entendemos que la frescura y la integridad de los alimentos son especiales, por lo que ofrecemos una cadena de suministro perfectamente controlada, desde el origen hasta el destino.
+
+---
+
+### 4. Industrial ⚠️ FALTA IMPLEMENTAR
+
+Desde el transporte especializado de maquinaria pesada hasta la gestión de proyectos complejos y el almacenamiento de inventarios, nuestra experiencia asegura que cada operación se realice con la máxima eficiencia, seguridad y precisión. Deje en nuestras manos las complejidades logísticas para que su negocio se mantenga en constante producción y crecimiento.
+
+---
+
+### 5. Automotriz
+
+Ofrecemos soluciones especializadas para gestionar la compleja cadena de suministro de piezas y componentes, asegurando entregas just-in-time a las plantas de fabricación.
+
+---
+
+### 6. Pharmaceutical
+
+En la industria farmacéutica, la precisión, la seguridad y el cumplimiento de las normativas son vitales para proteger la salud humana. En [Nombre de la Empresa], ofrecemos soluciones logísticas especializadas, diseñadas para gestionar productos de alta sensibilidad y valor con la máxima rigurosidad.
+
+Nuestro servicio garantiza la integridad de sus medicamentos y dispositivos médicos en cada etapa de la cadena de suministro, desde el almacenamiento controlado hasta la distribución segura y eficiente. Nos especializamos en la gestión de la cadena de frío y en asegurar una visibilidad total, para que su producto llegue a su destino en perfectas condiciones y cumpliendo con todas las regulaciones.
+
+---
+
+### 7. Otras ⚠️ FALTA IMPLEMENTAR
+
+[Industrias generales no clasificadas en las categorías anteriores]
+
+---
+
+### 📐 Layout sugerido:
+- **Grid 4x2** (2 filas de 4 columnas)
+- **Total: 7-8 industrias** (actualmente tenemos 5 implementadas)
+
+---
+
+## 4. TECNOLOGÍAS
 
 ### IT Systems:
 
 - **Integration data**
-- **WMS** - VULCANO (mencionado específicamente)
+- **WMS** (Warehouse Management System)
 - **TMS** (Transport Management System)
 - **FFW system** (Freight Forwarding system)
 
+---
+
 ### Tracking (Sistema de seguimiento):
 
-Elementos a implementar:
+**Elementos a implementar:**
 - 📄 **Facturas**
 - 📦 **Estados de pedidos**
 - 📊 **Historial de envíos**
 - 💬 **Consultas**
 
-**Nota crítica:** ¿Tracking público funcional o solo link a plataforma externa?
+**Nota:** ¿Tracking público funcional o solo link a plataforma externa?
 
 ---
 
 ## 5. CONTACTO
 
-### Elementos requeridos:
-
+**Elementos requeridos:**
 - ✅ Formulario de contacto
 - ✅ Datos de contacto visuales
 - ✅ Mapa embebido (Google Maps)
-- 📍 **Ubicación destacada:** Bodega 17B
 
 ---
 
-## 6. ESTRUCTURA GENERAL
+## 📝 ANOTACIONES DE PASCALE:
 
-### Trust Signals prioritarios:
-
-1. **Certificaciones visuales prominentes**
-   - ISO 9001:2015 badge grande con descripción
-   - Ubicación sugerida: Después de About, antes de Services
-
-2. **Casos de éxito / Case studies**
-   - 3 casos con métricas reales
-   - Diseño: Cards con blur background + overlay
-   - CTA: "Descargar caso completo (PDF)"
-
-3. **Logos de clientes reales**
-   - Grid 4x3 o 5x2 con hover effects
-
-### Secciones sugeridas (orden):
-
-1. Hero Section
-2. Quiénes Somos (About)
-3. Certificaciones (ISO + otros)
-4. Servicios
-5. Industrias
-6. Tecnología
-7. Casos de Éxito
-8. Testimonios
-9. Contacto
-10. Footer
+1. **Los textos del documento no son los finales**, son simplemente los que me mandaron
+2. **Las ventajas competitivas** incluidas en la parte de "nosotros" y no como una pestaña independiente
+3. **Cambiar "Herramientas que usamos"** (considero que es muy largo) por **"Tecnología"**. (ustedes conocen mejor el rubro, pero creo que es más corto y simple)
+4. Vamos conversando, iré enviando, viendo imágenes y contenido para ir probando
 
 ---
 
-## 7. ELEMENTOS PENDIENTES DE IMPLEMENTAR
+## ✅ CHECKLIST DE IMPLEMENTACIÓN
 
-### Prioridad ALTA (Trust & Credibility):
-- [ ] Texto ISO versión corta en sección principal
-- [ ] Sección Sustentabilidad
-- [ ] 3 industrias faltantes (Aerospace, Industrial, Otras)
-- [ ] Desglose servicios FF (Aéreo/Marítimo/Terrestre)
+### 🔴 PENDIENTES CRÍTICOS:
 
-### Prioridad MEDIA:
-- [ ] Tracking público con búsqueda
-- [ ] FAQs por servicio
-- [ ] Casos de estudio con métricas
-- [ ] Portal del Cliente (mencionado en Tecnología)
+- [ ] **Sustentabilidad:** Agregar sección/card completa (texto ya disponible arriba)
+- [ ] **Aerospace:** Agregar industria con texto completo
+- [ ] **Industrial:** Agregar industria con texto completo
+- [ ] **Otras:** Agregar industria catch-all
+- [ ] **Layout Industrias:** Cambiar de 5-column a 4x2 grid
 
-### Prioridad BAJA:
-- [ ] Calculadora básica de tiempos/costos
-- [ ] Video testimonial embebido
-- [ ] Structured data / SEO
+### 🟡 PENDIENTES IMPORTANTES:
 
----
+- [ ] **Tracking público:** Crear sección con búsqueda (Facturas, Estados, Historial, Consultas)
+- [ ] **Desglosar Transporte:** En página detalle separar Aéreo/Marítimo/Terrestre
+- [ ] **Contract Logistics:** Verificar si está suficientemente detallado
 
-## 8. NOTAS TÉCNICAS
+### ✅ COMPLETADOS:
 
-### Restricciones:
-- ❌ NO usar localStorage/sessionStorage
-- ✅ Solo React state (useState, useReducer)
-- ✅ Imágenes: Unsplash con ?q=80&w=X&fm=webp
-- ✅ Iconos: Lucide React
-- ✅ Animaciones: Framer Motion
-- ✅ Base URL: /Ez_webpage/
-- ✅ Estilo: Glassmorphism, #E41B13, Inter font
-
-### Layout de Industrias:
-- Cambiar de 5-column a 4-column (2 filas)
-- Total: 8 industrias (actualmente 5)
+- [x] ISO texto corto implementado
+- [x] 5 servicios con páginas de detalle
+- [x] Timeline historia implementada
+- [x] Valores implementados
+- [x] Footer corregido
 
 ---
 
-## CHANGELOG
-
-- **2025-12-22:** Documento creado basado en screenshots del informe de Pascale
-- Pendiente: Extraer textos completos de todas las secciones de los 6 screenshots
-
----
-
-**Última actualización:** 22 de diciembre de 2025
+**Última actualización:** 23 de diciembre de 2025 - Contenido completo extraído del informe de Pascale

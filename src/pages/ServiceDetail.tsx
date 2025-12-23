@@ -17,155 +17,197 @@ interface ServiceDetailData {
 }
 
 const servicesData: Record<string, ServiceDetailData> = {
+  'freight-forwarding': {
+    id: 'freight-forwarding',
+    title: 'Freight Forwarding',
+    subtitle: 'Gestión integral de tu cadena de suministro internacional',
+    heroImage: 'https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?q=80&w=1600&fm=webp',
+    description: 'El servicio de Freight Forwarding incluye una amplia gama de actividades logísticas que van desde la planificación del envío hasta la entrega final. En lugar de solo transportar la mercancía, actuamos como intermediario y gestor integral de toda tu cadena de suministro internacional, coordinando cada etapa para garantizar tiempos competitivos y máxima seguridad.',
+    stats: [
+      { value: '150+', label: 'Destinos Globales' },
+      { value: '98%', label: 'Entregas Puntuales' },
+      { value: '24/7', label: 'Tracking en Tiempo Real' },
+      { value: '15K+', label: 'Envíos Anuales' }
+    ],
+    features: [
+      {
+        icon: <Globe className="h-8 w-8" />,
+        title: 'Transporte Aéreo',
+        description: 'Envíos urgentes y productos de alto valor con tiempos de tránsito reducidos y máxima seguridad'
+      },
+      {
+        icon: <Package className="h-8 w-8" />,
+        title: 'Transporte Marítimo',
+        description: 'Solución económica para grandes volúmenes, FCL y LCL con consolidación optimizada'
+      },
+      {
+        icon: <TrendingUp className="h-8 w-8" />,
+        title: 'Transporte Terrestre',
+        description: 'Conexiones terrestres eficientes para rutas regionales y cross-border'
+      },
+      {
+        icon: <Shield className="h-8 w-8" />,
+        title: 'Seguro de Carga',
+        description: 'Protección integral all-risk para tu mercancía durante todo el trayecto internacional'
+      }
+    ],
+    process: [
+      {
+        step: 1,
+        title: 'Cotización Multimodal',
+        description: 'Analizamos tu carga y comparamos opciones aéreas, marítimas y terrestres para la mejor solución costo-tiempo'
+      },
+      {
+        step: 2,
+        title: 'Booking y Coordinación',
+        description: 'Reservamos espacio con carriers certificados y coordinamos recolección en origen'
+      },
+      {
+        step: 3,
+        title: 'Gestión Documental y Aduanera',
+        description: 'Tramitamos certificados de origen, permisos especiales y desaduanización completa'
+      },
+      {
+        step: 4,
+        title: 'Transporte Internacional',
+        description: 'Supervisamos el tránsito con tracking GPS y alertas proactivas ante cualquier incidencia'
+      },
+      {
+        step: 5,
+        title: 'Entrega y Confirmación',
+        description: 'Distribución final con prueba de entrega (POD) y cierre documental completo'
+      }
+    ],
+    benefits: [
+      'Reducción de costos logísticos hasta 30% mediante optimización de rutas y consolidación',
+      'Visibilidad completa end-to-end con plataforma de tracking 24/7',
+      'Cumplimiento normativo garantizado en exportación e importación',
+      'Flexibilidad para cambiar de modalidad según urgencia o presupuesto',
+      'Gestión integral de seguros de carga internacional',
+      'Asesoría aduanera especializada en INCOTERMS y regulaciones',
+      'Consolidación LCL para optimizar costos en cargas pequeñas',
+      'Soporte multiidioma y account manager dedicado',
+      'Integración API con tu sistema ERP/WMS',
+      'Cobertura en más de 150 países con red de partners certificados'
+    ],
+    gallery: [
+      { image: 'https://images.unsplash.com/photo-1520452112805-c6692c840af0?q=80&w=800&fm=webp', caption: 'Transporte Aéreo - Envíos urgentes y alto valor' },
+      { image: 'https://images.unsplash.com/photo-1605745341112-85968b19335b?q=80&w=800&fm=webp', caption: 'Transporte Marítimo - FCL y LCL' },
+      { image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=800&fm=webp', caption: 'Transporte Terrestre - Rutas regionales' }
+    ]
+  },
   'transporte-internacional': {
     id: 'transporte-internacional',
-    title: 'Transporte Internacional',
-    subtitle: 'Conectamos tu negocio con el mundo',
+    title: 'Freight Forwarding',
+    subtitle: 'Gestión integral de tu cadena de suministro internacional',
     heroImage: 'https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?q=80&w=1600&fm=webp',
-    description: 'Ofrecemos soluciones integrales de transporte multimodal (aéreo, marítimo y terrestre) con cobertura global. Nuestro equipo especializado coordina cada detalle de tu operación internacional, desde la recolección hasta la entrega final, garantizando tiempos competitivos y seguridad en cada envío.',
+    description: 'Redirigiendo a Freight Forwarding...',
     stats: [
       { value: '150+', label: 'Destinos Globales' },
       { value: '98%', label: 'Entregas Puntuales' },
       { value: '24/7', label: 'Soporte Continuo' },
       { value: '15K+', label: 'Envíos Anuales' }
     ],
-    features: [
-      {
-        icon: <Globe className="h-8 w-8" />,
-        title: 'Cobertura Global',
-        description: 'Red de partners certificados en más de 150 países con servicio puerta a puerta'
-      },
-      {
-        icon: <Clock className="h-8 w-8" />,
-        title: 'Tracking en Tiempo Real',
-        description: 'Plataforma digital con visibilidad completa de tu carga 24/7'
-      },
-      {
-        icon: <Shield className="h-8 w-8" />,
-        title: 'Seguros Integrales',
-        description: 'Protección total para tu mercancía con cobertura all-risk'
-      },
-      {
-        icon: <Users className="h-8 w-8" />,
-        title: 'Account Manager Dedicado',
-        description: 'Ejecutivo asignado para coordinar tus operaciones internacionales'
-      }
-    ],
-    process: [
-      {
-        step: 1,
-        title: 'Cotización y Planificación',
-        description: 'Analizamos tu carga, ruta y tiempos para diseñar la mejor solución logística'
-      },
-      {
-        step: 2,
-        title: 'Recolección y Consolidación',
-        description: 'Coordinamos pickup en origen y consolidamos carga según destino'
-      },
-      {
-        step: 3,
-        title: 'Gestión Aduanera',
-        description: 'Tramitamos toda la documentación de exportación e importación'
-      },
-      {
-        step: 4,
-        title: 'Transporte Internacional',
-        description: 'Movemos tu carga vía aérea, marítima o terrestre según requerimientos'
-      },
-      {
-        step: 5,
-        title: 'Entrega Final',
-        description: 'Distribución last-mile hasta la dirección final con confirmación'
-      }
-    ],
-    benefits: [
-      'Reducción de costos logísticos hasta 30% mediante optimización de rutas',
-      'Mayor control con visibilidad end-to-end en plataforma web y móvil',
-      'Cumplimiento normativo garantizado en todos los países de operación',
-      'Flexibilidad para adaptar servicios según cambios en demanda',
-      'Soporte multiidioma en español, inglés y portugués',
-      'Integración API con tu sistema ERP/WMS'
-    ],
-    gallery: [
-      { image: 'https://images.unsplash.com/photo-1520452112805-c6692c840af0?q=80&w=800&fm=webp', caption: 'Avión de carga internacional' },
-      { image: 'https://images.unsplash.com/photo-1605745341112-85968b19335b?q=80&w=800&fm=webp', caption: 'Puerto marítimo con contenedores' },
-      { image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=800&fm=webp', caption: 'Camiones de carga internacional' }
-    ]
+    features: [],
+    process: [],
+    benefits: [],
+    gallery: []
   },
-  'almacenaje-distribucion': {
-    id: 'almacenaje-distribucion',
-    title: 'Almacenaje y Distribución',
-    subtitle: 'Tu inventario, optimizado y seguro',
+  'contract-logistics': {
+    id: 'contract-logistics',
+    title: 'Contract Logistics',
+    subtitle: 'Soluciones integrales de almacenamiento y distribución',
     heroImage: 'https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=1600&fm=webp',
-    description: 'Centros de distribución de última generación equipados con tecnología WMS, inventario en línea y redes estratégicas. Optimizamos cada eslabón de tu cadena de suministro con procesos certificados y seguridad 24/7.',
+    description: 'El Contract Logistics es una solución completamente adaptada que integra almacenamiento, gestión de inventario SKU y distribución estratégica. Va más allá del simple warehousing tradicional: diseñamos operaciones logísticas end-to-end que se ajustan a tus procesos de negocio, volúmenes estacionales y necesidades específicas. Con tecnología WMS avanzada, ofrecemos visibilidad total de tu cadena de suministro desde un solo partner.',
     stats: [
-      { value: '50K+', label: 'm² de Almacenaje' },
+      { value: '50K+', label: 'm² Instalaciones' },
       { value: '99.8%', label: 'Precisión Inventario' },
-      { value: '48h', label: 'Tiempo Respuesta' },
-      { value: '10K+', label: 'SKUs Gestionados' }
+      { value: '24/7', label: 'Operación Continua' },
+      { value: '15K+', label: 'SKUs Gestionados' }
     ],
     features: [
       {
         icon: <Package className="h-8 w-8" />,
-        title: 'WMS Avanzado',
-        description: 'Sistema de gestión de almacenes con control de stock en tiempo real'
+        title: 'Warehousing Estratégico',
+        description: 'Almacenamiento en ubicaciones clave con racks selectivos, drive-in, y zonas climatizadas para productos sensibles'
       },
       {
         icon: <TrendingUp className="h-8 w-8" />,
-        title: 'Cross-Docking',
-        description: 'Reducción de tiempos con transferencia directa sin almacenamiento'
+        title: 'Distribución Multicanal',
+        description: 'Operación integrada para B2B, B2C, retail y e-commerce con fulfillment personalizado y cross-docking'
       },
       {
         icon: <Shield className="h-8 w-8" />,
-        title: 'Seguridad 24/7',
-        description: 'Vigilancia, control de acceso y cámaras de seguridad constantes'
+        title: 'Control de Inventario SKU',
+        description: 'Trazabilidad completa por lote, serial, fecha de vencimiento con WMS VULCANO y reportes en tiempo real'
       },
       {
         icon: <Clock className="h-8 w-8" />,
-        title: 'Fulfillment E-commerce',
-        description: 'Preparación de pedidos y despacho same-day para tiendas online'
+        title: 'Value-Added Services',
+        description: 'Kitting, etiquetado, reempaque, control de calidad, co-packing y servicios especializados'
       }
     ],
     process: [
       {
         step: 1,
-        title: 'Recepción de Mercancía',
-        description: 'Ingreso con inspección de calidad, etiquetado y registro en WMS'
+        title: 'Diseño de Solución',
+        description: 'Análisis de tu operación actual, volúmenes proyectados y diseño de layout óptimo adaptado a tus SKUs'
       },
       {
         step: 2,
-        title: 'Almacenamiento Estratégico',
-        description: 'Ubicación optimizada según rotación, peso y características del producto'
+        title: 'Recepción y Almacenamiento',
+        description: 'Ingreso con inspección de calidad, etiquetado inteligente, ubicación estratégica según rotación ABC'
       },
       {
         step: 3,
-        title: 'Gestión de Inventario',
-        description: 'Control permanente con alertas de stock mínimo y reportes automáticos'
+        title: 'Gestión Dinámica de Stock',
+        description: 'Monitoreo continuo con alertas automáticas de reorden, análisis de obsolescencia y optimización de espacio'
       },
       {
         step: 4,
-        title: 'Preparación de Pedidos',
-        description: 'Picking, packing y etiquetado con validación de calidad'
+        title: 'Fulfillment y Preparación',
+        description: 'Picking por voz o RF, packing personalizado, control de calidad pre-despacho, generación de documentos'
       },
       {
         step: 5,
-        title: 'Distribución',
-        description: 'Despacho coordinado según ventanas horarias y rutas optimizadas'
+        title: 'Distribución Final',
+        description: 'Coordinación de última milla, consolidación de rutas, entrega con POD digital y actualización de sistemas'
       }
     ],
     benefits: [
-      'Reducción de costos operativos al eliminar infraestructura propia',
-      'Escalabilidad inmediata según temporadas y picos de demanda',
-      'Visibilidad total de inventario desde cualquier dispositivo',
-      'Reducción de mermas y pérdidas con controles de seguridad',
-      'Reportes personalizados de KPIs logísticos',
-      'Certificaciones ISO para manejo de productos sensibles'
+      'Reducción de costos fijos hasta 40% al eliminar necesidad de infraestructura propia',
+      'Escalabilidad flexible para manejar picos estacionales sin inversión en capacidad ociosa',
+      'Visibilidad 360° de inventario con dashboards personalizados y acceso web/móvil',
+      'Mejora de nivel de servicio con fulfillment especializado y tiempos de respuesta garantizados',
+      'Reducción de mermas, roturas y obsolescencia con controles de calidad rigurosos',
+      'Certificación ISO 9001:2015 para procesos estandarizados y mejora continua',
+      'Integración bidireccional con tu ERP/WMS mediante EDI, API REST o archivos planos',
+      'Reportería avanzada con KPIs logísticos: fill rate, perfect order, inventario promedio, rotación',
+      'Soporte para productos especiales: control de temperatura, productos peligrosos, alto valor',
+      'SLA contractuales con penalizaciones por incumplimiento y auditorías periódicas'
     ],
     gallery: [
-      { image: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?q=80&w=800&fm=webp', caption: 'Centro de distribución moderno' },
-      { image: 'https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=800&fm=webp', caption: 'Sistema de racks automatizado' },
-      { image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&fm=webp', caption: 'Zona de picking y packing' }
+      { image: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?q=80&w=800&fm=webp', caption: 'Centro de distribución moderno con WMS VULCANO' },
+      { image: 'https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=800&fm=webp', caption: 'Sistema de racks y almacenamiento estratégico' },
+      { image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&fm=webp', caption: 'Zona de picking, packing y fulfillment e-commerce' }
     ]
+  },
+  'almacenaje-distribucion': {
+    id: 'almacenaje-distribucion',
+    title: 'Contract Logistics',
+    subtitle: 'Soluciones integrales de almacenamiento y distribución',
+    heroImage: 'https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=1600&fm=webp',
+    description: 'Redirigiendo a Contract Logistics...',
+    stats: [
+      { value: '50K+', label: 'm² Instalaciones' },
+      { value: '99.8%', label: 'Precisión Inventario' },
+      { value: '24/7', label: 'Operación Continua' },
+      { value: '15K+', label: 'SKUs Gestionados' }
+    ],
+    features: [],
+    process: [],
+    benefits: [],
+    gallery: []
   },
   'agenciamiento-aduanas': {
     id: 'agenciamiento-aduanas',
@@ -242,155 +284,167 @@ const servicesData: Record<string, ServiceDetailData> = {
       { image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=800&fm=webp', caption: 'Consultoría especializada' }
     ]
   },
-  'ultima-milla': {
-    id: 'ultima-milla',
-    title: 'Distribución de Última Milla',
-    subtitle: 'Conectando productos con clientes finales',
-    heroImage: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=1600&fm=webp',
-    description: 'Red de transporte capilar con seguimiento en tiempo real para entregar a tus clientes finales de forma rápida y confiable. Soluciones flexibles para e-commerce, retail y distribución urbana.',
-    stats: [
-      { value: '10K+', label: 'Entregas Mensuales' },
-      { value: '95%', label: 'First-Time Delivery' },
-      { value: '2h', label: 'Ventanas Entrega' },
-      { value: '4.8/5', label: 'Satisfacción Cliente' }
-    ],
-    features: [
-      {
-        icon: <Clock className="h-8 w-8" />,
-        title: 'Same-Day Delivery',
-        description: 'Entregas el mismo día en zonas urbanas principales'
-      },
-      {
-        icon: <Globe className="h-8 w-8" />,
-        title: 'Tracking en Vivo',
-        description: 'Tu cliente ve en tiempo real la ubicación del repartidor'
-      },
-      {
-        icon: <Package className="h-8 w-8" />,
-        title: 'Proof of Delivery',
-        description: 'Foto, firma digital y geolocalización de cada entrega'
-      },
-      {
-        icon: <Users className="h-8 w-8" />,
-        title: 'Gestión de Devoluciones',
-        description: 'Proceso ágil de reverse logistics y reintegro a stock'
-      }
-    ],
-    process: [
-      {
-        step: 1,
-        title: 'Integración de Pedidos',
-        description: 'Conexión automática con tu plataforma e-commerce o ERP'
-      },
-      {
-        step: 2,
-        title: 'Ruteo Inteligente',
-        description: 'Algoritmo optimiza rutas según tráfico, distancia y ventanas horarias'
-      },
-      {
-        step: 3,
-        title: 'Asignación de Repartidor',
-        description: 'Dispatcher coordina carga de vehículos por zona geográfica'
-      },
-      {
-        step: 4,
-        title: 'Entrega al Cliente',
-        description: 'Repartidor entrega con protocolo de servicio y captura evidencia'
-      },
-      {
-        step: 5,
-        title: 'Confirmación y Cierre',
-        description: 'Notificación automática al cliente y actualización de estados'
-      }
-    ],
-    benefits: [
-      'Mejora experiencia del cliente con entregas rápidas y confiables',
-      'Reduce costos logísticos con ruteo optimizado por IA',
-      'Aumenta tasa de conversión al ofrecer envío express',
-      'Visibilidad completa con dashboard de métricas operativas',
-      'Flexibilidad para manejar picos estacionales',
-      'Integración API plug-and-play con principales plataformas'
-    ],
-    gallery: [
-      { image: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=800&fm=webp', caption: 'Flota de última milla' },
-      { image: 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?q=80&w=800&fm=webp', caption: 'Entrega urbana rápida' },
-      { image: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?q=80&w=800&fm=webp', caption: 'Centro de despacho' }
-    ]
-  },
   'project-cargo': {
     id: 'project-cargo',
     title: 'Project Cargo',
-    subtitle: 'Logística para proyectos de gran escala',
+    subtitle: 'Logística especializada para cargas complejas y proyectos industriales',
     heroImage: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=1600&fm=webp',
-    description: 'Cuando los proyectos a gran escala requieren mover cargas fuera de lo común, la logística convencional no es suficiente. El Project Cargo es un servicio especializado y de alta complejidad, diseñado para planificar, coordinar y ejecutar el transporte de mercancías sobredimensionadas, pesadas o de alto valor en entornos desafiantes.',
+    description: 'Cuando los proyectos a gran escala requieren mover cargas fuera de lo común, la logística convencional no es suficiente. El Project Cargo es un servicio especializado y de alta complejidad, diseñado para planificar, coordinar y ejecutar el transporte de mercancías sobredimensionadas, pesadas o de alto valor técnico en entornos desafiantes. Desde maquinaria industrial hasta componentes aeroespaciales, gestionamos cada etapa con ingeniería logística dedicada, permisos especiales, equipos de izaje certificados y coordinación intermodal. Nuestro equipo de expertos evalúa rutas críticas, riesgos de tránsito y soluciones customizadas para garantizar la integridad de tu inversión.',
     stats: [
       { value: '200+', label: 'Proyectos Ejecutados' },
-      { value: '500T', label: 'Carga Máxima' },
-      { value: '35+', label: 'Países Atendidos' },
+      { value: '500T', label: 'Capacidad Máxima' },
+      { value: '35+', label: 'Países con Experiencia' },
       { value: '99.2%', label: 'Éxito de Entrega' }
     ],
     features: [
       {
         icon: <Shield className="h-8 w-8" />,
-        title: 'Planificación Detallada',
-        description: 'Ingeniería logística y estudios de viabilidad para cada proyecto'
-      },
-      {
-        icon: <TrendingUp className="h-8 w-8" />,
-        title: 'Transporte Multimodal',
-        description: 'Coordinación de rutas especiales por tierra, mar y aire'
+        title: 'Cargas Sobredimensionadas',
+        description: 'Manejo especializado de mercancía que excede dimensiones estándar de contenedores y requiere permisos de tránsito'
       },
       {
         icon: <Package className="h-8 w-8" />,
-        title: 'Carga Pesada',
-        description: 'Manejo de mercancía sobredimensionada con equipos especializados'
+        title: 'Cargas Pesadas (Heavy Lift)',
+        description: 'Equipos de izaje certificados, grúas especializadas y trailers reforzados para piezas de hasta 500 toneladas'
+      },
+      {
+        icon: <TrendingUp className="h-8 w-8" />,
+        title: 'Ingeniería Logística',
+        description: 'Estudios de ruta crítica, análisis de puentes, túneles, despeje aéreo y planificación de contingencias'
       },
       {
         icon: <Users className="h-8 w-8" />,
         title: 'Gestión de Permisos',
-        description: 'Tramitación de autorizaciones especiales y cumplimiento normativo'
+        description: 'Tramitación de escoltas policiales, autorizaciones municipales, cierres de vías y coordinación con autoridades'
       }
     ],
     process: [
       {
         step: 1,
-        title: 'Análisis y Planificación',
-        description: 'Evaluación técnica de la carga, rutas posibles y requisitos especiales'
+        title: 'Análisis Técnico Inicial',
+        description: 'Levantamiento de dimensiones, peso, centro de gravedad, fragilidad y requisitos especiales de la carga'
       },
       {
         step: 2,
-        title: 'Ingeniería Logística',
-        description: 'Diseño de solución personalizada con estudios de factibilidad y riesgo'
+        title: 'Estudio de Ruta y Factibilidad',
+        description: 'Reconocimiento físico de ruta, medición de puentes, curvas cerradas, cables aéreos y restricciones viales'
       },
       {
         step: 3,
-        title: 'Obtención de Permisos',
-        description: 'Gestión de autorizaciones, escoltas y cumplimiento normativo'
+        title: 'Diseño de Solución Customizada',
+        description: 'Selección de equipos especializados, embalaje reforzado, plan de carga y descarga con cálculos de ingeniería'
       },
       {
         step: 4,
-        title: 'Ejecución del Transporte',
-        description: 'Coordinación multimodal con equipos especializados y seguimiento 24/7'
+        title: 'Tramitación de Permisos',
+        description: 'Obtención de autorizaciones gubernamentales, escoltas, cierres temporales y coordinación interinstitucional'
       },
       {
         step: 5,
-        title: 'Instalación y Entrega',
-        description: 'Descarga, posicionamiento y entrega final con documentación completa'
+        title: 'Ejecución y Supervisión',
+        description: 'Transporte con ingenieros en sitio, monitoreo GPS 24/7, comunicación constante y gestión de imprevistos'
+      },
+      {
+        step: 6,
+        title: 'Entrega e Instalación',
+        description: 'Descarga con equipos especializados, posicionamiento final, documentación completa y cierre de proyecto'
       }
     ],
     benefits: [
-      'Reducción de riesgos con planificación exhaustiva y equipos especializados',
-      'Experiencia en manejo de cargas complejas, pesadas y sobredimensionadas',
-      'Soluciones personalizadas adaptadas a cada proyecto específico',
-      'Cumplimiento normativo garantizado en todas las jurisdicciones',
-      'Coordinación end-to-end desde origen hasta instalación final',
-      'Seguimiento en tiempo real con reportes detallados de avance',
-      'Seguro especializado para cargas de alto valor'
+      'Mitigación de riesgos con planificación exhaustiva y análisis de ingeniería previo',
+      'Experiencia comprobada en proyectos mineros, energéticos, industriales y aeroespaciales',
+      'Equipos especializados certificados: lowboys, modular trailers, SPMT, grúas de alto tonelaje',
+      'Cumplimiento normativo en todas las jurisdicciones con trámites gestionados end-to-end',
+      'Coordinación multimodal: transporte terrestre, marítimo de carga pesada, vuelos chárter',
+      'Seguros all-risk especializados para cargas de alto valor técnico',
+      'Visibilidad total con reportes fotográficos, GPS tracking y comunicación directa con PM dedicado',
+      'Soluciones customizadas para cada proyecto: no hay dos iguales',
+      'Red global de partners especializados en cargas Out of Gauge (OOG)',
+      'Soporte 24/7 durante toda la ejecución del proyecto con escalamiento inmediato'
     ],
     gallery: [
-      { image: 'https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?q=80&w=800&fm=webp', caption: 'Maquinaria industrial en tránsito' },
-      { image: 'https://images.unsplash.com/photo-1597423498219-04418210827d?q=80&w=800&fm=webp', caption: 'Grúa especializada para carga pesada' },
-      { image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800&fm=webp', caption: 'Transporte de equipos sobredimensionados' }
+      { image: 'https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?q=80&w=800&fm=webp', caption: 'Maquinaria industrial de gran tonelaje' },
+      { image: 'https://images.unsplash.com/photo-1597423498219-04418210827d?q=80&w=800&fm=webp', caption: 'Equipos especializados de izaje heavy lift' },
+      { image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800&fm=webp', caption: 'Transporte OOG con escoltas y permisos especiales' }
+    ]
+  },
+  'seguro-carga': {
+    id: 'seguro-carga',
+    title: 'Seguro de Carga Internacional',
+    subtitle: 'Protección integral para tus envíos globales',
+    heroImage: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1600&fm=webp',
+    description: 'El Seguro de Carga Internacional es una póliza especializada que protege tu mercancía contra pérdidas, daños o robos durante todo el tránsito internacional. A diferencia del seguro básico del transportista (que cubre responsabilidad limitada), nuestro seguro all-risk cubre el valor total declarado de la carga desde el momento que sale de tu almacén de origen hasta que llega al destino final. Trabajamos con aseguradoras de primer nivel para ofrecerte coberturas flexibles adaptadas al tipo de mercancía, modo de transporte y nivel de riesgo.',
+    stats: [
+      { value: '$50M+', label: 'Cobertura Anual' },
+      { value: '48h', label: 'Procesamiento Reclamos' },
+      { value: '99.5%', label: 'Satisfacción Clientes' },
+      { value: '24/7', label: 'Asistencia Siniestros' }
+    ],
+    features: [
+      {
+        icon: <Shield className="h-8 w-8" />,
+        title: 'Cobertura All-Risk',
+        description: 'Protección amplia contra todo riesgo durante tránsito: daño, pérdida, robo, mojadura, contaminación y más'
+      },
+      {
+        icon: <Package className="h-8 w-8" />,
+        title: 'Pólizas Especializadas',
+        description: 'Seguros adaptados por tipo de mercancía: perecederos, electrónicos, maquinaria, químicos, alto valor'
+      },
+      {
+        icon: <Globe className="h-8 w-8" />,
+        title: 'Alcance Global',
+        description: 'Cobertura en cualquier origen/destino mundial con aseguradoras internacionales de primer nivel'
+      },
+      {
+        icon: <TrendingUp className="h-8 w-8" />,
+        title: 'Gestión de Siniestros',
+        description: 'Asesoría completa en caso de reclamo: inspección, documentación, negociación y recuperación de valores'
+      }
+    ],
+    process: [
+      {
+        step: 1,
+        title: 'Cotización Personalizada',
+        description: 'Analizamos tipo de mercancía, valor, ruta, modo de transporte e INCOTERM para cotizar prima competitiva'
+      },
+      {
+        step: 2,
+        title: 'Emisión de Póliza',
+        description: 'Certificado de seguro emitido en minutos con cobertura desde warehouse to warehouse'
+      },
+      {
+        step: 3,
+        title: 'Tracking y Monitoreo',
+        description: 'Seguimiento de carga asegurada con alertas ante desviaciones o incidentes durante tránsito'
+      },
+      {
+        step: 4,
+        title: 'Gestión de Siniestro (si aplica)',
+        description: 'Notificación inmediata, coordinación de inspección, recopilación de evidencias y documentación de reclamo'
+      },
+      {
+        step: 5,
+        title: 'Indemnización',
+        description: 'Negociación con aseguradora y pago de indemnización por valor asegurado en plazos competitivos'
+      }
+    ],
+    benefits: [
+      'Tranquilidad financiera: protección del 100% del valor de tu inversión en tránsito',
+      'Primas competitivas con descuentos por volumen y frecuencia de envíos',
+      'Cobertura flexible: pólizas anuales, por embarque, o declaraciones abiertas',
+      'Cumplimiento de requisitos bancarios para cartas de crédito (L/C)',
+      'Asesoría experta en términos INCOTERMS y transferencia de riesgo',
+      'Gestión integral de siniestros con abogados especializados en seguros marítimos',
+      'Acceso directo a inspectores de siniestros en principales puertos mundiales',
+      'Cobertura ampliada opcional: huelgas, guerra, demoras, lucro cesante',
+      'Certificados digitales emitidos en tiempo real para agilizar despachos aduaneros',
+      'Histórico de siniestralidad para análisis de riesgos y mejora continua de packaging'
+    ],
+    gallery: [
+      { image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=800&fm=webp', caption: 'Protección financiera para tus envíos' },
+      { image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&fm=webp', caption: 'Asesoría especializada en seguros de carga' },
+      { image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=800&fm=webp', caption: 'Gestión profesional de siniestros' }
     ]
   }
 };

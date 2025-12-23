@@ -1,4 +1,4 @@
-import { ShoppingCart, Car, Cpu, UtensilsCrossed, Heart } from 'lucide-react';
+import { ShoppingCart, Car, Cpu, UtensilsCrossed, Heart, Plane, Factory, Package } from 'lucide-react';
 import { motion, useReducedMotion, type Variants } from 'framer-motion';
 
 const Industries = () => {
@@ -18,33 +18,59 @@ const Industries = () => {
       icon: <ShoppingCart className="h-10 w-10 md:h-12 md:w-12" aria-hidden="true" />,
       title: 'Retail y E-commerce',
       description: 'Cumplimiento ágil y flexible para comercios omnicanal de alto volumen',
-      image: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=800&fm=webp'
+      image: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=800&fm=webp',
+      slug: 'retail'
+    },
+    {
+      icon: <Plane className="h-10 w-10 md:h-12 md:w-12" aria-hidden="true" />,
+      title: 'Aerospace',
+      description: 'Logística de máxima precisión y seguridad para componentes críticos',
+      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=800&fm=webp',
+      slug: 'aerospace'
+    },
+    {
+      icon: <UtensilsCrossed className="h-10 w-10 md:h-12 md:w-12" aria-hidden="true" />,
+      title: 'Alimentaria',
+      description: 'Cadena de frío y logística controlada para alimentos frescos',
+      image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=800&fm=webp',
+      slug: 'alimentaria'
+    },
+    {
+      icon: <Factory className="h-10 w-10 md:h-12 md:w-12" aria-hidden="true" />,
+      title: 'Industrial',
+      description: 'Transporte especializado de maquinaria pesada y proyectos complejos',
+      image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&fm=webp',
+      slug: 'industrial'
     },
     {
       icon: <Car className="h-10 w-10 md:h-12 md:w-12" aria-hidden="true" />,
       title: 'Automotriz',
-      description: 'Manejo especializado de autopartes y vehículos con trazabilidad completa',
-      image: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=800&fm=webp'
+      description: 'Gestión just-in-time para piezas y componentes automotrices',
+      image: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=800&fm=webp',
+      slug: 'automotriz'
+    },
+    {
+      icon: <Heart className="h-10 w-10 md:h-12 md:w-12" aria-hidden="true" />,
+      title: 'Pharmaceutical',
+      description: 'Soluciones especializadas para productos de alta sensibilidad',
+      image: 'https://images.unsplash.com/photo-1584982751601-97dcc096659c?q=80&w=800&fm=webp',
+      slug: 'pharmaceutical'
     },
     {
       icon: <Cpu className="h-10 w-10 md:h-12 md:w-12" aria-hidden="true" />,
       title: 'Tecnología',
       description: 'Transporte seguro de equipos y componentes de alto valor',
-      image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&fm=webp'
+      image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&fm=webp',
+      slug: 'tecnologia'
     },
     {
-      icon: <UtensilsCrossed className="h-10 w-10 md:h-12 md:w-12" aria-hidden="true" />,
-      title: 'Alimentos y Bebidas',
-      description: 'Logística refrigerada para productos perecibles y sensibles',
-      image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=800&fm=webp'
-    },
-    {
-      icon: <Heart className="h-10 w-10 md:h-12 md:w-12" aria-hidden="true" />,
-      title: 'Salud',
-      description: 'Soluciones certificadas para la cadena de suministro médica y farmacéutica',
-      image: 'https://images.unsplash.com/photo-1584982751601-97dcc096659c?q=80&w=800&fm=webp'
+      icon: <Package className="h-10 w-10 md:h-12 md:w-12" aria-hidden="true" />,
+      title: 'Otras Industrias',
+      description: 'Soluciones logísticas adaptadas a sectores especializados',
+      image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&fm=webp',
+      slug: 'otras'
     }
-  ];
+  ];4
 
   return (
     <section
@@ -70,11 +96,11 @@ const Industries = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {industries.map((industry, index) => (
             <motion.div
               key={industry.title}
-              className="group relative h-80 cursor-pointer overflow-hidden rounded-2xl shadow-lg transition-all duration-300 ease-out"
+              className="group relative h-72 cursor-pointer overflow-hidden rounded-2xl shadow-lg transition-all duration-300 ease-out"
               initial={prefersReducedMotion ? undefined : { opacity: 0, y: 24 }}
               whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}

@@ -1,4 +1,4 @@
-import { Target, Eye, Users, Heart, Shield, Sparkles, Award } from 'lucide-react';
+import { Target, Eye, Users, Heart, Shield, Sparkles, Award, Leaf } from 'lucide-react';
 import { motion, type Variants, useReducedMotion, useInView, animate, useMotionValue } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 
@@ -460,6 +460,52 @@ const About = () => {
               </motion.div>
             ))}
           </div>
+        </div>
+
+        {/* Sustentabilidad - Nuevo según informe Pascale */}
+        <div className="mt-20">
+          <motion.div 
+            className="group relative max-w-4xl mx-auto"
+            initial={prefersReducedMotion ? undefined : { opacity: 0, y: 20 }}
+            whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            {/* Floating green shadow */}
+            <div className="absolute inset-0 bg-green-500/10 blur-2xl rounded-3xl translate-y-2 group-hover:translate-y-4 transition-all duration-500 opacity-0 group-hover:opacity-100" />
+            
+            {/* Glassmorphism card with green accent */}
+            <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-green-50/80 via-white/90 to-emerald-50/60 backdrop-blur-md border border-green-200/40 shadow-xl hover:shadow-2xl transition-all duration-500">
+              {/* Decorative elements */}
+              <div className="absolute top-0 right-0 w-40 h-40 bg-green-400/10 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-emerald-400/10 rounded-full blur-2xl" />
+              
+              {/* Content */}
+              <div className="relative p-10 md:p-12">
+                <div className="flex flex-col md:flex-row items-start gap-6">
+                  {/* Icon */}
+                  <div className="flex-shrink-0">
+                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-green-600 to-emerald-600 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                      <Leaf className="h-10 w-10 text-white" />
+                    </div>
+                  </div>
+                  
+                  {/* Text */}
+                  <div className="flex-1">
+                    <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 group-hover:text-green-700 transition-colors duration-300">
+                      Sustentabilidad
+                    </h3>
+                    <p className="text-lg text-gray-700 leading-relaxed">
+                      En EZ Logistics, sabemos que el sector logístico es fundamental para la economía, pero también reconocemos nuestra responsabilidad de cuidar el medio ambiente. Por eso, hemos integrado la sustentabilidad en el corazón de nuestras operaciones, transformando cada envío en una oportunidad para construir un futuro más verde y eficiente.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom accent line */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-green-500/40 to-transparent" />
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

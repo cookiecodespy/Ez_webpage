@@ -1,4 +1,4 @@
-import { Plane, Warehouse, ScrollText, Truck, Package } from 'lucide-react';
+import { Plane, Warehouse, ScrollText, Shield, Package } from 'lucide-react';
 import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { OutlineButton } from './UIButtons';
@@ -18,43 +18,43 @@ const Services = () => {
   const services = [
     {
       icon: <Plane className="h-11 w-11" aria-hidden="true" />,
-      title: 'Transporte Internacional',
-      description: 'Coordinamos soluciones aéreas, marítimas y terrestres según tu operación para que cada carga llegue segura y puntualmente a su destino.',
+      title: 'Freight Forwarding',
+      description: 'Gestión integral de envíos multimodales (aéreo, marítimo, terrestre) actuando como intermediario y gestor completo de tu cadena de suministro internacional.',
       color: 'from-blue-500 to-blue-600',
       overlay: 'from-blue-500/0 via-blue-500/5 to-blue-500/30',
-      slug: 'transporte-internacional'
+      slug: 'freight-forwarding'
     },
     {
       icon: <Warehouse className="h-11 w-11" aria-hidden="true" />,
-      title: 'Almacenaje y Distribución',
-      description: 'Centros de distribución con tecnología WMS, inventario en línea y redes estratégicas para optimizar cada eslabón de tu cadena.',
+      title: 'Contract Logistics',
+      description: 'Solución completamente adaptada que integra almacenamiento, gestión de inventario hasta transporte, distribución y servicios de valor añadido.',
       color: 'from-green-500 to-green-600',
       overlay: 'from-green-500/0 via-green-500/5 to-green-500/30',
-      slug: 'almacenaje-distribucion'
+      slug: 'contract-logistics'
+    },
+    {
+      icon: <Package className="h-11 w-11" aria-hidden="true" />,
+      title: 'Project Cargo',
+      description: 'Servicio especializado para planificar, coordinar y ejecutar transporte de mercancías sobredimensionadas, pesadas o de alto valor en entornos desafiantes.',
+      color: 'from-red-500 to-red-600',
+      overlay: 'from-red-500/0 via-red-500/5 to-red-500/30',
+      slug: 'project-cargo'
     },
     {
       icon: <ScrollText className="h-11 w-11" aria-hidden="true" />,
       title: 'Agenciamiento de Aduanas',
-      description: 'Equipo experto en normativa internacional que gestiona documentación, permisos y compliance para liberar tus cargas sin contratiempos.',
+      description: 'Gestión experta de documentación, permisos y compliance aduanero para liberar tus cargas sin contratiempos ni demoras.',
       color: 'from-purple-500 to-purple-600',
       overlay: 'from-purple-500/0 via-purple-500/5 to-purple-500/30',
       slug: 'agenciamiento-aduanas'
     },
     {
-      icon: <Truck className="h-11 w-11" aria-hidden="true" />,
-      title: 'Distribución de Última Milla',
-      description: 'Red de transporte capilar con seguimiento en tiempo real para entregar a tus clientes finales de forma rápida y confiable.',
+      icon: <Shield className="h-11 w-11" aria-hidden="true" />,
+      title: 'Seguro de Carga Internacional',
+      description: 'Protección integral para tus envíos internacionales con cobertura completa contra riesgos durante todo el trayecto.',
       color: 'from-orange-500 to-orange-600',
       overlay: 'from-orange-500/0 via-orange-500/5 to-orange-500/30',
-      slug: 'ultima-milla'
-    },
-    {
-      icon: <Package className="h-11 w-11" aria-hidden="true" />,
-      title: 'Project Cargo',
-      description: 'Logística especializada para cargas complejas, sobredimensionadas y de alto valor en entornos desafiantes.',
-      color: 'from-red-500 to-red-600',
-      overlay: 'from-red-500/0 via-red-500/5 to-red-500/30',
-      slug: 'project-cargo'
+      slug: 'seguro-carga'
     }
   ];
 
