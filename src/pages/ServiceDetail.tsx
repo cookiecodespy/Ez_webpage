@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowLeft, CheckCircle2, Package, Clock, Shield, TrendingUp, Users, Globe, Sparkles, Zap, Target, Download } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Package, Clock, Shield, TrendingUp, Users, Globe, Sparkles, Zap, Target } from 'lucide-react';
 import { OutlineButton } from '../components/UIButtons';
 import { useRef, useState } from 'react';
 
@@ -776,14 +776,22 @@ const ServiceDetail = () => {
             </div>
 
             <div className="relative">
-              {/* Vertical Timeline Line */}
-              <div className="absolute left-[31px] md:left-[39px] top-8 md:top-10 bottom-8 md:bottom-10 w-1 bg-gradient-to-b from-[#E41B13] via-blue-500 to-green-500 rounded-full" />
+              {/* Vertical Timeline Line - Perfectly centered and ends at last circle */}
+              {service.process.length > 1 && (
+                <div 
+                  className="absolute left-[31px] md:left-[39px] w-1 bg-gradient-to-b from-[#E41B13] via-blue-500 to-green-500 rounded-full"
+                  style={{
+                    top: '32px', // Half of circle height (64px/2)
+                    height: `calc(100% - 64px - ${service.process.length > 1 ? '8rem' : '0px'})` // Subtract circle size and gap
+                  }}
+                />
+              )}
 
               <div className="space-y-8 md:space-y-12">
                 {service.process.map((step, index) => (
                   <motion.div
                     key={index}
-                    className="relative flex gap-6 md:gap-8 items-start"
+                    className="relative flex gap-6 md:gap-8 items-center"
                     initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -903,22 +911,22 @@ const ServiceDetail = () => {
               Contáctanos y descubre cómo {service.title} puede transformar tu operación
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link to="/" state={{ scrollTo: 'contact' }}>
                 <motion.button 
-                  className="group px-10 py-5 bg-white text-[#E41B13] rounded-full font-bold text-lg hover:shadow-2xl transition-all duration-300 flex items-center gap-3"
-                  whileHover={{ scale: 1.05 }}
+                  className="group px-12 py-6 bg-white text-[#E41B13] rounded-full font-bold text-xl hover:shadow-2xl transition-all duration-300 flex items-center gap-3 shadow-xl"
+                  whileHover={{ scale: 1.08, y: -4 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   Solicitar Cotización Gratis
-                  <Zap className="h-5 w-5 group-hover:rotate-12 transition-transform" />
+                  <Zap className="h-6 w-6 group-hover:rotate-12 transition-transform" />
                 </motion.button>
               </Link>
               
               <Link to="/" state={{ scrollTo: 'services' }}>
                 <motion.button 
-                  className="px-10 py-5 bg-transparent border-2 border-white text-white rounded-full font-bold text-lg hover:bg-white hover:text-[#E41B13] transition-all duration-300"
-                  whileHover={{ scale: 1.05 }}
+                  className="px-12 py-6 bg-transparent border-2 border-white text-white rounded-full font-bold text-xl hover:bg-white hover:text-[#E41B13] transition-all duration-300"
+                  whileHover={{ scale: 1.08, y: -4 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   Explorar Otros Servicios

@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { motion, type Variants, useReducedMotion } from 'framer-motion';
 import { SubmitButton } from './UIButtons';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -32,32 +33,57 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Honeypot check
     if (formData.website) {
       setIsSubmitting(false);
       return;
     }
 
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      // EmailJS configuration - Get credentials from .env.local
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_ezlogistics',
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_contact',
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          company: formData.company,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.message,
+          to_email: 'msotz@ezlogistics.cl'
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'your_public_key_here'
+      );
 
-    setIsSubmitting(false);
-    setSubmitStatus('success');
+      setIsSubmitting(false);
+      setSubmitStatus('success');
 
-    setTimeout(() => {
-      successMessageRef.current?.focus();
-    }, 50);
+      setTimeout(() => {
+        successMessageRef.current?.focus();
+      }, 50);
 
-    setTimeout(() => {
-      setSubmitStatus('idle');
-      setFormData({
-        name: '',
-        company: '',
-        email: '',
-        phone: '',
-        service: '',
-        message: '',
-        website: ''
-      });
-    }, 3000);
+      setTimeout(() => {
+        setSubmitStatus('idle');
+        setFormData({
+          name: '',
+          company: '',
+          email: '',
+          phone: '',
+          service: '',
+          message: '',
+          website: ''
+        });
+      }, 3000);
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setIsSubmitting(false);
+      setSubmitStatus('error');
+      
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 3000);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -236,7 +262,16 @@ const Contact = () => {
                   aria-live="polite"
                   tabIndex={-1}
                 >
-                  Gracias por escribirnos. Un especialista se pondrá en contacto contigo muy pronto.
+                  ✓ Gracias por escribirnos. Un especialista se pondrá en contacto contigo muy pronto.
+                </p>
+              )}
+              {submitStatus === 'error' && (
+                <p
+                  className="mt-4 text-center text-red-600 font-semibold"
+                  role="status"
+                  aria-live="polite"
+                >
+                  ✗ Hubo un error al enviar el mensaje. Por favor intenta nuevamente o escríbenos directamente a msotz@ezlogistics.cl
                 </p>
               )}
             </form>
@@ -260,10 +295,10 @@ const Contact = () => {
                   <div>
                     <div className="text-xs font-semibold uppercase tracking-wide text-white/70">Correo</div>
                     <a
-                      href="mailto:tomas.sotz@blue-box.cl"
+                      href="mailto:msotz@ezlogistics.cl"
                       className="mt-1 inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-[#E41B13] shadow-sm transition-transform duration-200 hover:-translate-y-0.5"
                     >
-                      tomas.sotz@blue-box.cl
+                      msotz@ezlogistics.cl
                     </a>
                   </div>
                 </div>
