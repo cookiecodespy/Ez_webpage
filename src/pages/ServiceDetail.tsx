@@ -2,7 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowLeft, CheckCircle2, Package, Clock, Shield, TrendingUp, Users, Globe, Sparkles, Zap, Target, ArrowRight, ChevronRight } from 'lucide-react';
 import { OutlineButton } from '../components/UIButtons';
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 interface ServiceDetailData {
   id: string;
@@ -784,7 +784,7 @@ const ServiceDetail = () => {
 
               <div className="space-y-8 md:space-y-12">
                 {service.process.map((step, index) => (
-                  <div key={index}>
+                  <React.Fragment key={index}>
                     <motion.div
                       className="relative flex gap-6 md:gap-8 items-center"
                       initial={{ opacity: 0, x: -30 }}
@@ -840,7 +840,6 @@ const ServiceDetail = () => {
                         </div>
                       </div>
                     </motion.div>
-                  </motion.div>
                     
                     {/* Flecha visual entre tarjetas (excepto después de la última) */}
                     {index < service.process.length - 1 && (
@@ -860,7 +859,7 @@ const ServiceDetail = () => {
                         </div>
                       </motion.div>
                     )}
-                  </div>
+                  </React.Fragment>
                 ))}
               </div>
             </div>
