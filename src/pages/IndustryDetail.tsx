@@ -181,8 +181,8 @@ export default function IndustryDetail() {
             </p>
           </div>
 
-          {/* Navigation Pills - Sticky with smaller size */}
-          <div className="sticky top-20 z-40 bg-black/95 backdrop-blur-xl -mx-8 px-8 py-3 border-b border-white/10">
+          {/* Navigation Pills - Sticky with glass effect */}
+          <div className="sticky top-20 z-40 bg-gradient-to-r from-gray-900/80 via-gray-950/90 to-gray-900/80 backdrop-blur-xl -mx-8 px-8 py-3 border-b border-white/5 shadow-lg">
             <div className="flex flex-wrap gap-2 items-center">
               {industry.subpages.map((sub: any) => (
                 <button
