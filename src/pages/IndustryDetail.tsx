@@ -81,12 +81,12 @@ export default function IndustryDetail() {
     } else {
       setActiveTab('overview');
     }
-    // Scroll to content area with offset for header
+    // Scroll to content area with offset for header - increased to 200px for more space
     const timer = setTimeout(() => {
       const contentArea = document.getElementById('industry-content');
       if (contentArea) {
         const elementPosition = contentArea.getBoundingClientRect().top + window.pageYOffset;
-        const offsetPosition = elementPosition - 120; // 120px offset for header
+        const offsetPosition = elementPosition - 200; // 200px offset for better spacing
         
         window.scrollTo({
           top: offsetPosition,
@@ -183,6 +183,19 @@ export default function IndustryDetail() {
 
           {/* Title + Description */}
           <div className="mb-8">
+            <div className="flex items-center justify-between mb-6">
+              <Link
+                to="/"
+                state={{ scrollTo: fromIndustries ? 'industries' : 'services' }}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-gray-300 hover:text-white hover:bg-white/10 transition-all group"
+              >
+                <svg className="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+                Ver Otras {fromIndustries ? 'Industrias' : 'Soluciones'}
+              </Link>
+            </div>
+            
             <h1 className="text-5xl md:text-6xl font-black mb-3 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
               {industry.title}
             </h1>
@@ -194,42 +207,39 @@ export default function IndustryDetail() {
             </p>
           </div>
 
-          {/* Navigation Pills */}
-          <div className="flex flex-wrap gap-3 items-center">
-            {industry.subpages.map((sub: any) => (
-              <button
-                key={sub.id}
-                onClick={() => handleTabChange(sub.id)}
-                className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold transition-all cursor-pointer select-none ${
-                  activeTab === sub.id
-                    ? 'bg-gradient-to-r from-[#E41B13] to-[#8B0000] text-white shadow-lg shadow-red-500/30'
-                    : 'bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10'
-                }`}
-                style={{ WebkitTapHighlightColor: 'transparent' }}
-              >
-                <span className="pointer-events-none flex items-center gap-2">
+          {/* Navigation Pills - Now Sticky */}
+          <div className="sticky top-20 z-40 bg-black/95 backdrop-blur-xl -mx-8 px-8 py-4 border-b border-white/10">
+            <div className="flex flex-wrap gap-3 items-center">
+              {industry.subpages.map((sub: any) => (
+                <button
+                  key={sub.id}
+                  onClick={() => handleTabChange(sub.id)}
+                  className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold transition-all ${
+                    activeTab === sub.id
+                      ? 'bg-gradient-to-r from-[#E41B13] to-[#8B0000] text-white shadow-lg shadow-red-500/30'
+                      : 'bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10'
+                  }`}
+                >
                   {sub.icon}
-                  {sub.title}
-                </span>
-              </button>
-            ))}
+                  <span>{sub.title}</span>
+                </button>
+              ))}
 
-            <Link
-              to="/"
-              state={{ scrollTo: 'contact' }}
-              className="ml-auto inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#E41B13] to-[#8B0000] rounded-xl font-bold hover:scale-105 transition-transform shadow-lg shadow-red-500/50 group cursor-pointer"
-            >
-              <span className="pointer-events-none flex items-center gap-2">
-                Solicitar Info
-                <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </span>
-            </Link>
+              <Link
+                to="/"
+                state={{ scrollTo: 'contact' }}
+                className="ml-auto inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#E41B13] to-[#8B0000] rounded-xl font-bold hover:scale-105 transition-all shadow-lg shadow-red-500/50"
+              >
+                <span>Solicitar Info</span>
+                <ChevronRight className="h-5 w-5" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Content Area - Continues in next file due to length */}
-      <div id="industry-content">
+      {/* Content Area - with margin for sticky nav */}
+      <div id="industry-content" className="mt-8">
         <AnimatePresence mode="wait">
           {activeTab === 'overview' && (
             <OverviewContent industry={industry} activeScenario={activeScenario} setActiveScenario={setActiveScenario} expandedFAQ={expandedFAQ} setExpandedFAQ={setExpandedFAQ} />
