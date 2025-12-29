@@ -1,0 +1,16 @@
+NOTA: Este es un archivo temporal con los datos de las 8 industrias.
+Usar para reemplazar en IndustryDetail.tsx desde línea 64 (después del '{') hasta antes del cierre '};'
+
+El contenido completo ya está en mi primer reemplazo exitoso en el historial de esta sesión.
+Las 8 industrias son:
+1. retail
+2. aerospace
+3. alimentaria
+4. industrial
+5. automotriz
+6. pharmaceutical
+7. tecnologia
+8. otras
+
+Cada una tiene estructura completa con:
+- subpages, scenarios, deliverables, integrations, slas, faqs, relatedSolutions
