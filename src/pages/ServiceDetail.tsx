@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowLeft, CheckCircle2, Package, Clock, Shield, TrendingUp, Users, Globe, Sparkles, Zap, Target } from 'lucide-react';
 import { OutlineButton } from '../components/UIButtons';
@@ -439,11 +439,158 @@ const servicesData: Record<string, ServiceDetailData> = {
       { image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&fm=webp', caption: 'Asesoría especializada en seguros de carga' },
       { image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=800&fm=webp', caption: 'Gestión profesional de siniestros' }
     ]
+  },
+  'ultima-milla': {
+    id: 'ultima-milla',
+    title: 'Última Milla',
+    subtitle: 'Entrega final eficiente y puntual al destino',
+    heroImage: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=1600&fm=webp',
+    description: 'La Última Milla es el tramo final y más crítico de la cadena de suministro: llevar el producto desde el centro de distribución hasta las manos del cliente final. Es el momento de verdad donde se define la experiencia del consumidor. Gestionamos entregas B2B a sucursales comerciales y B2C a domicilios particulares con flota propia, tecnología de ruteo optimizado, notificaciones en tiempo real y prueba de entrega digital. Nuestro servicio incluye gestión de devoluciones, reprogramación ágil y opciones de entrega express según urgencia.',
+    stats: [
+      { value: '15K+', label: 'Entregas Mensuales' },
+      { value: '98.5%', label: 'Entregas Exitosas' },
+      { value: '24h', label: 'Tiempo Promedio' },
+      { value: '100%', label: 'Con Tracking' }
+    ],
+    features: [
+      {
+        icon: <TrendingUp className="h-8 w-8" />,
+        title: 'Entrega B2C Domicilio',
+        description: 'Distribución directa al consumidor final con franjas horarias y notificaciones por SMS/email'
+      },
+      {
+        icon: <Package className="h-8 w-8" />,
+        title: 'Entregas B2B',
+        description: 'Distribución programada a sucursales comerciales con documentación de entrega y facturación'
+      },
+      {
+        icon: <Zap className="h-8 w-8" />,
+        title: 'Express Same-Day',
+        description: 'Entregas urgentes en el mismo día con seguimiento en tiempo real'
+      },
+      {
+        icon: <Shield className="h-8 w-8" />,
+        title: 'Logística Inversa',
+        description: 'Gestión de devoluciones y cambios con proceso simplificado'
+      }
+    ],
+    process: [
+      {
+        step: 1,
+        title: 'Recepción y Clasificación',
+        description: 'Ingreso de paquetes al hub de distribución con escaneo y asignación de ruta'
+      },
+      {
+        step: 2,
+        title: 'Optimización de Rutas',
+        description: 'Algoritmo de ruteo para maximizar entregas por jornada minimizando kilómetros'
+      },
+      {
+        step: 3,
+        title: 'Despacho y Tracking',
+        description: 'Salida de flota con GPS activo y notificación al cliente de envío en camino'
+      },
+      {
+        step: 4,
+        title: 'Entrega Final',
+        description: 'Entrega con POD digital (foto, firma electrónica) y confirmación automática'
+      },
+      {
+        step: 5,
+        title: 'Gestión de Excepciones',
+        description: 'Reprogramación ágil si cliente ausente, devolución al hub o punto de retiro'
+      }
+    ],
+    benefits: [
+      'Entregas rápidas con ventanas horarias definidas',
+      'Tracking en tiempo real para cliente final',
+      'Notificaciones automáticas por SMS/email',
+      'Prueba de entrega digital con geolocalización',
+      'Opciones de reprogramación flexible',
+      'Gestión de devoluciones integrada',
+      'Flota propia con cobertura urbana',
+      'Reportería de entregas exitosas y fallidas'
+    ],
+    gallery: [
+      { image: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=800&fm=webp', caption: 'Entrega a domicilio con rastreo en tiempo real' },
+      { image: 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?q=80&w=800&fm=webp', caption: 'Flota especializada en última milla' },
+      { image: 'https://images.unsplash.com/photo-1558522195-e1201b090344?q=80&w=800&fm=webp', caption: 'Tecnología de ruteo optimizado' }
+    ]
+  },
+  'transporte-terrestre': {
+    id: 'transporte-terrestre',
+    title: 'Transporte Terrestre',
+    subtitle: 'Distribución terrestre eficiente y confiable',
+    heroImage: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=1600&fm=webp',
+    description: 'Servicio de transporte terrestre para distribución nacional e internacional con flota de camiones de distintas capacidades. Coordinamos envíos FTL (carga completa) y LTL (carga consolidada) con seguimiento GPS y entregas programadas.',
+    stats: [
+      { value: '200+', label: 'Camiones Disponibles' },
+      { value: '99%', label: 'Entregas a Tiempo' },
+      { value: '24/7', label: 'Monitoreo GPS' },
+      { value: '10K+', label: 'Envíos Mensuales' }
+    ],
+    features: [
+      {
+        icon: <TrendingUp className="h-8 w-8" />,
+        title: 'FTL - Carga Completa',
+        description: 'Camiones dedicados para cargas que ocupan capacidad total del vehículo'
+      },
+      {
+        icon: <Package className="h-8 w-8" />,
+        title: 'LTL - Carga Consolidada',
+        description: 'Optimización de costos compartiendo espacio con otros clientes'
+      },
+      {
+        icon: <Shield className="h-8 w-8" />,
+        title: 'Flota Especializada',
+        description: 'Camiones refrigerados, plataformas, furgones cerrados según necesidad'
+      },
+      {
+        icon: <Globe className="h-8 w-8" />,
+        title: 'Cross-Border',
+        description: 'Experiencia en transporte internacional terrestre con gestión aduanera'
+      }
+    ],
+    process: [
+      {
+        step: 1,
+        title: 'Cotización',
+        description: 'Evaluación de carga, ruta y selección de tipo de vehículo'
+      },
+      {
+        step: 2,
+        title: 'Recolección',
+        description: 'Retiro coordinado en origen con documentación completa'
+      },
+      {
+        step: 3,
+        title: 'Transporte',
+        description: 'Traslado con seguimiento GPS y comunicación constante'
+      },
+      {
+        step: 4,
+        title: 'Entrega',
+        description: 'Descarga en destino con POD y confirmación'
+      }
+    ],
+    benefits: [
+      'Flota moderna con mantenimiento preventivo',
+      'Seguimiento GPS en tiempo real',
+      'Entregas programadas según necesidad',
+      'Opciones FTL y LTL según volumen',
+      'Cobertura nacional e internacional',
+      'Seguro de carga incluido'
+    ],
+    gallery: [
+      { image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=800&fm=webp', caption: 'Flota de transporte terrestre' },
+      { image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=800&fm=webp', caption: 'Logística terrestre eficiente' }
+    ]
   }
 };
 
 const ServiceDetail = () => {
-  const { serviceId } = useParams<{ serviceId: string }>();
+  const { serviceId } = useParams<{ industryId: string }>();
+  const location = useLocation();
   const service = serviceId ? servicesData[serviceId] : servicesData['freight-forwarding'];
   const [activeTab, setActiveTab] = useState<'overview' | 'features' | 'process' | 'benefits'>('overview');
   const heroRef = useRef(null);
@@ -454,13 +601,16 @@ const ServiceDetail = () => {
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
+  // Detect if coming from industries section
+  const fromIndustries = location.state?.from === 'industries' || document.referrer.includes('/industrias/');
+
   if (!service) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Servicio no encontrado</h1>
-          <Link to="/" state={{ scrollTo: 'services' }}>
-            <OutlineButton>Volver a servicios</OutlineButton>
+          <Link to="/" state={{ scrollTo: fromIndustries ? 'industries' : 'services' }}>
+            <OutlineButton>Volver a {fromIndustries ? 'industrias' : 'servicios'}</OutlineButton>
           </Link>
         </div>
       </div>
@@ -520,11 +670,11 @@ const ServiceDetail = () => {
         >
           <Link 
             to="/"
-            state={{ scrollTo: 'services' }}
+            state={{ scrollTo: fromIndustries ? 'industries' : 'services' }}
             className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors mb-8 group w-fit backdrop-blur-sm bg-white/10 px-4 py-2 rounded-full"
           >
             <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
-            <span className="font-medium">Volver a servicios</span>
+            <span className="font-medium">Volver a {fromIndustries ? 'industrias' : 'servicios'}</span>
           </Link>
           
           <motion.div

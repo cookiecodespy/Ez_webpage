@@ -433,6 +433,7 @@ const IndustryDetail = () => {
                   <Link
                     key={index}
                     to={`/servicios/${service.link}`}
+                    state={{ from: 'industries' }}
                     className="group/btn inline-flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-white font-semibold hover:bg-white/20 hover:border-white/40 hover:scale-105 transition-all shadow-lg"
                   >
                     {service.name}
