@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { ArrowLeft, ChevronRight, Package, TrendingUp, Shield, Clock, FileText, Thermometer, Factory, Plane, Users, Globe, Sparkles } from 'lucide-react';
 import { useState, useEffect } from 'react';
@@ -23,6 +23,7 @@ interface IndustryDetailData {
 
 const IndustryDetail = () => {
   const { industryId } = useParams<{ industryId: string }>();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<'solutions' | 'capabilities'>('solutions');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
@@ -205,12 +206,12 @@ const IndustryDetail = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950">
-      {/* Animated Background Mesh */}
+      {/* Animated Background Mesh - Tonos rojos oscuros */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(228,27,19,0.15),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(59,130,246,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(139,0,0,0.1),transparent_50%)]" />
         
-        {/* Floating Orbs */}
+        {/* Floating Orbs - Rojos oscuros */}
         <motion.div
           className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#E41B13]/20 rounded-full blur-3xl"
           animate={{
@@ -221,7 +222,7 @@ const IndustryDetail = () => {
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#8B0000]/10 rounded-full blur-3xl"
           animate={{
             x: [0, -100, 0],
             y: [0, 50, 0],
@@ -250,7 +251,7 @@ const IndustryDetail = () => {
             }}
           />
           
-          {/* Gradient Overlays */}
+          {/* Gradient Overlays - Rojos */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/50 to-gray-950" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#E41B13]/20 to-transparent" />
         </motion.div>
@@ -292,7 +293,7 @@ const IndustryDetail = () => {
                 <p className="text-xl md:text-2xl text-gray-300 font-light mb-4">
                   {industry.tagline}
                 </p>
-                <div className="h-1 w-24 bg-gradient-to-r from-[#E41B13] to-blue-500 rounded-full" />
+                <div className="h-1 w-24 bg-gradient-to-r from-[#E41B13] to-[#8B0000] rounded-full" />
               </motion.div>
             </motion.div>
           </div>
@@ -311,7 +312,7 @@ const IndustryDetail = () => {
           transition={{ duration: 0.6 }}
           className="relative group"
         >
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-[#E41B13] to-blue-500 rounded-2xl blur opacity-20 group-hover:opacity-30 transition" />
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-[#E41B13] to-[#8B0000] rounded-2xl blur opacity-20 group-hover:opacity-30 transition" />
           <div className="relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-8">
             <div className="flex items-start gap-4">
               <div className="p-3 bg-gradient-to-br from-[#E41B13] to-[#C41710] rounded-xl">
@@ -372,9 +373,9 @@ const IndustryDetail = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group relative"
               >
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-[#E41B13] to-blue-500 rounded-2xl blur opacity-0 group-hover:opacity-30 transition" />
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-[#E41B13] to-[#8B0000] rounded-2xl blur opacity-0 group-hover:opacity-30 transition" />
                 <div className="relative h-full backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all">
-                  <div className="mb-4 inline-flex p-3 bg-gradient-to-br from-[#E41B13]/20 to-blue-500/20 rounded-xl text-white group-hover:scale-110 transition-transform">
+                  <div className="mb-4 inline-flex p-3 bg-gradient-to-br from-[#E41B13]/20 to-[#8B0000]/20 rounded-xl text-white group-hover:scale-110 transition-transform">
                     {solution.icon}
                   </div>
                   <h4 className="text-lg font-bold text-white mb-2">{solution.title}</h4>
@@ -392,7 +393,7 @@ const IndustryDetail = () => {
             transition={{ duration: 0.4 }}
             className="relative group"
           >
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#E41B13] to-blue-500 rounded-2xl blur opacity-20 group-hover:opacity-30 transition" />
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#E41B13] to-[#8B0000] rounded-2xl blur opacity-20 group-hover:opacity-30 transition" />
             <div className="relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-8">
               <div className="grid md:grid-cols-2 gap-4">
                 {industry.capabilities.map((cap, index) => (
@@ -403,7 +404,7 @@ const IndustryDetail = () => {
                     transition={{ duration: 0.4, delay: index * 0.1 }}
                     className="flex items-center gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors group/item"
                   >
-                    <div className="w-2 h-2 bg-gradient-to-r from-[#E41B13] to-blue-500 rounded-full group-hover/item:scale-150 transition-transform" />
+                    <div className="w-2 h-2 bg-gradient-to-r from-[#E41B13] to-[#8B0000] rounded-full group-hover/item:scale-150 transition-transform" />
                     <p className="text-gray-300 font-medium">{cap}</p>
                   </motion.div>
                 ))}
@@ -420,24 +421,24 @@ const IndustryDetail = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="relative group"
           >
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#E41B13] via-purple-500 to-blue-500 rounded-2xl blur opacity-30 group-hover:opacity-50 transition" />
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#E41B13] via-[#B81710] to-[#8B0000] rounded-2xl blur opacity-30 group-hover:opacity-50 transition" />
             <div className="relative backdrop-blur-xl bg-gradient-to-br from-gray-900/90 to-gray-800/90 border border-white/10 rounded-2xl p-8">
               <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                <div className="p-2 bg-gradient-to-br from-[#E41B13] to-blue-500 rounded-lg">
+                <div className="p-2 bg-gradient-to-br from-[#E41B13] to-[#8B0000] rounded-lg">
                   <ChevronRight className="h-5 w-5 text-white" />
                 </div>
                 Servicios Relacionados
               </h3>
               <div className="flex flex-wrap gap-4">
                 {industry.relatedServices.map((service, index) => (
-                  <Link
+                  <button
                     key={index}
-                    to={`/Ez_webpage/services/${service.link}`}
-                    className="group/btn inline-flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-white font-semibold hover:bg-white/20 hover:border-white/40 hover:scale-105 transition-all shadow-lg"
+                    onClick={() => navigate(`/Ez_webpage/services/${service.link}`)}
+                    className="group/btn inline-flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-white font-semibold hover:bg-white/20 hover:border-white/40 hover:scale-105 transition-all shadow-lg cursor-pointer"
                   >
                     {service.name}
                     <ChevronRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </Link>
+                  </button>
                 ))}
               </div>
             </div>
@@ -445,14 +446,14 @@ const IndustryDetail = () => {
         )}
       </div>
 
-      {/* CTA Section with Gradient */}
+      {/* CTA Section with Gradient - Rojo oscuro profesional */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.6 }}
         className="relative py-20 mt-16 overflow-hidden"
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-[#E41B13] via-purple-600 to-blue-600" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#E41B13] via-[#B81710] to-[#8B0000]" />
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0djItaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-30" />
         
         <div className="relative max-w-4xl mx-auto px-6 text-center">
