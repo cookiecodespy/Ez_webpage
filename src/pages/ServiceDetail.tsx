@@ -1,10 +1,11 @@
 import { useParams, Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  ArrowLeft, ChevronRight, Package, Clock, Shield, TrendingUp, 
-  Users, Globe, Zap, Target, AlertCircle, FileText, Settings,
-  BarChart3, Radio, Check, HelpCircle, ExternalLink, Home,
-  Layers, Server, Code, Database, Truck, MapPin, Calendar
+  ChevronRight, Package, Clock, Shield, TrendingUp, 
+  Globe, Zap, Target, AlertCircle, FileText, Settings,
+  Cpu, Network, Server, Database,
+  BarChart3, Radio, HelpCircle, Home,
+  Layers, Code, Truck, MapPin
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
@@ -913,44 +914,314 @@ function OverviewContent({ service, activeScenario, setActiveScenario, expandedF
 
 // Subpage Components (simplified for now)
 function OperacionContent({ service }: any) {
+  const workflows = {
+    'ultima-milla': [
+      { step: '1. Planificación de Rutas', description: 'Algoritmo optimiza rutas basado en ventanas horarias, prioridades y capacidad vehicular', tools: ['TMS Blue-box', 'Google Maps API'], time: '30 min' },
+      { step: '2. Picking & Preparación', description: 'WMS genera órdenes de preparación. Escaneo con handheld valida SKU y cantidad', tools: ['WMS VULCANO', 'Scanners Zebra'], time: '1-2 hrs' },
+      { step: '3. Carga y Despacho', description: 'Validación de carga por escaneo, asignación a conductor con app móvil', tools: ['App Conductores', 'GPS Tracker'], time: '45 min' },
+      { step: '4. Entrega al Cliente', description: 'Geolocalización en tiempo real, POD digital con firma/foto, notificaciones automáticas', tools: ['App Móvil', 'SMS/Email'], time: 'Variable' },
+      { step: '5. Confirmación y Reporte', description: 'Dashboard actualizado en tiempo real, reportes diarios de performance', tools: ['Power BI', 'API Clientes'], time: 'Inmediato' }
+    ],
+    'almacenaje-distribucion': [
+      { step: '1. Recepción de Mercadería', description: 'Validación contra OC, inspección de calidad, registro en WMS con ubicación asignada', tools: ['WMS VULCANO', 'QA Checklists'], time: '2-4 hrs' },
+      { step: '2. Almacenamiento Inteligente', description: 'Slotting automático según rotación ABC, control de temperatura/humedad para productos sensibles', tools: ['WMS', 'Sensores IoT'], time: 'Continuo' },
+      { step: '3. Gestión de Inventario', description: 'Ciclos de conteo programados, alertas de stock bajo, FEFO/FIFO automático', tools: ['WMS', 'Handhelds'], time: 'Diario' },
+      { step: '4. Picking Multi-canal', description: 'Picking por olas, batch picking para e-commerce, validación de SKU por código de barras', tools: ['WMS', 'Put-to-Light'], time: '1-3 hrs' },
+      { step: '5. Cross-docking Rápido', description: 'Transferencia directa sin almacenamiento para productos de alta rotación', tools: ['WMS', 'Sorters'], time: '<4 hrs' },
+      { step: '6. Despacho y Tracking', description: 'Preparación de documentación, control de carga, tracking multi-carrier', tools: ['TMS', 'API Carriers'], time: '1-2 hrs' }
+    ],
+    'transporte-terrestre': [
+      { step: '1. Solicitud y Cotización', description: 'Cliente solicita servicio vía portal/API, TMS calcula tarifa según ruta, peso, tipo de carga', tools: ['Portal Clientes', 'TMS'], time: '< 1 hr' },
+      { step: '2. Planificación de Carga', description: 'Asignación de vehículo según capacidad, consolidación de cargas FTL/LTL, ruteo óptimo', tools: ['TMS', 'Fleet Management'], time: '2-6 hrs' },
+      { step: '3. Carga y Documentación', description: 'Verificación de documentación (carta porte, factura, guía), sellado de unidad, checklist pre-viaje', tools: ['App Conductores', 'ERP'], time: '1-2 hrs' },
+      { step: '4. Monitoreo en Tránsito', description: 'GPS tracking cada 5 min, alertas de desvío/parada no autorizada, comunicación bidireccional', tools: ['GPS Tracker', 'Control Tower'], time: 'Continuo' },
+      { step: '5. Entrega y POD', description: 'Confirmación con firma digital, foto de descarga, notificación a cliente', tools: ['App Móvil', 'API Clientes'], time: 'Variable' },
+      { step: '6. Cierre Operacional', description: 'Liquidación de viaje, documentación digital, facturación automática', tools: ['ERP', 'Billing System'], time: '24 hrs' }
+    ]
+  };
+
+  const currentWorkflow = workflows[service.id as keyof typeof workflows] || [];
+
   return (
     <motion.div
       key="operacion"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
-      className="relative max-w-7xl mx-auto px-6 py-12"
+      className="relative max-w-7xl mx-auto px-6 py-12 space-y-8"
     >
+      {/* Header */}
       <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-8">
-        <h2 className="text-2xl font-bold mb-4">Cómo Operamos - {service.title}</h2>
-        <p className="text-gray-400">
-          Contenido detallado sobre workflows diarios, herramientas operacionales, y procesos específicos.
-          (Por implementar con contenido real)
+        <div className="flex items-center gap-3 mb-4">
+          <Settings className="w-8 h-8 text-[#E41B13]" />
+          <h2 className="text-3xl font-bold">Flujo Operacional Diario</h2>
+        </div>
+        <p className="text-gray-400 text-lg">
+          Así ejecutamos {service.title} desde la solicitud hasta la entrega. Cada paso integrado con tecnología y validaciones en tiempo real.
         </p>
+      </div>
+
+      {/* Workflow Steps */}
+      <div className="space-y-4">
+        {currentWorkflow.map((step, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: index * 0.1 }}
+            className="group relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-[#E41B13]/50 transition-all duration-300"
+          >
+            {/* Connector Line */}
+            {index < currentWorkflow.length - 1 && (
+              <div className="absolute left-8 top-full h-4 w-0.5 bg-gradient-to-b from-[#E41B13]/50 to-transparent" />
+            )}
+            
+            <div className="flex gap-6">
+              {/* Step Number Circle */}
+              <div className="flex-shrink-0">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#E41B13] to-[#8B0000] flex items-center justify-center text-2xl font-bold group-hover:scale-110 transition-transform">
+                  {index + 1}
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="flex-1 space-y-3">
+                <div className="flex items-start justify-between">
+                  <h3 className="text-xl font-bold text-white">{step.step}</h3>
+                  <div className="flex items-center gap-2 text-sm text-gray-400">
+                    <Clock className="w-4 h-4" />
+                    <span>{step.time}</span>
+                  </div>
+                </div>
+                
+                <p className="text-gray-300">{step.description}</p>
+                
+                {/* Tools Used */}
+                <div className="flex flex-wrap gap-2">
+                  {step.tools.map((tool, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-medium text-gray-300"
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* KPIs Operacionales */}
+      <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-8">
+        <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+          <TrendingUp className="w-6 h-6 text-[#E41B13]" />
+          Métricas de Performance
+        </h3>
+        <div className="grid md:grid-cols-3 gap-4">
+          <div className="bg-white/5 border border-white/10 rounded-xl p-6 text-center">
+            <div className="text-3xl font-bold text-[#E41B13] mb-2">
+              {service.id === 'ultima-milla' ? '98.5%' : service.id === 'transporte-terrestre' ? '96.2%' : '99.1%'}
+            </div>
+            <p className="text-sm text-gray-400">On-Time Delivery Rate</p>
+          </div>
+          <div className="bg-white/5 border border-white/10 rounded-xl p-6 text-center">
+            <div className="text-3xl font-bold text-[#E41B13] mb-2">
+              {service.id === 'ultima-milla' ? '<15 min' : service.id === 'transporte-terrestre' ? '<30 min' : '<5 min'}
+            </div>
+            <p className="text-sm text-gray-400">Tiempo Respuesta Incidencias</p>
+          </div>
+          <div className="bg-white/5 border border-white/10 rounded-xl p-6 text-center">
+            <div className="text-3xl font-bold text-[#E41B13] mb-2">
+              {service.id === 'ultima-milla' ? '99.7%' : service.id === 'transporte-terrestre' ? '99.3%' : '99.9%'}
+            </div>
+            <p className="text-sm text-gray-400">Exactitud Inventario</p>
+          </div>
+        </div>
       </div>
     </motion.div>
   );
 }
 
 function TecnologiaContent({ service }: any) {
+  const [activeCategory, setActiveCategory] = useState('all');
+
+  const techStack = {
+    'ultima-milla': {
+      'Sistemas Core': [
+        { name: 'TMS Blue-box', purpose: 'Gestión de transporte y ruteo dinámico', tech: 'Cloud-based, API REST' },
+        { name: 'WMS VULCANO', purpose: 'Control de inventario y picking', tech: 'SQL Server, .NET' },
+        { name: 'App Conductores', purpose: 'POD digital, geolocalización, comunicación', tech: 'React Native, Firebase' }
+      ],
+      'Integraciones': [
+        { name: 'Google Maps API', purpose: 'Cálculo de rutas y tiempos estimados', tech: 'REST API, Directions/Distance Matrix' },
+        { name: 'API Clientes', purpose: 'Notificaciones en tiempo real de entregas', tech: 'Webhooks, JSON REST' },
+        { name: 'SMS/Email Gateway', purpose: 'Alertas automatizadas a destinatarios', tech: 'Twilio, SendGrid' }
+      ],
+      'Hardware': [
+        { name: 'GPS Trackers', purpose: 'Rastreo vehicular en tiempo real', tech: 'Teltonika, GPRS' },
+        { name: 'Scanners Zebra', purpose: 'Lectura de códigos de barra en preparación', tech: 'TC52, Android' },
+        { name: 'Tablets Rugerizadas', purpose: 'Captura de firma digital y fotos', tech: 'Samsung Galaxy Tab Active' }
+      ],
+      'Analítica': [
+        { name: 'Power BI', purpose: 'Dashboards de performance operacional', tech: 'Microsoft BI Suite' },
+        { name: 'Google Analytics', purpose: 'Tracking de notificaciones y aberturas', tech: 'GA4, Event Tracking' }
+      ]
+    },
+    'almacenaje-distribucion': {
+      'Sistemas Core': [
+        { name: 'WMS VULCANO', purpose: 'Gestión integral de almacén: recepción, ubicación, picking, despacho', tech: 'SQL Server, .NET Core, APIs REST' },
+        { name: 'ERP SAP/Dynamics', purpose: 'Integración con gestión financiera y facturación', tech: 'SAP B1 / Microsoft Dynamics' },
+        { name: 'Control Tower', purpose: 'Visibilidad end-to-end de toda la cadena', tech: 'Cloud Platform, Real-time Dashboard' }
+      ],
+      'Integraciones': [
+        { name: 'E-commerce APIs', purpose: 'Sincronización de órdenes desde Shopify, VTEX, Magento', tech: 'REST/GraphQL APIs' },
+        { name: 'Carrier APIs', purpose: 'Integración con UPS, FedEx, DHL para tracking', tech: 'SOAP/REST APIs' },
+        { name: 'EDI Gateway', purpose: 'Intercambio de documentos con clientes enterprise (ASN, 856)', tech: 'EDI X12, EDIFACT' }
+      ],
+      'Hardware': [
+        { name: 'Handhelds RF', purpose: 'Escaneo y validación en tiempo real', tech: 'Zebra MC9300, Android' },
+        { name: 'Put-to-Light', purpose: 'Sistemas de luces para picking batch', tech: 'PTL Systems' },
+        { name: 'Sensores IoT', purpose: 'Monitoreo de temperatura/humedad en zonas sensibles', tech: 'MQTT, LoRaWAN' },
+        { name: 'Sorters Automáticos', purpose: 'Clasificación automática de paquetes', tech: 'Conveyor Systems' }
+      ],
+      'Analítica': [
+        { name: 'Power BI', purpose: 'KPIs de almacén: rotación, productividad, exactitud', tech: 'Microsoft BI Suite' },
+        { name: 'WMS Analytics', purpose: 'Reportes de slotting, heatmaps de picking', tech: 'Built-in Analytics' }
+      ]
+    },
+    'transporte-terrestre': {
+      'Sistemas Core': [
+        { name: 'TMS Blue-box', purpose: 'Gestión de flota, ruteo, tracking, documentación digital', tech: 'Cloud SaaS, API REST' },
+        { name: 'Fleet Management', purpose: 'Control de mantenimiento, combustible, conductores', tech: 'SQL Database, Web Portal' },
+        { name: 'Control Tower', purpose: 'Monitoreo centralizado de unidades en tránsito', tech: 'Real-time Dashboard, Alerts' }
+      ],
+      'Integraciones': [
+        { name: 'GPS Tracking Platform', purpose: 'Posicionamiento satelital cada 5 minutos', tech: 'Telemetry API, GPRS' },
+        { name: 'Portal Clientes', purpose: 'Consulta de tracking, documentación, facturas', tech: 'React SPA, Auth0' },
+        { name: 'Billing System', purpose: 'Facturación electrónica automática', tech: 'SAT CFDI, Web Services' }
+      ],
+      'Hardware': [
+        { name: 'GPS Tracker Vehicular', purpose: 'Rastreo GPS + telemetría (velocidad, frenadas, combustible)', tech: 'Teltonika FMB920' },
+        { name: 'Tablet Conductores', purpose: 'App móvil para POD, check-in/out, comunicación', tech: 'Samsung Galaxy Tab A8' },
+        { name: 'Sensores Carga', purpose: 'Apertura de puertas, temperatura en carga refrigerada', tech: 'IoT Sensors, LoRa' }
+      ],
+      'Analítica': [
+        { name: 'Power BI', purpose: 'Dashboard de performance: OTIF, costos por ruta, tiempos', tech: 'Microsoft BI Suite' },
+        { name: 'Telematics Analytics', purpose: 'Análisis de comportamiento de conducción, consumo', tech: 'Telematics Platform' }
+      ]
+    }
+  };
+
+  const currentStack = techStack[service.id as keyof typeof techStack] || {};
+  const categories = Object.keys(currentStack);
+  const displayStack = activeCategory === 'all' 
+    ? Object.entries(currentStack).flatMap(([cat, items]) => items.map(item => ({ ...item, category: cat })))
+    : (currentStack as any)[activeCategory] || [];
+
   return (
     <motion.div
       key="tecnologia"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
-      className="relative max-w-7xl mx-auto px-6 py-12"
+      className="relative max-w-7xl mx-auto px-6 py-12 space-y-8"
     >
+      {/* Header */}
       <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-8">
-        <h2 className="text-2xl font-bold mb-4">Stack Tecnológico - {service.title}</h2>
-        <div className="space-y-4">
-          <p className="text-gray-400">Herramientas, APIs, y stack técnico usado en este servicio.</p>
-          {service.integrations.map((int: Integration, i: number) => (
-            <div key={i} className="border-l-2 border-[#E41B13] pl-4">
-              <h4 className="font-bold">{int.system}</h4>
-              <p className="text-sm text-gray-400">{int.description}</p>
+        <div className="flex items-center gap-3 mb-4">
+          <Cpu className="w-8 h-8 text-[#E41B13]" />
+          <h2 className="text-3xl font-bold">Stack Tecnológico</h2>
+        </div>
+        <p className="text-gray-400 text-lg">
+          Herramientas, plataformas e integraciones que potencian {service.title}. Tecnología moderna para operación en tiempo real.
+        </p>
+      </div>
+
+      {/* Category Filters */}
+      <div className="flex flex-wrap gap-3">
+        <button
+          onClick={() => setActiveCategory('all')}
+          className={`px-4 py-2 rounded-lg font-medium transition-all ${
+            activeCategory === 'all'
+              ? 'bg-gradient-to-r from-[#E41B13] to-[#8B0000] text-white'
+              : 'bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10'
+          }`}
+        >
+          Todas las Categorías
+        </button>
+        {categories.map(cat => (
+          <button
+            key={cat}
+            onClick={() => setActiveCategory(cat)}
+            className={`px-4 py-2 rounded-lg font-medium transition-all ${
+              activeCategory === cat
+                ? 'bg-gradient-to-r from-[#E41B13] to-[#8B0000] text-white'
+                : 'bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10'
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* Tech Cards */}
+      <div className="grid md:grid-cols-2 gap-4">
+        {displayStack.map((item: any, index: number) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: index * 0.05 }}
+            className="group backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-[#E41B13]/50 transition-all duration-300"
+          >
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#E41B13]/20 to-[#8B0000]/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <Cpu className="w-6 h-6 text-[#E41B13]" />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-start justify-between mb-2">
+                  <h3 className="text-lg font-bold text-white">{item.name}</h3>
+                  {activeCategory === 'all' && (
+                    <span className="text-xs px-2 py-1 bg-[#E41B13]/20 border border-[#E41B13]/30 rounded-full text-[#E41B13]">
+                      {item.category}
+                    </span>
+                  )}
+                </div>
+                <p className="text-gray-300 text-sm mb-3">{item.purpose}</p>
+                <div className="flex items-center gap-2 text-xs text-gray-500">
+                  <Zap className="w-3 h-3" />
+                  <span>{item.tech}</span>
+                </div>
+              </div>
             </div>
-          ))}
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Architecture Diagram Section */}
+      <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-8">
+        <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
+          <Network className="w-6 h-6 text-[#E41B13]" />
+          Arquitectura de Integración
+        </h3>
+        <div className="grid md:grid-cols-3 gap-4 text-center">
+          <div className="bg-white/5 border border-white/10 rounded-xl p-6">
+            <Server className="w-8 h-8 text-[#E41B13] mx-auto mb-3" />
+            <h4 className="font-bold mb-2">Sistemas Core</h4>
+            <p className="text-sm text-gray-400">TMS, WMS, ERP integrados vía APIs REST en tiempo real</p>
+          </div>
+          <div className="bg-white/5 border border-white/10 rounded-xl p-6">
+            <Database className="w-8 h-8 text-[#E41B13] mx-auto mb-3" />
+            <h4 className="font-bold mb-2">Data Layer</h4>
+            <p className="text-sm text-gray-400">SQL Server, Redis cache, Event streaming con Kafka</p>
+          </div>
+          <div className="bg-white/5 border border-white/10 rounded-xl p-6">
+            <Globe className="w-8 h-8 text-[#E41B13] mx-auto mb-3" />
+            <h4 className="font-bold mb-2">APIs Externas</h4>
+            <p className="text-sm text-gray-400">Carriers, e-commerce, geolocalización, notificaciones</p>
+          </div>
         </div>
       </div>
     </motion.div>
@@ -964,50 +1235,122 @@ function SLAsContent({ service }: any) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
-      className="relative max-w-7xl mx-auto px-6 py-12"
+      className="relative max-w-7xl mx-auto px-6 py-12 space-y-8"
     >
-      <div className="space-y-6">
-        <h2 className="text-3xl font-black mb-6">SLAs & Compromisos</h2>
-        
-        <div className="grid md:grid-cols-2 gap-4">
-          {service.slas.map((sla: SLA, index: number) => (
-            <div
-              key={index}
-              className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all"
-            >
-              <div className="flex items-start gap-3">
-                <div className="p-2 bg-[#E41B13]/20 rounded-lg">
-                  <Check className="h-5 w-5 text-[#E41B13]" />
-                </div>
-                <div className="flex-1">
-                  <h4 className="font-bold mb-1">{sla.metric}</h4>
-                  <p className="text-sm text-gray-300 mb-2">{sla.commitment}</p>
-                  {sla.notes && (
-                    <p className="text-xs text-gray-500 italic">{sla.notes}</p>
-                  )}
-                </div>
-              </div>
+      {/* Header */}
+      <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-8">
+        <div className="flex items-center gap-3 mb-4">
+          <Shield className="w-8 h-8 text-[#E41B13]" />
+          <h2 className="text-3xl font-bold">SLAs & Compromisos Operacionales</h2>
+        </div>
+        <p className="text-gray-400 text-lg">
+          Nuestros compromisos de nivel de servicio para {service.title}. Métricas realistas y medibles, sin inflación de números.
+        </p>
+      </div>
+
+      {/* SLA Table */}
+      <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead>
+              <tr className="bg-white/10 border-b border-white/10">
+                <th className="px-6 py-4 text-left text-sm font-bold text-gray-300">Métrica</th>
+                <th className="px-6 py-4 text-left text-sm font-bold text-gray-300">Compromiso</th>
+                <th className="px-6 py-4 text-left text-sm font-bold text-gray-300">Notas</th>
+              </tr>
+            </thead>
+            <tbody>
+              {service.slas.map((sla: SLA, index: number) => (
+                <motion.tr
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="border-b border-white/5 hover:bg-white/5 transition-colors"
+                >
+                  <td className="px-6 py-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 rounded-full bg-[#E41B13]" />
+                      <span className="font-medium text-white">{sla.metric}</span>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4">
+                    <span className="px-3 py-1 bg-gradient-to-r from-[#E41B13]/20 to-[#8B0000]/20 border border-[#E41B13]/30 rounded-lg text-[#E41B13] font-bold">
+                      {sla.commitment}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-400">
+                    {sla.notes || 'Medido mensualmente, reportes disponibles en portal cliente'}
+                  </td>
+                </motion.tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Performance Dashboard Info */}
+      <div className="grid md:grid-cols-2 gap-6">
+        <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6">
+          <div className="flex items-start gap-4">
+            <div className="p-3 bg-[#E41B13]/20 rounded-lg">
+              <TrendingUp className="w-6 h-6 text-[#E41B13]" />
             </div>
-          ))}
+            <div>
+              <h3 className="text-xl font-bold mb-2">Monitoreo en Tiempo Real</h3>
+              <p className="text-gray-400 text-sm mb-3">
+                Dashboard personalizado con visibilidad de KPIs operacionales actualizados cada 15 minutos.
+              </p>
+              <ul className="space-y-1 text-sm text-gray-400">
+                <li>• Performance vs SLA acordado</li>
+                <li>• Alertas proactivas de desvíos</li>
+                <li>• Reportes históricos exportables</li>
+              </ul>
+            </div>
+          </div>
         </div>
 
-        <div className="mt-8">
-          <h3 className="text-2xl font-bold mb-4">Entregables</h3>
-          <div className="grid md:grid-cols-2 gap-4">
-            {service.deliverables.map((del: Deliverable, i: number) => (
-              <div
-                key={i}
-                className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 transition-all flex items-start gap-4"
-              >
-                <div className="p-3 bg-blue-500/20 rounded-lg text-blue-400">
-                  {del.icon}
-                </div>
-                <div>
-                  <h5 className="font-bold mb-1">{del.name}</h5>
-                  <p className="text-sm text-gray-400">{del.description}</p>
-                </div>
-              </div>
-            ))}
+        <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6">
+          <div className="flex items-start gap-4">
+            <div className="p-3 bg-[#E41B13]/20 rounded-lg">
+              <FileText className="w-6 h-6 text-[#E41B13]" />
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-2">Reportes Mensuales</h3>
+              <p className="text-gray-400 text-sm mb-3">
+                Informe ejecutivo con análisis de cumplimiento, tendencias y planes de acción.
+              </p>
+              <ul className="space-y-1 text-sm text-gray-400">
+                <li>• Cumplimiento por métrica</li>
+                <li>• Análisis de incidencias</li>
+                <li>• Recomendaciones de mejora</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Escalation Matrix */}
+      <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-8">
+        <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+          <AlertCircle className="w-6 h-6 text-[#E41B13]" />
+          Matriz de Escalamiento
+        </h3>
+        <div className="grid md:grid-cols-3 gap-4">
+          <div className="bg-white/5 border border-white/10 rounded-xl p-6">
+            <div className="text-[#E41B13] font-bold text-lg mb-2">Nivel 1 - Operaciones</div>
+            <p className="text-sm text-gray-400 mb-3">Soporte 24/7 para incidencias operacionales</p>
+            <div className="text-xs text-gray-500">Respuesta: &lt; 15 minutos</div>
+          </div>
+          <div className="bg-white/5 border border-white/10 rounded-xl p-6">
+            <div className="text-[#E41B13] font-bold text-lg mb-2">Nivel 2 - Gerencia</div>
+            <p className="text-sm text-gray-400 mb-3">Desvíos mayores de SLA o impacto crítico</p>
+            <div className="text-xs text-gray-500">Respuesta: &lt; 1 hora</div>
+          </div>
+          <div className="bg-white/5 border border-white/10 rounded-xl p-6">
+            <div className="text-[#E41B13] font-bold text-lg mb-2">Nivel 3 - Dirección</div>
+            <p className="text-sm text-gray-400 mb-3">Crisis operacionales o contractuales</p>
+            <div className="text-xs text-gray-500">Respuesta: &lt; 2 horas</div>
           </div>
         </div>
       </div>
