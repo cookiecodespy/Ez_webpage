@@ -181,32 +181,39 @@ export default function IndustryDetail() {
             </p>
           </div>
 
-          {/* Navigation Pills - Sticky with glass effect */}
-          <div className="sticky top-20 z-40 bg-gradient-to-r from-gray-900/80 via-gray-950/90 to-gray-900/80 backdrop-blur-xl -mx-8 px-8 py-3 border-b border-white/5 shadow-lg">
-            <div className="flex flex-wrap gap-2 items-center">
-              {industry.subpages.map((sub: any) => (
-                <button
-                  key={sub.id}
-                  onClick={() => handleTabChange(sub.id)}
-                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
-                    activeTab === sub.id
-                      ? 'bg-gradient-to-r from-[#E41B13] to-[#8B0000] text-white shadow-lg shadow-red-500/30'
-                      : 'bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10'
-                  }`}
-                >
-                  {sub.icon}
-                  <span>{sub.title}</span>
-                </button>
-              ))}
+          {/* Modern Floating Navigation */}
+          <div className="sticky top-20 z-40 -mx-8 px-8 py-4">
+            <div className="bg-gradient-to-br from-white/[0.08] via-white/[0.05] to-transparent backdrop-blur-2xl rounded-2xl border border-white/10 shadow-2xl p-3">
+              <div className="flex flex-wrap gap-3 items-center">
+                {industry.subpages.map((sub: any) => (
+                  <button
+                    key={sub.id}
+                    onClick={() => handleTabChange(sub.id)}
+                    className={`group relative inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all duration-300 ${
+                      activeTab === sub.id
+                        ? 'bg-gradient-to-r from-red-600 to-red-500 text-white shadow-xl shadow-red-600/40 scale-105'
+                        : 'bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white hover:scale-105 hover:shadow-lg'
+                    }`}
+                  >
+                    <span className={`transition-transform duration-300 ${activeTab === sub.id ? 'scale-110' : 'group-hover:scale-110'}`}>
+                      {sub.icon}
+                    </span>
+                    <span>{sub.title}</span>
+                    {activeTab === sub.id && (
+                      <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1/2 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent rounded-full"></div>
+                    )}
+                  </button>
+                ))}
 
-              <Link
-                to="/"
-                state={{ scrollTo: 'contact' }}
-                className="ml-auto inline-flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-[#E41B13] to-[#8B0000] rounded-lg text-sm font-bold hover:scale-105 transition-all shadow-lg shadow-red-500/50"
-              >
-                <span>Solicitar Info</span>
-                <ChevronRight className="h-4 w-4" />
-              </Link>
+                <Link
+                  to="/"
+                  state={{ scrollTo: 'contact' }}
+                  className="group ml-auto inline-flex items-center gap-2.5 bg-gradient-to-r from-red-600 to-red-500 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:shadow-2xl hover:shadow-red-600/50 transition-all duration-300 hover:scale-105 whitespace-nowrap"
+                >
+                  <span>Solicitar Info</span>
+                  <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
