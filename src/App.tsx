@@ -66,6 +66,7 @@ function App() {
             <Route path="/servicios/:serviceId" element={<ServiceDetail />} />
             <Route path="/servicios/:serviceId/:subpage" element={<ServiceDetail />} />
             <Route path="/industrias/:industryId" element={<IndustryDetail />} />
+            <Route path="/industrias/:industryId/:subpage" element={<IndustryDetail />} />
           </Routes>
         </main>
         <Footer />

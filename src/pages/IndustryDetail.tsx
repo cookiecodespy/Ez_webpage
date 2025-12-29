@@ -81,8 +81,16 @@ export default function IndustryDetail() {
     } else {
       setActiveTab('overview');
     }
-    // Scroll to top when tab changes
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Scroll to content area smoothly when tab changes
+    const timer = setTimeout(() => {
+      const contentArea = document.getElementById('industry-content');
+      if (contentArea) {
+        contentArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        window.scrollTo({ top: 200, behavior: 'smooth' });
+      }
+    }, 100);
+    return () => clearTimeout(timer);
   }, [subpage]);
 
   // Initial scroll on mount to show hero properly
@@ -183,23 +191,12 @@ export default function IndustryDetail() {
           </div>
 
           {/* Navigation Pills */}
-          <div className="flex flex-wrap gap-3">
-            <button
-              onClick={() => handleTabChange('overview')}
-              className={`px-5 py-2.5 rounded-xl font-semibold transition-all ${
-                activeTab === 'overview'
-                  ? 'bg-gradient-to-r from-[#E41B13] to-[#8B0000] text-white shadow-lg shadow-red-500/30'
-                  : 'bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10'
-              }`}
-            >
-              Visión General
-            </button>
-            
+          <div className="flex flex-wrap gap-3 items-center">
             {industry.subpages.map((sub: any) => (
               <button
                 key={sub.id}
                 onClick={() => handleTabChange(sub.id)}
-                className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold transition-all ${
+                className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold transition-all cursor-pointer ${
                   activeTab === sub.id
                     ? 'bg-gradient-to-r from-[#E41B13] to-[#8B0000] text-white shadow-lg shadow-red-500/30'
                     : 'bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10'
@@ -223,15 +220,17 @@ export default function IndustryDetail() {
       </div>
 
       {/* Content Area - Continues in next file due to length */}
-      <AnimatePresence mode="wait">
-        {activeTab === 'overview' && (
-          <OverviewContent industry={industry} activeScenario={activeScenario} setActiveScenario={setActiveScenario} expandedFAQ={expandedFAQ} setExpandedFAQ={setExpandedFAQ} />
-        )}
-        {activeTab === 'operacion' && <OperacionContent industry={industry} />}
-        {activeTab === 'tecnologia' && <TecnologiaContent industry={industry} />}
-        {activeTab === 'slas-entregables' && <SLAsContent industry={industry} />}
-        {activeTab === 'escenarios' && <EscenariosContent industry={industry} />}
-      </AnimatePresence>
+      <div id="industry-content">
+        <AnimatePresence mode="wait">
+          {activeTab === 'overview' && (
+            <OverviewContent industry={industry} activeScenario={activeScenario} setActiveScenario={setActiveScenario} expandedFAQ={expandedFAQ} setExpandedFAQ={setExpandedFAQ} />
+          )}
+          {activeTab === 'operacion' && <OperacionContent industry={industry} />}
+          {activeTab === 'tecnologia' && <TecnologiaContent industry={industry} />}
+          {activeTab === 'slas-entregables' && <SLAsContent industry={industry} />}
+          {activeTab === 'escenarios' && <EscenariosContent industry={industry} />}
+        </AnimatePresence>
+      </div>
 
       {/* CTA Footer */}
       <motion.div
