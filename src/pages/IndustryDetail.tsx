@@ -444,9 +444,9 @@ function OverviewContent({ industry, activeScenario, setActiveScenario, expanded
       {/* Related Services */}
       {industry.relatedSolutions && industry.relatedSolutions.length > 0 && (
         <section>
-          <h3 className="text-2xl font-bold mb-6">Soluciones para esta Industria</h3>
+          <h3 className="text-2xl font-bold mb-6">Explora Otras Industrias</h3>
           <div className="flex flex-wrap gap-4">
-            {industry.relatedSolutions.map((related: any, index: number) => (
+            {industry.relatedSolutions.slice(0, 2).map((related: any, index: number) => (
               <Link
                 key={index}
                 to={`/industrias/${related.link}`}
@@ -467,6 +467,15 @@ function OverviewContent({ industry, activeScenario, setActiveScenario, expanded
 // Subpage Components (simplified for now)
 function OperacionContent({ industry }: any) {
   const workflows = {
+    'retail': [
+      { step: '1. Recepción de Inventario', description: 'Descarga de contenedores/pallets, validación contra OC, inspección QA, registro WMS con ubicación asignada por rotación ABC', tools: ['WMS', 'Scanners RF', 'QA Checklists'], time: '2-6 hrs' },
+      { step: '2. Almacenamiento Inteligente', description: 'Slotting automático según velocidad de rotación, zona temperatura controlada si aplica, reserva automática para órdenes pre-vendidas', tools: ['WMS VULCANO', 'Sensores IoT'], time: 'Continuo' },
+      { step: '3. Procesamiento Órdenes E-commerce', description: 'Sincronización automática órdenes desde plataformas, wave picking batch, validación SKU por escaneo, empaque según canal (marketplace vs marca propia)', tools: ['API E-commerce', 'WMS', 'Empaque automático'], time: '1-4 hrs' },
+      { step: '4. Ship-from-Store (Omnicanal)', description: 'Orden online ruteada a tienda con stock más cercana al cliente, tienda recibe picking list, preparación local, etiqueta courier generada', tools: ['POS Integration', 'Ruteo inteligente'], time: '30-90 min' },
+      { step: '5. Reposición Tiendas B2B', description: 'Solicitudes tiendas vía portal, picking con validación multi-SKU, carga paletizada, entrega con POD digital', tools: ['Portal B2B', 'WMS'], time: '24-48 hrs' },
+      { step: '6. Reverse Logistics', description: 'Recepción devoluciones con QA en 3 niveles, clasificación (re-stock/liquidación/descarte), re-etiquetado, disponibilidad actualizada automáticamente', tools: ['QA Station', 'WMS', 'Analytics'], time: '<72 hrs' },
+      { step: '7. Despacho Multi-carrier', description: 'Selección carrier óptimo por zona/costo/SLA, generación etiquetas batch, manifiesto digital, tracking pushed a plataforma e-commerce', tools: ['TMS', 'Carrier APIs', 'Label Printer'], time: '2-4 hrs' }
+    ],
     'ultima-milla': [
       { step: '1. Planificación de Rutas', description: 'Algoritmo optimiza rutas basado en ventanas horarias, prioridades y capacidad vehicular', tools: ['TMS Blue-box', 'Google Maps API'], time: '30 min' },
       { step: '2. Picking & Preparación', description: 'WMS genera órdenes de preparación. Escaneo con handheld valida SKU y cantidad', tools: ['WMS VULCANO', 'Scanners Zebra'], time: '1-2 hrs' },
@@ -632,6 +641,39 @@ function TecnologiaContent({ industry }: any) {
   const [activeCategory, setActiveCategory] = useState('all');
 
   const techStack = {
+    'retail': {
+      'Sistemas Core': [
+        { name: 'WMS VULCANO', purpose: 'Gestión integral bodega: recepción, ubicación inteligente, picking multi-canal, inventario real-time', tech: 'SQL Server, .NET Core, REST API' },
+        { name: 'OMS (Order Management)', purpose: 'Orquestación órdenes cross-canal: e-commerce, tiendas, marketplaces con priorización dinámica', tech: 'Cloud Platform, Microservicios' },
+        { name: 'Portal Omnicanal', purpose: 'Dashboard unificado para visibilidad stock, órdenes, KPIs por canal', tech: 'React SPA, Node.js, WebSockets' }
+      ],
+      'E-commerce & POS': [
+        { name: 'Shopify / VTEX Connector', purpose: 'Sincronización bidireccional órdenes y stock cada 5 min', tech: 'REST API, Webhooks, OAuth 2.0' },
+        { name: 'WooCommerce / Magento Plugin', purpose: 'Integración nativa con auto-sync tracking y disponibilidad', tech: 'PHP SDK, REST API' },
+        { name: 'POS Integration', purpose: 'Conexión con sistemas POS tiendas para ship-from-store y stock unificado', tech: 'SQL Direct, API REST, Web Services' }
+      ],
+      'Marketplaces': [
+        { name: 'MercadoLibre Full API', purpose: 'Fulfillment automatizado con sync órdenes, tracking, inventario', tech: 'REST API, OAuth, Webhooks' },
+        { name: 'Amazon Seller Central', purpose: 'Gestión FBA/Seller con actualización stock y órdenes en tiempo real', tech: 'MWS API, SP-API' },
+        { name: 'Falabella / Ripley Seller', purpose: 'Integración marketplaces locales con gestión centralizada', tech: 'API REST, FTP, EDI' }
+      ],
+      'Logística & Carriers': [
+        { name: 'TMS Multi-carrier', purpose: 'Integración Chilexpress, Starken, Blue Express, 99Minutos con cotización y etiquetado auto', tech: 'API REST, SOAP, FTP' },
+        { name: 'Shipping Optimizer', purpose: 'Selección carrier óptimo por costo/tiempo/zona con algoritmos ML', tech: 'Python, TensorFlow' },
+        { name: 'Tracking Aggregator', purpose: 'Consolidación tracking multi-carrier en dashboard único', tech: 'Webhooks, Polling APIs' }
+      ],
+      'Analítica & BI': [
+        { name: 'Power BI Retail', purpose: 'Dashboards: fill rate, perfect order, devoluciones, rotación por SKU/categoría', tech: 'Microsoft BI Suite, SQL' },
+        { name: 'Google Analytics E-commerce', purpose: 'Tracking conversión desde tracking links enviados a clientes', tech: 'GA4, Enhanced E-commerce' },
+        { name: 'Returns Analytics', purpose: 'Dashboard reverse logistics con motivos devolución y patterns por producto', tech: 'Custom BI, ML Insights' }
+      ],
+      'Hardware': [
+        { name: 'Scanners RF Zebra', purpose: 'Picking y validación con handhelds móviles', tech: 'Zebra TC52, Android Enterprise' },
+        { name: 'Put-to-Light', purpose: 'Sistema luces para batch picking e-commerce de alto volumen', tech: 'PTL Hardware, RS-232' },
+        { name: 'Impresoras Etiquetas', purpose: 'Generación etiquetas carriers en batch', tech: 'Zebra ZT410, Thermal' },
+        { name: 'Sensores Temperatura', purpose: 'Monitoreo zonas cosméticos/alimentos con alertas automáticas', tech: 'IoT Sensors, LoRaWAN, MQTT' }
+      ]
+    },
     'ultima-milla': {
       'Sistemas Core': [
         { name: 'TMS Blue-box', purpose: 'Gestión de transporte y ruteo dinámico', tech: 'Cloud-based, API REST' },
