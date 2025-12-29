@@ -1,6 +1,6 @@
 import { useParams, Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, CheckCircle2, Package, Clock, Shield, TrendingUp, Users, Globe, Zap, Target, Home, ChevronRight, FileText, Layers, HelpCircle, Settings, AlertCircle, Cpu, Network, Server, Database } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Package, Clock, Shield, TrendingUp, Users, Globe, Zap, Target, Home, ChevronRight, FileText, Layers, HelpCircle, Settings, AlertCircle } from 'lucide-react';
 import { OutlineButton } from '../components/UIButtons';
 import { useEffect, useRef, useState } from 'react';
 import { industriesData } from '../data/industriesData';
@@ -66,7 +66,7 @@ export default function IndustryDetail() {
   const {industryId, subpage} = useParams<{ industryId: string; subpage?: string }>();
   const location = useLocation();
   const navigate = useNavigate();
-  const industry = industryId ? industriesData[industryId] : null;
+  const industry = serviceId ? industriesData[industryId] : null;
   
   const [activeScenario, setActiveScenario] = useState(0);
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
@@ -151,7 +151,7 @@ export default function IndustryDetail() {
               <>
                 <ChevronRight className="h-4 w-4" />
                 <span className="text-[#E41B13] font-medium">
-                  {industry.subpages.find((s: any) => s.id === activeTab)?.title}
+                  {industry.subpages.find(s => s.id === activeTab)?.title}
                 </span>
               </>
             )}
@@ -183,7 +183,7 @@ export default function IndustryDetail() {
               Visión General
             </button>
             
-            {industry.subpages.map((sub: any) => (
+            {industry.subpages.map(sub => (
               <button
                 key={sub.id}
                 onClick={() => handleTabChange(sub.id)}
