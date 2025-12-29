@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
-import { motion, useMotionValue } from 'framer-motion';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { ArrowLeft, ChevronRight, Package, TrendingUp, Shield, Clock, FileText, Thermometer, Factory, Plane, Users, Globe, Sparkles } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface Solution {
   title: string;
@@ -24,8 +24,24 @@ interface IndustryDetailData {
 const IndustryDetail = () => {
   const { industryId } = useParams<{ industryId: string }>();
   const [activeTab, setActiveTab] = useState<'solutions' | 'capabilities'>('solutions');
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [mouseX, mouseY]);
+
+  const rotateX = useTransform(mouseY, [0, window.innerHeight], [5, -5]);
+  const rotateY = useTransform(mouseX, [0, window.innerWidth], [-5, 5]);
 
   const industries: Record<string, IndustryDetailData> = {
     'retail': {
@@ -36,31 +52,14 @@ const IndustryDetail = () => {
       introduction: 'Optimización end-to-end de tu cadena de suministro, garantizando entregas precisas a tiendas y consumidores finales.',
       challenge: 'El retail moderno exige gestión de inventario multicanal, entregas rápidas y adaptación a picos de demanda sin comprometer calidad.',
       solutions: [
-        {
-          title: 'Inventario Multicanal',
-          description: 'Control centralizado en tiempo real para evitar quiebres y sobrestock.',
-          icon: <Package className="h-5 w-5" />
-        },
-        {
-          title: 'Fulfillment E-commerce',
-          description: 'Picking, packing y despacho optimizado con gestión de devoluciones.',
-          icon: <TrendingUp className="h-5 w-5" />
-        },
-        {
-          title: 'Distribución Programada',
-          description: 'Entregas sincronizadas según demanda de cada punto de venta.',
-          icon: <Clock className="h-5 w-5" />
-        }
+        { title: 'Inventario Multicanal', description: 'Control centralizado en tiempo real para evitar quiebres y sobrestock.', icon: <Package className="h-5 w-5" /> },
+        { title: 'Fulfillment E-commerce', description: 'Picking, packing y despacho optimizado con gestión de devoluciones.', icon: <TrendingUp className="h-5 w-5" /> },
+        { title: 'Distribución Programada', description: 'Entregas sincronizadas según demanda de cada punto de venta.', icon: <Clock className="h-5 w-5" /> }
       ],
-      capabilities: [
-        'Integración con ERP y plataformas e-commerce',
-        'Escalabilidad para temporadas altas',
-        'Logística inversa especializada',
-        'WMS con trazabilidad completa'
-      ],
+      capabilities: ['Integración con ERP y plataformas e-commerce', 'Escalabilidad para temporadas altas', 'Logística inversa especializada', 'WMS con trazabilidad completa'],
       relatedServices: [
-        { name: 'Almacenaje y Distribución', link: '/Ez_webpage/services/almacenaje-distribucion' },
-        { name: 'Última Milla', link: '/Ez_webpage/services/ultima-milla' }
+        { name: 'Almacenaje y Distribución', link: 'almacenaje-distribucion' },
+        { name: 'Última Milla', link: 'ultima-milla' }
       ]
     },
     'aerospace': {
@@ -71,400 +70,344 @@ const IndustryDetail = () => {
       introduction: 'Logística especializada para piezas sensibles y de alto valor bajo estrictas regulaciones internacionales.',
       challenge: 'Componentes aeroespaciales requieren manejo certificado, documentación rigurosa y respuesta inmediata en situaciones AOG.',
       solutions: [
-        {
-          title: 'Respuesta AOG 24/7',
-          description: 'Coordinación urgente para piezas críticas con transporte prioritario.',
-          icon: <Plane className="h-5 w-5" />
-        },
-        {
-          title: 'Certificación Completa',
-          description: 'Gestión de certificados y documentación técnica requerida.',
-          icon: <FileText className="h-5 w-5" />
-        },
-        {
-          title: 'Almacenaje Controlado',
-          description: 'Bodegas con condiciones reguladas y seguridad reforzada.',
-          icon: <Shield className="h-5 w-5" />
-        }
+        { title: 'Respuesta AOG 24/7', description: 'Coordinación urgente para piezas críticas con transporte prioritario.', icon: <Plane className="h-5 w-5" /> },
+        { title: 'Certificación Completa', description: 'Gestión de certificados y documentación técnica requerida.', icon: <FileText className="h-5 w-5" /> },
+        { title: 'Almacenaje Controlado', description: 'Bodegas con condiciones reguladas y seguridad reforzada.', icon: <Shield className="h-5 w-5" /> }
       ],
-      capabilities: [
-        'Handling certificado de componentes sensibles',
-        'Red global de partners aeronáuticos',
-        'Seguros especializados para alto valor',
-        'Cumplimiento IATA, FAA y EASA'
-      ],
+      capabilities: ['Handling certificado de componentes sensibles', 'Red global de partners aeronáuticos', 'Seguros especializados para alto valor', 'Cumplimiento IATA, FAA y EASA'],
       relatedServices: [
-        { name: 'Transporte Internacional', link: '/Ez_webpage/services/transporte-internacional' },
-        { name: 'Project Cargo', link: '/Ez_webpage/services/project-cargo' }
+        { name: 'Transporte Internacional', link: 'transporte-internacional' },
+        { name: 'Project Cargo', link: 'project-cargo' }
       ]
     },
     'alimentaria': {
       id: 'alimentaria',
-      title: 'Alimentaria',
-      tagline: 'Cadena de frío y seguridad garantizada',
+      title: 'Industria Alimentaria',
+      tagline: 'Cadena de frío y frescura garantizada',
       heroImage: 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?q=80&w=1600&fm=webp',
-      introduction: 'Cadena de suministro controlada para productos perecibles, asegurando frescura e integridad desde origen hasta destino.',
-      challenge: 'Productos alimentarios exigen condiciones específicas de temperatura, tiempo y cumplimiento de normativas sanitarias estrictas.',
+      introduction: 'Gestión integral de temperatura para productos perecederos con trazabilidad completa desde origen hasta consumidor.',
+      challenge: 'Los alimentos demandan control térmico constante, rapidez en distribución y cumplimiento estricto de normativas sanitarias.',
       solutions: [
-        {
-          title: 'Cadena de Frío',
-          description: 'Monitoreo 24/7 de temperatura en transporte y almacenamiento.',
-          icon: <Thermometer className="h-5 w-5" />
-        },
-        {
-          title: 'Certificación HACCP',
-          description: 'Gestión de permisos sanitarios y protocolos de seguridad.',
-          icon: <Shield className="h-5 w-5" />
-        },
-        {
-          title: 'Trazabilidad FIFO',
-          description: 'Seguimiento por lote con rotación para máxima frescura.',
-          icon: <FileText className="h-5 w-5" />
-        }
+        { title: 'Cadena de Frío', description: 'Monitoreo continuo de temperatura en transporte y almacenaje.', icon: <Thermometer className="h-5 w-5" /> },
+        { title: 'Trazabilidad HACCP', description: 'Registro completo para auditorías y certificaciones sanitarias.', icon: <FileText className="h-5 w-5" /> },
+        { title: 'Distribución Express', description: 'Rutas optimizadas para minimizar tiempos de tránsito.', icon: <TrendingUp className="h-5 w-5" /> }
       ],
-      capabilities: [
-        'Almacenes refrigerados certificados',
-        'Flota con unidades frigoríficas',
-        'Protocolos de higiene constantes',
-        'Permisos SENASA para importación'
-      ],
+      capabilities: ['Flota refrigerada con respaldo', 'Bodegas climatizadas certificadas', 'Cross-docking para productos frescos', 'Cumplimiento normativo sanitario'],
       relatedServices: [
-        { name: 'Almacenaje y Distribución', link: '/Ez_webpage/services/almacenaje-distribucion' },
-        { name: 'Agenciamiento de Aduanas', link: '/Ez_webpage/services/agenciamiento-aduanas' }
+        { name: 'Almacenaje y Distribución', link: 'almacenaje-distribucion' },
+        { name: 'Transporte Terrestre', link: 'transporte-terrestre' }
       ]
     },
     'industrial': {
       id: 'industrial',
-      title: 'Industrial',
-      tagline: 'Soluciones para manufactura y proyectos complejos',
+      title: 'Sector Industrial',
+      tagline: 'Logística robusta para manufactura continua',
       heroImage: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1600&fm=webp',
-      introduction: 'Gestión integral de maquinaria pesada, proyectos complejos e inventarios con máxima eficiencia y seguridad.',
-      challenge: 'La manufactura exige coordinación precisa JIT y manejo de cargas sobredimensionadas con planificación avanzada.',
+      introduction: 'Suministro sincronizado de insumos y componentes para mantener líneas de producción sin interrupciones.',
+      challenge: 'La manufactura requiere entregas JIT precisas, manejo de cargas pesadas y coordinación con múltiples proveedores.',
       solutions: [
-        {
-          title: 'Maquinaria Pesada',
-          description: 'Coordinación de cargas especiales con permisos y rutas.',
-          icon: <Factory className="h-5 w-5" />
-        },
-        {
-          title: 'Just-in-Time',
-          description: 'Sincronización con líneas de producción activas.',
-          icon: <Clock className="h-5 w-5" />
-        },
-        {
-          title: 'Project Cargo',
-          description: 'Planificación multimodal para instalaciones industriales.',
-          icon: <Shield className="h-5 w-5" />
-        }
+        { title: 'Suministro JIT', description: 'Entregas just-in-time sincronizadas con tu producción.', icon: <Clock className="h-5 w-5" /> },
+        { title: 'Handling Especializado', description: 'Equipos para carga pesada y dimensional.', icon: <Factory className="h-5 w-5" /> },
+        { title: 'Vendor Management', description: 'Consolidación de múltiples proveedores en entregas únicas.', icon: <Users className="h-5 w-5" /> }
       ],
-      capabilities: [
-        'Transporte de cargas sobredimensionadas',
-        'Almacenes con equipos de izaje',
-        'Coordinación de permisos especiales',
-        'Seguros para maquinaria de alto valor'
-      ],
+      capabilities: ['Almacenaje de insumos industriales', 'Kitting y sub-ensamblaje', 'Gestión de repuestos críticos', 'Integración EDI con proveedores'],
       relatedServices: [
-        { name: 'Project Cargo', link: '/Ez_webpage/services/project-cargo' },
-        { name: 'Transporte Internacional', link: '/Ez_webpage/services/transporte-internacional' }
+        { name: 'Almacenaje y Distribución', link: 'almacenaje-distribucion' },
+        { name: 'Project Cargo', link: 'project-cargo' }
       ]
     },
     'automotriz': {
       id: 'automotriz',
       title: 'Automotriz',
-      tagline: 'Sincronización perfecta para producción',
-      heroImage: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1600&fm=webp',
-      introduction: 'Gestión especializada de cadena de suministro automotriz con entregas just-in-time de precisión milimétrica.',
-      challenge: 'La industria automotriz opera con inventarios mínimos. Cualquier retraso puede detener producción completa.',
+      tagline: 'Precisión milimétrica para líneas de ensamblaje',
+      heroImage: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=1600&fm=webp',
+      introduction: 'Secuenciación y entrega sincronizada de partes para producción automotriz sin paradas ni retrasos.',
+      challenge: 'Las ensambladoras demandan entregas secuenciales exactas, trazabilidad de lotes y respuesta inmediata ante cambios de programación.',
       solutions: [
-        {
-          title: 'JIT & Secuenciación',
-          description: 'Entregas sincronizadas en orden de ensamblaje.',
-          icon: <Clock className="h-5 w-5" />
-        },
-        {
-          title: 'Multi-Proveedor',
-          description: 'Consolidación de envíos para reducir complejidad.',
-          icon: <Users className="h-5 w-5" />
-        },
-        {
-          title: 'Control de Calidad',
-          description: 'Inspección y manejo especializado de componentes.',
-          icon: <Shield className="h-5 w-5" />
-        }
+        { title: 'Secuenciación de Partes', description: 'Entrega en orden exacto de ensamblaje para línea de producción.', icon: <Package className="h-5 w-5" /> },
+        { title: 'Milk Run', description: 'Rutas circulares optimizadas para recolección de proveedores.', icon: <TrendingUp className="h-5 w-5" /> },
+        { title: 'Kitting JIS', description: 'Armado de kits just-in-sequence para modelos específicos.', icon: <Factory className="h-5 w-5" /> }
       ],
-      capabilities: [
-        'Logística JIT certificada',
-        'Integración con ERPs de manufactura',
-        'Almacenes cerca de plantas',
-        'Trazabilidad por número de serie'
-      ],
+      capabilities: ['Almacenaje sequencing para producción', 'Gestión de cambios de programación', 'Trazabilidad por VIN/modelo', 'Cumplimiento MMOG/LE y AIAG'],
       relatedServices: [
-        { name: 'Almacenaje y Distribución', link: '/Ez_webpage/services/almacenaje-distribucion' },
-        { name: 'Transporte Internacional', link: '/Ez_webpage/services/transporte-internacional' }
+        { name: 'Almacenaje y Distribución', link: 'almacenaje-distribucion' },
+        { name: 'Transporte Terrestre', link: 'transporte-terrestre' }
       ]
     },
     'pharmaceutical': {
       id: 'pharmaceutical',
-      title: 'Pharmaceutical',
-      tagline: 'Logística farmacéutica certificada GDP',
-      heroImage: 'https://images.unsplash.com/photo-1584982751601-97dcc096659c?q=80&w=1600&fm=webp',
-      introduction: 'Gestión especializada de productos farmacéuticos con cumplimiento estricto de normativas y cadena de frío validada.',
-      challenge: 'Productos farmacéuticos exigen condiciones precisas y cualquier desvío puede comprometer efectividad o aprobación.',
+      title: 'Farmacéutica',
+      tagline: 'Custodia certificada de productos sensibles',
+      heroImage: 'https://images.unsplash.com/photo-1631549916768-4119b2e5f926?q=80&w=1600&fm=webp',
+      introduction: 'Manejo especializado de medicamentos y dispositivos médicos bajo estrictas normas de calidad y seguridad.',
+      challenge: 'Productos farmacéuticos exigen condiciones controladas, validación de procesos y documentación completa para auditorías regulatorias.',
       solutions: [
-        {
-          title: 'Cadena de Frío 2-8°C',
-          description: 'Monitoreo continuo con registros validados.',
-          icon: <Thermometer className="h-5 w-5" />
-        },
-        {
-          title: 'Cumplimiento DIGEMID',
-          description: 'Gestión de permisos y documentación sanitaria.',
-          icon: <FileText className="h-5 w-5" />
-        },
-        {
-          title: 'Seguridad GDP',
-          description: 'Almacenes certificados con trazabilidad por lote.',
-          icon: <Shield className="h-5 w-5" />
-        }
+        { title: 'Almacenaje GDP', description: 'Bodegas validadas según Good Distribution Practices.', icon: <Shield className="h-5 w-5" /> },
+        { title: 'Control de Temperatura', description: 'Monitoreo 24/7 con alertas automáticas y respaldo.', icon: <Thermometer className="h-5 w-5" /> },
+        { title: 'Trazabilidad Lote', description: 'Registro completo por lote y fecha de vencimiento.', icon: <FileText className="h-5 w-5" /> }
       ],
-      capabilities: [
-        'Almacenes validados farmacéuticos',
-        'Personal certificado en manejo',
-        'Sistemas de temperatura validados',
-        'Cumplimiento Good Distribution Practice'
-      ],
+      capabilities: ['Personal capacitado en handling farmacéutico', 'Validación de procesos logísticos', 'Gestión de productos controlados', 'Auditable para inspecciones ISP'],
       relatedServices: [
-        { name: 'Almacenaje y Distribución', link: '/Ez_webpage/services/almacenaje-distribucion' },
-        { name: 'Agenciamiento de Aduanas', link: '/Ez_webpage/services/agenciamiento-aduanas' }
+        { name: 'Almacenaje y Distribución', link: 'almacenaje-distribucion' },
+        { name: 'Transporte Internacional', link: 'transporte-internacional' }
       ]
     },
     'tecnologia': {
       id: 'tecnologia',
       title: 'Tecnología',
-      tagline: 'Protección para productos de alto valor',
+      tagline: 'Logística ágil para ciclos de producto cortos',
       heroImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&fm=webp',
-      introduction: 'Logística ágil y segura para productos tecnológicos de alto valor con ciclos de vida cortos.',
-      challenge: 'Productos tech combinan alto valor, fragilidad y rápida obsolescencia. Requieren velocidad y seguridad máxima.',
+      introduction: 'Distribución rápida de electrónica y dispositivos con gestión de obsolescencia y logística inversa integrada.',
+      challenge: 'El sector tech requiere velocidad de mercado, manejo antiestático, gestión de garantías y recuperación de equipos.',
       solutions: [
-        {
-          title: 'Manejo Antiestático',
-          description: 'Embalaje y control ambiental para componentes sensibles.',
-          icon: <Package className="h-5 w-5" />
-        },
-        {
-          title: 'Seguridad 24/7',
-          description: 'Almacenes vigilados con seguros especializados.',
-          icon: <Shield className="h-5 w-5" />
-        },
-        {
-          title: 'Distribución Express',
-          description: 'Entregas rápidas para evitar obsolescencia.',
-          icon: <Globe className="h-5 w-5" />
-        }
+        { title: 'Lanzamiento de Productos', description: 'Distribución sincronizada para go-to-market acelerado.', icon: <Sparkles className="h-5 w-5" /> },
+        { title: 'Reverse Logistics', description: 'Gestión de devoluciones, RMA y refurbishment.', icon: <Package className="h-5 w-5" /> },
+        { title: 'Gestión de Obsolescencia', description: 'Rotación FIFO y alertas de lifecycle de productos.', icon: <Clock className="h-5 w-5" /> }
       ],
-      capabilities: [
-        'Importación de equipos tech',
-        'Almacenes con seguridad reforzada',
-        'Manejo certificado de electrónicos',
-        'Integración con e-commerce'
-      ],
+      capabilities: ['Áreas ESD para componentes sensibles', 'Kitting y configuración de equipos', 'Fulfillment para canales B2B/B2C', 'Integración con plataformas digitales'],
       relatedServices: [
-        { name: 'Almacenaje y Distribución', link: '/Ez_webpage/services/almacenaje-distribucion' },
-        { name: 'Última Milla', link: '/Ez_webpage/services/ultima-milla' }
+        { name: 'Almacenaje y Distribución', link: 'almacenaje-distribucion' },
+        { name: 'Última Milla', link: 'ultima-milla' }
       ]
     },
     'otras': {
       id: 'otras',
       title: 'Otras Industrias',
-      tagline: 'Soluciones adaptadas a tu sector',
-      heroImage: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1600&fm=webp',
-      introduction: 'Con 10+ años en comercio internacional, desarrollamos soluciones flexibles para sectores especializados.',
-      challenge: 'Industrias especializadas requieren combinaciones únicas de servicios y cumplimiento de regulaciones específicas.',
+      tagline: 'Soluciones logísticas adaptadas a tu sector',
+      heroImage: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1600&fm=webp',
+      introduction: 'Cada industria tiene requerimientos únicos. Diseñamos soluciones logísticas específicas para tu operación.',
+      challenge: 'Sectores diversos como construcción, minería, energía, textil y más requieren expertise particular y flexibilidad operacional.',
       solutions: [
-        {
-          title: 'Consultoría',
-          description: 'Análisis y diseño de soluciones a medida.',
-          icon: <Users className="h-5 w-5" />
-        },
-        {
-          title: 'Regulaciones',
-          description: 'Gestión de permisos y certificaciones especiales.',
-          icon: <FileText className="h-5 w-5" />
-        },
-        {
-          title: 'Integración Tech',
-          description: 'Conectividad con CargoWise para visibilidad total.',
-          icon: <Globe className="h-5 w-5" />
-        }
+        { title: 'Análisis Personalizado', description: 'Evaluación profunda de tus necesidades logísticas específicas.', icon: <Globe className="h-5 w-5" /> },
+        { title: 'Diseño de Solución', description: 'Creación de procesos a medida para tu industria.', icon: <Sparkles className="h-5 w-5" /> },
+        { title: 'Implementación', description: 'Despliegue controlado con ajustes según resultados.', icon: <TrendingUp className="h-5 w-5" /> }
       ],
-      capabilities: [
-        'Soluciones flexibles personalizadas',
-        'Experiencia multi-sectorial',
-        'Equipo en comercio internacional',
-        'Tecnología logística avanzada'
-      ],
+      capabilities: ['Equipo multidisciplinario con experiencia sectorial', 'Flexibilidad para adaptarnos a tu operación', 'Infraestructura configurable', 'Partners especializados según necesidad'],
       relatedServices: [
-        { name: 'Transporte Internacional', link: '/Ez_webpage/services/transporte-internacional' },
-        { name: 'Agenciamiento de Aduanas', link: '/Ez_webpage/services/agenciamiento-aduanas' }
+        { name: 'Almacenaje y Distribución', link: 'almacenaje-distribucion' },
+        { name: 'Project Cargo', link: 'project-cargo' }
       ]
     }
   };
 
-  const industry = industryId ? industries[industryId] : null;
+  const industry = industries[industryId || 'retail'];
 
   if (!industry) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
+      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Industria no encontrada</h2>
-          <Link to="/Ez_webpage/" className="inline-block px-6 py-3 bg-[#E41B13] text-white rounded-lg font-semibold hover:bg-[#C41710] transition-colors">
-            Volver al inicio
-          </Link>
+          <h1 className="text-4xl font-bold text-white mb-4">Industria no encontrada</h1>
+          <Link to="/Ez_webpage/" className="text-[#E41B13] hover:underline">Volver al inicio</Link>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
-      {/* Compact Hero */}
-      <div className="relative h-[40vh] min-h-[400px] overflow-hidden">
-        <motion.img 
-          src={industry.heroImage} 
-          alt={industry.title}
-          className="w-full h-full object-cover"
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.2 }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/95 via-gray-900/85 to-[#E41B13]/70" />
+    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950">
+      {/* Animated Background Mesh */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(228,27,19,0.15),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(59,130,246,0.1),transparent_50%)]" />
         
-        <div className="absolute inset-0 flex items-center">
-          <div className="max-w-5xl mx-auto px-6 w-full">
-            <Link 
-              to="/Ez_webpage/" 
-              className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-white/90 hover:bg-white/10 transition-all text-sm group"
-            >
-              <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
-              Volver
-            </Link>
-            
+        {/* Floating Orbs */}
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#E41B13]/20 rounded-full blur-3xl"
+          animate={{
+            x: [0, 100, 0],
+            y: [0, -50, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
+          animate={{
+            x: [0, -100, 0],
+            y: [0, 50, 0],
+            scale: [1, 1.3, 1],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </div>
+
+      {/* Hero Section with Parallax */}
+      <div className="relative h-[50vh] min-h-[500px] overflow-hidden">
+        {/* Image with Parallax Effect */}
+        <motion.div 
+          className="absolute inset-0"
+          style={{
+            rotateX,
+            rotateY,
+            transformStyle: "preserve-3d",
+          }}
+        >
+          <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${industry.heroImage})`,
+              filter: 'brightness(0.4) saturate(1.2)',
+            }}
+          />
+          
+          {/* Gradient Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/50 to-gray-950" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#E41B13]/20 to-transparent" />
+        </motion.div>
+
+        {/* Glassmorphic Content */}
+        <div className="relative z-10 h-full flex items-center">
+          <div className="max-w-6xl mx-auto px-6 w-full">
+            {/* Back Button */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E41B13]/90 rounded-full mb-3 backdrop-blur-sm">
-                <Sparkles className="h-3.5 w-3.5 text-white" />
-                <span className="text-white text-xs font-semibold uppercase tracking-wider">Especialización</span>
-              </div>
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 leading-tight">
-                {industry.title}
-              </h1>
-              <p className="text-lg md:text-xl text-white/80 max-w-2xl">
-                {industry.tagline}
-              </p>
+              <Link
+                to="/Ez_webpage/"
+                state={{ scrollTo: 'industries' }}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white/90 hover:bg-white/20 transition-all mb-8 group"
+              >
+                <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
+                Volver
+              </Link>
+            </motion.div>
+
+            {/* Hero Text with Glassmorphism */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 max-w-3xl"
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                <h1 className="text-5xl md:text-6xl font-black text-white mb-4 leading-tight">
+                  {industry.title}
+                </h1>
+                <p className="text-xl md:text-2xl text-gray-300 font-light mb-4">
+                  {industry.tagline}
+                </p>
+                <div className="h-1 w-24 bg-gradient-to-r from-[#E41B13] to-blue-500 rounded-full" />
+              </motion.div>
             </motion.div>
           </div>
         </div>
+
+        {/* Bottom Gradient Fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-950 to-transparent" />
       </div>
 
-      {/* Main Content - Compact */}
-      <div className="max-w-5xl mx-auto px-6 -mt-12 relative z-10 pb-16">
-        {/* Intro Card */}
+      {/* Content Section */}
+      <div className="relative max-w-6xl mx-auto px-6 py-16 space-y-12">
+        {/* Introduction Card with Glassmorphism */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-8 border border-gray-100"
+          transition={{ duration: 0.6 }}
+          className="relative group"
         >
-          <div className="flex items-start gap-4 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-[#E41B13] to-[#C41710] rounded-xl flex items-center justify-center flex-shrink-0">
-              <Package className="h-6 w-6 text-white" />
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-[#E41B13] to-blue-500 rounded-2xl blur opacity-20 group-hover:opacity-30 transition" />
+          <div className="relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-8">
+            <div className="flex items-start gap-4">
+              <div className="p-3 bg-gradient-to-br from-[#E41B13] to-[#C41710] rounded-xl">
+                <Globe className="h-6 w-6 text-white" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold text-white mb-2">Nuestra Capacidad</h3>
+                <p className="text-gray-300 leading-relaxed">{industry.introduction}</p>
+              </div>
             </div>
-            <div>
-              <h2 className="text-xl font-bold text-gray-900 mb-2">Nuestra Capacidad</h2>
-              <p className="text-gray-600 leading-relaxed">{industry.introduction}</p>
-            </div>
-          </div>
-          
-          <div className="bg-gradient-to-r from-red-50 to-orange-50 border-l-4 border-[#E41B13] p-4 rounded-r-lg">
-            <p className="text-sm text-gray-700 font-medium">{industry.challenge}</p>
           </div>
         </motion.div>
 
-        {/* Tabs */}
-        <div className="flex gap-2 mb-6">
+        {/* Tab Navigation */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex gap-4 justify-center"
+        >
           <button
             onClick={() => setActiveTab('solutions')}
-            className={`flex-1 px-4 py-2.5 rounded-lg font-semibold text-sm transition-all ${
+            className={`px-8 py-3 rounded-xl font-bold transition-all ${
               activeTab === 'solutions'
-                ? 'bg-[#E41B13] text-white shadow-lg'
-                : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+                ? 'bg-gradient-to-r from-[#E41B13] to-[#C41710] text-white shadow-lg shadow-red-500/50'
+                : 'bg-white/5 backdrop-blur-xl border border-white/10 text-gray-400 hover:text-white hover:bg-white/10'
             }`}
           >
             Soluciones
           </button>
           <button
             onClick={() => setActiveTab('capabilities')}
-            className={`flex-1 px-4 py-2.5 rounded-lg font-semibold text-sm transition-all ${
+            className={`px-8 py-3 rounded-xl font-bold transition-all ${
               activeTab === 'capabilities'
-                ? 'bg-[#E41B13] text-white shadow-lg'
-                : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+                ? 'bg-gradient-to-r from-[#E41B13] to-[#C41710] text-white shadow-lg shadow-red-500/50'
+                : 'bg-white/5 backdrop-blur-xl border border-white/10 text-gray-400 hover:text-white hover:bg-white/10'
             }`}
           >
             Capacidades
           </button>
-        </div>
+        </motion.div>
 
-        {/* Content Tabs */}
+        {/* Content based on active tab */}
         {activeTab === 'solutions' ? (
-          <div className="grid md:grid-cols-3 gap-4 mb-8">
+          <motion.div
+            key="solutions"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            transition={{ duration: 0.4 }}
+            className="grid md:grid-cols-3 gap-6"
+          >
             {industry.solutions.map((solution, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                whileHover={{ y: -4 }}
-                className="group relative bg-white p-5 rounded-xl border border-gray-200 hover:border-[#E41B13]/50 hover:shadow-lg transition-all cursor-pointer"
-                onMouseMove={(e) => {
-                  const rect = e.currentTarget.getBoundingClientRect();
-                  mouseX.set(e.clientX - rect.left);
-                  mouseY.set(e.clientY - rect.top);
-                }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group relative"
               >
-                <div className="w-10 h-10 bg-gradient-to-br from-[#E41B13]/10 to-[#E41B13]/5 rounded-lg flex items-center justify-center text-[#E41B13] mb-3 group-hover:scale-110 transition-transform">
-                  {solution.icon}
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-[#E41B13] to-blue-500 rounded-2xl blur opacity-0 group-hover:opacity-30 transition" />
+                <div className="relative h-full backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all">
+                  <div className="mb-4 inline-flex p-3 bg-gradient-to-br from-[#E41B13]/20 to-blue-500/20 rounded-xl text-white group-hover:scale-110 transition-transform">
+                    {solution.icon}
+                  </div>
+                  <h4 className="text-lg font-bold text-white mb-2">{solution.title}</h4>
+                  <p className="text-sm text-gray-400 leading-relaxed">{solution.description}</p>
                 </div>
-                <h3 className="text-base font-bold text-gray-900 mb-1.5 group-hover:text-[#E41B13] transition-colors">
-                  {solution.title}
-                </h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  {solution.description}
-                </p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         ) : (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="bg-white rounded-xl p-6 border border-gray-200 mb-8"
+            key="capabilities"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.4 }}
+            className="relative group"
           >
-            <div className="grid md:grid-cols-2 gap-3">
-              {industry.capabilities.map((cap, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
-                >
-                  <div className="w-1.5 h-1.5 bg-[#E41B13] rounded-full" />
-                  <p className="text-sm text-gray-700 font-medium">{cap}</p>
-                </motion.div>
-              ))}
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#E41B13] to-blue-500 rounded-2xl blur opacity-20 group-hover:opacity-30 transition" />
+            <div className="relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-8">
+              <div className="grid md:grid-cols-2 gap-4">
+                {industry.capabilities.map((cap, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    className="flex items-center gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors group/item"
+                  >
+                    <div className="w-2 h-2 bg-gradient-to-r from-[#E41B13] to-blue-500 rounded-full group-hover/item:scale-150 transition-transform" />
+                    <p className="text-gray-300 font-medium">{cap}</p>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </motion.div>
         )}
@@ -474,48 +417,67 @@ const IndustryDetail = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-6 text-white"
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="relative group"
           >
-            <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-              <ChevronRight className="h-5 w-5 text-[#E41B13]" />
-              Servicios Relacionados
-            </h3>
-            <div className="flex flex-wrap gap-3">
-              {industry.relatedServices.map((service, index) => (
-                <Link
-                  key={index}
-                  to={service.link}
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-sm font-semibold hover:bg-white/20 hover:border-white/40 transition-all group"
-                >
-                  {service.name}
-                  <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              ))}
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#E41B13] via-purple-500 to-blue-500 rounded-2xl blur opacity-30 group-hover:opacity-50 transition" />
+            <div className="relative backdrop-blur-xl bg-gradient-to-br from-gray-900/90 to-gray-800/90 border border-white/10 rounded-2xl p-8">
+              <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                <div className="p-2 bg-gradient-to-br from-[#E41B13] to-blue-500 rounded-lg">
+                  <ChevronRight className="h-5 w-5 text-white" />
+                </div>
+                Servicios Relacionados
+              </h3>
+              <div className="flex flex-wrap gap-4">
+                {industry.relatedServices.map((service, index) => (
+                  <Link
+                    key={index}
+                    to={`/Ez_webpage/services/${service.link}`}
+                    className="group/btn inline-flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-white font-semibold hover:bg-white/20 hover:border-white/40 hover:scale-105 transition-all shadow-lg"
+                  >
+                    {service.name}
+                    <ChevronRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
+                  </Link>
+                ))}
+              </div>
             </div>
           </motion.div>
         )}
       </div>
 
-      {/* Compact CTA */}
-      <div className="bg-gradient-to-r from-[#E41B13] to-[#C41710] py-12">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
-            ¿Necesitas una solución especializada?
-          </h2>
-          <p className="text-white/90 mb-6 max-w-2xl mx-auto">
-            Conversemos sobre tu industria y diseñemos la logística que necesitas.
-          </p>
-          <Link
-            to="/Ez_webpage/"
-            state={{ scrollTo: 'contact' }}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#E41B13] rounded-lg font-bold hover:bg-gray-100 transition-colors shadow-xl group"
+      {/* CTA Section with Gradient */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.6 }}
+        className="relative py-20 mt-16 overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-[#E41B13] via-purple-600 to-blue-600" />
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0djItaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-30" />
+        
+        <div className="relative max-w-4xl mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
           >
-            Solicitar Consultoría
-            <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-          </Link>
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+              ¿Necesitas una solución especializada?
+            </h2>
+            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+              Conversemos sobre tu industria y diseñemos la logística que necesitas.
+            </p>
+            <Link
+              to="/Ez_webpage/"
+              state={{ scrollTo: 'contact' }}
+              className="inline-flex items-center gap-3 px-8 py-4 bg-white text-gray-900 rounded-xl font-bold hover:bg-gray-100 transition-all shadow-2xl hover:scale-105 group"
+            >
+              Solicitar Consultoría
+              <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
