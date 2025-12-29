@@ -433,7 +433,7 @@ const IndustryDetail = () => {
                 {industry.relatedServices.map((service, index) => (
                   <button
                     key={index}
-                    onClick={() => navigate(`/Ez_webpage/services/${service.link}`)}
+                    onClick={() => navigate(`/servicios/${service.link}`)}
                     className="group/btn inline-flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-white font-semibold hover:bg-white/20 hover:border-white/40 hover:scale-105 transition-all shadow-lg cursor-pointer"
                   >
                     {service.name}
