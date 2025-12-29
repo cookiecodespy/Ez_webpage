@@ -164,7 +164,7 @@ const Footer = () => {
                 loading="lazy"
               />
               <p className="text-gray-400 text-sm">
-                © 2025 Servicios Bluebox Ltda. Todos los derechos reservados.
+                © 2025 Servicios Blue-box Ltda. Todos los derechos reservados.
               </p>
             </div>
             <div className="flex space-x-6 text-sm">

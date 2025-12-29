@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { ArrowLeft, CheckCircle2, Package, TrendingUp, Shield, Clock, FileText, Thermometer, Factory, Plane, Users, Globe } from 'lucide-react';
+import { motion, useMotionValue } from 'framer-motion';
+import { ArrowLeft, ChevronRight, Package, TrendingUp, Shield, Clock, FileText, Thermometer, Factory, Plane, Users, Globe, Sparkles } from 'lucide-react';
+import { useState } from 'react';
 
 interface Solution {
   title: string;
@@ -16,300 +17,295 @@ interface IndustryDetailData {
   introduction: string;
   challenge: string;
   solutions: Solution[];
-  whyChooseUs: string[];
+  capabilities: string[];
   relatedServices?: { name: string; link: string }[];
 }
 
 const IndustryDetail = () => {
   const { industryId } = useParams<{ industryId: string }>();
+  const [activeTab, setActiveTab] = useState<'solutions' | 'capabilities'>('solutions');
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
   const industries: Record<string, IndustryDetailData> = {
     'retail': {
       id: 'retail',
       title: 'Retail y E-commerce',
-      tagline: 'Logística que impulsa tu experiencia de compra',
+      tagline: 'Cumplimiento ágil para comercio omnicanal',
       heroImage: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1600&fm=webp',
-      introduction: 'Nuestro servicio de logística para el retail está diseñado para optimizar su cadena de suministro de principio a fin, garantizando que sus productos lleguen a la tienda o directamente al consumidor final, en el momento preciso y en perfectas condiciones.',
-      challenge: 'El retail moderno enfrenta desafíos únicos: gestión de inventario en múltiples ubicaciones, entregas rápidas para e-commerce, y la necesidad de adaptarse a temporadas altas sin comprometer la calidad del servicio.',
+      introduction: 'Optimización end-to-end de tu cadena de suministro, garantizando entregas precisas a tiendas y consumidores finales.',
+      challenge: 'El retail moderno exige gestión de inventario multicanal, entregas rápidas y adaptación a picos de demanda sin comprometer calidad.',
       solutions: [
         {
-          title: 'Gestión de Inventario Multicanal',
-          description: 'Control centralizado de stock en tiendas físicas y centros de distribución, con visibilidad en tiempo real para evitar quiebres y sobrestock.',
-          icon: <Package className="h-6 w-6" />
+          title: 'Inventario Multicanal',
+          description: 'Control centralizado en tiempo real para evitar quiebres y sobrestock.',
+          icon: <Package className="h-5 w-5" />
         },
         {
-          title: 'Fulfillment para E-commerce',
-          description: 'Preparación y envío de pedidos online con picking, packing y despacho optimizados para entregas rápidas y devoluciones ágiles.',
-          icon: <TrendingUp className="h-6 w-6" />
+          title: 'Fulfillment E-commerce',
+          description: 'Picking, packing y despacho optimizado con gestión de devoluciones.',
+          icon: <TrendingUp className="h-5 w-5" />
         },
         {
           title: 'Distribución Programada',
-          description: 'Entregas sincronizadas a puntos de venta según demanda y rotación, optimizando rutas y reduciendo costos operativos.',
-          icon: <Clock className="h-6 w-6" />
+          description: 'Entregas sincronizadas según demanda de cada punto de venta.',
+          icon: <Clock className="h-5 w-5" />
         }
       ],
-      whyChooseUs: [
-        'Integración con sistemas ERP y plataformas de e-commerce',
-        'Almacenamiento escalable para temporadas altas',
-        'Gestión de logística inversa para devoluciones',
-        'Red de distribución nacional optimizada',
-        'WMS especializado para retail con trazabilidad completa'
+      capabilities: [
+        'Integración con ERP y plataformas e-commerce',
+        'Escalabilidad para temporadas altas',
+        'Logística inversa especializada',
+        'WMS con trazabilidad completa'
       ],
       relatedServices: [
-        { name: 'Almacenaje y Distribución', link: '/services/almacenaje-distribucion' },
-        { name: 'Última Milla', link: '/services/ultima-milla' }
+        { name: 'Almacenaje y Distribución', link: '/Ez_webpage/services/almacenaje-distribucion' },
+        { name: 'Última Milla', link: '/Ez_webpage/services/ultima-milla' }
       ]
     },
     'aerospace': {
       id: 'aerospace',
       title: 'Aerospace',
-      tagline: 'Precisión absoluta para componentes críticos',
+      tagline: 'Precisión crítica para componentes aeronáuticos',
       heroImage: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?q=80&w=1600&fm=webp',
-      introduction: 'La industria aeroespacial exige una logística de máxima precisión y seguridad, donde cada componente es crítico. Ofrecemos soluciones logísticas especializadas para este sector, coordinando el transporte de piezas sensibles y de alto valor en un entorno global de estrictas regulaciones.',
-      challenge: 'Los componentes aeroespaciales requieren manejo especializado, documentación rigurosa y tiempos de respuesta inmediatos para situaciones AOG (Aircraft on Ground). Cada pieza debe ser trazable, certificada y transportada bajo estándares internacionales.',
+      introduction: 'Logística especializada para piezas sensibles y de alto valor bajo estrictas regulaciones internacionales.',
+      challenge: 'Componentes aeroespaciales requieren manejo certificado, documentación rigurosa y respuesta inmediata en situaciones AOG.',
       solutions: [
         {
-          title: 'Respuesta AOG (Aircraft on Ground)',
-          description: 'Coordinación urgente para piezas críticas con transporte prioritario, disponible 24/7 para minimizar tiempos de inactividad de aeronaves.',
-          icon: <Plane className="h-6 w-6" />
+          title: 'Respuesta AOG 24/7',
+          description: 'Coordinación urgente para piezas críticas con transporte prioritario.',
+          icon: <Plane className="h-5 w-5" />
         },
         {
-          title: 'Documentación y Certificación',
-          description: 'Gestión completa de certificados de aeronavegabilidad, permisos de importación/exportación y documentación técnica requerida.',
-          icon: <FileText className="h-6 w-6" />
+          title: 'Certificación Completa',
+          description: 'Gestión de certificados y documentación técnica requerida.',
+          icon: <FileText className="h-5 w-5" />
         },
         {
-          title: 'Almacenamiento Controlado',
-          description: 'Bodegas con condiciones ambientales reguladas, seguridad reforzada y sistemas de trazabilidad para componentes de alto valor.',
-          icon: <Shield className="h-6 w-6" />
+          title: 'Almacenaje Controlado',
+          description: 'Bodegas con condiciones reguladas y seguridad reforzada.',
+          icon: <Shield className="h-5 w-5" />
         }
       ],
-      whyChooseUs: [
-        'Experiencia en handling de componentes sensibles',
-        'Red global de partners certificados en logística aeronáutica',
-        'Seguros especializados para carga de alto valor',
-        'Trazabilidad completa con documentación aeronáutica',
-        'Personal capacitado en normativas IATA, FAA y EASA'
+      capabilities: [
+        'Handling certificado de componentes sensibles',
+        'Red global de partners aeronáuticos',
+        'Seguros especializados para alto valor',
+        'Cumplimiento IATA, FAA y EASA'
       ],
       relatedServices: [
-        { name: 'Transporte Internacional', link: '/services/transporte-internacional' },
-        { name: 'Project Cargo', link: '/services/project-cargo' }
+        { name: 'Transporte Internacional', link: '/Ez_webpage/services/transporte-internacional' },
+        { name: 'Project Cargo', link: '/Ez_webpage/services/project-cargo' }
       ]
     },
     'alimentaria': {
       id: 'alimentaria',
       title: 'Alimentaria',
-      tagline: 'Frescura y seguridad desde el origen hasta tu mesa',
+      tagline: 'Cadena de frío y seguridad garantizada',
       heroImage: 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?q=80&w=1600&fm=webp',
-      introduction: 'En la industria alimentaria, la logística es más que un servicio; es una promesa de calidad y seguridad. Entendemos que la frescura y la integridad de los alimentos son fundamentales, por lo que ofrecemos una cadena de suministro perfectamente controlada desde el origen hasta el destino final.',
-      challenge: 'Los productos alimentarios requieren condiciones específicas de temperatura, humedad y tiempo. Cualquier ruptura en la cadena de frío o demora puede comprometer la calidad y seguridad del producto, además del cumplimiento normativo sanitario.',
+      introduction: 'Cadena de suministro controlada para productos perecibles, asegurando frescura e integridad desde origen hasta destino.',
+      challenge: 'Productos alimentarios exigen condiciones específicas de temperatura, tiempo y cumplimiento de normativas sanitarias estrictas.',
       solutions: [
         {
-          title: 'Cadena de Frío Controlada',
-          description: 'Transporte y almacenamiento refrigerado con monitoreo de temperatura 24/7, garantizando condiciones óptimas para productos perecibles.',
-          icon: <Thermometer className="h-6 w-6" />
+          title: 'Cadena de Frío',
+          description: 'Monitoreo 24/7 de temperatura en transporte y almacenamiento.',
+          icon: <Thermometer className="h-5 w-5" />
         },
         {
-          title: 'Certificación Sanitaria',
-          description: 'Cumplimiento de protocolos HACCP y gestión de permisos sanitarios para importación/exportación de alimentos.',
-          icon: <CheckCircle2 className="h-6 w-6" />
+          title: 'Certificación HACCP',
+          description: 'Gestión de permisos sanitarios y protocolos de seguridad.',
+          icon: <Shield className="h-5 w-5" />
         },
         {
-          title: 'Trazabilidad por Lote',
-          description: 'Seguimiento detallado por lote de producción y fecha de vencimiento, con rotación FIFO para máxima frescura.',
-          icon: <FileText className="h-6 w-6" />
+          title: 'Trazabilidad FIFO',
+          description: 'Seguimiento por lote con rotación para máxima frescura.',
+          icon: <FileText className="h-5 w-5" />
         }
       ],
-      whyChooseUs: [
-        'Almacenes refrigerados con certificación sanitaria',
-        'Flota de transporte con unidades frigoríficas',
-        'Protocolos de limpieza y desinfección constantes',
-        'Gestión de fechas de vencimiento y rotación FIFO',
-        'Experiencia en importación de alimentos con permisos SENASA'
+      capabilities: [
+        'Almacenes refrigerados certificados',
+        'Flota con unidades frigoríficas',
+        'Protocolos de higiene constantes',
+        'Permisos SENASA para importación'
       ],
       relatedServices: [
-        { name: 'Almacenaje y Distribución', link: '/services/almacenaje-distribucion' },
-        { name: 'Agenciamiento de Aduanas', link: '/services/agenciamiento-aduanas' }
+        { name: 'Almacenaje y Distribución', link: '/Ez_webpage/services/almacenaje-distribucion' },
+        { name: 'Agenciamiento de Aduanas', link: '/Ez_webpage/services/agenciamiento-aduanas' }
       ]
     },
     'industrial': {
       id: 'industrial',
       title: 'Industrial',
-      tagline: 'Soluciones robustas para manufactura y proyectos complejos',
+      tagline: 'Soluciones para manufactura y proyectos complejos',
       heroImage: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1600&fm=webp',
-      introduction: 'Desde el transporte especializado de maquinaria pesada hasta la gestión de proyectos complejos y el almacenamiento de inventarios, nuestra experiencia asegura que cada operación se realice con la máxima eficiencia, seguridad y precisión.',
-      challenge: 'La industria manufacturera requiere coordinación precisa de insumos y maquinaria, con entregas just-in-time para no detener producción. Las cargas sobredimensionadas y proyectos especiales demandan planificación logística avanzada.',
+      introduction: 'Gestión integral de maquinaria pesada, proyectos complejos e inventarios con máxima eficiencia y seguridad.',
+      challenge: 'La manufactura exige coordinación precisa JIT y manejo de cargas sobredimensionadas con planificación avanzada.',
       solutions: [
         {
-          title: 'Transporte de Maquinaria Pesada',
-          description: 'Coordinación de cargas sobredimensionadas con equipos especializados, permisos de circulación y rutas optimizadas.',
-          icon: <Factory className="h-6 w-6" />
+          title: 'Maquinaria Pesada',
+          description: 'Coordinación de cargas especiales con permisos y rutas.',
+          icon: <Factory className="h-5 w-5" />
         },
         {
-          title: 'Entregas Just-in-Time',
-          description: 'Sincronización de suministros con líneas de producción para minimizar inventario y mantener operaciones continuas.',
-          icon: <Clock className="h-6 w-6" />
+          title: 'Just-in-Time',
+          description: 'Sincronización con líneas de producción activas.',
+          icon: <Clock className="h-5 w-5" />
         },
         {
-          title: 'Gestión de Proyectos Complejos',
-          description: 'Planificación integral para instalación de plantas industriales, con coordinación multimodal y seguros especializados.',
-          icon: <Shield className="h-6 w-6" />
+          title: 'Project Cargo',
+          description: 'Planificación multimodal para instalaciones industriales.',
+          icon: <Shield className="h-5 w-5" />
         }
       ],
-      whyChooseUs: [
-        'Experiencia en transporte de cargas pesadas y sobredimensionadas',
-        'Almacenes con equipos de izaje y manejo industrial',
-        'Coordinación de permisos especiales para transporte',
-        'Seguros para maquinaria de alto valor',
-        'Planificación logística para proyectos complejos'
+      capabilities: [
+        'Transporte de cargas sobredimensionadas',
+        'Almacenes con equipos de izaje',
+        'Coordinación de permisos especiales',
+        'Seguros para maquinaria de alto valor'
       ],
       relatedServices: [
-        { name: 'Project Cargo', link: '/services/project-cargo' },
-        { name: 'Transporte Internacional', link: '/services/transporte-internacional' }
+        { name: 'Project Cargo', link: '/Ez_webpage/services/project-cargo' },
+        { name: 'Transporte Internacional', link: '/Ez_webpage/services/transporte-internacional' }
       ]
     },
     'automotriz': {
       id: 'automotriz',
       title: 'Automotriz',
-      tagline: 'Sincronización perfecta para tu línea de producción',
+      tagline: 'Sincronización perfecta para producción',
       heroImage: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1600&fm=webp',
-      introduction: 'Ofrecemos soluciones especializadas para gestionar la compleja cadena de suministro de piezas y componentes automotrices, asegurando entregas just-in-time a plantas de fabricación con precisión milimétrica.',
-      challenge: 'La industria automotriz opera con inventarios mínimos y demanda entregas precisas. Cualquier retraso puede detener líneas de producción completas, generando costos significativos. Se requiere coordinación perfecta entre múltiples proveedores.',
+      introduction: 'Gestión especializada de cadena de suministro automotriz con entregas just-in-time de precisión milimétrica.',
+      challenge: 'La industria automotriz opera con inventarios mínimos. Cualquier retraso puede detener producción completa.',
       solutions: [
         {
-          title: 'Just-in-Time & Secuenciación',
-          description: 'Entregas sincronizadas con producción, incluyendo secuenciación de piezas en orden de ensamblaje para máxima eficiencia.',
-          icon: <Clock className="h-6 w-6" />
+          title: 'JIT & Secuenciación',
+          description: 'Entregas sincronizadas en orden de ensamblaje.',
+          icon: <Clock className="h-5 w-5" />
         },
         {
-          title: 'Gestión de Proveedores',
-          description: 'Consolidación de múltiples proveedores en envíos coordinados, reduciendo complejidad y optimizando costos.',
-          icon: <Users className="h-6 w-6" />
+          title: 'Multi-Proveedor',
+          description: 'Consolidación de envíos para reducir complejidad.',
+          icon: <Users className="h-5 w-5" />
         },
         {
-          title: 'Control de Calidad en Tránsito',
-          description: 'Inspección de componentes y manejo especializado para evitar daños en piezas delicadas durante el transporte.',
-          icon: <CheckCircle2 className="h-6 w-6" />
+          title: 'Control de Calidad',
+          description: 'Inspección y manejo especializado de componentes.',
+          icon: <Shield className="h-5 w-5" />
         }
       ],
-      whyChooseUs: [
-        'Experiencia en logística just-in-time para automotriz',
-        'Sistemas WMS integrados con ERPs de manufactura',
-        'Almacenes cercanos a plantas de producción',
-        'Trazabilidad por lote y número de serie',
-        'Manejo especializado para componentes automotrices'
+      capabilities: [
+        'Logística JIT certificada',
+        'Integración con ERPs de manufactura',
+        'Almacenes cerca de plantas',
+        'Trazabilidad por número de serie'
       ],
       relatedServices: [
-        { name: 'Almacenaje y Distribución', link: '/services/almacenaje-distribucion' },
-        { name: 'Transporte Internacional', link: '/services/transporte-internacional' }
+        { name: 'Almacenaje y Distribución', link: '/Ez_webpage/services/almacenaje-distribucion' },
+        { name: 'Transporte Internacional', link: '/Ez_webpage/services/transporte-internacional' }
       ]
     },
     'pharmaceutical': {
       id: 'pharmaceutical',
       title: 'Pharmaceutical',
-      tagline: 'Protegiendo la salud con logística farmacéutica certificada',
+      tagline: 'Logística farmacéutica certificada GDP',
       heroImage: 'https://images.unsplash.com/photo-1584982751601-97dcc096659c?q=80&w=1600&fm=webp',
-      introduction: 'En la industria farmacéutica, la precisión, la seguridad y el cumplimiento de las normativas son vitales para proteger la salud humana. Ofrecemos soluciones logísticas especializadas, diseñadas para gestionar productos de alta sensibilidad y valor con la máxima rigurosidad.',
-      challenge: 'Los productos farmacéuticos requieren condiciones estrictas de temperatura, seguridad y trazabilidad. Las regulaciones sanitarias son rigurosas y cualquier desvío puede comprometer la efectividad del producto o su aprobación regulatoria.',
+      introduction: 'Gestión especializada de productos farmacéuticos con cumplimiento estricto de normativas y cadena de frío validada.',
+      challenge: 'Productos farmacéuticos exigen condiciones precisas y cualquier desvío puede comprometer efectividad o aprobación.',
       solutions: [
         {
-          title: 'Cadena de Frío Farmacéutica',
-          description: 'Control de temperatura de 2-8°C con monitoreo continuo, registros validados y protocolos de contingencia para productos termosensibles.',
-          icon: <Thermometer className="h-6 w-6" />
+          title: 'Cadena de Frío 2-8°C',
+          description: 'Monitoreo continuo con registros validados.',
+          icon: <Thermometer className="h-5 w-5" />
         },
         {
-          title: 'Cumplimiento Regulatorio',
-          description: 'Gestión de permisos DIGEMID, certificados de análisis y documentación requerida por autoridades sanitarias.',
-          icon: <FileText className="h-6 w-6" />
+          title: 'Cumplimiento DIGEMID',
+          description: 'Gestión de permisos y documentación sanitaria.',
+          icon: <FileText className="h-5 w-5" />
         },
         {
-          title: 'Seguridad y Trazabilidad',
-          description: 'Almacenes con seguridad reforzada, control de acceso y trazabilidad completa por lote para cumplir con normativas GDP.',
-          icon: <Shield className="h-6 w-6" />
+          title: 'Seguridad GDP',
+          description: 'Almacenes certificados con trazabilidad por lote.',
+          icon: <Shield className="h-5 w-5" />
         }
       ],
-      whyChooseUs: [
-        'Almacenes con condiciones controladas y validadas',
-        'Personal capacitado en manejo de productos farmacéuticos',
-        'Experiencia en importación con permisos DIGEMID',
-        'Sistemas de monitoreo de temperatura validados',
-        'Cumplimiento de normativas GDP (Good Distribution Practice)'
+      capabilities: [
+        'Almacenes validados farmacéuticos',
+        'Personal certificado en manejo',
+        'Sistemas de temperatura validados',
+        'Cumplimiento Good Distribution Practice'
       ],
       relatedServices: [
-        { name: 'Almacenaje y Distribución', link: '/services/almacenaje-distribucion' },
-        { name: 'Agenciamiento de Aduanas', link: '/services/agenciamiento-aduanas' }
+        { name: 'Almacenaje y Distribución', link: '/Ez_webpage/services/almacenaje-distribucion' },
+        { name: 'Agenciamiento de Aduanas', link: '/Ez_webpage/services/agenciamiento-aduanas' }
       ]
     },
     'tecnologia': {
       id: 'tecnologia',
       title: 'Tecnología',
-      tagline: 'Protección y velocidad para tus productos de alto valor',
+      tagline: 'Protección para productos de alto valor',
       heroImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&fm=webp',
-      introduction: 'La industria tecnológica requiere logística ágil, segura y confiable para productos de alto valor y rápida obsolescencia. Gestionamos desde componentes electrónicos hasta equipos completos con máxima protección y trazabilidad.',
-      challenge: 'Los productos tecnológicos combinan alto valor, fragilidad y ciclos de vida cortos. Requieren protección contra daños, seguridad contra robo y entregas rápidas para evitar obsolescencia de inventario.',
+      introduction: 'Logística ágil y segura para productos tecnológicos de alto valor con ciclos de vida cortos.',
+      challenge: 'Productos tech combinan alto valor, fragilidad y rápida obsolescencia. Requieren velocidad y seguridad máxima.',
       solutions: [
         {
-          title: 'Manejo Especializado',
-          description: 'Embalaje antiestático, protección contra impactos y control ambiental para componentes electrónicos sensibles.',
-          icon: <Package className="h-6 w-6" />
+          title: 'Manejo Antiestático',
+          description: 'Embalaje y control ambiental para componentes sensibles.',
+          icon: <Package className="h-5 w-5" />
         },
         {
-          title: 'Seguridad Reforzada',
-          description: 'Almacenes con seguridad 24/7, cámaras de vigilancia, control de acceso y seguros para productos de alto valor.',
-          icon: <Shield className="h-6 w-6" />
+          title: 'Seguridad 24/7',
+          description: 'Almacenes vigilados con seguros especializados.',
+          icon: <Shield className="h-5 w-5" />
         },
         {
-          title: 'Distribución Rápida',
-          description: 'Entregas express para lanzamientos de productos y gestión de inventario para minimizar obsolescencia.',
-          icon: <Globe className="h-6 w-6" />
+          title: 'Distribución Express',
+          description: 'Entregas rápidas para evitar obsolescencia.',
+          icon: <Globe className="h-5 w-5" />
         }
       ],
-      whyChooseUs: [
-        'Experiencia en importación de equipos tecnológicos',
-        'Almacenes con seguridad reforzada y seguros especializados',
-        'Manejo certificado de productos electrónicos',
-        'Integración con plataformas de e-commerce',
-        'Gestión de garantías y logística inversa'
+      capabilities: [
+        'Importación de equipos tech',
+        'Almacenes con seguridad reforzada',
+        'Manejo certificado de electrónicos',
+        'Integración con e-commerce'
       ],
       relatedServices: [
-        { name: 'Almacenaje y Distribución', link: '/services/almacenaje-distribucion' },
-        { name: 'Última Milla', link: '/services/ultima-milla' }
+        { name: 'Almacenaje y Distribución', link: '/Ez_webpage/services/almacenaje-distribucion' },
+        { name: 'Última Milla', link: '/Ez_webpage/services/ultima-milla' }
       ]
     },
     'otras': {
       id: 'otras',
       title: 'Otras Industrias',
-      tagline: 'Soluciones logísticas adaptadas a tu sector',
+      tagline: 'Soluciones adaptadas a tu sector',
       heroImage: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1600&fm=webp',
-      introduction: 'Cada industria tiene necesidades logísticas únicas. Con más de 10 años de experiencia en comercio internacional, hemos desarrollado soluciones flexibles y adaptables para sectores especializados que requieren atención personalizada.',
-      challenge: 'Las industrias especializadas a menudo requieren combinaciones únicas de servicios logísticos, cumplimiento de regulaciones específicas y manejo especializado que no se encuentra en soluciones estándar.',
+      introduction: 'Con 10+ años en comercio internacional, desarrollamos soluciones flexibles para sectores especializados.',
+      challenge: 'Industrias especializadas requieren combinaciones únicas de servicios y cumplimiento de regulaciones específicas.',
       solutions: [
         {
-          title: 'Consultoría Logística',
-          description: 'Análisis de necesidades específicas y diseño de soluciones a medida para optimizar tu cadena de suministro.',
-          icon: <Users className="h-6 w-6" />
+          title: 'Consultoría',
+          description: 'Análisis y diseño de soluciones a medida.',
+          icon: <Users className="h-5 w-5" />
         },
         {
-          title: 'Gestión de Regulaciones',
-          description: 'Experiencia en permisos especiales, certificaciones y cumplimiento normativo para productos regulados.',
-          icon: <FileText className="h-6 w-6" />
+          title: 'Regulaciones',
+          description: 'Gestión de permisos y certificaciones especiales.',
+          icon: <FileText className="h-5 w-5" />
         },
         {
-          title: 'Integración Tecnológica',
-          description: 'Conectividad con tus sistemas mediante APIs, EDI o integración directa con CargoWise para visibilidad total.',
-          icon: <Globe className="h-6 w-6" />
+          title: 'Integración Tech',
+          description: 'Conectividad con CargoWise para visibilidad total.',
+          icon: <Globe className="h-5 w-5" />
         }
       ],
-      whyChooseUs: [
-        'Flexibilidad para adaptar soluciones a necesidades específicas',
-        'Experiencia en múltiples sectores e industrias',
-        'Equipo especializado en comercio internacional',
-        'Red global de partners certificados',
-        'Tecnología logística avanzada con CargoWise'
+      capabilities: [
+        'Soluciones flexibles personalizadas',
+        'Experiencia multi-sectorial',
+        'Equipo en comercio internacional',
+        'Tecnología logística avanzada'
       ],
       relatedServices: [
-        { name: 'Transporte Internacional', link: '/services/transporte-internacional' },
-        { name: 'Agenciamiento de Aduanas', link: '/services/agenciamiento-aduanas' }
+        { name: 'Transporte Internacional', link: '/Ez_webpage/services/transporte-internacional' },
+        { name: 'Agenciamiento de Aduanas', link: '/Ez_webpage/services/agenciamiento-aduanas' }
       ]
     }
   };
@@ -318,10 +314,10 @@ const IndustryDetail = () => {
 
   if (!industry) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Industria no encontrada</h2>
-          <Link to="/" className="inline-block px-6 py-3 bg-[#E41B13] text-white rounded-lg font-semibold hover:bg-[#C41710] transition-colors">
+          <Link to="/Ez_webpage/" className="inline-block px-6 py-3 bg-[#E41B13] text-white rounded-lg font-semibold hover:bg-[#C41710] transition-colors">
             Volver al inicio
           </Link>
         </div>
@@ -330,38 +326,42 @@ const IndustryDetail = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <div className="relative h-[60vh] md:h-[70vh] overflow-hidden">
-        <img 
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
+      {/* Compact Hero */}
+      <div className="relative h-[40vh] min-h-[400px] overflow-hidden">
+        <motion.img 
           src={industry.heroImage} 
           alt={industry.title}
           className="w-full h-full object-cover"
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.2 }}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/90 via-gray-900/70 to-[#E41B13]/60" />
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/95 via-gray-900/85 to-[#E41B13]/70" />
         
         <div className="absolute inset-0 flex items-center">
-          <div className="max-w-7xl mx-auto px-6 md:px-8 w-full">
+          <div className="max-w-5xl mx-auto px-6 w-full">
             <Link 
-              to="/" 
-              className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white hover:bg-white/20 transition-all group"
+              to="/Ez_webpage/" 
+              className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-white/90 hover:bg-white/10 transition-all text-sm group"
             >
-              <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
-              <span className="font-medium">Volver a inicio</span>
+              <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
+              Volver
             </Link>
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="inline-block px-4 py-1.5 bg-[#E41B13] rounded-full mb-4">
-                <span className="text-white text-sm font-semibold uppercase tracking-wider">Industria Especializada</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E41B13]/90 rounded-full mb-3 backdrop-blur-sm">
+                <Sparkles className="h-3.5 w-3.5 text-white" />
+                <span className="text-white text-xs font-semibold uppercase tracking-wider">Especialización</span>
               </div>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 leading-tight">
                 {industry.title}
               </h1>
-              <p className="text-xl md:text-2xl text-white/90 max-w-3xl font-light">
+              <p className="text-lg md:text-xl text-white/80 max-w-2xl">
                 {industry.tagline}
               </p>
             </motion.div>
@@ -369,165 +369,153 @@ const IndustryDetail = () => {
         </div>
       </div>
 
-      {/* Introduction */}
-      <section className="py-16 md:py-24 px-6 md:px-8 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Soluciones logísticas especializadas
-            </h2>
-            <p className="text-lg text-gray-600 leading-relaxed mb-8">
-              {industry.introduction}
-            </p>
-            
-            <div className="bg-gray-50 border-l-4 border-[#E41B13] p-6 rounded-r-lg">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">El desafío</h3>
-              <p className="text-gray-700">
-                {industry.challenge}
-              </p>
+      {/* Main Content - Compact */}
+      <div className="max-w-5xl mx-auto px-6 -mt-12 relative z-10 pb-16">
+        {/* Intro Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-8 border border-gray-100"
+        >
+          <div className="flex items-start gap-4 mb-4">
+            <div className="w-12 h-12 bg-gradient-to-br from-[#E41B13] to-[#C41710] rounded-xl flex items-center justify-center flex-shrink-0">
+              <Package className="h-6 w-6 text-white" />
             </div>
-          </motion.div>
-        </div>
-      </section>
+            <div>
+              <h2 className="text-xl font-bold text-gray-900 mb-2">Nuestra Capacidad</h2>
+              <p className="text-gray-600 leading-relaxed">{industry.introduction}</p>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-red-50 to-orange-50 border-l-4 border-[#E41B13] p-4 rounded-r-lg">
+            <p className="text-sm text-gray-700 font-medium">{industry.challenge}</p>
+          </div>
+        </motion.div>
 
-      {/* Solutions */}
-      <section className="py-16 md:py-24 px-6 md:px-8 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+        {/* Tabs */}
+        <div className="flex gap-2 mb-6">
+          <button
+            onClick={() => setActiveTab('solutions')}
+            className={`flex-1 px-4 py-2.5 rounded-lg font-semibold text-sm transition-all ${
+              activeTab === 'solutions'
+                ? 'bg-[#E41B13] text-white shadow-lg'
+                : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+            }`}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Cómo lo resolvemos
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Soluciones diseñadas específicamente para los desafíos de tu industria
-            </p>
-          </motion.div>
+            Soluciones
+          </button>
+          <button
+            onClick={() => setActiveTab('capabilities')}
+            className={`flex-1 px-4 py-2.5 rounded-lg font-semibold text-sm transition-all ${
+              activeTab === 'capabilities'
+                ? 'bg-[#E41B13] text-white shadow-lg'
+                : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+            }`}
+          >
+            Capacidades
+          </button>
+        </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+        {/* Content Tabs */}
+        {activeTab === 'solutions' ? (
+          <div className="grid md:grid-cols-3 gap-4 mb-8">
             {industry.solutions.map((solution, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow border border-gray-100"
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                whileHover={{ y: -4 }}
+                className="group relative bg-white p-5 rounded-xl border border-gray-200 hover:border-[#E41B13]/50 hover:shadow-lg transition-all cursor-pointer"
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  mouseX.set(e.clientX - rect.left);
+                  mouseY.set(e.clientY - rect.top);
+                }}
               >
-                <div className="w-14 h-14 bg-[#E41B13]/10 rounded-xl flex items-center justify-center text-[#E41B13] mb-6">
+                <div className="w-10 h-10 bg-gradient-to-br from-[#E41B13]/10 to-[#E41B13]/5 rounded-lg flex items-center justify-center text-[#E41B13] mb-3 group-hover:scale-110 transition-transform">
                   {solution.icon}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-base font-bold text-gray-900 mb-1.5 group-hover:text-[#E41B13] transition-colors">
                   {solution.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-sm text-gray-600 leading-relaxed">
                   {solution.description}
                 </p>
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-16 md:py-24 px-6 md:px-8 bg-white">
-        <div className="max-w-4xl mx-auto">
+        ) : (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="bg-white rounded-xl p-6 border border-gray-200 mb-8"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-              Por qué elegirnos
-            </h2>
-            <div className="space-y-4">
-              {industry.whyChooseUs.map((item, index) => (
+            <div className="grid md:grid-cols-2 gap-3">
+              {industry.capabilities.map((cap, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="flex items-start gap-4 p-4 rounded-lg hover:bg-gray-50 transition-colors"
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
                 >
-                  <div className="flex-shrink-0 mt-1">
-                    <CheckCircle2 className="h-6 w-6 text-[#E41B13]" />
-                  </div>
-                  <p className="text-gray-700 text-lg">
-                    {item}
-                  </p>
+                  <div className="w-1.5 h-1.5 bg-[#E41B13] rounded-full" />
+                  <p className="text-sm text-gray-700 font-medium">{cap}</p>
                 </motion.div>
               ))}
             </div>
           </motion.div>
-        </div>
-      </section>
+        )}
 
-      {/* Related Services */}
-      {industry.relatedServices && industry.relatedServices.length > 0 && (
-        <section className="py-16 md:py-24 px-6 md:px-8 bg-gray-50">
-          <div className="max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-                Servicios relacionados
-              </h2>
-              <div className="flex flex-wrap gap-4">
-                {industry.relatedServices.map((service, index) => (
-                  <Link
-                    key={index}
-                    to={service.link}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-gray-200 rounded-lg font-semibold text-gray-700 hover:border-[#E41B13] hover:text-[#E41B13] transition-all"
-                  >
-                    {service.name}
-                    <ArrowLeft className="h-4 w-4 rotate-180" />
-                  </Link>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
-      )}
-
-      {/* CTA Section */}
-      <section className="py-16 md:py-24 px-6 md:px-8 bg-gradient-to-br from-gray-900 to-gray-800">
-        <div className="max-w-4xl mx-auto text-center">
+        {/* Related Services */}
+        {industry.relatedServices && industry.relatedServices.length > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-6 text-white"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              ¿Listo para optimizar tu logística?
-            </h2>
-            <p className="text-xl text-gray-300 mb-8">
-              Conversemos sobre las necesidades específicas de tu industria y diseñemos una solución a medida.
-            </p>
-            <Link
-              to="/"
-              state={{ scrollTo: 'contact' }}
-              className="inline-block px-8 py-4 bg-[#E41B13] text-white rounded-lg font-bold text-lg hover:bg-[#C41710] transition-colors shadow-lg hover:shadow-xl"
-            >
-              Solicitar Consultoría
-            </Link>
+            <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
+              <ChevronRight className="h-5 w-5 text-[#E41B13]" />
+              Servicios Relacionados
+            </h3>
+            <div className="flex flex-wrap gap-3">
+              {industry.relatedServices.map((service, index) => (
+                <Link
+                  key={index}
+                  to={service.link}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-sm font-semibold hover:bg-white/20 hover:border-white/40 transition-all group"
+                >
+                  {service.name}
+                  <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              ))}
+            </div>
           </motion.div>
+        )}
+      </div>
+
+      {/* Compact CTA */}
+      <div className="bg-gradient-to-r from-[#E41B13] to-[#C41710] py-12">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
+            ¿Necesitas una solución especializada?
+          </h2>
+          <p className="text-white/90 mb-6 max-w-2xl mx-auto">
+            Conversemos sobre tu industria y diseñemos la logística que necesitas.
+          </p>
+          <Link
+            to="/Ez_webpage/"
+            state={{ scrollTo: 'contact' }}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#E41B13] rounded-lg font-bold hover:bg-gray-100 transition-colors shadow-xl group"
+          >
+            Solicitar Consultoría
+            <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
-      </section>
+      </div>
     </div>
   );
 };
