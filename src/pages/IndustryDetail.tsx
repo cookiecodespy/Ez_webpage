@@ -1,4 +1,4 @@
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { ArrowLeft, ChevronRight, Package, TrendingUp, Shield, Clock, FileText, Thermometer, Factory, Plane, Users, Globe, Sparkles } from 'lucide-react';
 import { useState, useEffect } from 'react';
@@ -23,7 +23,6 @@ interface IndustryDetailData {
 
 const IndustryDetail = () => {
   const { industryId } = useParams<{ industryId: string }>();
-  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<'solutions' | 'capabilities'>('solutions');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
@@ -431,14 +430,14 @@ const IndustryDetail = () => {
               </h3>
               <div className="flex flex-wrap gap-4">
                 {industry.relatedServices.map((service, index) => (
-                  <button
+                  <Link
                     key={index}
-                    onClick={() => navigate(`/servicios/${service.link}`)}
-                    className="group/btn inline-flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-white font-semibold hover:bg-white/20 hover:border-white/40 hover:scale-105 transition-all shadow-lg cursor-pointer"
+                    to={`/servicios/${service.link}`}
+                    className="group/btn inline-flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-white font-semibold hover:bg-white/20 hover:border-white/40 hover:scale-105 transition-all shadow-lg"
                   >
                     {service.name}
                     <ChevronRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </button>
+                  </Link>
                 ))}
               </div>
             </div>
