@@ -5,7 +5,7 @@ import {
   Globe, Zap, Target, AlertCircle, FileText, Settings,
   Cpu, Network, Server, Database,
   BarChart3, Radio, HelpCircle, Home,
-  Layers, Code, Truck, MapPin
+  Layers, Code, Truck, MapPin, Plane
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
@@ -52,6 +52,7 @@ interface Subpage {
 interface ServiceDetailData {
   id: string;
   title: string;
+  subtitle?: string;
   tagline: string;
   description: string;
   subpages: Subpage[];
@@ -507,6 +508,695 @@ const servicesData: Record<string, ServiceDetailData> = {
       { name: 'Contract Logistics', link: 'almacenaje-distribucion' },
       { name: 'Última Milla', link: 'ultima-milla' }
     ]
+  },
+
+  'freight-forwarding': {
+    id: 'freight-forwarding',
+    title: 'Freight Forwarding',
+    subtitle: 'Gestión integral de envíos multimodales internacionales',
+    tagline: 'Partner logístico internacional',
+    description: 'Actuamos como tu partner logístico internacional, coordinando transporte aéreo, marítimo y terrestre con una red global de carriers y agentes.',
+    
+    subpages: [
+      {
+        id: 'overview',
+        title: 'Panorama General',
+        description: 'Qué hacemos y cómo',
+        icon: <Home className="h-5 w-5" />
+      },
+      {
+        id: 'operacion',
+        title: 'Operación',
+        description: 'Flujo paso a paso',
+        icon: <Settings className="h-5 w-5" />
+      },
+      {
+        id: 'tecnologia',
+        title: 'Tecnología',
+        description: 'Stack técnico',
+        icon: <Code className="h-5 w-5" />
+      },
+      {
+        id: 'slas-entregables',
+        title: 'SLAs & Reportes',
+        description: 'Compromisos operacionales',
+        icon: <FileText className="h-5 w-5" />
+      },
+      {
+        id: 'escenarios',
+        title: 'Casos Internacionales',
+        description: 'Importación/exportación',
+        icon: <Target className="h-5 w-5" />
+      }
+    ],
+
+    scenarios: [
+      {
+        pain: 'Importador sin conocimiento de incoterms ni proceso aduanero',
+        solution: 'Gestión door-to-door: reserva de espacio, documentación, despacho aduanero, entrega final',
+        outcome: 'Carga liberada en <48h post-arribo, sin demoras',
+        icon: <Globe className="h-6 w-6" />
+      },
+      {
+        pain: 'Exportador con carga urgente y necesidad de cotizar múltiples rutas',
+        solution: 'Cotización consolidada aéreo/marítimo en <2h, reserva inmediata, tracking end-to-end',
+        outcome: 'Ahorro 30% vs cotización directa, visibilidad total',
+        icon: <Plane className="h-6 w-6" />
+      },
+      {
+        pain: 'E-commerce con volúmenes fluctuantes y necesidad de flexibilidad',
+        solution: 'Contratos flexibles con carriers, consolidación LCL/LTL, fulfillment cross-border',
+        outcome: 'Costos variables según volumen, sin mínimos',
+        icon: <Package className="h-6 w-6" />
+      }
+    ],
+
+    deliverables: [
+      {
+        name: 'Tracking Multimodal',
+        description: 'Plataforma web/app con visibilidad de tus envíos en tránsito (aéreo, marítimo, terrestre)',
+        type: 'dashboard',
+        icon: <MapPin className="h-5 w-5" />
+      },
+      {
+        name: 'Documentación Digital',
+        description: 'BL, AWB, facturas, certificados de origen accesibles 24/7 en portal',
+        type: 'document',
+        icon: <FileText className="h-5 w-5" />
+      },
+      {
+        name: 'API de Cotización',
+        description: 'Endpoint para obtener tarifas en tiempo real según origen/destino/peso',
+        type: 'integration',
+        icon: <Code className="h-5 w-5" />
+      },
+      {
+        name: 'Reportes Mensuales',
+        description: 'Dashboard de costos por ruta, tiempos de tránsito, performance carriers',
+        type: 'report',
+        icon: <BarChart3 className="h-5 w-5" />
+      }
+    ],
+
+    integrations: [
+      {
+        system: 'Carriers Globales',
+        description: 'APIs con Maersk, MSC, Emirates SkyCargo, LATAM Cargo para bookings y tracking',
+        technologies: ['EDI', 'API REST', 'SOAP'],
+        icon: <Truck className="h-5 w-5" />
+      },
+      {
+        system: 'Aduanas',
+        description: 'Integración con sistemas SICEX (Chile), VUCE (Perú), VUCEM (México)',
+        technologies: ['SOAP', 'XML', 'Certificados digitales'],
+        icon: <Shield className="h-5 w-5" />
+      },
+      {
+        system: 'ERP Clientes',
+        description: 'Sincronización con SAP, Oracle, Dynamics para órdenes de compra/venta',
+        technologies: ['EDI X12', 'IDOC', 'REST API'],
+        icon: <Database className="h-5 w-5" />
+      },
+      {
+        system: 'Plataformas E-commerce',
+        description: 'Integración con Shopify, WooCommerce, VTEX para fulfillment cross-border',
+        technologies: ['REST API', 'Webhooks'],
+        icon: <Globe className="h-5 w-5" />
+      }
+    ],
+
+    slas: [
+      {
+        metric: 'Cotización',
+        commitment: '< 2 horas hábiles para rutas estándar',
+        notes: 'Rutas complejas: 24h'
+      },
+      {
+        metric: 'Booking confirmado',
+        commitment: '< 4 horas desde aceptación cotización',
+        notes: 'Sujeto a disponibilidad carrier'
+      },
+      {
+        metric: 'Documentación pre-embarque',
+        commitment: '48h antes de ETD (Estimated Time Departure)',
+        notes: 'Cliente debe proveer docs comerciales'
+      },
+      {
+        metric: 'Tracking actualizado',
+        commitment: 'Actualización en cada milestone: salida, tránsito, arribo, liberación',
+        notes: 'Email + notificación en plataforma'
+      },
+      {
+        metric: 'Despacho aduanero',
+        commitment: '< 48h desde arribo (sin aforos físicos)',
+        notes: 'Chile: 24-48h | Perú: 48-72h'
+      }
+    ],
+
+    faqs: [
+      {
+        question: '¿Qué incluye el servicio de freight forwarding?',
+        answer: 'Cotización multimodal, reserva de espacio con carriers, gestión documental, coordinación de origen/destino, despacho aduanero (opcional), tracking end-to-end.'
+      },
+      {
+        question: '¿Cuál es la diferencia entre LCL y FCL (marítimo)?',
+        answer: 'LCL (Less than Container Load): compartes contenedor con otras cargas, pagas por m³/ton. FCL (Full Container Load): contenedor completo para ti, tarifa fija independiente del volumen usado.'
+      },
+      {
+        question: '¿Cómo se calcula el flete aéreo?',
+        answer: 'Por peso volumétrico vs peso real (el mayor). Fórmula: (largo x ancho x alto en cm) / 6000 = peso volumétrico en kg. Tarifa según ruta + fuel surcharge.'
+      },
+      {
+        question: '¿Incluyen seguro de carga?',
+        answer: 'No incluido por defecto. Podemos cotizar seguro all-risk con cobertura ICC A, B o C según necesidad.'
+      },
+      {
+        question: '¿Qué documentos necesito para exportar/importar?',
+        answer: 'Exportación: Factura comercial, packing list, certificado de origen (si aplica). Importación: + Conocimiento embarque (BL/AWB), declaración valor, permisos sectoriales (SAG, ISP, etc.).'
+      }
+    ],
+
+    relatedServices: [
+      { name: 'Agenciamiento Aduanas', link: 'agenciamiento-aduanas' },
+      { name: 'Seguro de Carga', link: 'seguro-carga' },
+      { name: 'Project Cargo', link: 'project-cargo' }
+    ]
+  },
+
+  'project-cargo': {
+    id: 'project-cargo',
+    title: 'Project Cargo',
+    subtitle: 'Transporte especializado de cargas sobredimensionadas y proyectos complejos',
+    tagline: 'Soluciones para cargas complejas',
+    description: 'Gestión integral de cargas out-of-gauge, equipos industriales, maquinaria pesada con planificación detallada y ejecución controlada.',
+    
+    subpages: [
+      {
+        id: 'overview',
+        title: 'Panorama General',
+        description: 'Qué hacemos y cómo',
+        icon: <Home className="h-5 w-5" />
+      },
+      {
+        id: 'operacion',
+        title: 'Operación',
+        description: 'Flujo paso a paso',
+        icon: <Settings className="h-5 w-5" />
+      },
+      {
+        id: 'tecnologia',
+        title: 'Tecnología',
+        description: 'Stack técnico',
+        icon: <Code className="h-5 w-5" />
+      },
+      {
+        id: 'slas-entregables',
+        title: 'SLAs & Reportes',
+        description: 'Compromisos operacionales',
+        icon: <FileText className="h-5 w-5" />
+      },
+      {
+        id: 'escenarios',
+        title: 'Casos Industriales',
+        description: 'Minería, energía, construcción',
+        icon: <Target className="h-5 w-5" />
+      }
+    ],
+
+    scenarios: [
+      {
+        pain: 'Minera con equipos de 80 tons que no caben en contenedor estándar',
+        solution: 'Transporte flat rack + cama baja especializada + permisos circulación + escolta policial',
+        outcome: 'Entrega on-site en planta minera sin daños',
+        icon: <Truck className="h-6 w-6" />
+      },
+      {
+        pain: 'Proyecto eólico con palas de turbina de 60m de largo',
+        solution: 'Planificación de ruta con estudios de gálibo, transporte modular, coordinación con autoridades viales',
+        outcome: 'Instalación sin demoras en cronograma de obra',
+        icon: <Zap className="h-6 w-6" />
+      },
+      {
+        pain: 'Exportación de maquinaria industrial con embalaje especial',
+        solution: 'Ingeniería de embalaje, fabricación de cuna de madera, seguro all-risk, transporte multimodal',
+        outcome: 'Cero daños en tránsito internacional',
+        icon: <Package className="h-6 w-6" />
+      }
+    ],
+
+    deliverables: [
+      {
+        name: 'Estudio de Viabilidad',
+        description: 'Análisis técnico de ruta, permisos, restricciones, costos estimados',
+        type: 'document',
+        icon: <FileText className="h-5 w-5" />
+      },
+      {
+        name: 'Plan de Proyecto',
+        description: 'Cronograma detallado, hitos críticos, recursos asignados, contingencias',
+        type: 'document',
+        icon: <Target className="h-5 w-5" />
+      },
+      {
+        name: 'Tracking GPS Dedicado',
+        description: 'Seguimiento satelital 24/7 con alertas de posición y velocidad',
+        type: 'dashboard',
+        icon: <MapPin className="h-5 w-5" />
+      },
+      {
+        name: 'Reporte Post-Proyecto',
+        description: 'Análisis de performance vs plan, lecciones aprendidas, fotos/videos',
+        type: 'report',
+        icon: <BarChart3 className="h-5 w-5" />
+      }
+    ],
+
+    integrations: [
+      {
+        system: 'CAD/Engineering Tools',
+        description: 'Importación de planos y dimensiones para validación de carga',
+        technologies: ['AutoCAD', 'SolidWorks', 'DWG/DXF'],
+        icon: <Code className="h-5 w-5" />
+      },
+      {
+        system: 'Sistemas de Permisos Viales',
+        description: 'Integración con MOP, MTT, gobiernos regionales para permisos circulación',
+        technologies: ['Formularios web', 'PDF firmados'],
+        icon: <Shield className="h-5 w-5" />
+      },
+      {
+        system: 'GPS Tracking Avanzado',
+        description: 'Rastreo satelital con geofencing y alertas de desvío',
+        technologies: ['Iridium Satellite', 'GPRS'],
+        icon: <MapPin className="h-5 w-5" />
+      },
+      {
+        system: 'Gestión Documental',
+        description: 'Repository centralizado para planos, permisos, certificados, fotos',
+        technologies: ['SharePoint', 'Cloud Storage'],
+        icon: <Database className="h-5 w-5" />
+      }
+    ],
+
+    slas: [
+      {
+        metric: 'Estudio de viabilidad',
+        commitment: '5-10 días hábiles desde recepción specs técnicas',
+        notes: 'Incluye visita terreno si es necesario'
+      },
+      {
+        metric: 'Plan de proyecto',
+        commitment: '15 días hábiles desde aprobación estudio',
+        notes: 'Con cronograma detallado y Gantt'
+      },
+      {
+        metric: 'Permisos circulación',
+        commitment: '30-45 días hábiles (depende de autoridades)',
+        notes: 'Chile: 30-45 días | Perú: 45-60 días'
+      },
+      {
+        metric: 'Ejecución según plan',
+        commitment: '±5% variación en timeline (sin force majeure)',
+        notes: 'Clima extremo puede impactar'
+      },
+      {
+        metric: 'Comunicación proactiva',
+        commitment: 'Reporte diario de avance + alertas en tiempo real',
+        notes: 'Email + WhatsApp + plataforma'
+      }
+    ],
+
+    faqs: [
+      {
+        question: '¿Qué se considera "project cargo"?',
+        answer: 'Cargas sobredimensionadas (>40 pies, >80 tons), equipos industriales complejos, maquinaria no unitizable, cargas de alto valor que requieren planificación especial.'
+      },
+      {
+        question: '¿Cuánto tiempo toma planificar un proyecto?',
+        answer: 'Depende de complejidad. Proyectos estándar: 4-6 semanas. Proyectos complejos (permisos especiales, rutas nuevas): 2-3 meses.'
+      },
+      {
+        question: '¿Qué incluye el servicio?',
+        answer: 'Estudio de viabilidad, ingeniería de carga, gestión de permisos, transporte especializado, escolta/seguridad, seguro all-risk, supervisión on-site.'
+      },
+      {
+        question: '¿Trabajan con cualquier tipo de carga?',
+        answer: 'Sí, pero evaluamos caso a caso. No transportamos materiales peligrosos clase 1 (explosivos) ni radioactivos sin autorización especial.'
+      },
+      {
+        question: '¿Cómo se cotiza un proyecto?',
+        answer: 'Necesitamos: dimensiones exactas, peso, origen/destino, timeline deseado, restricciones especiales. Cotización personalizada en 5-10 días.'
+      }
+    ],
+
+    relatedServices: [
+      { name: 'Freight Forwarding', link: 'freight-forwarding' },
+      { name: 'Seguro de Carga', link: 'seguro-carga' }
+    ]
+  },
+
+  'agenciamiento-aduanas': {
+    id: 'agenciamiento-aduanas',
+    title: 'Agenciamiento de Aduanas',
+    subtitle: 'Gestión experta de despachos aduaneros y compliance',
+    tagline: 'Despachos rápidos y sin contratiempos',
+    description: 'Liberamos tus cargas de importación/exportación con rapidez y cumplimiento normativo, minimizando demoras y costos adicionales.',
+    
+    subpages: [
+      {
+        id: 'overview',
+        title: 'Panorama General',
+        description: 'Qué hacemos y cómo',
+        icon: <Home className="h-5 w-5" />
+      },
+      {
+        id: 'operacion',
+        title: 'Operación',
+        description: 'Flujo paso a paso',
+        icon: <Settings className="h-5 w-5" />
+      },
+      {
+        id: 'tecnologia',
+        title: 'Tecnología',
+        description: 'Stack técnico',
+        icon: <Code className="h-5 w-5" />
+      },
+      {
+        id: 'slas-entregables',
+        title: 'SLAs & Reportes',
+        description: 'Compromisos operacionales',
+        icon: <FileText className="h-5 w-5" />
+      },
+      {
+        id: 'escenarios',
+        title: 'Casos Aduaneros',
+        description: 'Importación/exportación/tránsito',
+        icon: <Target className="h-5 w-5" />
+      }
+    ],
+
+    scenarios: [
+      {
+        pain: 'Importador con carga retenida por documentación incompleta',
+        solution: 'Revisión pre-embarque de docs, gestión de certificados faltantes, regularización express',
+        outcome: 'Liberación en 24h vs 7-10 días promedio',
+        icon: <FileText className="h-6 w-6" />
+      },
+      {
+        pain: 'Exportador sin conocimiento de clasificación arancelaria correcta',
+        solution: 'Análisis de producto, clasificación NCM/HTS, validación con aduanas, certificado origen',
+        outcome: 'Despacho sin observaciones, cero multas',
+        icon: <Shield className="h-6 w-6" />
+      },
+      {
+        pain: 'Empresa con múltiples importaciones mensuales y proceso manual',
+        solution: 'Automatización de DIN vía API, validación automática de docs, despacho anticipado',
+        outcome: 'Tiempo de liberación reducido 60%',
+        icon: <Zap className="h-6 w-6" />
+      }
+    ],
+
+    deliverables: [
+      {
+        name: 'Portal Aduanero',
+        description: 'Acceso web para consultar estado de tus DINs, documentación, liquidaciones',
+        type: 'dashboard',
+        icon: <BarChart3 className="h-5 w-5" />
+      },
+      {
+        name: 'Declaraciones (DIN/DUS)',
+        description: 'Tramitación de declaraciones de importación/exportación ante Aduana',
+        type: 'document',
+        icon: <FileText className="h-5 w-5" />
+      },
+      {
+        name: 'API de Documentación',
+        description: 'Endpoint para enviar/consultar docs requeridos programáticamente',
+        type: 'integration',
+        icon: <Code className="h-5 w-5" />
+      },
+      {
+        name: 'Reportes de Compliance',
+        description: 'Dashboard mensual con métricas de despachos, demoras, observaciones',
+        type: 'report',
+        icon: <BarChart3 className="h-5 w-5" />
+      }
+    ],
+
+    integrations: [
+      {
+        system: 'SICEX (Aduanas Chile)',
+        description: 'Integración directa con sistema aduanero para presentación DIN/DUS',
+        technologies: ['SOAP', 'XML', 'Firma digital'],
+        icon: <Shield className="h-5 w-5" />
+      },
+      {
+        system: 'SAG/ISP/SERNAPESCA',
+        description: 'Gestión de permisos sectoriales automáticos vía APIs',
+        technologies: ['REST API', 'XML'],
+        icon: <FileText className="h-5 w-5" />
+      },
+      {
+        system: 'ERP Clientes',
+        description: 'Sincronización de órdenes de compra para despacho anticipado',
+        technologies: ['EDI', 'REST API'],
+        icon: <Database className="h-5 w-5" />
+      },
+      {
+        system: 'Carriers/Navieras',
+        description: 'Obtención automática de BL/AWB, manifests, arribos',
+        technologies: ['EDI', 'Email parsing'],
+        icon: <Truck className="h-5 w-5" />
+      }
+    ],
+
+    slas: [
+      {
+        metric: 'Presentación DIN/DUS',
+        commitment: '< 4 horas desde recepción docs completos',
+        notes: 'Horario hábil aduanero'
+      },
+      {
+        metric: 'Liberación sin aforo',
+        commitment: '< 24h desde arribo de carga',
+        notes: 'Chile: 24h | Perú: 24-48h'
+      },
+      {
+        metric: 'Liberación con aforo documental',
+        commitment: '< 48h desde notificación aforo',
+        notes: 'Requiere presentación docs físicos'
+      },
+      {
+        metric: 'Respuesta consultas',
+        commitment: '< 2 horas hábiles',
+        notes: 'Email + WhatsApp + portal'
+      },
+      {
+        metric: 'Gestión observaciones',
+        commitment: 'Regularización en < 24h (si depende de nosotros)',
+        notes: 'Si depende cliente: apoyamos pero no controlamos'
+      }
+    ],
+
+    faqs: [
+      {
+        question: '¿Qué documentos necesito para importar?',
+        answer: 'Mínimo: Factura comercial, packing list, conocimiento de embarque (BL/AWB). Según producto: certificado origen, permisos SAG/ISP/SERNAPESCA, homologaciones.'
+      },
+      {
+        question: '¿Cuánto demora un despacho aduanero?',
+        answer: 'Sin aforo: 24h. Con aforo documental: 48-72h. Con aforo físico: 3-5 días (depende de disponibilidad Aduana para inspección).'
+      },
+      {
+        question: '¿Qué es un aforo y por qué me tocó?',
+        answer: 'Aforo es revisión de Aduana (documental o física) para validar declaración. Se asigna por: perfil de riesgo, producto sensible, historial, o aleatorio.'
+      },
+      {
+        question: '¿Puedo hacer despacho anticipado?',
+        answer: 'Sí, si tienes documentación antes del arribo. Tramitamos DIN anticipada, liberación puede ser inmediata post-arribo (sin aforo).'
+      },
+      {
+        question: '¿Cobran por gestión de observaciones?',
+        answer: 'Primera gestión incluida. Si requiere múltiples idas/vueltas por docs faltantes del cliente, cobramos fee adicional por gestión.'
+      }
+    ],
+
+    relatedServices: [
+      { name: 'Freight Forwarding', link: 'freight-forwarding' },
+      { name: 'Contract Logistics', link: 'almacenaje-distribucion' }
+    ]
+  },
+
+  'seguro-carga': {
+    id: 'seguro-carga',
+    title: 'Seguro de Carga Internacional',
+    subtitle: 'Protección integral para tus envíos internacionales',
+    tagline: 'Protege tu inversión en tránsito',
+    description: 'Pólizas de seguro all-risk con cobertura completa contra pérdida, daño o robo durante todo el trayecto logístico.',
+    
+    subpages: [
+      {
+        id: 'overview',
+        title: 'Panorama General',
+        description: 'Qué cubrimos y cómo',
+        icon: <Home className="h-5 w-5" />
+      },
+      {
+        id: 'operacion',
+        title: 'Operación',
+        description: 'Proceso de aseguramiento',
+        icon: <Settings className="h-5 w-5" />
+      },
+      {
+        id: 'tecnologia',
+        title: 'Tecnología',
+        description: 'Plataforma de gestión',
+        icon: <Code className="h-5 w-5" />
+      },
+      {
+        id: 'slas-entregables',
+        title: 'SLAs & Reportes',
+        description: 'Compromisos operacionales',
+        icon: <FileText className="h-5 w-5" />
+      },
+      {
+        id: 'escenarios',
+        title: 'Casos de Siniestros',
+        description: 'Ejemplos reales',
+        icon: <Target className="h-5 w-5" />
+      }
+    ],
+
+    scenarios: [
+      {
+        pain: 'Importador con contenedor dañado por tormenta en mar',
+        solution: 'Póliza all-risk ICC A cubre daño por agua, presentamos claim con fotos/peritaje',
+        outcome: 'Indemnización 100% valor mercancía en 30 días',
+        icon: <Shield className="h-6 w-6" />
+      },
+      {
+        pain: 'Exportador con carga robada en puerto de destino',
+        solution: 'Cobertura de robo total/parcial, coordinación con aseguradora local',
+        outcome: 'Compensación 95% valor factura (deducible 5%)',
+        icon: <AlertCircle className="h-6 w-6" />
+      },
+      {
+        pain: 'Maquinaria dañada por mala manipulación en puerto',
+        solution: 'Peritaje técnico, claim ante aseguradora + carrier, reparación cubierta',
+        outcome: 'Equipo reparado sin costo adicional',
+        icon: <Package className="h-6 w-6" />
+      }
+    ],
+
+    deliverables: [
+      {
+        name: 'Certificado de Seguro',
+        description: 'Póliza digital con número único, coberturas, suma asegurada',
+        type: 'document',
+        icon: <FileText className="h-5 w-5" />
+      },
+      {
+        name: 'Portal de Claims',
+        description: 'Plataforma web para reportar siniestros, subir evidencia, hacer seguimiento',
+        type: 'dashboard',
+        icon: <BarChart3 className="h-5 w-5" />
+      },
+      {
+        name: 'API de Cotización',
+        description: 'Endpoint para calcular prima según valor CIF, ruta, tipo mercancía',
+        type: 'integration',
+        icon: <Code className="h-5 w-5" />
+      },
+      {
+        name: 'Reporte de Siniestralidad',
+        description: 'Dashboard anual con histórico de claims, frecuencia, montos',
+        type: 'report',
+        icon: <BarChart3 className="h-5 w-5" />
+      }
+    ],
+
+    integrations: [
+      {
+        system: 'Aseguradoras Globales',
+        description: 'Alianzas con Zurich, Mapfre, HDI para emisión automática de pólizas',
+        technologies: ['API REST', 'XML'],
+        icon: <Shield className="h-5 w-5" />
+      },
+      {
+        system: 'TMS/WMS',
+        description: 'Integración para asegurar automáticamente envíos según regla de negocio',
+        technologies: ['Webhooks', 'REST API'],
+        icon: <Database className="h-5 w-5" />
+      },
+      {
+        system: 'Freight Forwarders',
+        description: 'Sincronización con datos de embarque para certificados automáticos',
+        technologies: ['EDI', 'API'],
+        icon: <Truck className="h-5 w-5" />
+      },
+      {
+        system: 'Claims Management',
+        description: 'Plataforma centralizada para gestión de siniestros y peritajes',
+        technologies: ['Cloud Platform', 'Storage'],
+        icon: <FileText className="h-5 w-5" />
+      }
+    ],
+
+    slas: [
+      {
+        metric: 'Emisión de póliza',
+        commitment: '< 2 horas desde solicitud con datos completos',
+        notes: 'Horario hábil'
+      },
+      {
+        metric: 'Respuesta a cotización',
+        commitment: '< 1 hora para rutas estándar',
+        notes: 'Mercancía peligrosa: 4-8h'
+      },
+      {
+        metric: 'Registro de claim',
+        commitment: 'Confirmación en < 24h desde reporte',
+        notes: 'Asignación de ejecutivo de claims'
+      },
+      {
+        metric: 'Resolución de claim',
+        commitment: '30-45 días desde presentación docs completos',
+        notes: 'Depende de complejidad y peritaje'
+      },
+      {
+        metric: 'Pago indemnización',
+        commitment: '< 10 días hábiles desde aprobación claim',
+        notes: 'Transferencia bancaria directa'
+      }
+    ],
+
+    faqs: [
+      {
+        question: '¿Qué cubre una póliza all-risk ICC A?',
+        answer: 'Cubre todos los riesgos de pérdida o daño físico salvo exclusiones específicas (guerra, huelgas, vicio propio). Es la cobertura más amplia.'
+      },
+      {
+        question: '¿Cuánto cuesta asegurar una carga?',
+        answer: 'Prima típica: 0.3% - 0.8% del valor CIF. Depende de: ruta, modo transporte, tipo mercancía, historial. Mínimo: USD 50 por póliza.'
+      },
+      {
+        question: '¿Qué es el valor CIF?',
+        answer: 'Cost + Insurance + Freight. Valor de factura + flete + seguro. Base para calcular suma asegurada (típicamente CIF + 10%).'
+      },
+      {
+        question: '¿Puedo asegurar mercancía usada o de segunda mano?',
+        answer: 'Sí, pero suma asegurada será valor real/depreciado, no valor nuevo. Requiere declaración de estado y fotos.'
+      },
+      {
+        question: '¿Qué hago si mi carga llega dañada?',
+        answer: '1) Tomar fotos inmediatamente. 2) Hacer reserva escrita en BL/POD. 3) Reportar claim en portal < 72h. 4) No disponer de mercancía hasta peritaje.'
+      }
+    ],
+
+    relatedServices: [
+      { name: 'Freight Forwarding', link: 'freight-forwarding' },
+      { name: 'Project Cargo', link: 'project-cargo' }
+    ]
   }
 };
 
@@ -937,6 +1627,38 @@ function OperacionContent({ service }: any) {
       { step: '4. Monitoreo en Tránsito', description: 'GPS tracking cada 5 min, alertas de desvío/parada no autorizada, comunicación bidireccional', tools: ['GPS Tracker', 'Control Tower'], time: 'Continuo' },
       { step: '5. Entrega y POD', description: 'Confirmación con firma digital, foto de descarga, notificación a cliente', tools: ['App Móvil', 'API Clientes'], time: 'Variable' },
       { step: '6. Cierre Operacional', description: 'Liquidación de viaje, documentación digital, facturación automática', tools: ['ERP', 'Billing System'], time: '24 hrs' }
+    ],
+    'freight-forwarding': [
+      { step: '1. Cotización Multimodal', description: 'Cliente solicita cotización vía portal, sistema consulta tarifas de carriers (aéreo/marítimo/terrestre)', tools: ['TMS', 'Carrier APIs'], time: '< 2 hrs' },
+      { step: '2. Booking & Reserva', description: 'Cliente acepta cotización, sistema hace booking automático con carrier, asigna contenedor/espacio', tools: ['API Carriers', 'EDI'], time: '2-4 hrs' },
+      { step: '3. Documentación Pre-embarque', description: 'Cliente carga docs comerciales, validamos compliance, generamos BL/AWB preliminar', tools: ['Portal Docs', 'Validators'], time: '24-48 hrs' },
+      { step: '4. Coordinación Origen', description: 'Arreglo de recolección, inspección pre-embarque, entrega a carrier/puerto/aeropuerto', tools: ['GPS Tracking', 'WhatsApp'], time: '1-3 días' },
+      { step: '5. Tracking en Tránsito', description: 'Monitoreo de milestones: salida, tránsito, arribo. Notificaciones automáticas a cliente', tools: ['Tracking Platform', 'APIs'], time: 'Continuo' },
+      { step: '6. Despacho Destino', description: 'Coordinación con agente aduanero, liberación, entrega final a cliente', tools: ['Aduanas APIs', 'Portal'], time: '2-5 días' }
+    ],
+    'project-cargo': [
+      { step: '1. Estudio de Viabilidad', description: 'Análisis de dimensiones, peso, ruta, restricciones. Visita terreno si es necesario', tools: ['CAD Tools', 'Survey'], time: '5-10 días' },
+      { step: '2. Planificación Detallada', description: 'Diseño de plan de carga, permisos necesarios, cronograma Gantt, presupuesto detallado', tools: ['MS Project', 'AutoCAD'], time: '10-15 días' },
+      { step: '3. Gestión de Permisos', description: 'Tramitación de permisos circulación, escoltas, cierre temporal de vías si aplica', tools: ['MOP/MTT Portals'], time: '30-45 días' },
+      { step: '4. Preparación de Carga', description: 'Ingeniería de embalaje, fabricación de cuna, inspección pre-carga, aseguramiento', tools: ['Rigging Tools', 'Sensors'], time: '5-10 días' },
+      { step: '5. Transporte Ejecutado', description: 'Carga con grúas especializadas, transporte con escolta, monitoreo GPS 24/7', tools: ['GPS Satellite', 'Radio'], time: 'Variable' },
+      { step: '6. Entrega & Reporte', description: 'Descarga supervisada, inspección final, cierre documental, reporte post-proyecto', tools: ['Cameras', 'Docs'], time: '2-3 días' }
+    ],
+    'agenciamiento-aduanas': [
+      { step: '1. Recepción de Documentos', description: 'Cliente envía factura, BL/AWB, packing list vía portal. Sistema valida completitud', tools: ['Portal Aduanero', 'Validators'], time: '< 1 hr' },
+      { step: '2. Clasificación Arancelaria', description: 'Análisis de producto, asignación de código NCM/HTS, validación con Aduana si es complejo', tools: ['Base NCM', 'IA Classifier'], time: '1-4 hrs' },
+      { step: '3. Presentación DIN/DUS', description: 'Generación de declaración con firma digital, presentación ante Aduanas vía SICEX', tools: ['SICEX API', 'Firma Digital'], time: '2-4 hrs' },
+      { step: '4. Gestión Aforos', description: 'Si hay aforo documental/físico: presentación de docs, coordinación inspección con Aduana', tools: ['Portal Aduana', 'WhatsApp'], time: '24-72 hrs' },
+      { step: '5. Pago de Aranceles', description: 'Cálculo automático de derechos/IVA, gestión de pago por cliente o cuenta corriente', tools: ['SICEX', 'Banking API'], time: '< 2 hrs' },
+      { step: '6. Liberación y Retiro', description: 'Obtención de levante, coordinación retiro desde puerto/aeropuerto, entrega a almacén/cliente', tools: ['GPS', 'Transport'], time: '4-24 hrs' }
+    ],
+    'seguro-carga': [
+      { step: '1. Solicitud de Cotización', description: 'Cliente solicita seguro vía portal/API con datos: valor CIF, ruta, mercancía', tools: ['Portal Seguros', 'API'], time: '< 1 hr' },
+      { step: '2. Análisis de Riesgo', description: 'Sistema evalúa riesgo según ruta, historial, tipo mercancía. Tarifa calculada automáticamente', tools: ['Risk Engine', 'Algorithms'], time: '15-30 min' },
+      { step: '3. Emisión de Póliza', description: 'Cliente acepta cotización, sistema emite certificado digital con número único', tools: ['Insurance Platform', 'PDF Generator'], time: '< 2 hrs' },
+      { step: '4. Envío de Documentación', description: 'Certificado enviado por email + disponible en portal. BL/AWB actualizados si se requiere', tools: ['Email', 'Portal'], time: 'Inmediato' },
+      { step: '5. Monitoreo (opcional)', description: 'Tracking de envío para alertas proactivas de riesgo (desvío, demora, clima extremo)', tools: ['Tracking APIs', 'Weather'], time: 'Continuo' },
+      { step: '6. Gestión de Claims', description: 'Si hay siniestro: cliente reporta en portal, adjunta evidencia, peritaje coordinado', tools: ['Claims Portal', 'Peritos'], time: '30-45 días' }
     ]
   };
 
@@ -1110,6 +1832,88 @@ function TecnologiaContent({ service }: any) {
       'Analítica': [
         { name: 'Power BI', purpose: 'Dashboard de performance: OTIF, costos por ruta, tiempos', tech: 'Microsoft BI Suite' },
         { name: 'Telematics Analytics', purpose: 'Análisis de comportamiento de conducción, consumo', tech: 'Telematics Platform' }
+      ]
+    },
+    'freight-forwarding': {
+      'Sistemas Core': [
+        { name: 'TMS Multimodal', purpose: 'Gestión de bookings aéreo/marítimo/terrestre, cotización automática', tech: 'Cloud Platform, APIs REST' },
+        { name: 'Tracking Platform', purpose: 'Visibilidad end-to-end de envíos internacionales', tech: 'Real-time Tracking, Webhooks' },
+        { name: 'Portal Clientes', purpose: 'Plataforma web para cotizaciones, bookings, documentación, tracking', tech: 'React SPA, Node.js Backend' }
+      ],
+      'Integraciones': [
+        { name: 'Carrier APIs', purpose: 'Integración con Maersk, MSC, Emirates, LATAM Cargo para bookings y tracking', tech: 'EDI, REST/SOAP APIs' },
+        { name: 'Aduanas', purpose: 'Conexión con SICEX, VUCE, VUCEM para despachos', tech: 'SOAP, XML, Certificados' },
+        { name: 'ERP Clientes', purpose: 'Sincronización con SAP, Oracle, Dynamics', tech: 'EDI X12, IDOC, REST' },
+        { name: 'E-commerce', purpose: 'Fulfillment cross-border con Shopify, VTEX, WooCommerce', tech: 'REST API, Webhooks' }
+      ],
+      'Herramientas': [
+        { name: 'Tariff Engines', purpose: 'Motores de cálculo de flete aéreo/marítimo según peso/volumen', tech: 'Proprietary Algorithms' },
+        { name: 'Document Management', purpose: 'Gestión de BL, AWB, facturas, certificados origen', tech: 'Cloud Storage, OCR' },
+        { name: 'Compliance Tools', purpose: 'Validación de incoterms, permisos, restricciones por país', tech: 'Rules Engine' }
+      ],
+      'Analítica': [
+        { name: 'Power BI', purpose: 'Dashboards de costos por ruta, tiempos tránsito, performance carriers', tech: 'Microsoft BI' },
+        { name: 'Reporting Engine', purpose: 'Reportes automáticos de shipments, delays, costs', tech: 'Custom Reports' }
+      ]
+    },
+    'project-cargo': {
+      'Sistemas Core': [
+        { name: 'Project Management System', purpose: 'Gestión de cronograma, recursos, hitos críticos', tech: 'MS Project, Gantt Charts' },
+        { name: 'GPS Tracking Avanzado', purpose: 'Rastreo satelital 24/7 con geofencing', tech: 'Iridium Satellite, GPRS' },
+        { name: 'Document Repository', purpose: 'Almacenamiento centralizado de planos, permisos, certificados', tech: 'SharePoint, Cloud' }
+      ],
+      'Herramientas de Ingeniería': [
+        { name: 'CAD Software', purpose: 'Importación y análisis de planos de carga', tech: 'AutoCAD, SolidWorks, DWG/DXF' },
+        { name: 'Route Planning Tools', purpose: 'Simulación de rutas con estudios de gálibo', tech: 'GIS, Mapping Software' },
+        { name: 'Load Calculation', purpose: 'Cálculo de centros de gravedad, ejes de carga', tech: 'Engineering Software' }
+      ],
+      'Integraciones': [
+        { name: 'Permisos Viales', purpose: 'Conexión con MOP, MTT, gobiernos regionales', tech: 'Web Forms, PDF Digital' },
+        { name: 'Cameras & Sensors', purpose: 'Captura de fotos/videos durante transporte', tech: 'IoT Cameras, Cloud Upload' }
+      ],
+      'Analítica': [
+        { name: 'Performance Reports', purpose: 'Análisis post-proyecto: timeline, costos, lecciones aprendidas', tech: 'Custom Dashboards' }
+      ]
+    },
+    'agenciamiento-aduanas': {
+      'Sistemas Core': [
+        { name: 'Portal Aduanero', purpose: 'Plataforma web para carga de docs, consulta DINs, liquidaciones', tech: 'React SPA, Node.js' },
+        { name: 'Classifier NCM/HTS', purpose: 'Motor de clasificación arancelaria con IA', tech: 'Machine Learning, NLP' },
+        { name: 'Firma Digital', purpose: 'Certificados digitales para presentación DIN/DUS', tech: 'PKI, Digital Signatures' }
+      ],
+      'Integraciones': [
+        { name: 'SICEX (Chile)', purpose: 'Integración directa con Aduanas para presentación declaraciones', tech: 'SOAP, XML, Firma Digital' },
+        { name: 'VUCE/VUCEM', purpose: 'Conexión con ventanillas únicas Perú/México', tech: 'SOAP/REST APIs' },
+        { name: 'SAG/ISP/SERNAPESCA', purpose: 'Gestión automática de permisos sectoriales', tech: 'REST API, XML' },
+        { name: 'ERP Clientes', purpose: 'Sincronización de órdenes de compra para despacho anticipado', tech: 'EDI, REST' }
+      ],
+      'Herramientas': [
+        { name: 'OCR Documents', purpose: 'Extracción automática de datos de facturas, BL', tech: 'Tesseract, Cloud Vision' },
+        { name: 'Validators', purpose: 'Validación de completitud y consistency documental', tech: 'Rules Engine' },
+        { name: 'Payment Gateway', purpose: 'Integración con bancos para pago aranceles', tech: 'Banking APIs' }
+      ],
+      'Analítica': [
+        { name: 'Compliance Dashboard', purpose: 'Métricas de despachos, demoras, observaciones, aforos', tech: 'Power BI' }
+      ]
+    },
+    'seguro-carga': {
+      'Sistemas Core': [
+        { name: 'Portal de Seguros', purpose: 'Plataforma web/móvil para cotización, emisión, claims', tech: 'React Native, Node.js' },
+        { name: 'Risk Engine', purpose: 'Motor de análisis de riesgo y cálculo de primas', tech: 'Actuarial Algorithms, ML' },
+        { name: 'Claims Management', purpose: 'Gestión centralizada de siniestros y peritajes', tech: 'Workflow Engine, Cloud' }
+      ],
+      'Integraciones': [
+        { name: 'Aseguradoras', purpose: 'APIs con Zurich, Mapfre, HDI para emisión automática', tech: 'REST API, XML' },
+        { name: 'TMS/Freight', purpose: 'Sincronización con datos de embarque para certificados automáticos', tech: 'Webhooks, API REST' },
+        { name: 'Tracking APIs', purpose: 'Monitoreo de envíos para alertas proactivas de riesgo', tech: 'Real-time APIs' }
+      ],
+      'Herramientas': [
+        { name: 'PDF Generator', purpose: 'Generación automática de certificados de seguro', tech: 'Template Engine' },
+        { name: 'Payment Gateway', purpose: 'Cobro de primas vía tarjeta/transferencia', tech: 'Stripe, PayPal' },
+        { name: 'Document Storage', purpose: 'Almacenamiento seguro de pólizas, evidencia claims', tech: 'AWS S3, Encryption' }
+      ],
+      'Analítica': [
+        { name: 'Siniestralidad Dashboard', purpose: 'Análisis de frecuencia, severidad, trends por ruta/producto', tech: 'Power BI' }
       ]
     }
   };
