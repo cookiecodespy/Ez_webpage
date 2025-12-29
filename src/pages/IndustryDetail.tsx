@@ -105,9 +105,9 @@ export default function IndustryDetail() {
   const handleTabChange = (tabId: string) => {
     setActiveTab(tabId);
     if (tabId === 'overview') {
-      navigate(`/servicios/${industry.id}`);
+      navigate(`/industrias/${industry.id}`);
     } else {
-      navigate(`/servicios/${industry.id}/${tabId}`);
+      navigate(`/industrias/${industry.id}/${tabId}`);
     }
   };
 
@@ -449,7 +449,7 @@ function OverviewContent({ industry, activeScenario, setActiveScenario, expanded
             {industry.relatedSolutions.map((related: any, index: number) => (
               <Link
                 key={index}
-                to={`/servicios/${related.link}`}
+                to={`/industrias/${related.link}`}
                 state={{ from: 'services' }}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 rounded-xl font-semibold hover:bg-white/10 hover:border-[#E41B13] transition-all group"
               >
