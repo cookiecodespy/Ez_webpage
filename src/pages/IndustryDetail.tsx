@@ -74,13 +74,25 @@ export default function IndustryDetail() {
 
   const fromIndustries = location.state?.from === 'industries' || document.referrer.includes('/industrias/');
 
+  // Scroll to top when subpage changes
   useEffect(() => {
     if (subpage) {
       setActiveTab(subpage);
     } else {
       setActiveTab('overview');
     }
+    // Scroll to top when tab changes
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [subpage]);
+
+  // Initial scroll on mount to show hero properly
+  useEffect(() => {
+    // Small delay to ensure page is rendered
+    const timer = setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [industryId]);
 
   if (!industry) {
     return (
@@ -535,6 +547,26 @@ function OperacionContent({ industry }: any) {
 
   const currentWorkflow = workflows[industry.id as keyof typeof workflows] || [];
 
+  if (currentWorkflow.length === 0) {
+    return (
+      <motion.div
+        key="operacion"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        className="relative max-w-7xl mx-auto px-6 py-12"
+      >
+        <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-12 text-center">
+          <Settings className="w-16 h-16 text-[#E41B13] mx-auto mb-4" />
+          <h3 className="text-2xl font-bold mb-3">Contenido en Desarrollo</h3>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Estamos preparando información detallada sobre el flujo operacional de {industry.title}. Contáctanos para conocer más.
+          </p>
+        </div>
+      </motion.div>
+    );
+  }
+
   return (
     <motion.div
       key="operacion"
@@ -827,6 +859,26 @@ function TecnologiaContent({ industry }: any) {
   const displayStack = activeCategory === 'all' 
     ? Object.entries(currentStack).flatMap(([cat, items]) => items.map(item => ({ ...item, category: cat })))
     : (currentStack as any)[activeCategory] || [];
+
+  if (categories.length === 0) {
+    return (
+      <motion.div
+        key="tecnologia"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        className="relative max-w-7xl mx-auto px-6 py-12"
+      >
+        <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-12 text-center">
+          <Cpu className="w-16 h-16 text-[#E41B13] mx-auto mb-4" />
+          <h3 className="text-2xl font-bold mb-3">Contenido en Desarrollo</h3>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Estamos preparando información detallada sobre el stack tecnológico de {industry.title}. Contáctanos para conocer más.
+          </p>
+        </div>
+      </motion.div>
+    );
+  }
 
   return (
     <motion.div
