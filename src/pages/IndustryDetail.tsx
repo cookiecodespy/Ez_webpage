@@ -81,13 +81,17 @@ export default function IndustryDetail() {
     } else {
       setActiveTab('overview');
     }
-    // Scroll to content area smoothly when tab changes
+    // Scroll to content area with offset for header
     const timer = setTimeout(() => {
       const contentArea = document.getElementById('industry-content');
       if (contentArea) {
-        contentArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } else {
-        window.scrollTo({ top: 200, behavior: 'smooth' });
+        const elementPosition = contentArea.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - 120; // 120px offset for header
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
       }
     }, 100);
     return () => clearTimeout(timer);
@@ -196,24 +200,29 @@ export default function IndustryDetail() {
               <button
                 key={sub.id}
                 onClick={() => handleTabChange(sub.id)}
-                className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold transition-all cursor-pointer ${
+                className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold transition-all cursor-pointer select-none ${
                   activeTab === sub.id
                     ? 'bg-gradient-to-r from-[#E41B13] to-[#8B0000] text-white shadow-lg shadow-red-500/30'
                     : 'bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10'
                 }`}
+                style={{ WebkitTapHighlightColor: 'transparent' }}
               >
-                {sub.icon}
-                {sub.title}
+                <span className="pointer-events-none flex items-center gap-2">
+                  {sub.icon}
+                  {sub.title}
+                </span>
               </button>
             ))}
 
             <Link
               to="/"
               state={{ scrollTo: 'contact' }}
-              className="ml-auto inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#E41B13] to-[#8B0000] rounded-xl font-bold hover:scale-105 transition-transform shadow-lg shadow-red-500/50 group"
+              className="ml-auto inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#E41B13] to-[#8B0000] rounded-xl font-bold hover:scale-105 transition-transform shadow-lg shadow-red-500/50 group cursor-pointer"
             >
-              Solicitar Info
-              <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              <span className="pointer-events-none flex items-center gap-2">
+                Solicitar Info
+                <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </span>
             </Link>
           </div>
         </div>
@@ -679,14 +688,14 @@ function TecnologiaContent({ industry }: any) {
         { name: 'Portal Omnicanal', purpose: 'Dashboard unificado para visibilidad stock, órdenes, KPIs por canal', tech: 'React SPA, Node.js, WebSockets' }
       ],
       'E-commerce & POS': [
-        { name: 'Shopify / VTEX Connector', purpose: 'Sincronización bidireccional órdenes y stock cada 5 min', tech: 'REST API, Webhooks, OAuth 2.0' },
-        { name: 'WooCommerce / Magento Plugin', purpose: 'Integración nativa con auto-sync tracking y disponibilidad', tech: 'PHP SDK, REST API' },
-        { name: 'POS Integration', purpose: 'Conexión con sistemas POS tiendas para ship-from-store y stock unificado', tech: 'SQL Direct, API REST, Web Services' }
+        { name: 'API Gateway E-commerce', purpose: 'Conectores con plataformas e-commerce del cliente: sync bidireccional órdenes y stock cada 5 min', tech: 'REST API, Webhooks, OAuth 2.0' },
+        { name: 'POS Integration Hub', purpose: 'Integración sistemas POS retail: ship-from-store, click-and-collect, stock omnicanal unificado', tech: 'SQL Direct, API REST, SOAP Web Services' },
+        { name: 'Channel Orchestration', purpose: 'Orquestación multi-canal: priorización órdenes, ruteo inteligente, consolidación inventario cross-canal', tech: 'Event-driven Architecture, Microservicios' }
       ],
       'Marketplaces': [
-        { name: 'MercadoLibre Full API', purpose: 'Fulfillment automatizado con sync órdenes, tracking, inventario', tech: 'REST API, OAuth, Webhooks' },
-        { name: 'Amazon Seller Central', purpose: 'Gestión FBA/Seller con actualización stock y órdenes en tiempo real', tech: 'MWS API, SP-API' },
-        { name: 'Falabella / Ripley Seller', purpose: 'Integración marketplaces locales con gestión centralizada', tech: 'API REST, FTP, EDI' }
+        { name: 'Marketplace Integration Hub', purpose: 'Gestión centralizada multi-marketplace: sync órdenes, inventario, tracking automático por canal', tech: 'REST API, OAuth, Webhooks' },
+        { name: 'Seller Central Connector', purpose: 'Integración con marketplaces regionales/internacionales: actualización stock real-time, fulfillment SLA compliance', tech: 'API REST, FTP/SFTP, EDI' },
+        { name: 'Channel Performance Analytics', purpose: 'Analytics por marketplace: OTIF, rating seller, costos fulfillment, rentabilidad por canal', tech: 'Custom BI, Data Warehouse' }
       ],
       'Logística & Carriers': [
         { name: 'TMS Multi-carrier', purpose: 'Integración Chilexpress, Starken, Blue Express, 99Minutos con cotización y etiquetado auto', tech: 'API REST, SOAP, FTP' },
@@ -733,9 +742,9 @@ function TecnologiaContent({ industry }: any) {
         { name: 'Control Tower', purpose: 'Visibilidad end-to-end de toda la cadena', tech: 'Cloud Platform, Real-time Dashboard' }
       ],
       'Integraciones': [
-        { name: 'E-commerce APIs', purpose: 'Sincronización de órdenes desde Shopify, VTEX, Magento', tech: 'REST/GraphQL APIs' },
-        { name: 'Carrier APIs', purpose: 'Integración con UPS, FedEx, DHL para tracking', tech: 'SOAP/REST APIs' },
-        { name: 'EDI Gateway', purpose: 'Intercambio de documentos con clientes enterprise (ASN, 856)', tech: 'EDI X12, EDIFACT' }
+        { name: 'E-commerce Integration API', purpose: 'Conectores con plataformas e-commerce clientes: sincronización órdenes, stock, tracking bidireccional', tech: 'REST/GraphQL APIs, Webhooks' },
+        { name: 'Carrier Integration Hub', purpose: 'Red carriers integrados (aéreos, terrestres, última milla): cotización auto, etiquetado, tracking consolidado', tech: 'SOAP/REST APIs, FTP' },
+        { name: 'EDI Gateway Enterprise', purpose: 'Intercambio documentos electrónicos con clientes corporativos: ASN, 856, facturas, confirmaciones', tech: 'EDI X12, EDIFACT, AS2' }
       ],
       'Hardware': [
         { name: 'Handhelds RF', purpose: 'Escaneo y validación en tiempo real', tech: 'Zebra MC9300, Android' },
@@ -779,7 +788,7 @@ function TecnologiaContent({ industry }: any) {
         { name: 'Carrier APIs', purpose: 'Integración con Maersk, MSC, Emirates, LATAM Cargo para bookings y tracking', tech: 'EDI, REST/SOAP APIs' },
         { name: 'Aduanas', purpose: 'Conexión con SICEX, VUCE, VUCEM para despachos', tech: 'SOAP, XML, Certificados' },
         { name: 'ERP Clientes', purpose: 'Sincronización con SAP, Oracle, Dynamics', tech: 'EDI X12, IDOC, REST' },
-        { name: 'E-commerce', purpose: 'Fulfillment cross-border con Shopify, VTEX, WooCommerce', tech: 'REST API, Webhooks' }
+        { name: 'E-commerce Cross-Border', purpose: 'Fulfillment internacional con plataformas e-commerce clientes: gestión aduanas, tracking global', tech: 'REST API, Webhooks, EDI' }
       ],
       'Herramientas': [
         { name: 'Tariff Engines', purpose: 'Motores de cálculo de flete aéreo/marítimo según peso/volumen', tech: 'Proprietary Algorithms' },
